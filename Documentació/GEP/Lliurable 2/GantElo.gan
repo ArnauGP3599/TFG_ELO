@@ -1,11 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2021-01-01" view-index="0" gantt-divider-location="300" resource-divider-location="300" version="3.0.3002" locale="ca_ES">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2021-01-01" view-index="0" gantt-divider-location="1291" resource-divider-location="300" version="3.0.3004" locale="ca_ES">
     <description/>
     <view zooming-state="default:8" id="gantt-chart">
-        <field id="tpd3" name="Nom" width="167" order="0"/>
-        <field id="tpd4" name="Inici" width="65" order="1"/>
-        <field id="tpd5" name="Finalització" width="64" order="2"/>
+        <field id="tpd3" name="Nom" width="182" order="0"/>
+        <field id="tpd6" name="Durada" width="182" order="1"/>
+        <field id="tpd4" name="Inici" width="182" order="2"/>
+        <field id="tpd5" name="Finalització" width="182" order="3"/>
+        <field id="tpc2" name="Dependències" width="181" order="4"/>
+        <field id="tpc0" name="Risc" width="182" order="5"/>
+        <field id="tpc1" name="Rols" width="181" order="6"/>
+        <option id="taskLabelUp" value=""/>
+        <option id="taskLabelRight" value="name"/>
         <option id="color.recent">
-            <![CDATA[#ffff00 #ff0000 #ff9900 #00ff00 #33ff33]]>
+            <![CDATA[#3333ff #cccc00 #000099 #cc0000 #ffff00 #33ff00 #666666 #ff3333 #ff9900 #ff0000]]>
         </option>
     </view>
     <view id="resource-table">
@@ -35,58 +41,129 @@
             <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+            <taskproperty id="tpc0" name="Risc" type="custom" valuetype="text"/>
+            <taskproperty id="tpc1" name="Rols" type="custom" valuetype="text"/>
+            <taskproperty id="tpc2" name="Dependències" type="custom" valuetype="text"/>
         </taskproperties>
+        <task id="35" name="Gestió del projecte" color="#ff9900" meeting="false" start="2021-02-23" duration="20" complete="0" thirdDate="2021-01-01" thirdDate-constraint="0" expand="true"/>
         <task id="0" name="GdP1" color="#ff9900" meeting="false" start="2021-02-23" duration="6" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
             <depend id="2" type="2" difference="0" hardness="Strong"/>
+            <customproperty taskproperty-id="tpc0" value="Baix"/>
+            <customproperty taskproperty-id="tpc1" value="CP"/>
+            <customproperty taskproperty-id="tpc2" value=""/>
         </task>
         <task id="2" name="GdP2" color="#ff9900" meeting="false" start="2021-03-03" duration="4" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
             <depend id="3" type="2" difference="0" hardness="Strong"/>
+            <customproperty taskproperty-id="tpc0" value="Baix"/>
+            <customproperty taskproperty-id="tpc1" value="CP"/>
+            <customproperty taskproperty-id="tpc2" value="GdP1"/>
         </task>
         <task id="3" name="GdP3" color="#ff9900" meeting="false" start="2021-03-09" duration="5" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
             <depend id="4" type="2" difference="0" hardness="Strong"/>
+            <customproperty taskproperty-id="tpc0" value="Baix"/>
+            <customproperty taskproperty-id="tpc1" value="CP"/>
+            <customproperty taskproperty-id="tpc2" value="GdP2"/>
         </task>
-        <task id="4" name="GdP4" color="#ff9900" meeting="false" start="2021-03-16" duration="5" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true"/>
-        <task id="5" name="PA1" color="#ff0000" meeting="false" start="2021-02-15" duration="26" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
+        <task id="4" name="GdP4" color="#ff9900" meeting="false" start="2021-03-16" duration="5" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="Baix"/>
+            <customproperty taskproperty-id="tpc1" value="CP"/>
+            <customproperty taskproperty-id="tpc2" value="GdP3"/>
+        </task>
+        <task id="39" name="Desenvolupament" color="#666666" meeting="false" start="2021-02-15" duration="85" complete="0" thirdDate="2021-01-01" thirdDate-constraint="0" expand="true"/>
+        <task id="38" name="Personalització de l'algorisme del sistema d'Elo" color="#ff3333" meeting="false" start="2021-02-15" duration="45" complete="0" thirdDate="2021-01-01" thirdDate-constraint="0" expand="true"/>
+        <task id="5" name="PA1" color="#ff3333" meeting="false" start="2021-02-15" duration="26" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
             <depend id="7" type="2" difference="0" hardness="Strong"/>
+            <customproperty taskproperty-id="tpc0" value="Baix"/>
+            <customproperty taskproperty-id="tpc1" value="AP, AS, P, T"/>
         </task>
-        <task id="7" name="PA2" color="#ff0000" meeting="false" start="2021-03-23" duration="3" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
+        <task id="7" name="PA2" color="#cc0000" meeting="false" start="2021-03-23" duration="3" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
             <depend id="8" type="2" difference="0" hardness="Strong"/>
+            <customproperty taskproperty-id="tpc0" value="Alt"/>
+            <customproperty taskproperty-id="tpc1" value="AP, AS, P, T"/>
+            <customproperty taskproperty-id="tpc2" value="PA1"/>
         </task>
-        <task id="8" name="PA3" color="#ff0000" meeting="false" start="2021-03-26" duration="8" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
+        <task id="8" name="PA3" color="#cc0000" meeting="false" start="2021-03-26" duration="8" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
             <depend id="9" type="2" difference="0" hardness="Strong"/>
+            <customproperty taskproperty-id="tpc0" value="Alt"/>
+            <customproperty taskproperty-id="tpc1" value="AP, AS, P, T"/>
+            <customproperty taskproperty-id="tpc2" value="PA2"/>
         </task>
-        <task id="9" name="PA4" color="#ff0000" meeting="false" start="2021-04-07" duration="8" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
+        <task id="9" name="PA4" color="#cc0000" meeting="false" start="2021-04-07" duration="8" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
             <depend id="10" type="2" difference="0" hardness="Strong"/>
+            <customproperty taskproperty-id="tpc0" value="Alt"/>
+            <customproperty taskproperty-id="tpc1" value="AP, AS, P, T"/>
+            <customproperty taskproperty-id="tpc2" value="PA3"/>
         </task>
+        <task id="43" name="Simulació de partides" color="#8cb6ce" meeting="false" start="2021-04-19" duration="26" complete="0" thirdDate="2021-01-01" thirdDate-constraint="0" expand="true"/>
         <task id="10" name="SP1" color="#8cb6ce" meeting="false" start="2021-04-19" duration="7" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
             <depend id="11" type="2" difference="0" hardness="Strong"/>
             <depend id="13" type="2" difference="10" hardness="Strong"/>
+            <customproperty taskproperty-id="tpc0" value="Baix"/>
+            <customproperty taskproperty-id="tpc1" value="AP, AS, P, T"/>
+            <customproperty taskproperty-id="tpc2" value="PA4"/>
         </task>
-        <task id="11" name="SP2" color="#8cb6ce" meeting="false" start="2021-04-28" duration="6" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
+        <task id="11" name="SP2" color="#000099" meeting="false" start="2021-04-28" duration="6" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
             <depend id="12" type="2" difference="0" hardness="Strong"/>
+            <customproperty taskproperty-id="tpc0" value="Alt"/>
+            <customproperty taskproperty-id="tpc1" value="AP, AS, P, T"/>
+            <customproperty taskproperty-id="tpc2" value="SP1"/>
         </task>
-        <task id="12" name="SP3" color="#8cb6ce" meeting="false" start="2021-05-06" duration="4" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true"/>
-        <task id="13" name="SP4" color="#8cb6ce" meeting="false" start="2021-05-12" duration="4" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
+        <task id="12" name="SP3" color="#8cb6ce" meeting="false" start="2021-05-06" duration="4" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="Baix"/>
+            <customproperty taskproperty-id="tpc1" value="AP, AS, P, T"/>
+            <customproperty taskproperty-id="tpc2" value="SP2"/>
+        </task>
+        <task id="13" name="SP4" color="#3333ff" meeting="false" start="2021-05-12" duration="4" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
             <depend id="14" type="2" difference="0" hardness="Strong"/>
+            <customproperty taskproperty-id="tpc0" value="Mitjà"/>
+            <customproperty taskproperty-id="tpc1" value="AP, AS, P, T"/>
+            <customproperty taskproperty-id="tpc2" value="SP1"/>
         </task>
         <task id="14" name="SP5" color="#8cb6ce" meeting="false" start="2021-05-18" duration="1" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
             <depend id="15" type="2" difference="0" hardness="Strong"/>
+            <customproperty taskproperty-id="tpc0" value="Baix"/>
+            <customproperty taskproperty-id="tpc1" value="AP, AS, P, T"/>
+            <customproperty taskproperty-id="tpc2" value="SP4"/>
         </task>
-        <task id="15" name="SP6" color="#8cb6ce" meeting="false" start="2021-05-19" duration="4" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
+        <task id="15" name="SP6" color="#000099" meeting="false" start="2021-05-19" duration="4" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
             <depend id="16" type="2" difference="0" hardness="Strong"/>
+            <customproperty taskproperty-id="tpc0" value="Alt"/>
+            <customproperty taskproperty-id="tpc1" value="AP, AS, P, T"/>
+            <customproperty taskproperty-id="tpc2" value="SP5"/>
         </task>
+        <task id="46" name="Comparar resultats" color="#ffff00" meeting="false" start="2021-05-25" duration="14" complete="0" thirdDate="2021-05-25" thirdDate-constraint="0" expand="true"/>
         <task id="16" name="CR1" color="#ffff00" meeting="false" start="2021-05-25" duration="4" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
             <depend id="17" type="2" difference="0" hardness="Strong"/>
+            <customproperty taskproperty-id="tpc0" value="Baix"/>
+            <customproperty taskproperty-id="tpc1" value="AP, AS, P, T"/>
+            <customproperty taskproperty-id="tpc2" value="SP6"/>
         </task>
-        <task id="17" name="CR2" color="#ffff00" meeting="false" start="2021-05-31" duration="8" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
+        <task id="17" name="CR2" color="#cccc00" meeting="false" start="2021-05-31" duration="8" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
             <depend id="18" type="2" difference="0" hardness="Strong"/>
+            <customproperty taskproperty-id="tpc0" value="Alt"/>
+            <customproperty taskproperty-id="tpc1" value="AP, AS, DUI, P, T"/>
+            <customproperty taskproperty-id="tpc2" value="CR1"/>
         </task>
-        <task id="18" name="D13" color="#ffff00" meeting="false" start="2021-06-10" duration="2" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true"/>
+        <task id="18" name="CR3" color="#ffff00" meeting="false" start="2021-06-10" duration="2" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="Baix"/>
+            <customproperty taskproperty-id="tpc1" value="AP, AS, P, T"/>
+            <customproperty taskproperty-id="tpc2" value="CR2"/>
+        </task>
+        <task id="47" name="Documentació i seguiment" color="#33ff00" meeting="false" start="2021-02-15" duration="95" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true"/>
         <task id="19" name="DS1" color="#00ff00" meeting="false" start="2021-02-15" duration="93" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
             <depend id="21" type="2" difference="0" hardness="Strong"/>
+            <customproperty taskproperty-id="tpc0" value="Baix"/>
+            <customproperty taskproperty-id="tpc1" value="CP"/>
         </task>
-        <task id="20" name="DS2" color="#00ff00" meeting="false" start="2021-02-15" duration="93" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true"/>
-        <task id="21" name="DS3" color="#33ff33" meeting="false" start="2021-06-24" duration="2" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true"/>
+        <task id="20" name="DS2" color="#00ff00" meeting="false" start="2021-02-15" duration="93" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="Baix"/>
+            <customproperty taskproperty-id="tpc1" value="CP"/>
+        </task>
+        <task id="21" name="DS3" color="#33ff33" meeting="false" start="2021-06-24" duration="2" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="Baix"/>
+            <customproperty taskproperty-id="tpc1" value="Cap de projecte"/>
+            <customproperty taskproperty-id="tpc2" value="DS1"/>
+        </task>
     </tasks>
     <resources/>
     <allocations/>
