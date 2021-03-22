@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2021-01-01" view-index="0" gantt-divider-location="1291" resource-divider-location="300" version="3.0.3004" locale="ca_ES">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2021-01-01" view-index="0" gantt-divider-location="842" resource-divider-location="300" version="3.0.3004" locale="ca_ES">
     <description/>
     <view zooming-state="default:8" id="gantt-chart">
-        <field id="tpd3" name="Nom" width="182" order="0"/>
-        <field id="tpd6" name="Durada" width="182" order="1"/>
-        <field id="tpd4" name="Inici" width="182" order="2"/>
-        <field id="tpd5" name="Finalització" width="182" order="3"/>
-        <field id="tpc2" name="Dependències" width="181" order="4"/>
-        <field id="tpc0" name="Risc" width="182" order="5"/>
-        <field id="tpc1" name="Rols" width="181" order="6"/>
+        <field id="tpd3" name="Nom" width="318" order="0"/>
+        <field id="tpd6" name="Durada" width="68" order="1"/>
+        <field id="tpd4" name="Inici" width="70" order="2"/>
+        <field id="tpd5" name="Finalització" width="90" order="3"/>
+        <field id="tpc2" name="Dependències" width="104" order="4"/>
+        <field id="tpc0" name="Risc" width="58" order="5"/>
+        <field id="tpc1" name="Rols" width="115" order="6"/>
         <option id="taskLabelUp" value=""/>
         <option id="taskLabelRight" value="name"/>
         <option id="color.recent">
