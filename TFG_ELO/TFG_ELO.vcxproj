@@ -139,7 +139,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="MatchMaker.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Precompiled.cpp" />
+    <ClCompile Include="Team.cpp" />
+    <ClCompile Include="TeamBuilder.cpp" />
     <ClCompile Include="TFG_ELO.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MatchMaker.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Precompiled.h" />
+    <ClInclude Include="Team.h" />
+    <ClInclude Include="TeamBuilder.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

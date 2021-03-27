@@ -13,10 +13,51 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Presentació">
+      <UniqueIdentifier>{81af705c-31cc-4695-a547-03d1c8b132ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domini">
+      <UniqueIdentifier>{16b6475c-da58-4606-bfe1-15b859d6995c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dades">
+      <UniqueIdentifier>{dc2e85d7-ff61-4805-b5fc-b4600e410e7a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TFG_ELO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MatchMaker.cpp">
+      <Filter>Domini</Filter>
+    </ClCompile>
+    <ClCompile Include="TeamBuilder.cpp">
+      <Filter>Domini</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Dades</Filter>
+    </ClCompile>
+    <ClCompile Include="Team.cpp">
+      <Filter>Dades</Filter>
+    </ClCompile>
+    <ClCompile Include="Precompiled.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Player.h">
+      <Filter>Dades</Filter>
+    </ClInclude>
+    <ClInclude Include="Team.h">
+      <Filter>Dades</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchMaker.h">
+      <Filter>Domini</Filter>
+    </ClInclude>
+    <ClInclude Include="TeamBuilder.h">
+      <Filter>Domini</Filter>
+    </ClInclude>
+    <ClInclude Include="Precompiled.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
