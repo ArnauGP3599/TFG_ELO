@@ -1,26 +1,39 @@
 #pragma once
 
-#include"Precompiled.h"
 #include <stdlib.h>  
 
 class Player
 {
 	public:
-		struct player {
-			int id;
-			int elo;
-			int numMatches;
-		};
-		void createPlayers(int numPlayers);
+		Player();
+		Player(int id);
 
-		inline player getPlayer(int id) {
-			return players[id];
+		inline int getId() {
+			return id;
+		}
+
+		inline void setId(int id) {
+			this->id = id;
+		}
+
+		inline int getElo() {
+			return elo;
+		}
+		
+		inline void setElo(int elo) {
+			this->elo = elo;
+		}
+
+		inline int getNumMatches() {
+			return numMatches;
+		}
+
+		inline void setNumMatches(int numMatches) {
+			this->numMatches = numMatches;
 		}
 
 	private:
-		void addPlayer(int id);
-
-		vector<player> players;
+		int id, elo, numMatches;
 		
 };
 

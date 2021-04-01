@@ -33,20 +33,23 @@
     <ClCompile Include="TeamBuilder.cpp">
       <Filter>Domini</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Dades</Filter>
-    </ClCompile>
     <ClCompile Include="Team.cpp">
       <Filter>Dades</Filter>
     </ClCompile>
     <ClCompile Include="Precompiled.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Simulation.cpp">
+      <Filter>Domini</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Domini</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayersDB.cpp">
+      <Filter>Dades</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Player.h">
-      <Filter>Dades</Filter>
-    </ClInclude>
     <ClInclude Include="Team.h">
       <Filter>Dades</Filter>
     </ClInclude>
@@ -58,6 +61,15 @@
     </ClInclude>
     <ClInclude Include="Precompiled.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Simulation.h">
+      <Filter>Domini</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Domini</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayersDB.h">
+      <Filter>Dades</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

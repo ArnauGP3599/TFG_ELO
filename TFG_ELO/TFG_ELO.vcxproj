@@ -88,6 +88,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>Precompiled.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,7 +143,11 @@
   <ItemGroup>
     <ClCompile Include="MatchMaker.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Precompiled.cpp" />
+    <ClCompile Include="PlayersDB.cpp" />
+    <ClCompile Include="Precompiled.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Simulation.cpp" />
     <ClCompile Include="Team.cpp" />
     <ClCompile Include="TeamBuilder.cpp" />
     <ClCompile Include="TFG_ELO.cpp" />
@@ -149,7 +155,9 @@
   <ItemGroup>
     <ClInclude Include="MatchMaker.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayersDB.h" />
     <ClInclude Include="Precompiled.h" />
+    <ClInclude Include="Simulation.h" />
     <ClInclude Include="Team.h" />
     <ClInclude Include="TeamBuilder.h" />
   </ItemGroup>
