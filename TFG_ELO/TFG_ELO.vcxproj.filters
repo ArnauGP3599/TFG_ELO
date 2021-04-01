@@ -33,9 +33,6 @@
     <ClCompile Include="TeamBuilder.cpp">
       <Filter>Domini</Filter>
     </ClCompile>
-    <ClCompile Include="Team.cpp">
-      <Filter>Dades</Filter>
-    </ClCompile>
     <ClCompile Include="Precompiled.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -48,11 +45,14 @@
     <ClCompile Include="PlayersDB.cpp">
       <Filter>Dades</Filter>
     </ClCompile>
+    <ClCompile Include="Team.cpp">
+      <Filter>Domini</Filter>
+    </ClCompile>
+    <ClCompile Include="Match.cpp">
+      <Filter>Domini</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Team.h">
-      <Filter>Dades</Filter>
-    </ClInclude>
     <ClInclude Include="MatchMaker.h">
       <Filter>Domini</Filter>
     </ClInclude>
@@ -70,6 +70,12 @@
     </ClInclude>
     <ClInclude Include="PlayersDB.h">
       <Filter>Dades</Filter>
+    </ClInclude>
+    <ClInclude Include="Team.h">
+      <Filter>Domini</Filter>
+    </ClInclude>
+    <ClInclude Include="Match.h">
+      <Filter>Domini</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
