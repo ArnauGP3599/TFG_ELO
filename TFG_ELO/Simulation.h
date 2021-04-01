@@ -1,6 +1,7 @@
 #pragma once
 #include "PlayersDB.h"
 #include "Player.h"
+#include "TeamBuilder.h"
 
 class Simulation
 {

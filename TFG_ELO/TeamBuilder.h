@@ -5,10 +5,10 @@ class TeamBuilder
 {
 public:
 	TeamBuilder();
-	void makeTeams(const vector<Player>& players);
+	TeamBuilder(int numPlayersTeam, int deltaElo);
+	vector<shared_ptr<Team>> createTeams(vector<shared_ptr<Player>>& players);
 
 private:
-	vector<Team::team> teamsMade;
-	shared_ptr<Team> teamC;
+	int deltaElo, numPlayersTeam;
 };
 
