@@ -51,6 +51,27 @@
     <ClCompile Include="Match.cpp">
       <Filter>Domini</Filter>
     </ClCompile>
+    <ClCompile Include="EloAlgorithm.cpp">
+      <Filter>Domini</Filter>
+    </ClCompile>
+    <ClCompile Include="EloCalculator.cpp">
+      <Filter>Domini</Filter>
+    </ClCompile>
+    <ClCompile Include="MatchAlgorithm.cpp">
+      <Filter>Domini</Filter>
+    </ClCompile>
+    <ClCompile Include="MatchSimulator.cpp">
+      <Filter>Domini</Filter>
+    </ClCompile>
+    <ClCompile Include="Classification.cpp">
+      <Filter>Domini</Filter>
+    </ClCompile>
+    <ClCompile Include="Statistics.cpp">
+      <Filter>Dades</Filter>
+    </ClCompile>
+    <ClCompile Include="Result.cpp">
+      <Filter>Domini</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MatchMaker.h">
@@ -75,6 +96,27 @@
       <Filter>Domini</Filter>
     </ClInclude>
     <ClInclude Include="Match.h">
+      <Filter>Domini</Filter>
+    </ClInclude>
+    <ClInclude Include="EloAlgorithm.h">
+      <Filter>Domini</Filter>
+    </ClInclude>
+    <ClInclude Include="EloCalculator.h">
+      <Filter>Domini</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchAlgorithm.h">
+      <Filter>Domini</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchSimulator.h">
+      <Filter>Domini</Filter>
+    </ClInclude>
+    <ClInclude Include="Classification.h">
+      <Filter>Domini</Filter>
+    </ClInclude>
+    <ClInclude Include="Statistics.h">
+      <Filter>Dades</Filter>
+    </ClInclude>
+    <ClInclude Include="Result.h">
       <Filter>Domini</Filter>
     </ClInclude>
   </ItemGroup>

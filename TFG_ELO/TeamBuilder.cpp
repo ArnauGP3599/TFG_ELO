@@ -22,6 +22,7 @@ vector<shared_ptr<Team>> TeamBuilder::createTeams(vector<shared_ptr<Player>>& pl
 			t->addPlayerInTeam(players[i]);
 			eloSum += players[i]->getElo();
 		}
+		eloSum = eloSum / numPlayersTeam;
 		t->setEloTeam(eloSum);
 		teamsC.push_back(t);
 		++actTeam;

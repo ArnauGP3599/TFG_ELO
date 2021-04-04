@@ -141,25 +141,39 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Classification.cpp" />
+    <ClCompile Include="EloAlgorithm.cpp" />
+    <ClCompile Include="EloCalculator.cpp" />
     <ClCompile Include="Match.cpp" />
+    <ClCompile Include="MatchAlgorithm.cpp" />
     <ClCompile Include="MatchMaker.cpp" />
+    <ClCompile Include="MatchSimulator.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayersDB.cpp" />
     <ClCompile Include="Precompiled.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Result.cpp" />
     <ClCompile Include="Simulation.cpp" />
+    <ClCompile Include="Statistics.cpp" />
     <ClCompile Include="Team.cpp" />
     <ClCompile Include="TeamBuilder.cpp" />
     <ClCompile Include="TFG_ELO.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Classification.h" />
+    <ClInclude Include="EloAlgorithm.h" />
+    <ClInclude Include="EloCalculator.h" />
     <ClInclude Include="Match.h" />
+    <ClInclude Include="MatchAlgorithm.h" />
     <ClInclude Include="MatchMaker.h" />
+    <ClInclude Include="MatchSimulator.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayersDB.h" />
     <ClInclude Include="Precompiled.h" />
+    <ClInclude Include="Result.h" />
     <ClInclude Include="Simulation.h" />
+    <ClInclude Include="Statistics.h" />
     <ClInclude Include="Team.h" />
     <ClInclude Include="TeamBuilder.h" />
   </ItemGroup>

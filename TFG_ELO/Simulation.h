@@ -3,6 +3,11 @@
 #include "Player.h"
 #include "TeamBuilder.h"
 #include "MatchMaker.h"
+#include "MatchSimulator.h"
+#include "Classification.h"
+#include "Statistics.h"
+#include "EloCalculator.h"
+#include "Result.h"
 
 class Simulation
 {
