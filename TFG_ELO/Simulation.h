@@ -12,7 +12,8 @@
 class Simulation
 {
 public:
-    void init();
+    void init(int numPlayers, int numPlayersTeam, int deltaElo, int numTotalMatches);
+    void startSimulation();
 
     inline int getNumPlayers() {
         return numPlayers;
@@ -26,7 +27,18 @@ public:
         return numPlayersTeam;
     }
 
+    inline int getNumTotalMatches() {
+        return numTotalMatches;
+    }
+
 private:
-    int numPlayers, numPlayersTeam, deltaElo;
+    int numPlayers, numPlayersTeam, deltaElo, numTotalMatches;
+    shared_ptr<PlayersDB> playersDB;
+    shared_ptr<Statistics> statistics;
+    shared_ptr<EloCalculator> eloCalculator;
+    shared_ptr<Result> result;
+    shared_ptr<MatchSimulator> matchSimulator;
+    shared_ptr<TeamBuilder> teamBuilder;
+    shared_ptr<MatchMaker> matchMaker;
 };
 
