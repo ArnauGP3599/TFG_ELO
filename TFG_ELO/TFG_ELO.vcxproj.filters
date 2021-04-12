@@ -72,6 +72,12 @@
     <ClCompile Include="Result.cpp">
       <Filter>Domini</Filter>
     </ClCompile>
+    <ClCompile Include="ExcelExporter.cpp">
+      <Filter>Domini</Filter>
+    </ClCompile>
+    <ClCompile Include="Exporter.cpp">
+      <Filter>Domini</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MatchMaker.h">
@@ -117,6 +123,12 @@
       <Filter>Dades</Filter>
     </ClInclude>
     <ClInclude Include="Result.h">
+      <Filter>Domini</Filter>
+    </ClInclude>
+    <ClInclude Include="ExcelExporter.h">
+      <Filter>Domini</Filter>
+    </ClInclude>
+    <ClInclude Include="Exporter.h">
       <Filter>Domini</Filter>
     </ClInclude>
   </ItemGroup>

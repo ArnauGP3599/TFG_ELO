@@ -144,6 +144,8 @@
     <ClCompile Include="Classification.cpp" />
     <ClCompile Include="EloAlgorithm.cpp" />
     <ClCompile Include="EloCalculator.cpp" />
+    <ClCompile Include="ExcelExporter.cpp" />
+    <ClCompile Include="Exporter.cpp" />
     <ClCompile Include="Match.cpp" />
     <ClCompile Include="MatchAlgorithm.cpp" />
     <ClCompile Include="MatchMaker.cpp" />
@@ -164,6 +166,8 @@
     <ClInclude Include="Classification.h" />
     <ClInclude Include="EloAlgorithm.h" />
     <ClInclude Include="EloCalculator.h" />
+    <ClInclude Include="ExcelExporter.h" />
+    <ClInclude Include="Exporter.h" />
     <ClInclude Include="Match.h" />
     <ClInclude Include="MatchAlgorithm.h" />
     <ClInclude Include="MatchMaker.h" />

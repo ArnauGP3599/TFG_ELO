@@ -8,6 +8,7 @@
 #include "Statistics.h"
 #include "EloCalculator.h"
 #include "Result.h"
+#include "ExcelExporter.h"
 
 class Simulation
 {
@@ -43,5 +44,7 @@ private:
     shared_ptr<MatchSimulator> matchSimulator;
     shared_ptr<TeamBuilder> teamBuilder;
     shared_ptr<MatchMaker> matchMaker;
+    shared_ptr<Exporter> exporter;
+    shared_ptr<ExcelExporter> excelExporter;
 };
 

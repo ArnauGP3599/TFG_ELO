@@ -14,10 +14,13 @@ void Simulation::init(int i_numPlayers, int i_numPlayersTeam, int i_deltaElo, in
     matchMaker = make_shared<MatchMaker>(m_deltaElo);
     matchSimulator = make_shared<MatchSimulator>();
     statistics = make_shared<Statistics>();
+    statistics->init(playersDB);
     eloCalculator = make_shared<EloCalculator>();
     result = make_shared<Result>();
     result->init(playersDB);
-    
+    exporter = make_shared<Exporter>();
+    excelExporter = make_shared<ExcelExporter>();
+    excelExporter->init(statistics);
 }
 
 void Simulation::startSimulation() {
@@ -33,8 +36,10 @@ void Simulation::startSimulation() {
             map<int, EloScore> deltaEloTeam = eloCalculator->calculateElo(classification);
             result->changeEloPlayers(deltaEloTeam);
         }
+        statistics->updateStatistics();
         cout << p1[0]->getElo() << " " << p1[0]->getNumMatches() << endl;
         cout << p1[6]->getElo() << " " << p1[6]->getNumMatches() << endl;
         cout << endl;
     }
+    excelExporter->exportToExcel();
 }
