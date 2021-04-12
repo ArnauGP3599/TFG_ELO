@@ -5,27 +5,27 @@
 TeamBuilder::TeamBuilder() {
 }
 
-TeamBuilder::TeamBuilder(int numPlayersTeam, int deltaElo) {
-	this->numPlayersTeam = numPlayersTeam;
-	this->deltaElo = deltaElo;
+TeamBuilder::TeamBuilder(int i_numPlayersTeam, int i_deltaElo) {
+	m_numPlayersTeam = i_numPlayersTeam;
+	m_deltaElo = i_deltaElo;
 }
 
 vector<shared_ptr<Team>> TeamBuilder::createTeams(vector<shared_ptr<Player>>& players) {
 	vector<shared_ptr<Team>> teamsC;
-	int numTeams = players.size() / numPlayersTeam;
+	int numTeams = players.size() / m_numPlayersTeam;
 	if (numTeams % 2 != 0) numTeams--;
 	int actTeam = 0;
 	while (actTeam < numTeams) {
 		shared_ptr<Team> t = make_shared<Team>(actTeam);
 		int eloSum = 0;
-		for (int i = actTeam * numPlayersTeam; i < (actTeam + 1) * numPlayersTeam; i++) {
+		for (int i = actTeam * m_numPlayersTeam; i < (actTeam + 1) * m_numPlayersTeam; i++) {
 			t->addPlayerInTeam(players[i]);
 			eloSum += players[i]->getElo();
 		}
-		eloSum = eloSum / numPlayersTeam;
+		eloSum = eloSum / m_numPlayersTeam;
 		t->setEloTeam(eloSum);
-		teamsC.push_back(t);
+		teamsC.emplace_back(t);
 		++actTeam;
 	}
-	return teamsC;
+	return move(teamsC);
 }

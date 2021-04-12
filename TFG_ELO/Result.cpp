@@ -1,26 +1,17 @@
 #include "Precompiled.h"
 #include "Result.h"
 
-void Result::init(shared_ptr<PlayersDB>& playersDB) {
-	this->playersDB = playersDB;
+void Result::init(shared_ptr<PlayersDB>& i_playersDB) {
+	m_playersDB = i_playersDB;
 }
 
-void Result::changeEloPlayers(pair<int, int> eloChange, shared_ptr<Classification>& classification) {
-	list<pair<int, shared_ptr<Team>>> classif = classification->getClasification();
-	vector<shared_ptr<Player>> players = playersDB->getPlayers();
+void Result::changeEloPlayers(map<int, EloScore> eloChange) {
+	vector<shared_ptr<Player>> players = m_playersDB->getPlayers();
 	bool first = true;
-	for (auto it = classif.begin(); it != classif.end(); it++) {
-		vector<shared_ptr<Player>> playersTeam = it->second->getPlayersTeam();
-		int deltaElo;
-		if (first) deltaElo = eloChange.first;
-		else deltaElo = eloChange.second;
-		for (int i = 0; i < playersTeam.size(); i++) {
-			int idPlayer = playersTeam[i]->getId();
-			int eloPlayer = playersTeam[i]->getElo();
-			int numMatchesPlayer = playersTeam[i]->getNumMatches();
-			players[idPlayer]->setElo(eloPlayer + deltaElo);
-			players[idPlayer]->setNumMatches(numMatchesPlayer+1);
-		}
-		first = false;
+	for (auto it = eloChange.begin(); it != eloChange.end(); it++) {
+		int eloPlayer = players[it->first]->getElo();
+		int numMatchesPlayer = players[it->first]->getNumMatches();
+		players[it->first]->setElo(eloPlayer + it->second);
+		players[it->first]->setNumMatches(numMatchesPlayer+1);
 	}
 }

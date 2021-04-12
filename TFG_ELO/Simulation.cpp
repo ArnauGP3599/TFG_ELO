@@ -2,16 +2,16 @@
 #include "Simulation.h"
 
 
-void Simulation::init(int numPlayers, int numPlayersTeam, int deltaElo, int numTotalMatches) {
-    this->numPlayers = numPlayers;
-    this->numPlayersTeam = numPlayersTeam;
-    this->deltaElo = deltaElo;
-    this->numTotalMatches = numTotalMatches;
+void Simulation::init(int i_numPlayers, int i_numPlayersTeam, int i_deltaElo, int i_numTotalMatches) {
+    m_numPlayers = i_numPlayers;
+    m_numPlayersTeam = i_numPlayersTeam;
+    m_deltaElo = i_deltaElo;
+    m_numTotalMatches = i_numTotalMatches;
     playersDB = make_shared<PlayersDB>();
     playersDB->init();
-    playersDB->addPlayers(numPlayers);
-    teamBuilder = make_shared<TeamBuilder>(numPlayersTeam, deltaElo);
-    matchMaker = make_shared<MatchMaker>(deltaElo);
+    playersDB->addPlayers(m_numPlayers);
+    teamBuilder = make_shared<TeamBuilder>(m_numPlayersTeam, m_deltaElo);
+    matchMaker = make_shared<MatchMaker>(m_deltaElo);
     matchSimulator = make_shared<MatchSimulator>();
     statistics = make_shared<Statistics>();
     eloCalculator = make_shared<EloCalculator>();
@@ -25,13 +25,13 @@ void Simulation::startSimulation() {
     cout << p1[0]->getElo() << " " << p1[0]->getNumMatches() << endl;
     cout << p1[6]->getElo() << " " << p1[6]->getNumMatches() << endl;
     cout << endl;
-    for (int j = 0; j < numTotalMatches; j++) {
+    for (int j = 0; j < m_numTotalMatches; j++) {
         vector<shared_ptr<Team>> teams = teamBuilder->createTeams(p1);
         vector<shared_ptr<Match>> matches = matchMaker->searchMatch(teams);
         for (int i = 0; i < matches.size(); i++) {
             shared_ptr<Classification> classification = matchSimulator->simulateMatch(matches[i]);
-            pair<int, int> deltaEloTeam = eloCalculator->calculateElo(classification);
-            result->changeEloPlayers(deltaEloTeam, classification);
+            map<int, EloScore> deltaEloTeam = eloCalculator->calculateElo(classification);
+            result->changeEloPlayers(deltaEloTeam);
         }
         cout << p1[0]->getElo() << " " << p1[0]->getNumMatches() << endl;
         cout << p1[6]->getElo() << " " << p1[6]->getNumMatches() << endl;

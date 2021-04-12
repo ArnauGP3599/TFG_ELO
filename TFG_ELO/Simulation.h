@@ -12,27 +12,30 @@
 class Simulation
 {
 public:
-    void init(int numPlayers, int numPlayersTeam, int deltaElo, int numTotalMatches);
+    void init(int i_numPlayers, int i_numPlayersTeam, int i_deltaElo, int i_numTotalMatches);
     void startSimulation();
 
     inline int getNumPlayers() {
-        return numPlayers;
+        return m_numPlayers;
     }
 
     inline int getDeltaElo(){
-        return deltaElo;
+        return m_deltaElo;
     }
 
     inline int getNumPlayersTeam() {
-        return numPlayersTeam;
+        return m_numPlayersTeam;
     }
 
     inline int getNumTotalMatches() {
-        return numTotalMatches;
+        return m_numTotalMatches;
     }
 
 private:
-    int numPlayers, numPlayersTeam, deltaElo, numTotalMatches;
+    int m_numPlayers;
+    int m_numPlayersTeam;
+    int m_deltaElo;
+    int m_numTotalMatches;
     shared_ptr<PlayersDB> playersDB;
     shared_ptr<Statistics> statistics;
     shared_ptr<EloCalculator> eloCalculator;

@@ -1,9 +1,9 @@
 #include "Precompiled.h"
 #include "MatchMaker.h"
 
-MatchMaker::MatchMaker(int deltaElo) {
-	this->deltaElo = deltaElo;
-	this->idMatch = 0;
+MatchMaker::MatchMaker(int i_deltaElo) {
+	m_deltaElo = i_deltaElo;
+	idMatch = 0;
 }
 
 vector<shared_ptr<Match>> MatchMaker::searchMatch(vector < shared_ptr<Team>>& teams) {
@@ -14,9 +14,9 @@ vector<shared_ptr<Match>> MatchMaker::searchMatch(vector < shared_ptr<Team>>& te
 		for (int j = i * 2; j < (i + 1) * 2; j++){
 			m->addTeamMatch(teams[j]);
 		}
-		matches.push_back(m);
+		matches.emplace_back(m);
 		idMatch++;
 	}
-	return matches;
+	return move(matches);
 }
 

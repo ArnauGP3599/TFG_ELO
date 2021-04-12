@@ -6,11 +6,11 @@
 class MatchMaker
 {
 public:
-	MatchMaker(int deltaElo);
+	MatchMaker(int i_deltaElo);
 
 	vector<shared_ptr<Match>> searchMatch(vector<shared_ptr<Team>>&);
 
 private:
-	int deltaElo, idMatch;
+	int m_deltaElo, idMatch;
 };
 

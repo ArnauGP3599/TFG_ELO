@@ -1,7 +1,7 @@
 #include "Precompiled.h"
 #include "Classification.h"
 
-void Classification::addResult(int position, shared_ptr<Team> team) {
-	pair<int, shared_ptr<Team>> p(position, team);
-	classification.push_back(p);
+void Classification::addResult(int position, vector<shared_ptr<Team>> team) {
+	pair<int, vector<shared_ptr<Team>>> p(position, team);
+	classification.emplace(p);
 }

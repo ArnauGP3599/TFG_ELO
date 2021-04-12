@@ -9,6 +9,7 @@ public:
 	vector<shared_ptr<Team>> createTeams(vector<shared_ptr<Player>>& players);
 
 private:
-	int deltaElo, numPlayersTeam;
+	int m_deltaElo;
+	int m_numPlayersTeam;
 };
 

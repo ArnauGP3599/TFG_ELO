@@ -7,8 +7,8 @@ class Result
 {
 public:
 	void init(shared_ptr<PlayersDB>& playersDB);
-	void changeEloPlayers(pair<int, int> eloChange, shared_ptr<Classification>& classification);
+	void changeEloPlayers(map<int, EloScore> eloChange);
 private:
-	shared_ptr<PlayersDB> playersDB;
+	shared_ptr<PlayersDB> m_playersDB;
 };
 

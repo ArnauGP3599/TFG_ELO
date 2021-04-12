@@ -6,8 +6,11 @@ class EloCalculator
 {
 public:
 	EloCalculator();
-	pair<int, int> calculateElo(shared_ptr<Classification>& classification);
+	map <int, EloScore> calculateElo(shared_ptr<Classification>& classification);
 private:
+	void addPlayersMap(vector<shared_ptr<Player>>& playersTeam, int deltaEloTeam);
+
+	map<int, EloScore> deltaEloTeams;
 	shared_ptr<EloAlgorithm> eloAlgorithm;
 	int k;
 };

@@ -4,10 +4,10 @@
 class Match
 {
 public:
-	Match(int id);
+	Match(int i_id);
 
 	inline int getId() {
-		return id;
+		return m_id;
 	}
 
 	inline vector<shared_ptr<Team>> getTeamsMatch() {
@@ -17,7 +17,7 @@ public:
 	void addTeamMatch(shared_ptr<Team>& team);
 
 private:
-	int id;
+	int m_id;
 	vector<shared_ptr<Team>> teamsMatch;
 };
 

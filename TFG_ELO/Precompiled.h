@@ -7,3 +7,5 @@
 #include <string>
 
 using namespace std;
+
+using EloScore = int;

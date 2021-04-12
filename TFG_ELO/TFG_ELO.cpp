@@ -13,9 +13,9 @@ int main()
     cin >> deltaElo;
     cout << "Introdueix numero de partides" << endl;
     cin >> numTotalMatches;
-    shared_ptr<Simulation> sim = make_shared<Simulation>();
-    sim->init(numPlayers, numPlayersTeam, deltaElo, numTotalMatches);
-    sim->startSimulation();
+    Simulation sim = Simulation();
+    sim.init(numPlayers, numPlayersTeam, deltaElo, numTotalMatches);
+    sim.startSimulation();
 }
 
 
