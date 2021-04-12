@@ -48,7 +48,7 @@ map <int, EloScore> EloCalculator::calculateElo(shared_ptr<Classification>& clas
 	return deltaEloTeams;
 }
 
-void EloCalculator::addPlayersMap(vector<shared_ptr<Player>>& playersTeam, int deltaEloTeam) {
+void EloCalculator::addPlayersMap(const vector<shared_ptr<Player>>& playersTeam, int deltaEloTeam) {
 	for (int i = 0; i < playersTeam.size(); i++) {
 		int idPlayer = playersTeam[i]->getId();
 		pair<int, EloScore> p(idPlayer, deltaEloTeam);

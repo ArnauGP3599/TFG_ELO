@@ -6,7 +6,7 @@ Team::Team(int i_id) {
 	m_eloTeam = 0;
 }
 
-void Team::addPlayerInTeam(shared_ptr<Player>& player) {
+void Team::addPlayerInTeam(const shared_ptr<Player>& player) {
 	playersTeam.emplace_back(player);
 }
 

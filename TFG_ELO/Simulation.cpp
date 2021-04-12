@@ -25,9 +25,6 @@ void Simulation::init(int i_numPlayers, int i_numPlayersTeam, int i_deltaElo, in
 
 void Simulation::startSimulation() {
     vector<shared_ptr<Player>> p1 = playersDB->getPlayers();
-    cout << p1[0]->getElo() << " " << p1[0]->getNumMatches() << endl;
-    cout << p1[6]->getElo() << " " << p1[6]->getNumMatches() << endl;
-    cout << endl;
     for (int j = 0; j < m_numTotalMatches; j++) {
         vector<shared_ptr<Team>> teams = teamBuilder->createTeams(p1);
         vector<shared_ptr<Match>> matches = matchMaker->searchMatch(teams);
@@ -37,9 +34,6 @@ void Simulation::startSimulation() {
             result->changeEloPlayers(deltaEloTeam);
         }
         statistics->updateStatistics();
-        cout << p1[0]->getElo() << " " << p1[0]->getNumMatches() << endl;
-        cout << p1[6]->getElo() << " " << p1[6]->getNumMatches() << endl;
-        cout << endl;
     }
     excelExporter->exportToExcel();
 }

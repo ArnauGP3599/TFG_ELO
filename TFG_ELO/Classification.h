@@ -7,7 +7,7 @@
 class Classification
 {
 public:
-	void addResult(int position, vector<shared_ptr<Team>> team);
+	void addResult(int position, const vector<shared_ptr<Team>> team);
 	inline map<int, vector<shared_ptr<Team>>> getClasification() {
 		return classification;
 	}

@@ -27,7 +27,7 @@ class Team
 			return playersTeam;
 		}
 
-		void addPlayerInTeam(shared_ptr<Player>& player);
+		void addPlayerInTeam(const shared_ptr<Player>& player);
 
 
 	

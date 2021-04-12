@@ -5,7 +5,7 @@ void Result::init(shared_ptr<PlayersDB>& i_playersDB) {
 	m_playersDB = i_playersDB;
 }
 
-void Result::changeEloPlayers(map<int, EloScore> eloChange) {
+void Result::changeEloPlayers(const map<int, EloScore> eloChange) {
 	vector<shared_ptr<Player>> players = m_playersDB->getPlayers();
 	bool first = true;
 	for (auto it = eloChange.begin(); it != eloChange.end(); it++) {

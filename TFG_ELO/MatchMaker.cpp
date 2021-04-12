@@ -6,7 +6,7 @@ MatchMaker::MatchMaker(int i_deltaElo) {
 	idMatch = 0;
 }
 
-vector<shared_ptr<Match>> MatchMaker::searchMatch(vector < shared_ptr<Team>>& teams) {
+vector<shared_ptr<Match>> MatchMaker::searchMatch(const vector < shared_ptr<Team>>& teams) {
 	vector<shared_ptr<Match>> matches;
 	int numMatches = teams.size() / 2;
 	for (int i = 0; i < numMatches; i++) {

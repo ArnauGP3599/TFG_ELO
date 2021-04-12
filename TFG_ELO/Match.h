@@ -14,7 +14,7 @@ public:
 		return teamsMatch;
 	}
 
-	void addTeamMatch(shared_ptr<Team>& team);
+	void addTeamMatch(const shared_ptr<Team>& team);
 
 private:
 	int m_id;

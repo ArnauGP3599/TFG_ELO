@@ -10,7 +10,7 @@ TeamBuilder::TeamBuilder(int i_numPlayersTeam, int i_deltaElo) {
 	m_deltaElo = i_deltaElo;
 }
 
-vector<shared_ptr<Team>> TeamBuilder::createTeams(vector<shared_ptr<Player>>& players) {
+vector<shared_ptr<Team>> TeamBuilder::createTeams(const vector<shared_ptr<Player>>& players) {
 	vector<shared_ptr<Team>> teamsC;
 	int numTeams = players.size() / m_numPlayersTeam;
 	if (numTeams % 2 != 0) numTeams--;

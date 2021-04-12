@@ -6,34 +6,34 @@ class Player
 {
 	public:
 		Player();
-		Player(int id);
+		Player(int i_id);
 
 		inline int getId() {
-			return id;
+			return m_id;
 		}
 
-		inline void setId(int id) {
-			this->id = id;
+		inline void setId(int i_id) {
+			m_id = i_id;
 		}
 
 		inline int getElo() {
-			return elo;
+			return m_elo;
 		}
 		
-		inline void setElo(int elo) {
-			this->elo = elo;
+		inline void setElo(int i_elo) {
+			m_elo = i_elo;
 		}
 
 		inline int getNumMatches() {
-			return numMatches;
+			return m_numMatches;
 		}
 
-		inline void setNumMatches(int numMatches) {
-			this->numMatches = numMatches;
+		inline void setNumMatches(int i_numMatches) {
+			this->m_numMatches = i_numMatches;
 		}
 
 	private:
-		int id, elo, numMatches;
+		int m_id, m_elo, m_numMatches;
 		
 };
 

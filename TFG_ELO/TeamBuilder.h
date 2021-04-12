@@ -6,7 +6,7 @@ class TeamBuilder
 public:
 	TeamBuilder();
 	TeamBuilder(int numPlayersTeam, int deltaElo);
-	vector<shared_ptr<Team>> createTeams(vector<shared_ptr<Player>>& players);
+	vector<shared_ptr<Team>> createTeams(const vector<shared_ptr<Player>>& players);
 
 private:
 	int m_deltaElo;
