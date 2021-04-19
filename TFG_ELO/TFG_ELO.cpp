@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Precompiled.h"
+#include <stdio.h>
 #include "Simulation.h"
 
 int main()

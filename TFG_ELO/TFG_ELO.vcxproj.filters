@@ -22,6 +22,9 @@
     <Filter Include="Dades">
       <UniqueIdentifier>{dc2e85d7-ff61-4805-b5fc-b4600e410e7a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="LuaScripts">
+      <UniqueIdentifier>{6775a702-e020-4a4c-8b4f-50d623b29949}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TFG_ELO.cpp">
@@ -131,5 +134,18 @@
     <ClInclude Include="Exporter.h">
       <Filter>Domini</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TFG_ELO.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LuaScript.lua">
+      <Filter>LuaScripts</Filter>
+    </None>
   </ItemGroup>
 </Project>
