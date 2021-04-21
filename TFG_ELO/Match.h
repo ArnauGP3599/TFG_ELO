@@ -11,13 +11,13 @@ public:
 	}
 
 	inline vector<shared_ptr<Team>> getTeamsMatch() {
-		return teamsMatch;
+		return m_teamsMatch;
 	}
 
-	void addTeamMatch(const shared_ptr<Team>& team);
+	void addTeamMatch(const shared_ptr<Team>& i_team);
 
 private:
 	int m_id;
-	vector<shared_ptr<Team>> teamsMatch;
+	vector<shared_ptr<Team>> m_teamsMatch;
 };
 

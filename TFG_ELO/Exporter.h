@@ -5,9 +5,12 @@
 class Exporter
 {
 public:
+	virtual void export2(const list<vector<int>>& i_statistics) = 0;
+	
+/*public:
 	void init(shared_ptr<Statistics>& i_Statistics);
-
+*/
 protected:
-	shared_ptr<Statistics> m_Statistics;
+	string m_path;
 };
 

@@ -14,7 +14,7 @@ class Simulation
 {
 public:
     void init(int i_numPlayers, int i_numPlayersTeam, int i_deltaElo, int i_numTotalMatches);
-    void startSimulation();
+    list<vector<int>> startSimulation();
 
     inline int getNumPlayers() {
         return m_numPlayers;
@@ -37,14 +37,13 @@ private:
     int m_numPlayersTeam;
     int m_deltaElo;
     int m_numTotalMatches;
-    shared_ptr<PlayersDB> playersDB;
-    shared_ptr<Statistics> statistics;
-    shared_ptr<EloCalculator> eloCalculator;
-    shared_ptr<Result> result;
-    shared_ptr<MatchSimulator> matchSimulator;
-    shared_ptr<TeamBuilder> teamBuilder;
-    shared_ptr<MatchMaker> matchMaker;
-    shared_ptr<Exporter> exporter;
-    shared_ptr<ExcelExporter> excelExporter;
+    shared_ptr<PlayersDB> m_playersDB;
+    shared_ptr<Statistics> m_statistics;
+    shared_ptr<EloCalculator> m_eloCalculator;
+    shared_ptr<Result> m_result;
+    shared_ptr<MatchSimulator> m_matchSimulator;
+    shared_ptr<TeamBuilder> m_teamBuilder;
+    shared_ptr<MatchMaker> m_matchMaker;
+    shared_ptr<ExcelExporter> m_excelExporter;
 };
 

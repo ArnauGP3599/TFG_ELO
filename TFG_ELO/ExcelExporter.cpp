@@ -1,12 +1,17 @@
 #include "Precompiled.h"
 #include "ExcelExporter.h"
 
-void ExcelExporter::exportToExcel() {
+ExcelExporter::ExcelExporter(const string& i_path){
+    Exporter::m_path = i_path;
+}
+
+void ExcelExporter::export2(const list<vector<int>>& i_statistics) {
     ofstream myFile;
-    myFile.open("Statistics.csv");
+    cout << m_path << endl;
+    myFile.open(/*m_path +*/"Statistics.csv");
     myFile << "ID player;Match;Elo;\n";
-    list<vector<int>> statistics = Exporter::m_Statistics->getStatistics();
-    for (auto it = statistics.begin(); it != statistics.end(); ++it) {
+    //list<vector<int>> statistics = Exporter::m_statistics->getStatistics();
+    for (auto it = i_statistics.begin(); it != i_statistics.end(); ++it) {
         vector<int> dataPlayer = *it;
         string s;
         for (int i = 0; i < dataPlayer.size(); i++) {

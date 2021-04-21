@@ -3,12 +3,12 @@
 
 void Statistics::init(shared_ptr<PlayersDB>& i_playersDB) {
 	m_playersDB = i_playersDB;
-	round = 0;
+	m_round = 0;
 	updateStatistics();
 }
 
 list<vector<int>> Statistics::getStatistics() {
-	return statistics;
+	return m_statistics;
 }
 
 void Statistics::updateStatistics() {
@@ -18,8 +18,8 @@ void Statistics::updateStatistics() {
 		statsPlayer.emplace_back(players[i]->getId());
 		statsPlayer.emplace_back(round);
 		statsPlayer.emplace_back(players[i]->getElo());
-		statistics.emplace_back(statsPlayer);
+		m_statistics.emplace_back(statsPlayer);
 	}
-	round++;
+	m_round++;
 }
 

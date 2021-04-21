@@ -11,6 +11,7 @@ public:
 	vector<shared_ptr<Match>> searchMatch(const vector<shared_ptr<Team>>&);
 
 private:
-	int m_deltaElo, idMatch;
+	int m_deltaElo;
+	int	m_idMatch;
 };
 

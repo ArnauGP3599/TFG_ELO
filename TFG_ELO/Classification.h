@@ -12,6 +12,6 @@ public:
 		return classification;
 	}
 private:
-	map<int, vector<shared_ptr<Team>>> classification;
+	map<int, vector<shared_ptr<Team>>> m_classification;
 };
 

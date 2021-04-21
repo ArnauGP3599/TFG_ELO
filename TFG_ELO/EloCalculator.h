@@ -10,8 +10,8 @@ public:
 private:
 	void addPlayersMap(const vector<shared_ptr<Player>>& playersTeam, int deltaEloTeam);
 
-	map<int, EloScore> deltaEloTeams;
-	shared_ptr<EloAlgorithm> eloAlgorithm;
+	map<int, EloScore> m_deltaEloTeams;
+	shared_ptr<EloAlgorithm> m_eloAlgorithm;
 	int k;
 };
 

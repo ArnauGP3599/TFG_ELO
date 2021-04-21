@@ -6,6 +6,7 @@
 int main()
 {
     int numPlayers, numPlayersTeam, deltaElo, numTotalMatches;
+    string path;
     cout << "Introdueix numero de jugadors" << endl;
     cin >> numPlayers;
     cout << "Introdueix numero de jugadors per equip" << endl;
@@ -14,9 +15,13 @@ int main()
     cin >> deltaElo;
     cout << "Introdueix numero de partides" << endl;
     cin >> numTotalMatches;
+    cout << "introdueix destinació per a les estadistiques" << endl;
+    cin >> path;
     Simulation sim = Simulation();
     sim.init(numPlayers, numPlayersTeam, deltaElo, numTotalMatches);
-    sim.startSimulation();
+    list<vector<int>> statistics = sim.startSimulation();
+    ExcelExporter excelExporter = ExcelExporter(path);
+    excelExporter.export2(statistics);
 }
 
 

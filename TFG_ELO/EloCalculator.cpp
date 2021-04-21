@@ -2,7 +2,7 @@
 #include "EloCalculator.h"
 
 EloCalculator::EloCalculator() {
-	eloAlgorithm = make_shared<EloAlgorithm>();
+	m_eloAlgorithm = make_shared<EloAlgorithm>();
 	k = 20;
  }
 
@@ -11,7 +11,7 @@ map <int, EloScore> EloCalculator::calculateElo(shared_ptr<Classification>& clas
 	bool first = true;
 	bool draw = false;
 	int eloTeamA, eloTeamB;
-	deltaEloTeams.clear();
+	m_deltaEloTeams.clear();
 	vector<shared_ptr<Team>> teamClassification;
 	vector<shared_ptr<Player>> playersTeamA;
 	vector<shared_ptr<Player>> playersTeamB;
@@ -34,25 +34,25 @@ map <int, EloScore> EloCalculator::calculateElo(shared_ptr<Classification>& clas
 		}
 	}
 	if (draw) {
-		int eloA = k/2 * (1-eloAlgorithm->getExpectedScore(eloTeamA, eloTeamB));
-		int eloB = k/2 * (1-eloAlgorithm->getExpectedScore(eloTeamB, eloTeamA));
+		int eloA = k/2 * (1-m_eloAlgorithm->getExpectedScore(eloTeamA, eloTeamB));
+		int eloB = k/2 * (1-m_eloAlgorithm->getExpectedScore(eloTeamB, eloTeamA));
 		deltaEloA = eloA - eloB;
 		deltaEloB = eloB - eloA;
 	}
 	else {
-		deltaEloA = k * (1 - eloAlgorithm->getExpectedScore(eloTeamA, eloTeamB));
+		deltaEloA = k * (1 - m_eloAlgorithm->getExpectedScore(eloTeamA, eloTeamB));
 		deltaEloB = -deltaEloA;
 	}
 	addPlayersMap(playersTeamA, deltaEloA);
 	addPlayersMap(playersTeamB, deltaEloB);
-	return deltaEloTeams;
+	return m_deltaEloTeams;
 }
 
 void EloCalculator::addPlayersMap(const vector<shared_ptr<Player>>& playersTeam, int deltaEloTeam) {
 	for (int i = 0; i < playersTeam.size(); i++) {
 		int idPlayer = playersTeam[i]->getId();
 		pair<int, EloScore> p(idPlayer, deltaEloTeam);
-		deltaEloTeams.emplace(p);
+		m_deltaEloTeams.emplace(p);
 	}
 }
 

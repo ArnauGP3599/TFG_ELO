@@ -8,6 +8,8 @@
 class ExcelExporter : public Exporter
 {
 public:
-	void exportToExcel();
+	//void exportToExcel();
+	ExcelExporter(const string& i_path);
+	void export2(const list<vector<int>>& i_statistics);
 };
 

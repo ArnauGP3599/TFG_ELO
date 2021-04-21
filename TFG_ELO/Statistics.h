@@ -12,8 +12,8 @@ public:
 	list<vector<int>> getStatistics();
 
 private:
-	int round;
-	list<vector<int>> statistics;
+	int m_round;
+	list<vector<int>> m_statistics;
 	shared_ptr<PlayersDB> m_playersDB;
 };
 

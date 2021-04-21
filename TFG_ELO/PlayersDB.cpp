@@ -8,7 +8,7 @@ void PlayersDB::init() {
 void PlayersDB::addPlayers(int numPlayers) {
 	for (int i = 0; i < numPlayers; i++) {
 		shared_ptr<Player> p = make_shared<Player>(i);
-		players.push_back(p);
+		players.emplace_back(p);
 	}
 }
 

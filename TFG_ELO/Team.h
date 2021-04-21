@@ -24,7 +24,7 @@ class Team
 		}
 
 		inline vector<shared_ptr<Player>> getPlayersTeam() {
-			return playersTeam;
+			return m_playersTeam;
 		}
 
 		void addPlayerInTeam(const shared_ptr<Player>& player);
@@ -33,6 +33,6 @@ class Team
 	
 	private:
 		int m_id, m_eloTeam;
-		vector<shared_ptr<Player>> playersTeam;
+		vector<shared_ptr<Player>> m_playersTeam;
 };
 
