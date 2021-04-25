@@ -10,10 +10,21 @@
 #include "Result.h"
 #include "ExcelExporter.h"
 
+extern "C" {
+    #include "Lua542/include/lua.h"
+    #include "Lua542/include/lauxlib.h"
+    #include "Lua542/include/lualib.h"
+}
+
+#ifdef _WIN32
+#pragma comment(lib, "Lua542/liblua54.a")
+#endif // _WIN32
+
 class Simulation
 {
 public:
     void init(int i_numPlayers, int i_numPlayersTeam, int i_deltaElo, int i_numTotalMatches);
+    bool initLua_State();
     list<vector<int>> startSimulation();
 
     inline int getNumPlayers() {
@@ -45,5 +56,8 @@ private:
     shared_ptr<TeamBuilder> m_teamBuilder;
     shared_ptr<MatchMaker> m_matchMaker;
     shared_ptr<ExcelExporter> m_excelExporter;
+
+    bool checkLua(lua_State* L, int r);
+    lua_State* m_L;
 };
 

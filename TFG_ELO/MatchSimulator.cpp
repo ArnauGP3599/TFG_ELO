@@ -1,8 +1,8 @@
 #include "Precompiled.h"
 #include "MatchSimulator.h"
 
-MatchSimulator::MatchSimulator() {
-	matchAlgorithm = make_shared<MatchAlgorithm>();
+MatchSimulator::MatchSimulator(lua_State* i_L) {
+	matchAlgorithm = make_shared<MatchAlgorithm>(i_L);
 }
 
 shared_ptr<Classification> MatchSimulator::simulateMatch(shared_ptr<Match>& match) {
@@ -33,3 +33,7 @@ shared_ptr<Classification> MatchSimulator::simulateMatch(shared_ptr<Match>& matc
 	}
 	return move(classification);
 }
+
+/*void MatchSimulator::ferprova() {
+	matchAlgorithm->prova();
+}*/

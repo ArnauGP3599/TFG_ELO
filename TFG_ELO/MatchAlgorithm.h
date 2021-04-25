@@ -13,9 +13,11 @@ extern "C" {
 class MatchAlgorithm
 {
 public:
+	MatchAlgorithm(lua_State* i_L);
 	int playMatchTeam();
+	//void prova();
 
 private:
-	bool checkLua(lua_State* L, int r);
+	lua_State* m_L;
 };
 

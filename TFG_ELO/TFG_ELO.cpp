@@ -18,10 +18,13 @@ int main()
     cout << "introdueix destinació per a les estadistiques" << endl;
     cin >> path;
     Simulation sim = Simulation();
-    sim.init(numPlayers, numPlayersTeam, deltaElo, numTotalMatches);
-    list<vector<int>> statistics = sim.startSimulation();
-    ExcelExporter excelExporter = ExcelExporter(path);
-    excelExporter.export2(statistics);
+    bool correct = sim.initLua_State();
+    if (correct){
+        sim.init(numPlayers, numPlayersTeam, deltaElo, numTotalMatches);
+        list<vector<int>> statistics = sim.startSimulation();
+        ExcelExporter excelExporter = ExcelExporter(path);
+        excelExporter.export2(statistics);
+    }
 }
 
 

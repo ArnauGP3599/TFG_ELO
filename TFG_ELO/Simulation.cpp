@@ -1,6 +1,20 @@
 #include "Precompiled.h"
 #include "Simulation.h"
 
+bool Simulation::checkLua(lua_State* L, int r) {
+    if (r != LUA_OK) {
+        string error = lua_tostring(L, -1);
+        cout << error << endl;
+        return false;
+    }
+    return true;
+}
+
+bool Simulation::initLua_State() {
+    m_L = luaL_newstate();
+    luaL_openlibs(m_L);
+    return checkLua(m_L, luaL_dofile(m_L, "LuaScript.lua"));
+}
 
 void Simulation::init(int i_numPlayers, int i_numPlayersTeam, int i_deltaElo, int i_numTotalMatches) {
     m_numPlayers = i_numPlayers;
@@ -12,14 +26,12 @@ void Simulation::init(int i_numPlayers, int i_numPlayersTeam, int i_deltaElo, in
     m_playersDB->addPlayers(m_numPlayers);
     m_teamBuilder = make_shared<TeamBuilder>(m_numPlayersTeam, m_deltaElo);
     m_matchMaker = make_shared<MatchMaker>(m_deltaElo);
-    m_matchSimulator = make_shared<MatchSimulator>();
+    m_matchSimulator = make_shared<MatchSimulator>(m_L);
     m_statistics = make_shared<Statistics>();
     m_statistics->init(m_playersDB);
     m_eloCalculator = make_shared<EloCalculator>();
     m_result = make_shared<Result>();
     m_result->init(m_playersDB);
-    //excelExporter = make_shared<ExcelExporter>();
-    //excelExporter->init(statistics);
 }
 
 list<vector<int>> Simulation::startSimulation() {
@@ -35,5 +47,6 @@ list<vector<int>> Simulation::startSimulation() {
         m_statistics->updateStatistics();
     }
     //excelExporter->exportToExcel();
+    lua_close(m_L);
     return m_statistics->getStatistics();
 }

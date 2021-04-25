@@ -16,7 +16,7 @@ void Statistics::updateStatistics() {
 	for (int i = 0; i < players.size(); i++) {
 		vector<int> statsPlayer;
 		statsPlayer.emplace_back(players[i]->getId());
-		statsPlayer.emplace_back(round);
+		statsPlayer.emplace_back(m_round);
 		statsPlayer.emplace_back(players[i]->getElo());
 		m_statistics.emplace_back(statsPlayer);
 	}
