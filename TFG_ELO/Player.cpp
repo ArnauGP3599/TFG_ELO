@@ -9,5 +9,5 @@ Player::Player(int i_id) {
 }
 
 void Player::addProperty(const string i_name, const int i_value) {
-	m_properties.insert(pair<string, int>(i_name, i_value));
+	m_properties.emplace(i_name, i_value);
 }

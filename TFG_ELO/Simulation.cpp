@@ -22,8 +22,8 @@ void Simulation::init(int i_numPlayers, int i_numPlayersTeam, int i_deltaElo, in
     m_deltaElo = i_deltaElo;
     m_numTotalMatches = i_numTotalMatches;
     m_playersDB = make_shared<PlayersDB>();
-    m_playersDB->init();
-    m_playersDB->addPlayers(m_numPlayers);
+    m_playersDB->init(); //start
+    m_playersDB->addPlayers(m_numPlayers); //start
 
     m_propertiesDB = make_shared<PropertiesDB>(m_L);
     m_propertiesDB->obtainProperties();

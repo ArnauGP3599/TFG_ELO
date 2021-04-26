@@ -21,7 +21,7 @@ double EloAlgorithm::getExpectedScore(int teamA, int teamB) {
 
     if (!lua_isnumber(m_L, -1))
         cout << "function `calculateEloScore' must return a number" << endl;
-    res = lua_tonumber(m_L, -1);
+    res = (double)lua_tonumber(m_L, -1);
     lua_pop(m_L, 1);
     return res;
 

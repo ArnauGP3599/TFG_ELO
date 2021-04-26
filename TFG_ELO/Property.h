@@ -2,15 +2,15 @@
 class Property
 {
 public:
-	Property(const char* i_name);
+	Property(string i_name);
 
-	inline void setName(const char* i_name) {
+	inline void setName(string i_name) {
 		m_name = i_name;
 	}
-	inline const char* getName() {
+	inline string getName() {
 		return m_name;
 	}
 private:
-	const char* m_name;
+	string m_name;
 };
 

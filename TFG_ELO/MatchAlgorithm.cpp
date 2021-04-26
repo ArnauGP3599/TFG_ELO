@@ -15,7 +15,7 @@ int MatchAlgorithm::playMatchTeam() {
 
     if (!lua_isnumber(m_L, -1))
         cout << "function `puntuationTeam' must return a number" << endl;
-    res = lua_tonumber(m_L, -1);
+    res = (int)lua_tonumber(m_L, -1);
     lua_pop(m_L, 1); 
     cout << "El resultat es " << res << endl;
     return res;
