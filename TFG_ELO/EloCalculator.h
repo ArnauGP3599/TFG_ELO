@@ -5,7 +5,7 @@
 class EloCalculator
 {
 public:
-	EloCalculator();
+	EloCalculator(lua_State* i_L);
 	map <int, EloScore> calculateElo(shared_ptr<Classification>& classification);
 private:
 	void addPlayersMap(const vector<shared_ptr<Player>>& playersTeam, int deltaEloTeam);

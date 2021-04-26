@@ -8,14 +8,15 @@ MatchAlgorithm::MatchAlgorithm(lua_State* i_L) {
 int MatchAlgorithm::playMatchTeam() {
     //return rand() % 100;
     int res = 0;
-    lua_getglobal(m_L, "sum");
+    lua_getglobal(m_L, "puntuationTeam");
 
     if (lua_pcall(m_L, 0, 1, 0) != 0)
-        cout << "error running function `sum': %s" << endl;
+        cout << "error running function `puntuationTeam': %s" << endl;
 
     if (!lua_isnumber(m_L, -1))
-        cout << "function `f' must return a number" << endl;
+        cout << "function `puntuationTeam' must return a number" << endl;
     res = lua_tonumber(m_L, -1);
     lua_pop(m_L, 1); 
+    cout << "El resultat es " << res << endl;
     return res;
 }

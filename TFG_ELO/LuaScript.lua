@@ -1,5 +1,13 @@
-function sum ()
+function puntuationTeam ()
 	local res = math.random(1, 100)
+	return res
+end
+
+function calculateEloScore(teamA, teamB)
+	local deltaTeam = teamB - teamA
+	local divElev = deltaTeam / 800
+	local elev = math.pow(10, divElev)
+	local res = (1/(1+elev))
 	return res
 end
 

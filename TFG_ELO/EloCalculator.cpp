@@ -1,8 +1,8 @@
 #include "Precompiled.h"
 #include "EloCalculator.h"
 
-EloCalculator::EloCalculator() {
-	m_eloAlgorithm = make_shared<EloAlgorithm>();
+EloCalculator::EloCalculator(lua_State* i_L) {
+	m_eloAlgorithm = make_shared<EloAlgorithm>(i_L);
 	k = 20;
  }
 
