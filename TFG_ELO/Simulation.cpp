@@ -24,6 +24,9 @@ void Simulation::init(int i_numPlayers, int i_numPlayersTeam, int i_deltaElo, in
     m_playersDB = make_shared<PlayersDB>();
     m_playersDB->init();
     m_playersDB->addPlayers(m_numPlayers);
+    m_propertiesDB = make_shared<PropertiesDB>(m_L);
+    m_propertiesDB->obtainProperties();
+    m_propertiesDB->obtainPlayersProperties(m_playersDB);
     m_teamBuilder = make_shared<TeamBuilder>(m_numPlayersTeam, m_deltaElo);
     m_matchMaker = make_shared<MatchMaker>(m_deltaElo);
     m_matchSimulator = make_shared<MatchSimulator>(m_L);
@@ -46,7 +49,6 @@ list<vector<int>> Simulation::startSimulation() {
         }
         m_statistics->updateStatistics();
     }
-    //excelExporter->exportToExcel();
     lua_close(m_L);
     return m_statistics->getStatistics();
 }

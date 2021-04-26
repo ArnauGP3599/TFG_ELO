@@ -7,7 +7,6 @@ ExcelExporter::ExcelExporter(const string& i_path){
 
 void ExcelExporter::export2(const list<vector<int>>& i_statistics) {
     ofstream myFile;
-    cout << m_path << endl;
     myFile.open(/*m_path +*/"Statistics.csv");
     myFile << "ID player;Match;Elo;\n";
     //list<vector<int>> statistics = Exporter::m_statistics->getStatistics();

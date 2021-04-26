@@ -81,6 +81,12 @@
     <ClCompile Include="Exporter.cpp">
       <Filter>Domini</Filter>
     </ClCompile>
+    <ClCompile Include="Property.cpp">
+      <Filter>Domini</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertiesDB.cpp">
+      <Filter>Dades</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MatchMaker.h">
@@ -136,6 +142,12 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Property.h">
+      <Filter>Domini</Filter>
+    </ClInclude>
+    <ClInclude Include="PropertiesDB.h">
+      <Filter>Dades</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

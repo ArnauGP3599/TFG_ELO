@@ -1,11 +1,11 @@
 #pragma once
 
 #include <stdlib.h>  
+#include <map>
 
 class Player
 {
 	public:
-		Player();
 		Player(int i_id);
 
 		inline int getId() {
@@ -32,8 +32,15 @@ class Player
 			this->m_numMatches = i_numMatches;
 		}
 
+		void addProperty(const string i_name, const int i_value);
+		
+		inline map<string, int> getProperties() {
+			return m_properties;
+		}
+
 	private:
 		int m_id, m_elo, m_numMatches;
+		map<string, int> m_properties;
 		
 };
 

@@ -12,6 +12,7 @@ public:
 	list<vector<int>> getStatistics();
 
 private:
+	void writePlayersProperties();
 	int m_round;
 	list<vector<int>> m_statistics;
 	shared_ptr<PlayersDB> m_playersDB;

@@ -155,6 +155,8 @@
     <ClCompile Include="Precompiled.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="PropertiesDB.cpp" />
+    <ClCompile Include="Property.cpp" />
     <ClCompile Include="Result.cpp" />
     <ClCompile Include="Simulation.cpp" />
     <ClCompile Include="Statistics.cpp" />
@@ -175,6 +177,8 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayersDB.h" />
     <ClInclude Include="Precompiled.h" />
+    <ClInclude Include="PropertiesDB.h" />
+    <ClInclude Include="Property.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Result.h" />
     <ClInclude Include="Simulation.h" />

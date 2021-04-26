@@ -9,6 +9,7 @@
 #include "EloCalculator.h"
 #include "Result.h"
 #include "ExcelExporter.h"
+#include "PropertiesDB.h"
 
 extern "C" {
     #include "Lua542/include/lua.h"
@@ -49,6 +50,7 @@ private:
     int m_deltaElo;
     int m_numTotalMatches;
     shared_ptr<PlayersDB> m_playersDB;
+    shared_ptr<PropertiesDB> m_propertiesDB;
     shared_ptr<Statistics> m_statistics;
     shared_ptr<EloCalculator> m_eloCalculator;
     shared_ptr<Result> m_result;

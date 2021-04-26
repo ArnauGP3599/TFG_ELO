@@ -33,7 +33,3 @@ shared_ptr<Classification> MatchSimulator::simulateMatch(shared_ptr<Match>& matc
 	}
 	return move(classification);
 }
-
-/*void MatchSimulator::ferprova() {
-	matchAlgorithm->prova();
-}*/
