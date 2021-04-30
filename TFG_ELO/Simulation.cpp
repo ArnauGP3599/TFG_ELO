@@ -27,6 +27,7 @@ void Simulation::init(int i_numPlayers, int i_numPlayersTeam, int i_deltaElo, in
 
     m_propertiesDB = make_shared<PropertiesDB>(m_L);
     m_propertiesDB->obtainProperties();
+    m_propertiesDB->createPlayersProperties(m_playersDB->getPlayersSize());
     m_propertiesDB->obtainPlayersProperties(m_playersDB);
     
     m_teamBuilder = make_shared<TeamBuilder>(m_numPlayersTeam, m_deltaElo);

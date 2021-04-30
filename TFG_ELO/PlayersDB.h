@@ -9,6 +9,8 @@ public:
 
 	vector<shared_ptr<Player>> getPlayers();
 
+	int getPlayersSize();
+
 private:
 	vector<shared_ptr<Player>> players;
 };

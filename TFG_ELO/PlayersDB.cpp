@@ -15,3 +15,7 @@ void PlayersDB::addPlayers(int numPlayers) {
 vector<shared_ptr<Player>> PlayersDB::getPlayers() {
 	return players;
 }
+
+int PlayersDB::getPlayersSize() {
+	return players.size();
+}

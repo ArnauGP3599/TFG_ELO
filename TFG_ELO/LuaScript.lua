@@ -11,8 +11,12 @@ function calculateEloScore(teamA, teamB)
 	return res
 end
 
-playerProperties = {
-	 { ID = 0, Strength = 0, Armor = 19 },
+playerProperties = {}
+
+properties = {"ID", "Strength", "Armor"}
+
+--[[
+prova = {{ ID = 0, Strength = 0, Armor = 19 },
 	 { ID = 1, Strength = 1, Armor = 18 },
 	 { ID = 2, Strength = 2, Armor = 17 },
 	 { ID = 3, Strength = 3, Armor = 16 },
@@ -33,5 +37,4 @@ playerProperties = {
 	 { ID = 18, Strength = 18, Armor = 1 },
 	 { ID = 19, Strength = 19, Armor = 0 },
 }
-
-properties = {"ID", "Strength", "Armor"}
+--]]

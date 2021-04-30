@@ -47,6 +47,28 @@ void PropertiesDB::obtainPlayersProperties(shared_ptr<PlayersDB>& i_PlayersDB) {
     lua_pop(m_L, 1);
 }
 
+void PropertiesDB::createPlayersProperties(const int& playersSize) {
+    lua_getglobal(m_L, "playerProperties");
+    for (int i = 0; i < playersSize; i++) {
+        lua_newtable(m_L);
+        int var = 1;
+        for (int j = 0; j < m_properties.size(); j++) {
+            if (m_properties[j]->getName() == "ID") {
+                lua_pushnumber(m_L, i);
+            }
+            else {
+                int value = i + var;
+                lua_pushnumber(m_L, value);
+            }
+            lua_setfield(m_L, -2, m_properties[j]->getName().c_str());
+            var++;
+        }
+        int pos = i + 1;
+        lua_rawseti(m_L, -2, pos);
+    }
+    lua_pop(m_L, 1);
+}
+
 vector<shared_ptr<Property>> PropertiesDB::getProperties() {
 	return m_properties;
 }
