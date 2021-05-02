@@ -5,7 +5,7 @@ void Statistics::init(shared_ptr<PlayersDB>& i_playersDB) {
 	m_playersDB = i_playersDB;
 	m_round = 0;
 	updateStatistics();
-	writePlayersProperties();
+	//writePlayersProperties();
 }
 
 list<vector<int>> Statistics::getStatistics() {

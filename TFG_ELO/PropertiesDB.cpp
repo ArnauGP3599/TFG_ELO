@@ -15,9 +15,9 @@ void PropertiesDB::obtainProperties() {
         m_properties.emplace_back(prop);
         lua_pop(m_L, 1);
     }
-    for (int i = 0; i < m_properties.size(); i++) {
+    /*for (int i = 0; i < m_properties.size(); i++) {
         cout << "Propietat " << m_properties[i]->getName() << endl;
-    }
+    }*/
     lua_pop(m_L, 1);
 }
 
