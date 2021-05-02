@@ -19,11 +19,8 @@ void TeamBuilder::modifyIntervalTeam(const int eloPlayer, shared_ptr<Team>& team
 	if (eloPlayer > eloFirstPlayer) {
 		int minValue = team->getMinValue();
 		if ((eloPlayer - m_deltaElo) > minValue) {
-			cout << " dif " << eloPlayer - m_deltaElo << " and min value " << minValue <<  endl;
 			minValue = eloPlayer - m_deltaElo;
-			cout << " min value " << minValue << endl;
 			team->setMinValue(minValue);
-			cout << "team set min value " << team->getMinValue() << endl;
 		}
 	}
 	else if (eloPlayer < eloFirstPlayer) {
@@ -31,7 +28,6 @@ void TeamBuilder::modifyIntervalTeam(const int eloPlayer, shared_ptr<Team>& team
 		if ((eloPlayer + m_deltaElo) < maxValue) {
 			maxValue = eloPlayer + m_deltaElo;
 			team->setMaxValue(maxValue);
-			cout << "team set max value " << team->getMaxValue() << endl;
 		}
 	}
 }

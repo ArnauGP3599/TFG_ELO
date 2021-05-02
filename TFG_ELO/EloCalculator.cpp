@@ -33,6 +33,7 @@ map <int, EloScore> EloCalculator::calculateElo(shared_ptr<Classification>& clas
 			}
 		}
 	}
+	//cout << "A " << eloTeamA << " - B " << eloTeamB << endl;
 	if (draw) {
 		int eloA = k/2 * (1-m_eloAlgorithm->getExpectedScore(eloTeamA, eloTeamB));
 		int eloB = k/2 * (1-m_eloAlgorithm->getExpectedScore(eloTeamB, eloTeamA));
@@ -43,6 +44,7 @@ map <int, EloScore> EloCalculator::calculateElo(shared_ptr<Classification>& clas
 		deltaEloA = k * (1 - m_eloAlgorithm->getExpectedScore(eloTeamA, eloTeamB));
 		deltaEloB = -deltaEloA;
 	}
+	//cout << "dA " << deltaEloA << " - dB " << deltaEloB << endl;
 	addPlayersMap(playersTeamA, deltaEloA);
 	addPlayersMap(playersTeamB, deltaEloB);
 	return m_deltaEloTeams;

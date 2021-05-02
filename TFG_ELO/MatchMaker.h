@@ -13,5 +13,8 @@ public:
 private:
 	int m_deltaElo;
 	int	m_idMatch;
+
+	bool teamFitsMatch(const int eloTeam, shared_ptr<Match>& match);
+	void modifyIntervalMatch(const int eloTeam, shared_ptr<Match>& match);
 };
 
