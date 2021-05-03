@@ -24,7 +24,8 @@ extern "C" {
 class Simulation
 {
 public:
-    void init(int i_numPlayers, int i_numPlayersTeam, int i_deltaElo, int i_numTotalMatches);
+    enum class InitResult { Success, Failed };
+    InitResult init(int i_numPlayers, int i_numPlayersTeam, int i_deltaElo, int i_numTotalMatches);
     bool initLua_State();
     list<vector<int>> startSimulation();
 

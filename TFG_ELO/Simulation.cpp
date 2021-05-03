@@ -16,7 +16,10 @@ bool Simulation::initLua_State() {
     return checkLua(m_L, luaL_dofile(m_L, "LuaScript.lua"));
 }
 
-void Simulation::init(int i_numPlayers, int i_numPlayersTeam, int i_deltaElo, int i_numTotalMatches) {
+Simulation::InitResult Simulation::init(int i_numPlayers, int i_numPlayersTeam, int i_deltaElo, int i_numTotalMatches) {
+    if (!initLua_State()) {
+        return InitResult::Failed;
+    }
     m_numPlayers = i_numPlayers;
     m_numPlayersTeam = i_numPlayersTeam;
     m_deltaElo = i_deltaElo;
@@ -38,6 +41,7 @@ void Simulation::init(int i_numPlayers, int i_numPlayersTeam, int i_deltaElo, in
     m_eloCalculator = make_shared<EloCalculator>(m_L);
     m_result = make_shared<Result>();
     m_result->init(m_playersDB);
+    return InitResult::Success;
 }
 
 list<vector<int>> Simulation::startSimulation() {
