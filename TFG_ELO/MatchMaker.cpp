@@ -3,6 +3,9 @@
 
 MatchMaker::MatchMaker(int i_deltaElo) {
 	m_deltaElo = i_deltaElo;
+}
+
+void MatchMaker::init() {
 	m_idMatch = 0;
 }
 

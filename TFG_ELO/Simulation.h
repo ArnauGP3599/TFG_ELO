@@ -50,11 +50,8 @@ private:
     int m_numPlayersTeam;
     int m_deltaElo;
     int m_numTotalMatches;
-    shared_ptr<PlayersDB> m_playersDB;
     shared_ptr<PropertiesDB> m_propertiesDB;
-    shared_ptr<Statistics> m_statistics;
     shared_ptr<EloCalculator> m_eloCalculator;
-    shared_ptr<Result> m_result;
     shared_ptr<MatchSimulator> m_matchSimulator;
     shared_ptr<TeamBuilder> m_teamBuilder;
     shared_ptr<MatchMaker> m_matchMaker;

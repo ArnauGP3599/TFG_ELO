@@ -8,6 +8,8 @@ class MatchMaker
 public:
 	MatchMaker(int i_deltaElo);
 
+	void init();
+
 	vector<shared_ptr<Match>> searchMatch(const vector<shared_ptr<Team>>&);
 
 private:
