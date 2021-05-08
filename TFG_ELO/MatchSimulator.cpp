@@ -10,7 +10,17 @@ shared_ptr<Classification> MatchSimulator::simulateMatch(shared_ptr<Match>& matc
 	vector<shared_ptr<Team>> teamsMatch = match->getTeamsMatch();
 	vector < shared_ptr<Team>> teamsMatchPosition;
 	matchAlgorithm->playMatch(match);
-	int res1 = matchAlgorithm->playMatchTeam();
+	vector<int> clasMatch = matchAlgorithm->getResults();
+
+	for (int i = 0; i < clasMatch.size(); i++) {
+		//cout << "PosTeam " << clasMatch[i] << endl;
+		int posTeam = clasMatch[i] - 1;
+		teamsMatchPosition.clear();
+		teamsMatchPosition.emplace_back(teamsMatch[posTeam]);
+		classification->addResult(i+1, teamsMatchPosition);
+	}
+
+	/*int res1 = matchAlgorithm->playMatchTeam();
 	int res2 = matchAlgorithm->playMatchTeam();
 
 	if (res1 == res2) {
@@ -31,6 +41,6 @@ shared_ptr<Classification> MatchSimulator::simulateMatch(shared_ptr<Match>& matc
 		teamsMatchPosition.clear();
 		teamsMatchPosition.emplace_back(teamsMatch[1]);
 		classification->addResult(2, teamsMatchPosition);
-	}
+	}*/
 	return move(classification);
 }

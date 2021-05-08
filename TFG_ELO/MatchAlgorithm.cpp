@@ -5,7 +5,7 @@ MatchAlgorithm::MatchAlgorithm(lua_State* i_L) {
     m_L = i_L;
 }
 
-int MatchAlgorithm::playMatchTeam() {
+/*int MatchAlgorithm::playMatchTeam() {
     //return rand() % 100;
     int res = 0;
     lua_getglobal(m_L, "puntuationTeam");
@@ -19,7 +19,7 @@ int MatchAlgorithm::playMatchTeam() {
     lua_pop(m_L, 1); 
     cout << "El resultat es " << res << endl;
     return res;
-}
+}*/
 
 void MatchAlgorithm::playMatch(shared_ptr<Match>& match) {
     //matchParticipants
@@ -60,4 +60,28 @@ void MatchAlgorithm::cleanTable() {
     if(lua_pcall(m_L, 0, 0, 0))
         cout << "error running function `cleanMatchParticipants': %s" << endl;
     lua_pop(m_L, -1);
+}
+
+vector<int> MatchAlgorithm::getResults() {
+    vector<int> results;
+    lua_getglobal(m_L, "classification");    
+    if (lua_istable(m_L, -1)) {
+        int totalElements = lua_rawlen(m_L, 1);
+        for (int i = 1; i <= totalElements; i++) {
+            lua_rawgeti(m_L, -1, i);
+            lua_pushnil(m_L);
+            while (lua_next(m_L, -2) != 0)
+            {
+                int posTeam = lua_tonumber(m_L, -1);
+                results.emplace_back(posTeam);
+                lua_pop(m_L, 1);
+            }
+            lua_pop(m_L, 1);
+        }
+    }  
+    /*for (int i = 0; i < m_properties.size(); i++) {
+        cout << "Propietat " << m_properties[i]->getName() << endl;
+    }*/
+    lua_pop(m_L, 1);
+    return results;
 }

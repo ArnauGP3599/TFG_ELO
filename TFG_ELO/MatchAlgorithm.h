@@ -17,6 +17,7 @@ public:
 	MatchAlgorithm(lua_State* i_L);
 	int playMatchTeam();
 	void playMatch(shared_ptr<Match>& match);
+	vector<int> getResults();
 
 private:
 	void cleanTable();

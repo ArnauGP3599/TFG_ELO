@@ -1,7 +1,9 @@
+--[[
 function puntuationTeam ()
 	local res = math.random(1, 100)
 	return res
 end
+--]]
 
 function playMatch()
 	matchTeams = {}
@@ -36,12 +38,27 @@ function playMatch()
 	table.sort(damageDealTeams, function (a, b)
 		return a[2] > b[2]
 	end)
+	--[[
 	for index3, team3 in ipairs(damageDealTeams) do
 		print("pos table ", index3)
 		for pos, dam in ipairs(team3) do
 			print("pos ", pos, dam)
 		end
 	end
+	--]]
+	classification = {}
+	for index, teamResults in ipairs(damageDealTeams) do
+		classification[index] = {teamResults[1]}
+		--print(teamResults[1])
+	end
+end
+
+function getTableSize(t)
+    local count = 0
+    for _, __ in pairs(t) do
+        count = count + 1
+    end
+    return count
 end
 
 function calculateEloScore(teamA, teamB)
