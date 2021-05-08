@@ -9,6 +9,7 @@ shared_ptr<Classification> MatchSimulator::simulateMatch(shared_ptr<Match>& matc
 	shared_ptr<Classification> classification = make_shared<Classification>();
 	vector<shared_ptr<Team>> teamsMatch = match->getTeamsMatch();
 	vector < shared_ptr<Team>> teamsMatchPosition;
+	matchAlgorithm->playMatch(match);
 	int res1 = matchAlgorithm->playMatchTeam();
 	int res2 = matchAlgorithm->playMatchTeam();
 

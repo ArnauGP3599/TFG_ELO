@@ -1,4 +1,5 @@
 #pragma once
+#include "Match.h"
 
 extern "C" {
 	#include "Lua542/include/lua.h"
@@ -15,8 +16,10 @@ class MatchAlgorithm
 public:
 	MatchAlgorithm(lua_State* i_L);
 	int playMatchTeam();
+	void playMatch(shared_ptr<Match>& match);
 
 private:
+	void cleanTable();
 	lua_State* m_L;
 };
 

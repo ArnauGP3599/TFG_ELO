@@ -3,6 +3,47 @@ function puntuationTeam ()
 	return res
 end
 
+function playMatch()
+	matchTeams = {}
+	for index, team in ipairs(matchParticipants) do
+		local teamArmor = 0
+		local teamStrength = 0
+		teamProperties = {}
+		teamProperties["teamPos"] = index
+		for player, property in ipairs (team) do
+			for key, value in pairs(property) do
+				if key == "Strength" then
+					teamStrength = teamStrength + value
+				elseif key == "Armor" then
+					teamArmor = teamArmor + value
+				end
+			end
+		end
+		teamProperties["Strength"] = teamStrength
+		teamProperties["Armor"] = teamArmor
+		matchTeams[index] = teamProperties
+	end
+	damageDealTeams = {}
+	for index, team in ipairs(matchTeams) do
+		local damage = 0
+		for index2, team2 in ipairs(matchTeams) do
+			if index ~= index2 then
+				damage = damage + (team["Strength"] - team2["Armor"])
+			end
+		end
+		damageDealTeams[index] = {index, damage}
+	end
+	table.sort(damageDealTeams, function (a, b)
+		return a[2] > b[2]
+	end)
+	for index3, team3 in ipairs(damageDealTeams) do
+		print("pos table ", index3)
+		for pos, dam in ipairs(team3) do
+			print("pos ", pos, dam)
+		end
+	end
+end
+
 function calculateEloScore(teamA, teamB)
 	local deltaTeam = teamB - teamA
 	local divElev = deltaTeam / 800
@@ -11,9 +52,18 @@ function calculateEloScore(teamA, teamB)
 	return res
 end
 
+function cleanMatchParticipants()
+	matchParticipants = nil
+	matchParticipants = {}
+end
+
 playerProperties = {}
 
 properties = {"ID", "Strength", "Armor"}
+
+matchParticipants = {}
+
+classification = {}
 
 --[[
 prova = {{ ID = 0, Strength = 0, Armor = 19 },
@@ -38,3 +88,4 @@ prova = {{ ID = 0, Strength = 0, Armor = 19 },
 	 { ID = 19, Strength = 19, Armor = 0 },
 }
 --]]
+
