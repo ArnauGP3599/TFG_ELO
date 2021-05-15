@@ -6,11 +6,11 @@ end
 --]]
 
 function playMatch(matchParticipants)
-	matchTeams = {}
+	local matchTeams = {}
 	for index, team in ipairs(matchParticipants) do
 		local teamArmor = 0
 		local teamStrength = 0
-		teamProperties = {}
+		local teamProperties = {}
 		teamProperties["teamPos"] = index
 		for player, property in ipairs (team) do
 			for key, value in pairs(property) do
@@ -25,7 +25,7 @@ function playMatch(matchParticipants)
 		teamProperties["Armor"] = teamArmor
 		matchTeams[index] = teamProperties
 	end
-	damageDealTeams = {}
+	local damageDealTeams = {}
 	for index, team in ipairs(matchTeams) do
 		local damage = 0
 		for index2, team2 in ipairs(matchTeams) do
@@ -46,11 +46,12 @@ function playMatch(matchParticipants)
 		end
 	end
 	--]]
-	classification = {}
+	local classification = {}
 	for index, teamResults in ipairs(damageDealTeams) do
 		classification[index] = {teamResults[1]}
 		--print(teamResults[1])
 	end
+	return classification
 end
 
 function getTableSize(t)
@@ -75,7 +76,7 @@ properties = {"ID", "Strength", "Armor"}
 
 --matchParticipants = {}
 
-classification = {}
+--classification = {}
 
 --[[
 prova = {{ ID = 0, Strength = 0, Armor = 19 },

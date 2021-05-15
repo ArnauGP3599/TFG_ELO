@@ -15,9 +15,9 @@ class MatchAlgorithm
 {
 public:
 	MatchAlgorithm(lua_State* i_L);
-	int playMatchTeam();
-	void playMatch(shared_ptr<Match>& match);
-	vector<int> getResults();
+	//int playMatchTeam();
+	vector<int> playMatch(shared_ptr<Match>& match);
+	//vector<int> getResults();
 
 private:
 	lua_State* m_L;
