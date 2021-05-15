@@ -23,31 +23,39 @@ void PropertiesDB::obtainProperties() {
 
 void PropertiesDB::obtainPlayersProperties(shared_ptr<PlayersDB>& i_PlayersDB) {
     vector<shared_ptr<Player>> players = i_PlayersDB->getPlayers();
-    lua_getglobal(m_L, "playerProperties");
-    for (int j = 1; j <= players.size(); j++) {
-        if (lua_istable(m_L, -1)) {
-            lua_rawgeti(m_L, -1, j);
-            string ID = m_properties[0]->getName();
-            lua_pushstring(m_L, ID.c_str());
-            lua_gettable(m_L, -2);
-            int id = lua_tonumber(m_L, -1);
-            lua_pop(m_L, 1);
-
-            for (int i = 1; i < m_properties.size(); i++) {
-                string propertyName = m_properties[i]->getName();
-                lua_pushstring(m_L, propertyName.c_str());
+    //lua_getglobal(m_L, "playerProperties");
+    lua_getglobal(m_L, "getPlayerProperties");
+    lua_pushnumber(m_L, players.size());
+    if (lua_pcall(m_L, 1, 1, 0) != 0){
+        cout << "error running function `getPlayerProperties': %s" << endl;
+        cout << lua_tostring(m_L, -1) << endl;
+    }
+    if (lua_istable(m_L, -1)) {
+        for (int j = 1; j <= players.size(); j++) {
+            if (lua_istable(m_L, -1)) {
+                lua_rawgeti(m_L, -1, j);
+                string ID = m_properties[0]->getName();
+                lua_pushstring(m_L, ID.c_str());
                 lua_gettable(m_L, -2);
-                int value = lua_tonumber(m_L, -1);
+                int id = lua_tonumber(m_L, -1);
                 lua_pop(m_L, 1);
-                players[id]->addProperty(propertyName, value);
+
+                for (int i = 1; i < m_properties.size(); i++) {
+                    string propertyName = m_properties[i]->getName();
+                    lua_pushstring(m_L, propertyName.c_str());
+                    lua_gettable(m_L, -2);
+                    int value = lua_tonumber(m_L, -1);
+                    lua_pop(m_L, 1);
+                    players[id]->addProperty(propertyName, value);
+                }
+                lua_pop(m_L, 1);
             }
-            lua_pop(m_L, 1);
         }
     }
     lua_pop(m_L, 1);
 }
 
-void PropertiesDB::createPlayersProperties(const int& playersSize) {
+/*void PropertiesDB::createPlayersProperties(const int& playersSize) {
     lua_getglobal(m_L, "playerProperties");
     for (int i = 0; i < playersSize; i++) {
         lua_newtable(m_L);
@@ -67,7 +75,7 @@ void PropertiesDB::createPlayersProperties(const int& playersSize) {
         lua_rawseti(m_L, -2, pos);
     }
     lua_pop(m_L, 1);
-}
+}*/
 
 vector<shared_ptr<Property>> PropertiesDB::getProperties() {
 	return m_properties;

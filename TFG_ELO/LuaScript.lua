@@ -54,6 +54,27 @@ function playMatch(matchParticipants)
 	return classification
 end
 
+function getPlayerProperties(numPlayers)
+	if next(playerProperties) == nil then
+		for i = 1, numPlayers do
+			local tablePlayer = {}
+			local var = 0
+			for index, value in ipairs (properties) do
+				if value == "ID" then
+					local idValue = i - 1
+					tablePlayer["ID"] = idValue
+				else
+					local valueTable = i + var
+					tablePlayer[value] = valueTable
+				end
+				var = var + 1
+			end
+			playerProperties[i] = tablePlayer
+		end
+	end
+	return playerProperties
+end
+
 function getTableSize(t)
     local count = 0
     for _, __ in pairs(t) do

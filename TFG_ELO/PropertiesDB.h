@@ -18,7 +18,7 @@ public:
 	PropertiesDB(lua_State* i_L);
 	void obtainProperties();
 	void obtainPlayersProperties(shared_ptr<PlayersDB>& i_PlayersDB);
-	void createPlayersProperties(const int& playersSize);
+	//void createPlayersProperties(const int& playersSize);
 	vector <shared_ptr<Property>> getProperties();
 private:
 	lua_State* m_L;

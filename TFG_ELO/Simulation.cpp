@@ -39,7 +39,7 @@ list<vector<int>> Simulation::startSimulation() {
     shared_ptr<PlayersDB> m_playersDB = make_shared<PlayersDB>();
     m_playersDB->init();
     m_playersDB->addPlayers(m_numPlayers);
-    m_propertiesDB->createPlayersProperties(m_playersDB->getPlayersSize());
+    //m_propertiesDB->createPlayersProperties(m_playersDB->getPlayersSize());
     m_propertiesDB->obtainPlayersProperties(m_playersDB);
     m_matchMaker->init();
     shared_ptr<Statistics> m_statistics = make_shared<Statistics>();
