@@ -10,7 +10,9 @@ void Result::changeEloPlayers(const map<int, EloScore> eloChange) {
 	for (auto it = eloChange.begin(); it != eloChange.end(); it++) {
 		int eloPlayer = players[it->first]->getElo();
 		int numMatchesPlayer = players[it->first]->getNumMatches();
-		players[it->first]->setElo(eloPlayer + it->second);
+		int elo = eloPlayer + it->second;
+		if (elo < 0) elo = 0;
+		players[it->first]->setElo(elo);
 		players[it->first]->setNumMatches(numMatchesPlayer+1);
 	}
 }

@@ -5,7 +5,7 @@ function puntuationTeam ()
 end
 --]]
 
-function playMatch()
+function playMatch(matchParticipants)
 	matchTeams = {}
 	for index, team in ipairs(matchParticipants) do
 		local teamArmor = 0
@@ -69,16 +69,11 @@ function calculateEloScore(teamA, teamB)
 	return res
 end
 
-function cleanMatchParticipants()
-	matchParticipants = nil
-	matchParticipants = {}
-end
-
 playerProperties = {}
 
 properties = {"ID", "Strength", "Armor"}
 
-matchParticipants = {}
+--matchParticipants = {}
 
 classification = {}
 

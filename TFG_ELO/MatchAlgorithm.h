@@ -20,7 +20,6 @@ public:
 	vector<int> getResults();
 
 private:
-	void cleanTable();
 	lua_State* m_L;
 };
 
