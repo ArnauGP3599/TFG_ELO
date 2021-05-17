@@ -58,6 +58,7 @@ private:
     shared_ptr<ExcelExporter> m_excelExporter;
 
     bool checkLua(lua_State* L, int r);
+    void initLua();
     lua_State* m_L;
 };
 

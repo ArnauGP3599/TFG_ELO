@@ -11,15 +11,24 @@ bool Simulation::checkLua(lua_State* L, int r) {
 }
 
 bool Simulation::initLua_State() {
+    cout << "ENTRA" << endl;
     m_L = luaL_newstate();
     luaL_openlibs(m_L);
     return checkLua(m_L, luaL_dofile(m_L, "LuaScript.lua"));
+}
+
+void Simulation::initLua() {
+    lua_getglobal(m_L, "initLua");
+
+    if (lua_pcall(m_L, 0, 0, 0) != 0)
+        cout << "error running function `LuaScript': %s" << endl;
 }
 
 Simulation::InitResult Simulation::init(int i_numPlayers, int i_numPlayersTeam, int i_deltaElo, int i_numTotalMatches) {
     if (!initLua_State()) {
         return InitResult::Failed;
     }
+    initLua();
     m_numPlayers = i_numPlayers;
     m_numPlayersTeam = i_numPlayersTeam;
     m_deltaElo = i_deltaElo;

@@ -5,6 +5,16 @@ function puntuationTeam ()
 end
 --]]
 
+function initLua()
+	math.randomseed(935)
+end
+
+
+function gaussian (mean, variance)
+    return  math.sqrt(-2 * variance * math.log(math.random())) *
+            math.cos(2 * math.pi * math.random()) + mean
+end
+
 function playMatch(matchParticipants)
 	local matchTeams = {}
 	for index, team in ipairs(matchParticipants) do
@@ -58,16 +68,20 @@ function getPlayerProperties(numPlayers)
 	if next(playerProperties) == nil then
 		for i = 1, numPlayers do
 			local tablePlayer = {}
-			local var = 0
+			--local var = 0
 			for index, value in ipairs (properties) do
 				if value == "ID" then
 					local idValue = i - 1
 					tablePlayer["ID"] = idValue
 				else
-					local valueTable = i + var
+					--local valueTable = i + var
+					local valueTable = gaussian(10, 9)
+					if valueTable < 0 then
+						valueTable = 0
+					end
 					tablePlayer[value] = valueTable
 				end
-				var = var + 1
+				--var = var + 1
 			end
 			playerProperties[i] = tablePlayer
 		end
