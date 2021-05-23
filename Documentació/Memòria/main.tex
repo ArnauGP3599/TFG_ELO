@@ -4,6 +4,11 @@
 \usepackage[utf8]{inputenc}
 \usepackage[catalan]{babel}
 \usepackage{float}
+\usepackage{color}
+\usepackage{amssymb}
+\usepackage{rotating}
+\usepackage[table]{xcolor}
+\usepackage{multirow}
 \usepackage{fancyhdr}
 \usepackage{hyperref}
 \hypersetup{
@@ -29,7 +34,7 @@
 \author{Arnau Gesa }
 \date{February 2021}
 
-\usepackage{biblatex}
+\usepackage[sorting=none]{biblatex}
 \addbibresource{references.bib}
 \usepackage{graphicx}
 \usepackage[justification=justified]{caption}
@@ -48,6 +53,441 @@
 
 \newpage
 \justify
-\section{Introduction}
+\section{Contextualització}
+\subsection{Introducció}
+Aquest projecte anomenat \textit{Estudi de l'Elo en el món dels videojocs} és un Treball de Fi de Grau (TFG) realitzat en la Facultat d'Informàtica de Barcelona (FIB) de la Universitat Politècnica de Catalunya (UPC). En el meu cas, és un treball realitzat per al Grau en Enginyeria Informàtica, concretament, per a l'especialitat d'Enginyeria del Software. L'objectiu del projecte és crear un simulador de partides per comprovar i analitzar les fórmules de l'Elo.
 
+\subsection{Situació actual}
+Avui en dia, gràcies a l'Internet i a l'evolució i disponibilitat de les noves tecnologies, tothom pot jugar a un videojoc des d'un dispositiu mòbil o des d'un ordinador o consola. No és estrany dedicar-li temps en els moments lliures, ja sigui per entretenir-se amb els amics, per divertir-se o per competir contra altra gent; o en els temps morts del dia, com per exemple quan es fa cua en un supermercat. 
+
+Des de l'aparició i gran èxit del Pong fins al dia d'avui, els videojocs han evolucionat molt i la indústria ha crescut notablement. Han aparegut diversos gèneres de jocs, entre els quals podem destacar els d'acció, d'aventura, de lluita o d'esports entre altres. També, gràcies a l'aparició d'Internet, s'han creat els videojocs online, els quals permeten jugar amb gent d'arreu del món. D'altra banda, també s'han creat diverses competicions molt importants a escala mundial, com serien el cas de la Call of Duty World League (CWL) o el campionat mundial del League of Legends \cite{importantCompetitions}.
+
+A part d'aquests aspectes, les plataformes que permeten pujar vídeos a la web també s'ha vist notablement beneficiada pels videojocs. Per exemple, You Tube ha arribat a tenir més de 100 mil milions d'hores en vídeos d'aquest aspecte i més de mil milions d'hores en transmissions en viu de la mateixa temàtica \cite{visitesYT}. Un altre exemple és la plataforma de Twitch, la qual s'especialitza a fer transmissions en viu. En aquest cas, ha aconseguit que jocs com el LOL o el Fortnite hagin tingut 35,67 mil milions o 20,78 mil milions de visites en el darrer any respectivament. \cite{visitesTwitch}.
+
+Com a resultat, la indústria dels videojocs segueix augmentant cada cop més. Actualment, generen una gran quantitat de diners, la qual s'espera que s'incrementi encara més en els anys vinents. Com es pot veure en la gràfica de la figura \ref{fig:VideogamesRevenuesImage}, s'observa que en 2019 es van generar 150,2 mil milions de dòlars i s'espera que en 2020, a causa de la Covid-19, es generin 179,7 mil milions de dòlars \cite{VidogamesMoreMoney}. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/videogamesMoney.jpeg}
+    \caption{Ingressos dels videojocs. Font: \cite{VidogamesMoreMoney}}
+    \label{fig:VideogamesRevenuesImage}
+\end{figure}
+
+\subsection{Termes i conceptes bàsics}
+En aquest apartat s'explicaran termes i conceptes relacionats que apareixeran durant tot el transcurs del projecte i que poden donar lloc a la confusió o desconeixement del significat al lector.
+
+\begin{itemize}
+\item \textbf{Elo:} Es coneix com a Elo el sistema de puntuació creat pel físic estatunidenc d'origen hongarès Arpad Elo, que mesura els nivells d'habilitat relatius dels jugadors en els esports com els escacs o videojocs competitius com el League of Legends. \cite{wikipediaElo}
+
+\item \textbf{Matchmaking:} S'anomena matchmaking a l'algorisme utilitzat en la majoria dels videojocs multijugador que tracta d'emparellar els jugadors o equips d'un nivell o habilitats similars per enfrontar-se entre ells, mitjançant l'anàlisi de les estadístiques d'aquests. \cite{matchmakingDef}.
+
+\item \textbf{Videojoc competitiu:} S'entén com a videojoc competitiu un videojoc online, és a dir, que es juga a través d'Internet, on els jugadors competeixen entre ells, sigui en equip o individual, per ser uns millors que els altres. Un exemple d'aquests poden ser els escacs o els jocs de lluita, com el Street Fighters o Mortal Kombat.
+
+\item \textbf{Habilitat del jugador:} Es coneix com a habilitat del jugador a la capacitat que té aquest per demostrar la seva destresa en un joc, és a dir, en altres paraules, com és d'hàbil jugant.
+\end{itemize}
+
+\newpage
+\subsection{Identificació del problema}
+Com s'ha vist anteriorment, els videojocs cada cop estan agafant més importància en la indústria: cada cop són més coneguts, es destinen més diners i en generen més. Per aquests motius, és molt important dissenyar-los bé i per fer-ho, s'han de tenir en compte molts aspectes, com per exemple la temàtica, els escenaris, els personatges, etc. Però també és molt important la jugabilitat, fer que sigui divertit i entretingut. A més, dintre dels jocs competitius, es necessita un bon sistema d'Elo i d'aparellament, per fer encara el videojoc més equilibrat i generar més rivalitat, tot i que també pot haver-hi interessos comercials.
+
+Desenvolupar una bona fórmula de l'Elo equival, normalment, a representar el nivell d'habilitat del jugador i al seu progrés a l'hora de millorar. Per tant, s'ha d'estudiar rigorosament com fer-la i saber quines variables la modificaran (guanyar, perdre, morir més o menys, etc.).
+
+També cal afegir que l'Elo pot ser molt diferent depenent de la situació en què es vulgui aplicar. Per exemple, si en un videojoc es fa un campionat setmanal, on es vol reduir el nombre de jugadors durant el transcurs d'aquest, es pot generar un algorisme que contempli un Elo molt variat entre els diferents participants al principi de la competició, però que sigui més similar cap al final. Per una altra banda, si es juga un campionat mensual on es vol que hi participin tots els jugadors i es desitja una classificació apropiada a l'Elo de cada un, es pot desenvolupar un algorisme que agrupi les partides mitjançant un Elo similar.
+
+Com es pot observar, la fórmula de l'Elo pot ser molt variable i s'han de fer diverses proves per arribar a l'adequada. El problema és que no hi ha cap programa que permeti simular les diferents versions per saber quina és vàlida i quina no. El que s'ha de fer actualment és plantejar una simulació que s'adeqüi a l'algorisme i fer moltes partides per veure l'evolució. Això pot tenir conseqüències, i és que testejar i comparar els resultats de les diferents fórmules pot portar molt temps, el qual es podria invertir en altres aspectes del desenvolupament del videojoc. 
+
+És per aquest motiu que és necessària una eina software per a les empreses desenvolupadores de jocs amb interès comercial, que els permeti simular partides amb l'algorisme d'Elo que se li introdueixi, sigui quin sigui, i permeti avaluar els resultats. D'aquesta manera, podran escollir quin s'adapta millor a la jugabilitat i progressió del joc.
+
+\newpage
+\subsection{Exemples de sistemes d'Elo en els videojocs}
+L'Elo es pot calcular de diverses fórmules, des de la més simple que és la d'obtenir punts depenent de si es guanya o es perd, fins a la de contemplar el teu progrés en la partida, com per exemple si s'ha eliminat molts contrincants, si s'ha mort moltes vegades, etc. A continuació es mostraran alguns exemples de sistemes d'Elo utilitzars en videojocs molt coneguts:
+
+\begin{itemize}
+    \item \textbf{Escacs:} Els escacs consisteixen en partides d'u contra u on l'objectiu és eliminar el rei enemic. Aquest utilitza el mètode més senzill per calcular la puntuació d'Elo i és el següent: és mesura la probabilitat de guanyar al rival més la de fer taules (empatar). A partir d'aquí s'extreuen els punts d'Elo a guanyar o perdre depenent del resultat. La quantitat també depén del rang on juguin la partida, com més rang tinguin, més punts guanyaran o perdran \cite{wikipediaElo}.
+    
+\end{itemize}
+
+\newpage
+\subsection{Motivació}
+Els videojocs és un aspecte que m'ha apassionat tota la vida. Des de ben petit fins al dia d'avui que els porto jugant i gaudint. El quadrimestre passat vaig cursar l'assignatura de videojocs per veure i entendre com funcionaven.
+
+A l'hora d'escollir un tema per fer el TFG, vaig demanar ajuda a diversos professors que havia tingut durant la carrera per veure si em podien donar alguna idea. D'entre totes les propostes que havia rebut, les quals eren molt interessants, va haver-hi una que em va cridar molt l'atenció. Evidentment, aquesta és la del meu TFG i consisteix a fer un simulador d'Elo per estudiar aquest mateix i veure com evolucionava. Vaig escollir aquesta idea per dues raons: la primera és que era una temàtica sobre els videojocs, que com he mencionat anteriorment, m'agraden molt. La segona és que és un aspecte que mai m'havia plantejat com funcionava i que malauradament no s'havia estudiat en l'assignatura. Per tant, vaig escollir aquest TFG per augmentar el meu coneixement sobre els videojocs i com estan fets.
+
+
+\newpage
+\section{Competència en el mercat}
+\subsection{Solucions existents}
+El sistema d'Elo d'un videojoc és molt important, ja que ha de representar, normalment, el nivell d'habilitat del jugador i a més, aconseguir fer les partides entretingudes. Llavors, podem arribar a la conclusió de què ha d'estar ben fet perquè un joc triomfi. És per aquest motiu que he realitzat una recerca per Internet de programes que simulin i permetin configurar el sistema d'Elo d'un videojoc, però només he trobat repositoris de Github que ho simulen, donada una fórmula predeterminada, on a vegades es poden canviar algunes variables, o bé una pàgina web que fa el mateix. Els millors resultats obtinguts han estat els següents:
+
+\begin{itemize}
+    \item \textbf{Repositori de RemiFabre \cite{EloSystemRemi}:} En aquest repositori anomenat "Elo" \space es troba un programa fet en python que simula l'evolució de l'Elo en diversos jugadors amb puntuacions diferents. Aquest programa té dos modalitats, en la primera és que els jugadors només s'enfronten entre sí una vegada rere l'altre, mentre que en la segona modalitat s'enfronten a jugadors creats només per aquella partida i amb un "winrate" \space fixat. L'algorisme de l'Elo esta predeterminat i com a molt es pot canviar el valor de certes variables. Posteriorment, es mostra el resultat en una gràfica. 
+    
+    \item \textbf{Repositori de cardsorg \cite{EloSystemCardsorg}:} Aquest repositori de Github anomenat "Elo" \space inclou un software que simula l'enfrontament entre dos jugadors i diu el respectiu Elo de cadascú. Té tres funcionalitats diferents; la primera permet fer l'enfrontament entre dos persones amb l'Elo i el resultat que es vulguin assignar. També permet canviar el valor de la variable K, que és el màxim de punts que pot guanyar o perdre un jugador en una partida. La segona funcionalitat consisteix en mostrar la diferència entre els dos jugadors i la tercera fa el mateix, però també mostra la diferència estimada.
+    
+    \item \textbf{Repositori d'iain \cite{EloSystemiain}:} En aquest tercer repositori anomenat "Elo" \space es troba un altre programa que permet simular i modificar alguna variable del sistmea d'Elo. En aquest cas, es poden crear jugadors amb la puntuació desitjada i enfrontar-los entre sí, decidint el resultat. També diu si són professionals o principiants depenent dels seus punts. Aquest software també permet varies configuracions, com la modificació de la variable K, on es pot definir depenent del número de partides fetes. També permet modificar a partir de quina quantitat de punts es deixa de ser un principiant i amb quina puntuació comença un jugador.
+    
+    \item \textbf{Elo Calculator \cite{EloSystemOmnicalculator}:} Aquesta calculadora online de la pàgina web "Omnicalculator"\space permet calcular l'Elo d'un jugador després de fer diferents jocs i també modificar la variable K. Hi ha dos opcions a escollir: una única partida o múltiples d'elles. La calculadora deixa assignar els punts desitjats al jugador principal i a cada un dels seus rivals, permetent també escollir el resultat de cada enfrontament. Al final, mostra una taula amb quants punts s'han guanyat i perdut en cada joc i quina és la puntuació final.
+\end{itemize}
+
+\subsection{Justificació de la meva proposta}
+Un cop vistes totes les solucions que hi han actualment a Internet, podem concloure que totes elles tenen aspectes positius: permeten modificar la variable K,  mostren un gràfic de com va evolucionant l'Elo després de diverses partides,  permeten escollir el resultat de cada joc o ensenyen quants punts es guanyen o perden en cada un. Tot i així, totes elles estan lligades a la mateixa fórmula, i és aquesta la principal diferència amb el meu projecte.
+
+La meva solució també permet modificar el valor de diverses variables, simular diverses partides i exportar els resultats per fer una gràfica, però el més important és que permetrà canviar l'algorisme per calcular l'Elo completament. Es podrà utilitzar l'algorisme que es desitgi, ja sigui el predeterminat o un creat per l'empresa o persona que dissenyi el videojoc, permetent així veure la comparativa entre les diferents fórmules i escollint la més adequada pel videojoc. 
+
+A continuació, per tal d'aclarir les diferències entre els diferents programes, en la taula \ref{tab:TaulaFuncionalitat} es pot observar una graella comparativa entre les diferents funcionalitats dels diversos programes trobats i el meu.
+
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{|l|c|c|c|c|c|}
+            \hline
+            \rowcolor[HTML]{9B9B9B} 
+            {\color[HTML]{000000} \textbf{Funcionalitats}}                                  & {\color[HTML]{000000} \textbf{RemiFabre}}        & {\color[HTML]{000000} \textbf{cardsorg}}         & {\color[HTML]{000000} \textbf{iain}}             & {\color[HTML]{000000} \textbf{EloCalculator}}    & {\color[HTML]{000000} \textbf{El meu projecte}}  \\ \hline
+            \begin{tabular}[c]{@{}l@{}}Fórmula d'ELO\\ determinada\end{tabular}             & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} \checkmark}                         \\ \hline
+            \begin{tabular}[c]{@{}l@{}}Canviar variables\\ algorisme d'ELO\end{tabular}     & \cellcolor[HTML]{FFFFFF}{\color[HTML]{333333} \checkmark} & \cellcolor[HTML]{FFFFFF}{\color[HTML]{333333} \checkmark} & \cellcolor[HTML]{FFFFFF}{\color[HTML]{333333} \checkmark} & \cellcolor[HTML]{FFFFFF}{\color[HTML]{333333} \checkmark} & \cellcolor[HTML]{FFFFFF}{\color[HTML]{333333} \checkmark} \\ \hline
+            \begin{tabular}[c]{@{}l@{}}Simulació amb gran\\ nombre de partides\end{tabular} & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} \checkmark}                         \\ \hline
+            \begin{tabular}[c]{@{}l@{}}Personalitzar puntuació\\ de jugadors\end{tabular}   & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} X}                         \\ \hline
+            \begin{tabular}[c]{@{}l@{}}Decidir resultat\\ d'un enfrontament\end{tabular}    & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} X}                         \\ \hline
+            \begin{tabular}[c]{@{}l@{}}Mostrar resultat\\ en gràfiques\end{tabular}         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         \\ \hline
+            \begin{tabular}[c]{@{}l@{}}Personalitzar\\ algorisme d'ELO\end{tabular}         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} \checkmark}                         \\ \hline
+            \begin{tabular}[c]{@{}l@{}}Exportar dades\\ a Excel\end{tabular}                & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} \checkmark}                         \\ \hline
+        \end{tabular}
+        \caption{Taula comparativa de les diferents funcionalitats dels programes}
+        \label{tab:TaulaFuncionalitat}
+    \end{center}
+\end{table}
+
+\newpage
+\section{Abast}
+
+\subsection{Descripció del producte}
+\subsection{Objectius}
+
+\newpage
+\section{\textit{Stakeholders}}
+Els \textit{Stakeholders} són una part fonamental pel desenvolupament del projecte, ja que són totes aquelles persones o organitzacions afectades pel producte a crear i que tenen interès en aquest, ja sigui de forma directa o indirecta. A continuació es llistaran les parts interessades del software a desenvolupar.
+
+\begin{itemize}
+    \item \textbf{Empreses de videojocs:} Les empreses desenvolupadores de videojocs es veuran principalment afectades pel projecte. Si el sistema d'Elo aplicat al producte és bo, hi ha més possibilitats de que el joc triomfi. Per tant, quan més èxit tingui el joc, més conegut serà, més jugadors captarà i més beneficis obtindrà l'empresa.
+    
+    \item \textbf{Jugadors:} Els jugadors de videojocs són les principals parts interessades i són les més importants. Aquests es veuran implicats de forma indirecte, ja que són els que jugaran i seran puntuats pel sistema d'Elo resultant. També són qui han de trobar el joc entretingut i divertit, ja que seran els encarregats de fer que aquest tingui èxit. 
+    
+    \item \textbf{Desenvolupadors de videojocs:} Els desenvolupadors de videojocs són qui utilitzaran el software de forma directe. Seran els encarregats d'estudiar i plantejar les diferents fórmules del sistema d'Elo i simular-les en l'eina a desenvolupar, per així decidir quina d'elles s'adapta més al videojoc i farà que hi hagi una millor experiència.
+    
+    \item \textbf{Propietari del TFG:} Jo mateix soc un dels principals \textit{steakeholders} del projecte, ja que seré l'únic desenvolupador. El meu objectiu serà fer-lo de la millor forma possible i eficient, testejar-lo i documentar tot el procés.
+    
+\end{itemize}
+
+\newpage
+\section{Requisits del sistema}
+\subsection{Requisits funcionals}
+\subsection{Requisits no funcionals}
+
+\newpage
+\section{Metodologia i rigor}
+La metodologia que es durà a terme per desenvolupar el projecte és un aspecte molt important a tenir en compte, ja que pot canvia per complet com evolucionarà. Hi han dues grans metodologies: la cascada o \textit{waterfall} i l'\textit{agile}.
+
+La primera, l'anomenada \textit{waterfall} és la més tradicional. Aquesta té en compte els \textit{stakeholders} i clients al principi del projecte, i després es desenvolupa un pla seqüencial per satisfer els seus requisits. S'anomena d'aquesta manera perquè cada fase del pla proposat passa a la següent un cop s'ha acabat l'anterior \cite{waterfallModel}.
+
+La metodologia cascada és utilitzada quan els requeriments estan molt clars i fixes, quan la definició del producte és estable, quan la tecnologia no evoluciona constantment i quan el projecte és curt \cite{waterfallTutorialsPoint}.
+
+Per una altra part, la metodologia \textit{agile} consisteix en una contínua iteració de desenvolupament i testeig del software on s'interacciona de forma contínua amb els clients i \textit{stakeholders} per saber el seu \textit{feedback} \cite{agileVsWaterfall}.
+
+Aquesta és utilitzada per projectes llargs on es vol el \textit{feedback} del client constantment, quan es vol treballar amb tecnologies en evolució continua, també quan els requeriments no estan clars i poden canviar freqüentment, igual que la definició del producte. Com es pot observar, és la contrapart de la metodologia \textit{waterfall}. 
+
+Per tant, un cop explicades les dues metodologies, es pot observar que el meu projecte s'assimila a les condicions de la primera metodologia. El període de temps és curt, ja que el TFG dura entre tres i quatre mesos, i els requeriments ja estan definits, igual que el producte.
+
+Llavors, un cop decidida la metodologia, s'ha d'explicar com funciona. Com bé es pot observar en la figura \ref{fig:WaterfallImage}, aquesta metodologia consta de sis fases. La primera d'elles s'anomena "Requeriments", i és on s'especifiquen i redacten tots els requeriments. La segona s'anomena "Disseny", i és on s'especifica el disseny del sistema i la seva arquitectura. La següent és la fase de "Desenvolupament", on el programa és dividit en petites unitats on cada una farà una funcionalitat i la testejarà. Posteriorment ve la fase de "Testeig", on s'ajunta tot el codi fet per cada una de les unitats anteriors i es testeja el resultat. Seguidament es troben els errors i es solucionen. La següent fase és la de "Desplegament", on el producte es llença al mercat o és entregat al client. Finalment hi ha la fase de "Manteniment", on es manté i millora el programa \cite{waterfallImage}. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/Waterfall-Metodology.png}
+    \caption{Fases de la metodologia \textit{Waterfall}. Font: \cite{waterfallImage}}
+    \label{fig:WaterfallImage}
+\end{figure}
+
+Per una altra part, per poder desenvolupar el projecte, caldrà utilitzar un seguit d'eines per poder validar que s'assoleixen els objectius. 
+
+\begin{itemize}
+    \item \textbf{Trello \cite{Trello}:} Trello és una eina per gestionar els projectes i que serà utilitzada per apuntar les diverses tasques que s'han de realitzar i així saber quines s'estan fent, quines s'han de fer i quines s'han realitzat del tot.
+    
+    \item \textbf{Github \cite{Github}:} Github és un servei de repositoris que serà emprat per guardar i compartir el codi i la documentació feta durant tot el projecte. Té l'avantatge de que es poden accedir a versions anteriors del codi i també gestionar els errors i bugs trobats.
+    
+    \item \textbf{Google Meet \cite{GoogleMeet}:} Google Meet és un servei de Google que serveix per fer videotrucades. Aquesta eina serà utilitzada per mantenir al director informat i poder-li comentar qualsevol dubte o error. S'ha acordat fer, sempre que sigui possible i necessari, una reunió per setmana. D'aquesta manera es podrà discutir el progrés del projecte i observar si es va pel bon camí.
+\end{itemize}
+
+\newpage
+\section{Implementació}
+\subsection{Tecnologies utilitzades}
+Per dur a terme aquest projecte s'han escollit un seguit d'eines i tecnologies que facilitaran el seu desenvolupament. A continuació s'explicaran cada una d'elles i el motiu de la seva elecció.
+
+\begin{itemize}
+    \item \textbf{C++:} El projecte s'ha desenvolupat en aquest C++ per diversos motius. El primer de tot és que és el llenguatge que he utilitzat més freqüentment i per tant, que tinc més fresc, ja que és el que vaig utilitzar per a l'assignatura de Videojocs el quadrimestre anterior. El segon motiu és la gran facilitat que hi ha a Internet per trobar informació sobre com funcionen certs aspectes o mètodes del llenguatge, o per consultar dubtes o erros que puguin sorgir durant el desenvolupament. 
+    \item \textbf{Lua:} Lua és un llenguatge de programació de scrip potent, eficient i lleuger que pot ser integrat dins d'altres softwares o pot ser compilat en qualsevol d'ells sempre que estigui basat en aquest llenguatge C, ja que és com està fet l'intèrpret \cite{luaAbout}. S'ha escollit aquest llenguatge perquè és fàcil d'aprendre i utilitzar i també hi ha la suficient documentació i resolució de problemes a Internet.
+    \item \textbf{QT:} QT és una eina que utilitzarem per desenvolupar la interfície gràfica del programa. Ha estat una eina utilitzada durant alguna assignatura de la carrera, per tant, ja es té cert coneixement sobre ella i és per això que s'ha escollit. 
+    \item \textbf{\LaTeX:} \LaTeX és un software lliure i és un sistema de composició de textos, normalment utilitzat per escriure documents i articles científics \cite{wikipediaLatex}. S'ha escollit \LaTeX per fer la memòria perquè és un llenguatge còmode per escriure una documentació llarga i clara, ja que t'ajuda a estructurar el format de forma més senzilla.
+    \item \textbf{Visual Studio 2019:} Visual Studio és una IDE compatible amb diversos llenguatges de programació com C++ o C\#. S'ha escollit aquesta eina per desenvolupar el programa perquè ja l'havia utilitzat anteriorment, i per tant, ja sé com funciona.  
+    \item \textbf{Overleaf:} Overleaf és l'editor de text que s'utilitzarà per escriure en \LaTeX.
+    \item \textbf{Github \cite{Github}:} Github és un servei de repositoris que serà emprat per guardar i compartir el codi i la documentació feta durant tot el projecte. Té l'avantatge de què es poden accedir a versions anteriors del codi i també gestionar els errors i bugs trobats. 
+    \item \textbf{Google Meet \cite{GoogleMeet}:} Google Meet és un servei de Google que serveix per fer videotrucades. Aquesta eina serà utilitzada per mantenir al director informat i poder-li comentar qualsevol dubte o error. S'ha acordat fer, sempre que sigui possible i necessari, una reunió per setmana. D'aquesta manera es podrà discutir el progrés del projecte i observar si es va pel bon camí.
+    
+\end{itemize}
+
+\newpage
+\section{Planificació temporal}
+\subsection{Obstacles i riscos}
+Durant tot el transcurs del projecte poden aparèixer diversos obstacles i riscos que poden alentir el desenvolupament del projecte. Per aquest motiu, cal identificar-los i saber-ne d'ells.
+
+\begin{itemize}
+    \item \textbf{Data d'entrega fixa:} El TFG té una data límit fixada i, per tant, que s'ha de complir. Però els possibles problemes que ens podem trobar durant el desenvolupament del projecte poden generar endarreriments i, per tant, empitjorar la qualitat del programa o eliminar alguna funció no essencial per falta de temps.
+    \item \textbf{Desconeixement en simulació:} Un aspecte fonamental del programa és la simulació de partides. Però degut al meu desconeixement en l'àmbit de la simulació dins la informàtica, es probable que es generin endarreriments i possibles errors a l'hora de programar.
+    \item \textbf{Desconeixement en les tecnologies emprades:} Degut al meu desconeixement sobre el llenguatge Lua o sobre el poc ús fet de QT, és probable que s'alenteixi el desenvolupament del projecte, ja que hauré d'aprendre a utilitzar-los correctament.
+    \item \textbf{Bugs i errors:} Durant tot el transcurs de programar i testejar el programa, poden aparèixer diferents errors i bugs que em poden fer perdre molt temps, i per tant, endarrerir el desenvolupament.
+\end{itemize}
+
+\newpage
+\section{Gestió econòmica}
+\subsection{Identificació i estimació de costos}
+Un aspecte molt important a tindre en compte a l'hora de desenvolupar un projecte és el pressupost. Per aquest motiu, s'han de valorar tots els costos possibles: recursos humans, recursos materials, recursos generals, contingència i imprevistos. A continuació es calcularà cada un d'ells i finalment es veurà el cost final del projecte.
+
+\subsubsection{Recursos humans}
+Com s'ha explicat prèviament, dintre dels recursos humans hi han diferents rols. Aquests tenen funcions diferents i treballaran més o menys depenent de les tasques descrites prèviament en el diagrama de Gantt. Per tant, per poder saber el cost total del projecte, cal saber primer el seu sou. Aquest s'ha calculat fent la  mitjana dels sous que es mostren en la pàgina de Tecnoempleo.com \cite{tecnoEmpleo} i que podem veure a la taula \ref{tab:TaulaSouRols}. Aquesta conté els diversos rols, els seus salari brut per hora i els mateixos tenint en compte la seguretat social (SS). 
+
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{|l|c|c|}
+            \hline
+            \rowcolor[HTML]{9B9B9B} 
+            \multicolumn{1}{|c|}{\cellcolor[HTML]{9B9B9B}{\color[HTML]{000000} \textbf{Rol}}} & {\color[HTML]{000000} \textbf{Sou/hora (brut)}} & {\color[HTML]{000000} \textbf{Sou/hora + SS(x1,3) (brut)}} \\ \hline
+            {\color[HTML]{000000} Cap de projecte}                                            & {\color[HTML]{000000} 23,54€}                   & {\color[HTML]{000000} 30,61€}                              \\ \hline
+            {\color[HTML]{000000} Analista programador}                                       & {\color[HTML]{000000} 16,74€}                   & {\color[HTML]{000000} 21,77€}                              \\ \hline
+            {\color[HTML]{000000} Arquitecte del Software}                                    & {\color[HTML]{000000} 20,77€}                   & {\color[HTML]{000000} 27€}                                 \\ \hline
+            {\color[HTML]{000000} Dissenyador d'UI}                                           & {\color[HTML]{000000} 15,57€}                   & {\color[HTML]{000000} 20,24€}                              \\ \hline
+            {\color[HTML]{000000} Programador}                                                & {\color[HTML]{000000} 15,51€}                   & {\color[HTML]{000000} 20,17€}                              \\ \hline
+            {\color[HTML]{000000} Tester}                                                     & {\color[HTML]{000000} 15,40€}                   & {\color[HTML]{000000} 20,02€}                              \\ \hline
+        \end{tabular}
+        \caption{Taula dels sous per hora dels diferents rols del projecte}
+        \label{tab:TaulaSouRols}
+    \end{center}
+\end{table}
+
+Un cop coneguts els preus, ja es pot calcular el de cada tasca. Per fer-ho, es calcularà les hores necessàries de cada rol per cada una d'elles, mostrades anteriorment en el diagrama de Gannt. El cost total de les tasques es pot veure en la taula \ref{tab:TaulaCostosTasques}, on s'indica el nom de la feina a fer, i per cada una, les hores per cada respectiu rol, les hores totals de la tasca i el seu cost.
+
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{|l|c|c|c|c|c|c|c|c|}
+            \hline
+            \rowcolor[HTML]{9B9B9B} 
+            {\color[HTML]{000000} \textbf{Tasca}}                                                  & {\color[HTML]{000000} \textbf{\begin{tabular}[c]{@{}c@{}}Hores \\ totals\end{tabular}}} & {\color[HTML]{000000} \textbf{CP}}        & {\color[HTML]{000000} \textbf{AP}}      & {\color[HTML]{000000} \textbf{AS}}   & {\color[HTML]{000000} \textbf{DUI}}     & {\color[HTML]{000000} \textbf{P}}         & {\color[HTML]{000000} \textbf{T}}       & {\color[HTML]{000000} \textbf{Cost}}       \\ \hline
+            \rowcolor[HTML]{C0C0C0} 
+            {\color[HTML]{000000} \textbf{GdP}}                                                    & {\color[HTML]{000000} \textbf{70}}                                                      & {\color[HTML]{000000} \textbf{}}          & {\color[HTML]{000000} \textbf{}}        & {\color[HTML]{000000} \textbf{}}     & {\color[HTML]{000000} \textbf{}}        & {\color[HTML]{000000} \textbf{}}          & {\color[HTML]{000000} \textbf{}}        & {\color[HTML]{000000} \textbf{}}           \\ \hline
+            {\color[HTML]{000000} GdP1}                                                            & {\color[HTML]{000000} 25}                                                               & {\color[HTML]{000000} 25}                 & {\color[HTML]{000000} }                 & {\color[HTML]{000000} }              & {\color[HTML]{000000} }                 & {\color[HTML]{000000} }                   & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 765,25€}             \\ \hline
+            {\color[HTML]{000000} GdP2}                                                            & {\color[HTML]{000000} 10}                                                               & {\color[HTML]{000000} 10}                 & {\color[HTML]{000000} }                 & {\color[HTML]{000000} }              & {\color[HTML]{000000} }                 & {\color[HTML]{000000} }                   & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 306,10€}             \\ \hline
+            {\color[HTML]{000000} GdP3}                                                            & {\color[HTML]{000000} 15}                                                               & {\color[HTML]{000000} 15}                 & {\color[HTML]{000000} }                 & {\color[HTML]{000000} }              & {\color[HTML]{000000} }                 & {\color[HTML]{000000} }                   & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 459,15€}             \\ \hline
+            {\color[HTML]{000000} GdP4}                                                            & {\color[HTML]{000000} 20}                                                               & {\color[HTML]{000000} 20}                 & {\color[HTML]{000000} }                 & {\color[HTML]{000000} }              & {\color[HTML]{000000} }                 & {\color[HTML]{000000} }                   & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 612,20€}             \\ \hline
+            \rowcolor[HTML]{C0C0C0} 
+            {\color[HTML]{000000} \textbf{D}}                                                      & {\color[HTML]{000000} \textbf{270}}                                                     & {\color[HTML]{000000} \textbf{}}          & {\color[HTML]{000000} \textbf{}}        & {\color[HTML]{000000} \textbf{}}     & {\color[HTML]{000000} \textbf{}}        & {\color[HTML]{000000} \textbf{}}          & {\color[HTML]{000000} \textbf{}}        & {\color[HTML]{000000} \textbf{}}           \\ \hline
+            {\color[HTML]{000000} PA1}                                                             & {\color[HTML]{000000} 10}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 5}                & {\color[HTML]{000000} 3,5}           & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 1}                  & {\color[HTML]{000000} 0,5}              & {\color[HTML]{000000} 233.53€}             \\ \hline
+            {\color[HTML]{000000} PA2}                                                             & {\color[HTML]{000000} 10}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 1}                & {\color[HTML]{000000} 1}             & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 7}                  & {\color[HTML]{000000} 1}                & {\color[HTML]{000000} 209,98€}             \\ \hline
+            {\color[HTML]{000000} PA3}                                                             & {\color[HTML]{000000} 15}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 1}                & {\color[HTML]{000000} 1}             & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 10,5}               & {\color[HTML]{000000} 2,5}              & {\color[HTML]{000000} 310,61€}             \\ \hline
+            {\color[HTML]{000000} PA4}                                                             & {\color[HTML]{000000} 35}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 3}                & {\color[HTML]{000000} 3}             & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 24,5}               & {\color[HTML]{000000} 4,5}              & {\color[HTML]{000000} 735,57€}             \\ \hline
+            {\color[HTML]{000000} SP1}                                                             & {\color[HTML]{000000} 35}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 3,5}              & {\color[HTML]{000000} 3,5}           & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 26}                 & {\color[HTML]{000000} 2}                & {\color[HTML]{000000} 735,16€}             \\ \hline
+            {\color[HTML]{000000} SP2}                                                             & {\color[HTML]{000000} 30}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 2,5}              & {\color[HTML]{000000} 2,5}           & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 21}                 & {\color[HTML]{000000} 4}                & {\color[HTML]{000000} 625,58€}             \\ \hline
+            {\color[HTML]{000000} SP3}                                                             & {\color[HTML]{000000} 20}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 2}                & {\color[HTML]{000000} 2}             & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 14}                 & {\color[HTML]{000000} 2}                & {\color[HTML]{000000} 419,96€}             \\ \hline
+            {\color[HTML]{000000} SP4}                                                             & {\color[HTML]{000000} 20}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 2}                & {\color[HTML]{000000} 2}             & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 14}                 & {\color[HTML]{000000} 2}                & {\color[HTML]{000000} 419,96€}             \\ \hline
+            {\color[HTML]{000000} SP5}                                                             & {\color[HTML]{000000} 5}                                                                & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 0,5}              & {\color[HTML]{000000} 0,5}           & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 3,5}                & {\color[HTML]{000000} 0,5}              & {\color[HTML]{000000} 104,99€}             \\ \hline
+            {\color[HTML]{000000} SP6}                                                             & {\color[HTML]{000000} 20}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 2}                & {\color[HTML]{000000} 1}             & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 14}                 & {\color[HTML]{000000} 3}                & {\color[HTML]{000000} 412,98€}             \\ \hline
+            {\color[HTML]{000000} CR1}                                                             & {\color[HTML]{000000} 20}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 1}                & {\color[HTML]{000000} 3}             & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 14}                 & {\color[HTML]{000000} 2}                & {\color[HTML]{000000} 425,19€}             \\ \hline
+            {\color[HTML]{000000} CR2}                                                             & {\color[HTML]{000000} 40}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 2}                & {\color[HTML]{000000} 2}             & {\color[HTML]{000000} 18}               & {\color[HTML]{000000} 14}                 & {\color[HTML]{000000} 4}                & {\color[HTML]{000000} 824,32€}             \\ \hline
+            {\color[HTML]{000000} CR3}                                                             & {\color[HTML]{000000} 10}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 1}                & {\color[HTML]{000000} 1}             & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 7}                  & {\color[HTML]{000000} 1}                & {\color[HTML]{000000} 209,98€}             \\ \hline
+            \rowcolor[HTML]{C0C0C0} 
+            {\color[HTML]{000000} \textbf{DS}}                                                     & {\color[HTML]{000000} \textbf{110}}                                                     & {\color[HTML]{000000} \textbf{}}          & {\color[HTML]{000000} \textbf{}}        & {\color[HTML]{000000} \textbf{}}     & {\color[HTML]{000000} \textbf{}}        & {\color[HTML]{000000} \textbf{}}          & {\color[HTML]{000000} \textbf{}}        & {\color[HTML]{000000} \textbf{}}           \\ \hline
+            {\color[HTML]{000000} DS1}                                                             & {\color[HTML]{000000} 75}                                                               & {\color[HTML]{000000} 75}                 & {\color[HTML]{000000} }                 & {\color[HTML]{000000} }              & {\color[HTML]{000000} }                 & {\color[HTML]{000000} }                   & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 2295,75€}            \\ \hline
+            {\color[HTML]{000000} DS2}                                                             & {\color[HTML]{000000} 25}                                                               & {\color[HTML]{000000} 25}                 & {\color[HTML]{000000} }                 & {\color[HTML]{000000} }              & {\color[HTML]{000000} }                 & {\color[HTML]{000000} }                   & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 765,25€}             \\ \hline
+            {\color[HTML]{000000} DS3}                                                             & {\color[HTML]{000000} 10}                                                               & {\color[HTML]{000000} 10}                 & {\color[HTML]{000000} }                 & {\color[HTML]{000000} }              & {\color[HTML]{000000} }                 & {\color[HTML]{000000} }                   & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 306,10€}             \\ \hline
+            \rowcolor[HTML]{C0C0C0} 
+            {\color[HTML]{000000} \textbf{\begin{tabular}[c]{@{}l@{}}TOTAL \\ HORES\end{tabular}}} & {\color[HTML]{000000} \textbf{450}}                                                     & {\color[HTML]{000000} \textbf{180}}       & {\color[HTML]{000000} \textbf{26.5}}    & {\color[HTML]{000000} \textbf{26}}   & {\color[HTML]{000000} \textbf{18}}      & {\color[HTML]{000000} \textbf{170.5}}     & {\color[HTML]{000000} \textbf{29}}      & {\color[HTML]{000000} \textbf{}}           \\ \hline
+            \rowcolor[HTML]{C0C0C0} 
+            {\color[HTML]{000000} \textbf{\begin{tabular}[c]{@{}l@{}}TOTAL \\ COST\end{tabular}}}  & {\color[HTML]{000000} \textbf{}}                                                        & {\color[HTML]{000000} \textbf{5.509,80€}} & {\color[HTML]{000000} \textbf{576,91€}} & {\color[HTML]{000000} \textbf{702€}} & {\color[HTML]{000000} \textbf{364,32€}} & {\color[HTML]{000000} \textbf{3.438,99€}} & {\color[HTML]{000000} \textbf{580,58€}} & {\color[HTML]{000000} \textbf{11.173,61€}} \\ \hline
+        \end{tabular}
+        \caption{Taula dels costos de les tasques del projecte}
+        \label{tab:TaulaCostosTasques}
+    \end{center}
+\end{table}
+
+\subsubsection{Recursos materials}
+Un altre aspecte a tenir en compte a l'hora de calcular el pressupost d'un projecte són els recursos materials. En aquest cas, s'utilitzarà un HP Laptop 15s-fq2093ns \cite{HPLaptop} durant tot el desenvolupament i un ratolí inalàmbric HP 220 \cite{HPRatoli}. Respecte els softwares que s'utilitzaran, hi han alguns que son de franc, com és el cas del Lua o el Github, i d'altres de pagament, com el Visual Studio o Qt.
+
+A la taula \ref{tab:TaulaCostosHardware} es pot observar els recursos materials de hardware amb els seus costos, els seus anys de vida útil i les seves amortitzacions. Aquests càlculs estan fets sobre 4 anys de vida útil i amb una utilització de 5 hores diàries. La fórmula utilitzada pel càlcul de l'amortització és la següent:
+
+\[
+\frac{cost\, del\, hardware (euros)}{vida\, \acute{u}til (anys) * 220\, dies\, laborables/any * hores\, dedicades\, al\, dia} * durada\, del\, projecte (hores)
+\]
+
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{|l|c|c|c|}
+            \hline
+            \rowcolor[HTML]{9B9B9B} 
+            {\color[HTML]{000000} \textbf{Hardware}} & {\color[HTML]{000000} \textbf{Cost}} & {\color[HTML]{000000} \textbf{Vida útil}} & {\color[HTML]{000000} \textbf{Amortització}} \\ \hline
+            HP Laptop 15s-fq2093ns                   & 650€                                 & 4 anys                                    & 66,48€                                       \\ \hline
+            Ratolí inalàmbric HP 220                 & 20€                                  & 4 anys                                    & 2,05€                                        \\ \hline
+            \rowcolor[HTML]{C0C0C0} 
+            {\color[HTML]{000000} \textbf{Total}}    & {\color[HTML]{000000} \textbf{670€}}     & {\color[HTML]{000000} \textbf{}}          & {\color[HTML]{000000} \textbf{68,53€}}       \\ \hline
+        \end{tabular}
+        \caption{Taula dels costos dels recursos hardware i la seva amortització}
+        \label{tab:TaulaCostosHardware}
+    \end{center}
+\end{table}
+
+A la taula \ref{tab:TaulaCostosSoftware} es pot observar els recursos materials de software i els seus costos. Aquesta inclou la llicència de Windows \cite{Windows}, la del Visual Studio \cite{VisualStudio} i la de QT \cite{Qt}. Aquesta última s'ha de pagar per mesos durant tot un any.
+
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{|l|c|c|c|}
+            \hline
+            \rowcolor[HTML]{9B9B9B} 
+            {\color[HTML]{000000} \textbf{Software}} & {\color[HTML]{000000} \textbf{Cost/mes}} & {\color[HTML]{000000} \textbf{Mesos}} & {\color[HTML]{000000} \textbf{Cost}} \\ \hline
+            {\color[HTML]{000000} Windows}           & {\color[HTML]{000000} 145€}              & {\color[HTML]{000000} }               & {\color[HTML]{000000} 145€}          \\ \hline
+            {\color[HTML]{000000} Visual Studio}     & {\color[HTML]{000000} 45€}               & {\color[HTML]{000000} 5}              & {\color[HTML]{000000} 225€}          \\ \hline
+            {\color[HTML]{000000} QT}                & {\color[HTML]{000000} 42€}               & {\color[HTML]{000000} 12}             & {\color[HTML]{000000} 504€}          \\ \hline
+            \rowcolor[HTML]{C0C0C0} 
+            {\color[HTML]{000000} \textbf{Total}}    & {\color[HTML]{000000} \textbf{}}         & {\color[HTML]{000000} \textbf{}}      & {\color[HTML]{000000} \textbf{874€}} \\ \hline
+        \end{tabular}
+        \caption{Taula dels costos dels recursos hardware i la seva amortització}
+        \label{tab:TaulaCostosSoftware}
+    \end{center}
+\end{table}
+
+Finalment, a la taula \ref{tab:TaulaCostosMaterials} podem observar el cost total dels recursos materials.
+
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{|l|c|}
+            \hline
+            \rowcolor[HTML]{9B9B9B} 
+            {\color[HTML]{000000} \textbf{Recurs material}} & {\color[HTML]{000000} \textbf{Cost}}  \\ \hline
+            {\color[HTML]{000000} Hardware}                 & {\color[HTML]{000000} 670€}           \\ \hline
+            {\color[HTML]{000000} Software}                 & {\color[HTML]{000000} 874€}           \\ \hline
+            \rowcolor[HTML]{C0C0C0} 
+            {\color[HTML]{000000} \textbf{Total}}           & {\color[HTML]{000000} \textbf{1554€}} \\ \hline
+        \end{tabular}
+        \caption{Taula dels costos dels recursos hardware i la seva amortització}
+        \label{tab:TaulaCostosMaterials}
+    \end{center}
+\end{table}
+
+\subsubsection{Recursos generals}
+A part dels recursos humans i materials, per poder calcular el pressupost sencer del projecte també s'han de tindre en compte altres elements com l'Internet, l'electricitat, el desplaçament, l'espai de treball, etc. En aquest cas, el treball és desenvolupat per una sola persona des de casa, per tant, només es contemplaran els dos primers costos. Per l'electricitat, es tindran en compte dos llums LEDs que consumeixen 14 W i l'ordinador que consum 150 W. A la taula \ref{tab:TaulaCostosGenerals} es pot veure el cost dels diversos recursos generals.
+
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{|l|c|c|}
+            \hline
+            \rowcolor[HTML]{9B9B9B} 
+            {\color[HTML]{000000} \textbf{Recursos}} & {\color[HTML]{000000} \textbf{Cost}} & {\color[HTML]{000000} \textbf{Cost Total}} \\ \hline
+            Electricitat                             & 0,1458€/kWh                          & 11,68€                                     \\ \hline
+            Internet                                 & 48,40€/mes                           & 193,60€                                    \\ \hline
+            \rowcolor[HTML]{C0C0C0} 
+            {\color[HTML]{000000} \textbf{Total}}    & {\color[HTML]{000000} \textbf{}}     & {\color[HTML]{000000} \textbf{205,28€}}    \\ \hline
+        \end{tabular}
+        \caption{Taula dels costos dels recursos generals}
+        \label{tab:TaulaCostosGenerals}
+    \end{center}
+\end{table}
+
+\subsubsection{Contingència}
+Un altre aspecte a tenir present és la contingència, és a dir, és un cost que se li suma al pressupost per cobrir aquells imprevists que no s'han anticipat. Aquesta es calcula amb un percentatge del cost dels recursos calculats. En el sector informàtic, aquest percentatge varia entre el 10\% i el 20\%, per tant, s'escollirà el punt mig, és a dir, el 15\%. A la taula \ref{tab:TaulaContingència} podem observar la taula de contingència pels diferents recursos calculats anteriorment.
+
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{|l|c|c|c|}
+            \hline
+            \rowcolor[HTML]{9B9B9B} 
+            {\color[HTML]{000000} \textbf{Tipus de recursos}} & {\color[HTML]{000000} \textbf{Cost}} & {\color[HTML]{000000} \textbf{\% de Contingència}} & {\color[HTML]{000000} \textbf{Cost contingència}} \\ \hline
+            {\color[HTML]{000000} Recursos humans}            & {\color[HTML]{000000} 11.173,61€}    & {\color[HTML]{000000} }                            & {\color[HTML]{000000} 1.676,04€}                  \\ \cline{1-2} \cline{4-4} 
+            {\color[HTML]{000000} Recursos materials}         & {\color[HTML]{000000} 1544€}          & {\color[HTML]{000000} }                            & {\color[HTML]{000000} 231,60€}                    \\ \cline{1-2} \cline{4-4} 
+            {\color[HTML]{000000} Recursos generals}          & {\color[HTML]{000000} 205,28€}       & \multirow{-3}{*}{{\color[HTML]{000000} 15\%}}      & {\color[HTML]{000000} 30,72€}                     \\ \hline
+            \rowcolor[HTML]{C0C0C0} 
+            {\color[HTML]{000000} \textbf{Total}}             & {\color[HTML]{000000} \textbf{}}     & {\color[HTML]{000000} \textbf{}}                   & {\color[HTML]{000000} \textbf{1.938,36€}}         \\ \hline
+        \end{tabular}
+        \caption{Taula de contingència dels diversos recursos}
+        \label{tab:TaulaContingència}
+    \end{center}
+\end{table}
+
+\subsubsection{Cost d'imprevistos}
+Finalment, cal calcular el cost de tots aquells imprevistos que s'han identificat prèviament en l'apartat de riscos. A la taula \ref{tab:TaulaImprevistos} podem veure el cost de cada un d'ells junt amb la seva probabilitat de que passin.
+
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{|l|c|c|c|}
+            \hline
+            \rowcolor[HTML]{9B9B9B} 
+            {\color[HTML]{000000} \textbf{Risc}}                                                                       & {\color[HTML]{000000} \textbf{Probabilitat}} & {\color[HTML]{000000} \textbf{Temps}} & {\color[HTML]{000000} \textbf{Cost}}    \\ \hline
+            {\color[HTML]{000000} Data entrega fixa}                                                                   & {\color[HTML]{000000} 10\%}                  & {\color[HTML]{000000} 10 hores}       & {\color[HTML]{000000} 30,61€}           \\ \hline
+            {\color[HTML]{000000} \begin{tabular}[c]{@{}l@{}}Desconeixement\\ en simulació\end{tabular}}               & {\color[HTML]{000000} 66\%}                  & {\color[HTML]{000000} 10 hores}       & {\color[HTML]{000000} 133,12€}          \\ \hline
+            {\color[HTML]{000000} \begin{tabular}[c]{@{}l@{}}Desconeixement \\ en tecnologies\\ emprades\end{tabular}} & {\color[HTML]{000000} 66\%}                  & {\color[HTML]{000000} 15 hores}       & {\color[HTML]{000000} 199,68€}          \\ \hline
+            {\color[HTML]{000000} Bugs i errors}                                                                       & {\color[HTML]{000000} 66\%}                  & {\color[HTML]{000000} 20 hores}       & {\color[HTML]{000000} 264,26€}          \\ \hline
+            \rowcolor[HTML]{C0C0C0} 
+            {\color[HTML]{000000} \textbf{Total}}                                                                      & {\color[HTML]{000000} \textbf{}}             & {\color[HTML]{000000} \textbf{}}      & {\color[HTML]{000000} \textbf{627,67€}} \\ \hline
+        \end{tabular}
+        \caption{Taula del cost d'imprevistos}
+        \label{tab:TaulaImprevistos}
+    \end{center}
+\end{table}
+
+\subsubsection{Pressupost final}
+
+Un cop ja s'han calculat tots els càlculs necessaris dels diferents costos, ja es pot determinar el pressupost final que costarà el projecte. Aquest el podem veure en la taula \ref{tab:TaulaFinal}, on si arrodonim el preu a l'alça, queda amb un total de 15.488€, gairebé 15.500€.
+
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{|l|c|}
+            \hline
+            \rowcolor[HTML]{9B9B9B} 
+            {\color[HTML]{000000} \textbf{}}          & {\color[HTML]{000000} \textbf{Cost}}       \\ \hline
+            {\color[HTML]{000000} Recursos humans}    & {\color[HTML]{000000} 11.173,61€}          \\ \hline
+            {\color[HTML]{000000} Recursos materials} & {\color[HTML]{000000} 1544€}                \\ \hline
+            {\color[HTML]{000000} Recursos generals}  & {\color[HTML]{000000} 205,28€}             \\ \hline
+            {\color[HTML]{000000} Contingència}       & {\color[HTML]{000000} 1.938,36€}           \\ \hline
+            {\color[HTML]{000000} Imprevistos}        & {\color[HTML]{000000} 627,67€}             \\ \hline
+            \rowcolor[HTML]{C0C0C0} 
+            {\color[HTML]{000000} \textbf{Total}}     & {\color[HTML]{000000} \textbf{15.488,92€}} \\ \hline
+        \end{tabular}
+        \caption{Taula de pressupost final}
+        \label{tab:TaulaFinal}
+    \end{center}
+\end{table}
+
+\subsection{Control de gestió}
+
+Planificar i gestionar el pressupost d'un projecte és molt important, però també s'ha de gestionar els diners i calcular les desviacions econòmiques per cadascuna de les tasques o costos calculats prèviament. Per fer-ho, per cada una de les tasques fetes, s'anotarà les hores reals que han estat necessàries i s'empraran les següents fórmules.
+\begin{itemize}
+    \item \textbf{Desviació d'hores per tasca}
+    \[(Hores\,estimades - Hores\,reals)\]
+    \item \textbf{Desviació de costos per tasca}
+    \[(Hores\,estimades - Hores\,reals) * Cost\,real\]
+    \item \textbf{Desviació d'hores dels recursos humans per cada tasca}
+    \[(Hores\,estimades - Hores\,reals)\]
+    \item \textbf{Desviació dels costos de recursos humans per cada tasca}
+    \[(Cost\, estimat - Cost\,real) * Hores\,reals\]
+    \item \textbf{Desviació total de recursos humans}
+    \[Costos\,recursos\,humans\,estimats - Costos\,recursos\,humans\,reals\]
+    \item \textbf{Desviació total de recursos materials}
+    \[Costos\,recursos\,materials\,estimats - Costos\,recursos\,materials\,reals\]
+    \item \textbf{Desviació total de recursos generals}
+    \[Costos\,recursos\,generals\,estimats - Costos\,recursos\,generals\,reals\]
+    \item \textbf{Desviació total de contingències}
+    \[Cost\,contingència\,estimat - Cost\,contingència\,real\]
+    \item \textbf{Desviació total d'imprevistos}
+    \[Costos\,imprevistos\,estimats - Costos\,imprevistos\,reals\]
+    \item \textbf{Desviació total d'hores}
+    \[Hores\,estimades - Hores\,reals\]
+    \item \textbf{Desviació total de pressupost final}
+    \[Pressupost\,final\,estimat - Pressupost\,final\,real\]
+\end{itemize}
+
+\newpage
+\nocite{*}
+\printbibliography[heading=bibintoc]
 \end{document}
