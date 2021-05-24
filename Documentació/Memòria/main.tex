@@ -22,10 +22,44 @@
 \usepackage[document]{ragged2e}
 
 \pagestyle{fancy}
+\usepackage{pdflscape}
 \fancyhf{}
 \lhead{Estudi de l'ELO en els videojocs}
 \rhead{TFG}
 \rfoot{\thepage}
+
+\usepackage{titlesec}
+
+\titleclass{\subsubsubsection}{straight}[\subsection]
+
+\newcounter{subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+\renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}} % optional; useful if paragraphs are to be numbered
+
+\titleformat{\subsubsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}%
+  {3.25ex \@plus1ex \@minus.2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{6}{\parindent}%
+  {3.25ex \@plus1ex \@minus .2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\def\toclevel@subsubsubsection{4}
+\def\toclevel@paragraph{5}
+\def\toclevel@paragraph{6}
+\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
+\def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
+\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
+\makeatother
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
 
 \usepackage{helvet}
 \renewcommand\familydefault{\sfdefault} 
@@ -38,7 +72,7 @@
 \addbibresource{references.bib}
 \usepackage{graphicx}
 \usepackage[justification=justified]{caption}
-\captionsetup{width=.5\textwidth}
+\captionsetup{width=1\textwidth}
 
 \begin{document}
 
@@ -103,13 +137,15 @@ Com es pot observar, la fórmula de l'Elo pot ser molt variable i s'han de fer d
 L'Elo es pot calcular de diverses fórmules, des de la més simple que és la d'obtenir punts depenent de si es guanya o es perd, fins a la de contemplar el teu progrés en la partida, com per exemple si s'ha eliminat molts contrincants, si s'ha mort moltes vegades, etc. A continuació es mostraran alguns exemples de sistemes d'Elo utilitzars en videojocs molt coneguts:
 
 \begin{itemize}
-    \item \textbf{Escacs:} Els escacs consisteixen en partides d'u contra u on l'objectiu és eliminar el rei enemic. Aquest utilitza el mètode més senzill per calcular la puntuació d'Elo i és el següent: és mesura la probabilitat de guanyar al rival més la de fer taules (empatar). A partir d'aquí s'extreuen els punts d'Elo a guanyar o perdre depenent del resultat. La quantitat també depén del rang on juguin la partida, com més rang tinguin, més punts guanyaran o perdran \cite{wikipediaElo}.
-    
+    \item \textbf{Escacs:} Els escacs consisteixen en partides d'u contra u on l'objectiu és eliminar el rei enemic. Aquest utilitza el mètode més senzill per calcular la puntuació d'Elo i és el següent: és mesura la probabilitat de guanyar al rival més la de fer taules (empatar). A partir d'aquí s'extreuen els punts d'Elo a guanyar o perdre depenent del resultat. La quantitat també depèn del rang on juguin la partida, com més rang tinguin, més punts guanyaran o perdran \cite{wikipediaElo}.
+    \item \textbf{Rocket League:} El Rocket League és un videojoc de futbol, amb la diferència que en canvi de jugar amb persones, es juga amb cotxes. En aquest cas, l'Elo s'anomena MMR (MatchMaking Rank) i funciona similar al dels Escacs. Si es guanya al rival, s'obté MMR i si es perd, es resta. La quantitat pot variar depenent del rang en el qual es trobi el jugador i depenent del nivell de l'equip rival. En aquest cas, marcar gols, fer parades o assistències no contribueix a obtenir més Elo \cite{rocketElo}.
+    \item \textbf{League of Legends:} El League of Legends o LOL és un joc per equips on l'objectiu és enderrocar una estructura anomenada Nexo que es troba en la base del rival. Aquest videojoc funciona per rangs i per pujar-ne d'un a un altre, has d'acumular una certa quantitat de LP (League Points). Aquests funcionen com els punts d'Elo explicats anteriorment: si el jugador guanya la partida, n'adquirirà més o menys depenent del nivell del rival. En canvi, si la perd, se li restaran. La diferència amb els videojocs anteriors és que un cop ha adquirit els LP suficients per pujar de rang, necessita jugar unes fases d'ascensió. Si les passa, pujarà de rang i tindrà els LP corresponents. En canvi, si les perd, els LP seran restablerts al del rang corresponent \cite{LolElo}.
+    \item \textbf{Counter Strike: Global Offensive:} El Counter Strike: Global Offensive o CSGO és un videojoc per equips de diverses rondes on l'objectiu és eliminar a tot l'equip rival, o evitar que es planti la bomba o desactivar-la, o plantar-la i fer-la explotar, depenent del rol que tingui l'equip.  En aquest joc el sistema d'Elo funciona de manera diferent: cada ronda que es juga és com si fos una partida d'escacs. Els punts d'Elo es veuen repartits al final de cada una d'elles. La diferència està en el fet que aquest joc si contempla el nombre de morts que ha tingut un jugador, el número de baixes, si ha complert l'objectiu, etc. per repartir els punts d'Elo. També té molt en compte qui ha estat el MVP de la ronda, enduent-se una gran part dels punts \cite{csgoELO1} \cite{csgoELO2}. 
 \end{itemize}
 
 \newpage
 \subsection{Motivació}
-Els videojocs és un aspecte que m'ha apassionat tota la vida. Des de ben petit fins al dia d'avui que els porto jugant i gaudint. El quadrimestre passat vaig cursar l'assignatura de videojocs per veure i entendre com funcionaven.
+Els videojocs és un aspecte que m'ha apassionat tota la vida. Des de ben petit fins al dia d'avui que els porto jugant i gaudint. De fet, el quadrimestre passat vaig cursar l'assignatura de videojocs per tal de veure i entendre com funcionaven.
 
 A l'hora d'escollir un tema per fer el TFG, vaig demanar ajuda a diversos professors que havia tingut durant la carrera per veure si em podien donar alguna idea. D'entre totes les propostes que havia rebut, les quals eren molt interessants, va haver-hi una que em va cridar molt l'atenció. Evidentment, aquesta és la del meu TFG i consisteix a fer un simulador d'Elo per estudiar aquest mateix i veure com evolucionava. Vaig escollir aquesta idea per dues raons: la primera és que era una temàtica sobre els videojocs, que com he mencionat anteriorment, m'agraden molt. La segona és que és un aspecte que mai m'havia plantejat com funcionava i que malauradament no s'havia estudiat en l'assignatura. Per tant, vaig escollir aquest TFG per augmentar el meu coneixement sobre els videojocs i com estan fets.
 
@@ -120,19 +156,19 @@ A l'hora d'escollir un tema per fer el TFG, vaig demanar ajuda a diversos profes
 El sistema d'Elo d'un videojoc és molt important, ja que ha de representar, normalment, el nivell d'habilitat del jugador i a més, aconseguir fer les partides entretingudes. Llavors, podem arribar a la conclusió de què ha d'estar ben fet perquè un joc triomfi. És per aquest motiu que he realitzat una recerca per Internet de programes que simulin i permetin configurar el sistema d'Elo d'un videojoc, però només he trobat repositoris de Github que ho simulen, donada una fórmula predeterminada, on a vegades es poden canviar algunes variables, o bé una pàgina web que fa el mateix. Els millors resultats obtinguts han estat els següents:
 
 \begin{itemize}
-    \item \textbf{Repositori de RemiFabre \cite{EloSystemRemi}:} En aquest repositori anomenat "Elo" \space es troba un programa fet en python que simula l'evolució de l'Elo en diversos jugadors amb puntuacions diferents. Aquest programa té dos modalitats, en la primera és que els jugadors només s'enfronten entre sí una vegada rere l'altre, mentre que en la segona modalitat s'enfronten a jugadors creats només per aquella partida i amb un "winrate" \space fixat. L'algorisme de l'Elo esta predeterminat i com a molt es pot canviar el valor de certes variables. Posteriorment, es mostra el resultat en una gràfica. 
+    \item \textbf{Repositori de RemiFabre \cite{EloSystemRemi}:} En aquest repositori anomenat "Elo" \space es troba un programa fet en python que simula l'evolució de l'Elo en diversos jugadors amb puntuacions diferents. Aquest programa té dues modalitats, en la primera és que els jugadors només s'enfronten entre si una vegada rere l'altre, mentre que en la segona modalitat s'enfronten a jugadors creats només per aquella partida i amb un "winrate" \space fixat. L'algorisme de l'Elo està predeterminat i com a molt es pot canviar el valor de certes variables. Posteriorment, es mostra el resultat en una gràfica. 
     
-    \item \textbf{Repositori de cardsorg \cite{EloSystemCardsorg}:} Aquest repositori de Github anomenat "Elo" \space inclou un software que simula l'enfrontament entre dos jugadors i diu el respectiu Elo de cadascú. Té tres funcionalitats diferents; la primera permet fer l'enfrontament entre dos persones amb l'Elo i el resultat que es vulguin assignar. També permet canviar el valor de la variable K, que és el màxim de punts que pot guanyar o perdre un jugador en una partida. La segona funcionalitat consisteix en mostrar la diferència entre els dos jugadors i la tercera fa el mateix, però també mostra la diferència estimada.
+    \item \textbf{Repositori de cardsorg \cite{EloSystemCardsorg}:} Aquest repositori de Github anomenat "Elo" \space inclou un software que simula l'enfrontament entre dos jugadors i diu el respectiu Elo de cadascú. Té tres funcionalitats diferents; la primera permet fer l'enfrontament entre dues persones amb l'Elo i el resultat que es vulguin assignar. També permet canviar el valor de la variable K, que és el màxim de punts que pot guanyar o perdre un jugador en una partida. La segona funcionalitat consisteix a mostrar la diferència entre els dos jugadors i la tercera fa el mateix, però també mostra la diferència estimada.
     
-    \item \textbf{Repositori d'iain \cite{EloSystemiain}:} En aquest tercer repositori anomenat "Elo" \space es troba un altre programa que permet simular i modificar alguna variable del sistmea d'Elo. En aquest cas, es poden crear jugadors amb la puntuació desitjada i enfrontar-los entre sí, decidint el resultat. També diu si són professionals o principiants depenent dels seus punts. Aquest software també permet varies configuracions, com la modificació de la variable K, on es pot definir depenent del número de partides fetes. També permet modificar a partir de quina quantitat de punts es deixa de ser un principiant i amb quina puntuació comença un jugador.
+    \item \textbf{Repositori d'iain \cite{EloSystemiain}:} En aquest tercer repositori anomenat "Elo" \space es troba un altre programa que permet simular i modificar alguna variable del sistmea d'Elo. En aquest cas, es poden crear jugadors amb la puntuació desitjada i enfrontar-los entre si, decidint el resultat. També diu si són professionals o principiants depenent dels seus punts. Aquest software també permet diferents configuracions, com la modificació de la variable K, on es pot definir depenent del nombre de partides fetes. També permet modificar a partir de quina quantitat de punts es deixa de ser un principiant i amb quina puntuació comença un jugador.
     
     \item \textbf{Elo Calculator \cite{EloSystemOmnicalculator}:} Aquesta calculadora online de la pàgina web "Omnicalculator"\space permet calcular l'Elo d'un jugador després de fer diferents jocs i també modificar la variable K. Hi ha dos opcions a escollir: una única partida o múltiples d'elles. La calculadora deixa assignar els punts desitjats al jugador principal i a cada un dels seus rivals, permetent també escollir el resultat de cada enfrontament. Al final, mostra una taula amb quants punts s'han guanyat i perdut en cada joc i quina és la puntuació final.
 \end{itemize}
 
 \subsection{Justificació de la meva proposta}
-Un cop vistes totes les solucions que hi han actualment a Internet, podem concloure que totes elles tenen aspectes positius: permeten modificar la variable K,  mostren un gràfic de com va evolucionant l'Elo després de diverses partides,  permeten escollir el resultat de cada joc o ensenyen quants punts es guanyen o perden en cada un. Tot i així, totes elles estan lligades a la mateixa fórmula, i és aquesta la principal diferència amb el meu projecte.
+Un cop vistes totes les solucions que hi ha actualment a Internet, podem concloure que totes elles tenen aspectes positius: permeten modificar la variable K,  mostren un gràfic de com va evolucionant l'Elo després de diverses partides,  permeten escollir el resultat de cada joc o ensenyen quants punts es guanyen o perden en cada un. Tot i això, totes elles estan lligades a la mateixa fórmula, i és aquesta la principal diferència amb el meu projecte.
 
-La meva solució també permet modificar el valor de diverses variables, simular diverses partides i exportar els resultats per fer una gràfica, però el més important és que permetrà canviar l'algorisme per calcular l'Elo completament. Es podrà utilitzar l'algorisme que es desitgi, ja sigui el predeterminat o un creat per l'empresa o persona que dissenyi el videojoc, permetent així veure la comparativa entre les diferents fórmules i escollint la més adequada pel videojoc. 
+La meva solució també permet modificar el valor de diverses variables, simular diverses partides i exportar els resultats per fer una gràfica, però el més important és que permetrà canviar l'algorisme per calcular l'Elo completament. Es podrà utilitzar l'algorisme que es desitgi, ja sigui el predeterminat o un creat per l'empresa o persona que dissenyi el videojoc, permetent així veure la comparativa entre les diferents fórmules i escollint la més adequada pel videojoc. A més, per tal de simular millors les partides, també permetrà canviar l'algorisme de com es juguen i també permetrà crear jugadors amb les característiques desitjades. Tot això fa el simulador més dinàmic i més adaptable, ajustant-se a la voluntat de l'empresa.
 
 A continuació, per tal d'aclarir les diferències entre els diferents programes, en la taula \ref{tab:TaulaFuncionalitat} es pot observar una graella comparativa entre les diferents funcionalitats dels diversos programes trobats i el meu.
 
@@ -149,6 +185,8 @@ A continuació, per tal d'aclarir les diferències entre els diferents programes
             \begin{tabular}[c]{@{}l@{}}Decidir resultat\\ d'un enfrontament\end{tabular}    & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} X}                         \\ \hline
             \begin{tabular}[c]{@{}l@{}}Mostrar resultat\\ en gràfiques\end{tabular}         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         \\ \hline
             \begin{tabular}[c]{@{}l@{}}Personalitzar\\ algorisme d'ELO\end{tabular}         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} \checkmark}                         \\ \hline
+            \begin{tabular}[c]{@{}l@{}}Personalitzar\\ algorisme de partida\end{tabular}         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} \checkmark}                         \\ \hline
+            \begin{tabular}[c]{@{}l@{}}Personalitzar\\ creació de jugadors\end{tabular}         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} \checkmark}                         \\ \hline
             \begin{tabular}[c]{@{}l@{}}Exportar dades\\ a Excel\end{tabular}                & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} \checkmark}                         \\ \hline
         \end{tabular}
         \caption{Taula comparativa de les diferents funcionalitats dels programes}
@@ -208,11 +246,9 @@ Llavors, un cop decidida la metodologia, s'ha d'explicar com funciona. Com bé e
 Per una altra part, per poder desenvolupar el projecte, caldrà utilitzar un seguit d'eines per poder validar que s'assoleixen els objectius. 
 
 \begin{itemize}
-    \item \textbf{Trello \cite{Trello}:} Trello és una eina per gestionar els projectes i que serà utilitzada per apuntar les diverses tasques que s'han de realitzar i així saber quines s'estan fent, quines s'han de fer i quines s'han realitzat del tot.
+    \item \textbf{Github \cite{Github}:} El Github s'utilitzarà per pujar tot el codi del projecte i tota la documentació necessària. D'aquesta manera, el director podrà veure el progrés i podrà analitzar com s'està implementant la solució.
     
-    \item \textbf{Github \cite{Github}:} Github és un servei de repositoris que serà emprat per guardar i compartir el codi i la documentació feta durant tot el projecte. Té l'avantatge de que es poden accedir a versions anteriors del codi i també gestionar els errors i bugs trobats.
-    
-    \item \textbf{Google Meet \cite{GoogleMeet}:} Google Meet és un servei de Google que serveix per fer videotrucades. Aquesta eina serà utilitzada per mantenir al director informat i poder-li comentar qualsevol dubte o error. S'ha acordat fer, sempre que sigui possible i necessari, una reunió per setmana. D'aquesta manera es podrà discutir el progrés del projecte i observar si es va pel bon camí.
+    \item \textbf{Google Meet \cite{GoogleMeet}:} Google Meet serà utilitzat per mantenir al director informat i poder-li comentar qualsevol dubte o error. S'ha acordat fer, sempre que sigui possible i necessari, una reunió per setmana. D'aquesta manera es podrà discutir el progrés del projecte i observar si es va pel bon camí.
 \end{itemize}
 
 \newpage
@@ -234,23 +270,170 @@ Per dur a terme aquest projecte s'han escollit un seguit d'eines i tecnologies q
 
 \newpage
 \section{Planificació temporal}
+Planificar bé un projecte és molt important, ja que et permet gestionar el temps per desenvolupar tot el producte i preveure tots els errors que puguin sorgir. Concretament, aquest TFG té una duració aproximada de quatre mesos i mig, començant a mitjans de febrer, per ser exactes el dia 15, i finalitzant l'última setmana de juny. S'estima que la duració del treball sigui de 450 hores, que es distribuiran entre les 18 setmanes lectives (excloent Setmana Santa). Això equival a 25 hores per setmana, que fa una mitjana de 5 hores per cada dia lectiu. 
+
+Durant el curset de GEP, es fa una planificació completa del TFG per tal d'assolir tots els objectius. En el meu cas, aquesta va ser molt completa, però no perfecte. La gran majoria de tasques s'han seguit tal com estaven organitzades, però hi ha hagut uns petits canvis. Bàsicament, s'ha afegit una tasca que consisteix a implementar totes les funcionalitats del sistema, però de forma molt bàsica, és a dir, sense llegir fitxers d'entrada ni aplicar cap algorisme, sinó fent-ho tot aleatori. En altres paraules, consisteix a fer tota l'estructura del programa. Aquesta decisió s'ha pres perquè d'aquesta manera, si hi ha algun inconvenient durant el desenvolupament, es tingui un producte funcional el dia de l'entrega. Igualment, aquesta tasca no ha afectat de forma negativa a les altres, ja que el temps que s'ha trigat a desenvolupar-la és temps estalviat en les futures tasques, simplement perquè l'estructura ja està feta.
+
+Llavors, un cop comentat el canvi, ja es pot procedir en veure tota la planificació feta per aquest treball.
 \subsection{Obstacles i riscos}
-Durant tot el transcurs del projecte poden aparèixer diversos obstacles i riscos que poden alentir el desenvolupament del projecte. Per aquest motiu, cal identificar-los i saber-ne d'ells.
+Primer de tot s'intentarà preveure els diferents obstacles i riscos que poden aparèixer. Aquests poden afectar de forma negativa al projecte, alentint el seu desenvolupament i, fins i tot, impedint l'acabament complet del sistema. Per aquest motiu, cal identificar-los i saber-ne d'ells.
 
 \begin{itemize}
     \item \textbf{Data d'entrega fixa:} El TFG té una data límit fixada i, per tant, que s'ha de complir. Però els possibles problemes que ens podem trobar durant el desenvolupament del projecte poden generar endarreriments i, per tant, empitjorar la qualitat del programa o eliminar alguna funció no essencial per falta de temps.
-    \item \textbf{Desconeixement en simulació:} Un aspecte fonamental del programa és la simulació de partides. Però degut al meu desconeixement en l'àmbit de la simulació dins la informàtica, es probable que es generin endarreriments i possibles errors a l'hora de programar.
-    \item \textbf{Desconeixement en les tecnologies emprades:} Degut al meu desconeixement sobre el llenguatge Lua o sobre el poc ús fet de QT, és probable que s'alenteixi el desenvolupament del projecte, ja que hauré d'aprendre a utilitzar-los correctament.
+    \item \textbf{Desconeixement en simulació:} Un aspecte fonamental del programa és la simulació de partides. Però a causa del meu desconeixement en l'àmbit de la simulació dins la informàtica, és probable que es generin endarreriments i possibles errors a l'hora de programar.
+    \item \textbf{Desconeixement en les tecnologies emprades:} A causa del meu desconeixement sobre el llenguatge Lua o sobre el poc ús fet de QT, és probable que s'alenteixi el desenvolupament del projecte, ja que hauré d'aprendre a utilitzar-los correctament.
     \item \textbf{Bugs i errors:} Durant tot el transcurs de programar i testejar el programa, poden aparèixer diferents errors i bugs que em poden fer perdre molt temps, i per tant, endarrerir el desenvolupament.
 \end{itemize}
+
+\subsection{Descripció de tasques}
+Aquest projecte es pot dividir en tres grans parts, on cada una d'elles constarà de diverses tasques: gestió del projecte, desenvolupament i documentació i seguiment.
+\subsubsection{Gestió del projecte}
+\begin{itemize}
+    \item \textbf{GdP1 - Contextualització i abast:} Es farà un document on es definirà la idea del treball, on s'identificaran els \textit{stakeholders}, s'analitzaran els programes similars, s'estudiaran els requisits i inconvenients que poden haver-hi i es descriurà la metodologia utilitzada. Tindrà una duració de 25 hores i serà necessari un ordinador amb Internet i l'Overleaf.
+    \item \textbf{GdP2 - Planificació temporal:} S'escriurà un document on s'identificaran, es descriuran i s'organitzaran les diferents tasques que componen el projecte. També inclourà un diagrama de Gantt i la gestió dels diferents riscos que poden sorgir. Tindrà una duració de 10 hores i es necessitarà un ordinador amb connexió a Internet, l'Overleaf i el GanttProject. La tasca dependrà de GdP1.
+    \item \textbf{GdP3 - Pressupost i sostenibilitat:} Es redactarà un document on es farà un pla econòmic del projecte i es farà un informe de sostenibilitat. Tindrà una durada de 15 hores i serà necessari un ordinador amb Internet, l'Overleaf i l'Excel. La tasca dependrà de GdP2.
+    \item \textbf{GdP4 - Integració del document final:} Document on s'unificaran les tres tasques anteriorment explicades amb les correccions necessàries en cada una d'elles. S'estima una duració de 20h i serà necessari un ordinador amb connexió a Internet i l'Overleaf. La tasca dependrà de GdP3.
+\end{itemize}
+
+\subsubsection{Desenvolupament}
+Dins del desenvolupament, podem dividir les tasques en uns altres tres grans grups, depenent de quin objectiu principal formen part: personalització de l’algorisme del sistema d’Elo, simulació de partides o comparar resultats entre diferents variables i algorismes.
+
+\subsubsubsection{Personalització de l’algorisme del sistema d’Elo}
+\begin{itemize}
+    \item \textbf{PA1 - Preparació pel desenvolupament:} S'instal·laran tots els programes i IDEs necessaris per a poder desenvolupar el projecte. També es crearà el repositori de Github i es dissenyarà l'estructura del programa. Es necessitarà un ordinador amb connexió a Internet, l'IDE anomenat Visual Studio (VS), Github i el Visual Paradigm. Durarà 10 hores.
+    \item \textbf{PA2 - Creació de l'estructura del programa:} Es crearà tota l'estructura del programa de la forma més senzilla, és a dir aplicant números aleatoris on sigui necessari i sense cap algorisme. També s'exportaran les dades de la forma més senzilla possible. Tindrà una durada 50 hores i serà necessari un ordinador amb connexió a Internet, Github i el Visual Studio. La tasca dependrà de PA3.
+    \item \textbf{PA3 - Disseny d'algorisme d'Elo clàssic:} Es dissenyarà un algorisme d'Elo clàssic en un script de Lua per poder realitzar posteriorment l'execució del programa. Tindrà una durada 5 hores i serà necessari un ordinador amb Internet, Github, el Visual Studio i Lua. La tasca dependrà de PA2.
+    \item \textbf{PA4 - Introducció i lectura de Fitxers Lua:} Es permetrà carregar un fitxer de script en Lua que contingui l'algorisme de l'Elo i s'haurà de poder executar. Tindrà una durada 15 hores i es necessitarà un ordinador amb Internet, el Github, el Visual Studio i Lua. La tasca dependrà de PA3.
+    \item \textbf{PA5 - Interpretació de l'algorisme d'Elo:} S'haurà d'interpretar l'algorisme d'Elo introduït mitjançant el script en Lua per així saber quines variables s'utilitzen i quines s'han de tenir en compte. Tindrà una durada 35 hores i serà necessari un ordinador amb connexió a Internet, Github i el Visual Studio. La tasca dependrà de PA4.
+\end{itemize}
+\subsubsubsection{Simulació de partides}
+\begin{itemize}
+    \item \textbf{SP1 - Creació de jugadors:} S'hauran de crear els diversos jugadors que participaran en la simulació. Per cada un s'hauran d'afegir les diverses habilitats que poden afectar al resultat de la partida i al càlcul de l'Elo. Tindrà una durada de 30 hores i requerirà un ordinador amb Internet, Github i el Visual Studio. La tasca dependrà de PA5.
+    \item \textbf{SP2 - Simulació de partida:} Es simularà una partida entre dos equips. Es tindran en compte tant l'Elo com les habilitats de cada un per decidir el resultat. Tindrà una durada 25 hores i serà necessari un ordinador amb Internet, Github i el Visual Studio. La tasca dependrà de SP1.
+    \item \textbf{SP3 - Càlcul de l'Elo resultant:} Es calcularà i modificarà l'Elo de cada un dels jugadors depenent del resultat de la partida i de les estadístiques de cada un d'ells. Per fer-ho, s'utilitzarà l'algorisme introduït en el script de Lua. Tindrà una durada de 15 hores i es necessitarà un ordinador amb Internet, Github i el Visual Studio . La tasca dependrà de SP2.
+    \item \textbf{SP4 - Disseny de l'algorisme de creació d'equips:} Es dissenyarà l'algorisme per aparellar els diferents jugadors en equips d'un Elo similar. Tindrà una durada de 15 hores i serà necessari un ordinador amb Internet, Github i el Visual Studio. La tasca dependrà de SP1.
+    \item \textbf{SP5 - Disseny de l'algorisme de preparació de partides:} Es dissenyarà un algorisme que seleccionarà dos equips amb un nivell d'Elo similar per a que simulin una partida. S'empraran 5 hores per fer la tasca i requerirà un ordinador amb Internet, Github i el Visual Studio. Dependrà de SP4.
+    \item \textbf{SP6 - Creació d'una simulació:} S'haurà de crear una simulació que permeti simular les diverses partides a realitzar. Es podran modificar elements com el número de jugadors, el número de partides que s'han de fer o la diferència màxima d'Elo entre un equip i un altre. Tindrà una durada de 10 hores i es requerirà d'un ordinador amb connexió a Internet, de Github i del Visual Studio. La tasca dependrà de SP5. 
+\end{itemize}
+\subsubsubsection{Comparar resultats entre diferents variables i algorismes}
+\begin{itemize}
+    \item \textbf{CR1 - Creació d'estructura de dades:} S'haurà de crear l'estructura per emmagatzemar les diferents dades de les partides i dels jugadors, per poder-les analitzar i utilitzar després. Tindrà una durada de 10 hores i serà necessari un ordinador amb connexió a Internet, Github i el Visual Studio. La tasca dependrà de SP6.
+    \item \textbf{CR2 - Disseny de la interfície gràfica:} S'haurà de dissenyar una interfície gràfica simple i senzilla per facilitar a l'usuari l'ús del programa. Tindrà una durada de 40 hores i requerirà d'un ordinador amb connexió a Internet, de Github i del Visual Studio. La tasca dependrà de CR1. 
+    \item \textbf{CR3 - Exportació de dades a l'Excel:} S'exportaran les dades emmagatzemades en l'estructura de dades en un fitxer amb format Excel, per així poder-les analitzar amb millor precisió. Tindrà una durada de 5 hores i es requerirà d'un ordinador amb Internet, de Github i del Visual Studio. La tasca dependrà de CR2.
+\end{itemize}
+
+\subsubsection{Documentació i seguiment}
+\begin{itemize}
+    \item \textbf{DS1 - Documentar la memòria:} Es redactarà la memòria de tot el desenvolupament del projecte. La tasca durarà 75 hores i serà necessari un ordinador amb Internet i l'Overleaf.
+    \item \textbf{DS2 - Reunió setmanal:} Es realitzarà una reunió setmanal amb el director del projecte, Manel Rello, per parlar de l'evolució d'aquest i dels problemes o dubtes que puguin sorgir. Posteriorment s'afegirà a la memòria els detalls de cada reunió. En total, s'estima una durada de 25 hores i es requerirà un ordinador amb Internet, l'Overleaf i el Google Meet.
+    \item \textbf{DS3 - Preparació de la presentació final:} Es prepararà l'exposició per a la presentació final del projecte que es farà davant un tribunal. Tindrà una durada de 10 hores i requerirà d'un ordinador amb connexió a Internet i d'un programa per fer diapositives. La tasca dependrà de DS1. 
+\end{itemize}
+
+\newpage
+\subsection{Recursos humans}
+S'entén com a recursos humans a totes aquelles persones que han d'ocupar un càrrec en el projecte per poder-lo dur a terme. Per fer-ho, cada una tindrà un rol i treballarà més o menys depenent de les tasques descrites prèviament en el diagrama de Gantt. A continuació es nomenaran cada un d'ells i s'explicarà la seva funció:
+\begin{itemize}
+    \item \textbf{Cap de projecte (CP):} El cap de projecte s'encarrega de gestionar el projecte. Gestiona els equips, planifica les tasques, calcula els pressupostos i els recursos necessaris i gestiona els riscos. També s'encarrega d'escriure la documentació.
+    
+    \item \textbf{Analista programador (AP):} L'analista programador té la funció d'identificar els requisits del sistema, de garantir la qualitat del programa i de dissenyar l'estructura del programa.
+    
+    \item \textbf{Arquitecte del Software (AS):} L'arquitecte del Software és la persona que escull quina tecnologia s'utilitzarà i realitza processos d'avaluació contínuament per veure que es compleixen els requisits.
+    
+    \item \textbf{Dissenyador d'UI (DUI):} El dissenyador d'interfícies gràfiques és qui s'encarrega de dissenyar l'apartat visual del programa per a que sigui simple d'utilitzar i clar. 
+    
+    \item \textbf{Programador (P):} El programador s'encarrega de programar el programa per a que funcioni.
+    
+    \item \textbf{Tester (T):} El tester té el paper de dissenyar diferents jocs de prova per comprovar el funcionament correcte del programa i detectar els errors.
+\end{itemize}
+
+\newpage
+\section{Estimacions i Gantt}
+\subsection{Estimacions}
+\begin{table}[H]
+    \small
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|c|c|}
+            \hline
+            \rowcolor[HTML]{C0C0C0} 
+            {\color[HTML]{000000} \textbf{ID}}                                                  & {\color[HTML]{000000} \textbf{Tasca}}                                                                             & {\color[HTML]{000000} \textbf{\begin{tabular}[c]{@{}c@{}}Durada \\ (hores)\end{tabular}}} & {\color[HTML]{000000} \textbf{Dependències}} & {\color[HTML]{000000} \textbf{\begin{tabular}[c]{@{}c@{}}RR \\ Materials\end{tabular}}}           & {\color[HTML]{000000} \textbf{\begin{tabular}[c]{@{}c@{}}RR\\ Humans\end{tabular}}} \\ \hline
+            \rowcolor[HTML]{C0C0C0} 
+            {\color[HTML]{000000} \textbf{GdP}}                                                 & {\color[HTML]{000000} \textbf{Gestió de projecte}}                                                                & {\color[HTML]{000000} \textbf{70}}                                                        & {\color[HTML]{000000} \textbf{}}             & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}{\color[HTML]{000000} \textbf{}}}                     & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}{\color[HTML]{000000} \textbf{}}}       \\ \hline
+            {\color[HTML]{000000} GdP1}                                                         & {\color[HTML]{000000} Contextualització i abast}                                                                  & {\color[HTML]{000000} 25}                                                                 & {\color[HTML]{000000} }                      & {\color[HTML]{000000} PC, Overleaf}                                                               & {\color[HTML]{000000} CP}                                                           \\ \hline
+            {\color[HTML]{000000} GdP2}                                                         & {\color[HTML]{000000} Planificació temporal}                                                                      & {\color[HTML]{000000} 10}                                                                 & {\color[HTML]{000000} GdP1}                  & {\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}PC, Overleaf, Gantt-\\ Project\end{tabular}}     & {\color[HTML]{000000} CP}                                                           \\ \hline
+            {\color[HTML]{000000} GdP3}                                                         & {\color[HTML]{000000} Pressupost i sostenibilitat}                                                                & {\color[HTML]{000000} 15}                                                                 & {\color[HTML]{000000} GdP2}                  & {\color[HTML]{000000} PC, Overleaf, Excel}                                                        & {\color[HTML]{000000} CP}                                                           \\ \hline
+            {\color[HTML]{000000} GdP4}                                                         & {\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}Integració del document\\ final\end{tabular}}                    & {\color[HTML]{000000} 20}                                                                 & {\color[HTML]{000000} GdP3}                  & {\color[HTML]{000000} PC, Overleaf}                                                               & {\color[HTML]{000000} CP}                                                           \\ \hline
+            \rowcolor[HTML]{C0C0C0} 
+            {\color[HTML]{000000} \textbf{D}}                                                   & {\color[HTML]{000000} \textbf{Desenvolupament}}                                                                   & {\color[HTML]{000000} \textbf{270}}                                                       & {\color[HTML]{000000} \textbf{}}             & {\color[HTML]{000000} \textbf{}}                                                                  & {\color[HTML]{000000} \textbf{}}                                                    \\ \hline
+            {\color[HTML]{000000} PA1}                                                          & {\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}Preparació pel desenvolu-\\ pament\end{tabular}}                 & {\color[HTML]{000000} 10}                                                                 & {\color[HTML]{000000} }                      & {\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}PC, Github, VS, Visual \\ Paradigm\end{tabular}} & {\color[HTML]{000000} AP, AS, P, T}                                                 \\ \hline
+            {\color[HTML]{000000} PA2}                                                          & {\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}Creació de l'estructura\\ del programa\end{tabular}}                & {\color[HTML]{000000} 50}                                                                 & {\color[HTML]{000000} PA1}                   & {\color[HTML]{000000} PC, Github, VS}                                                        & {\color[HTML]{000000} AP, AS, P, T}                                                 \\ \hline
+            {\color[HTML]{000000} PA3}                                                          & {\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}Disseny d'algorisme d'Elo\\ clàssic\end{tabular}}                & {\color[HTML]{000000} 5}                                                                 & {\color[HTML]{000000} PA2}                   & {\color[HTML]{000000} PC, Github, VS, Lua}                                                        & {\color[HTML]{000000} AP, AS, P, T}                                                 \\ \hline
+            {\color[HTML]{000000} PA4}                                                          & {\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}Introducció i lectura de \\ Fitxers Lua\end{tabular}}            & {\color[HTML]{000000} 15}                                                                 & {\color[HTML]{000000} PA3}                   & {\color[HTML]{000000} PC, Github, VS, Lua}                                                        & {\color[HTML]{000000} AP, AS, P, T}                                                 \\ \hline
+            {\color[HTML]{000000} PA5}                                                          & {\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}Interpretació de l'algorisme\\ d'Elo\end{tabular}}               & {\color[HTML]{000000} 35}                                                                 & {\color[HTML]{000000} PA4}                   & {\color[HTML]{000000} PC, Github, VS}                                                             & {\color[HTML]{000000} AP, AS, P, T}                                                 \\ \hline
+            {\color[HTML]{000000} SP1}                                                          & {\color[HTML]{000000} Creació de jugadors}                                                                        & {\color[HTML]{000000} 30}                                                                 & {\color[HTML]{000000} PA5}                   & {\color[HTML]{000000} PC, Github, VS}                                                             & {\color[HTML]{000000} AP, AS, P, T}                                                 \\ \hline
+            {\color[HTML]{000000} SP2}                                                          & {\color[HTML]{000000} Simulació de partida}                                                                       & {\color[HTML]{000000} 25}                                                                 & {\color[HTML]{000000} SP1}                   & {\color[HTML]{000000} PC, Github, VS}                                                             & {\color[HTML]{000000} AP, AS, P, T}                                                 \\ \hline
+            {\color[HTML]{000000} SP3}                                                          & {\color[HTML]{000000} Càlcul de l'Elo resultant}                                                                  & {\color[HTML]{000000} 15}                                                                 & {\color[HTML]{000000} SP2}                   & {\color[HTML]{000000} PC, Github, VS}                                                             & {\color[HTML]{000000} AP, AS, P, T}                                                 \\ \hline
+            {\color[HTML]{000000} SP4}                                                          & {\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}Disseny de l'algorisme de\\ creació d'equips\end{tabular}}       & {\color[HTML]{000000} 15}                                                                 & {\color[HTML]{000000} SP1}                   & {\color[HTML]{000000} PC, Github, VS}                                                             & {\color[HTML]{000000} AP, AS, P, T}                                                 \\ \hline
+            {\color[HTML]{000000} SP5}                                                          & {\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}Disseny de l'algorisme de\\ preparació de partides\end{tabular}} & {\color[HTML]{000000} 5}                                                                  & {\color[HTML]{000000} SP4}                   & {\color[HTML]{000000} PC, Github, VS}                                                             & {\color[HTML]{000000} AP, AS, P, T}                                                 \\ \hline
+            {\color[HTML]{000000} SP6}                                                          & {\color[HTML]{000000} Creació d'una simulació}                                                                    & {\color[HTML]{000000} 10}                                                                 & {\color[HTML]{000000} SP5}                   & {\color[HTML]{000000} PC, Github, VS}                                                             & {\color[HTML]{000000} AP, AS, P, T}                                                 \\ \hline
+            {\color[HTML]{000000} CR1}                                                          & {\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}Creació de l'estructura de\\ dades\end{tabular}}                 & {\color[HTML]{000000} 10}                                                                 & {\color[HTML]{000000} SP6}                   & {\color[HTML]{000000} PC, Guthub, VS}                                                             & {\color[HTML]{000000} AP, AS, P, T}                                                 \\ \hline
+            {\color[HTML]{000000} CR2}                                                          & {\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}Disseny de la interfície\\ gràfica\end{tabular}}                 & {\color[HTML]{000000} 40}                                                                 & {\color[HTML]{000000} CR1}                   & {\color[HTML]{000000} PC, Github, VS, Qt}                                                         & {\color[HTML]{000000} AP, AS, DUI, P, T}                                            \\ \hline
+            {\color[HTML]{000000} CR3}                                                          & {\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}Exportació de dades a \\ l'Excel\end{tabular}}                   & {\color[HTML]{000000} 5}                                                                 & {\color[HTML]{000000} CR2}                   & {\color[HTML]{000000} PC, Github, VS}                                                             & {\color[HTML]{000000} AP, AS, P, T}                                                 \\ \hline
+            \rowcolor[HTML]{C0C0C0} 
+            {\color[HTML]{000000} \textbf{DS}}                                                  & {\color[HTML]{000000} \textbf{Documentació i seguiment}}                                                          & {\color[HTML]{000000} \textbf{110}}                                                       & {\color[HTML]{000000} \textbf{}}             & {\color[HTML]{000000} \textbf{}}                                                                  & {\color[HTML]{000000} \textbf{}}                                                    \\ \hline
+            {\color[HTML]{000000} DS1}                                                          & {\color[HTML]{000000} Documentació de la memòria}                                                                 & {\color[HTML]{000000} 75}                                                                 & {\color[HTML]{000000} }                      & {\color[HTML]{000000} PC, Overleaf}                                                               & {\color[HTML]{000000} CP}                                                           \\ \hline
+            {\color[HTML]{000000} DS2}                                                          & {\color[HTML]{000000} Reunió setmanal}                                                                            & {\color[HTML]{000000} 25}                                                                 & {\color[HTML]{000000} }                      & {\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}PC, Overleaf, Google\\ Meet\end{tabular}}        & {\color[HTML]{000000} CP}                                                           \\ \hline
+            {\color[HTML]{000000} DS3}                                                          & {\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}Preparació de la presentació\\ final\end{tabular}}               & {\color[HTML]{000000} 10}                                                                 & {\color[HTML]{000000} DS1}                   & {\color[HTML]{000000} PC, Power Point}                                                            & {\color[HTML]{000000} CP}                                                           \\ \hline
+            \rowcolor[HTML]{C0C0C0} 
+            \multicolumn{1}{|l|}{\cellcolor[HTML]{C0C0C0}{\color[HTML]{000000} \textbf{Total}}} & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}{\color[HTML]{000000} \textbf{}}}                                     & {\color[HTML]{000000} \textbf{450}}                                                       & {\color[HTML]{000000} \textbf{}}             & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}{\color[HTML]{000000} \textbf{}}}                     & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}{\color[HTML]{000000} \textbf{}}}       \\ \hline
+        \end{tabular}
+        \caption{Taula d'estimacions de les diverses tasques a realitzar}
+        \label{tab:TaulaTasques}
+    \end{center}
+\end{table}
+
+
+  
+ A la taula \ref{tab:TaulaTasques} es pot veure una estimació de cada una de les tasques descrites anteriorment, amb la seva duració, les seves dependències i els recursos necessaris per cada una d'elles. Com es pot observar, la suma total d'hores recau en 450, que son les que s'havien especificat prèviament.
+\subsection{Diagrama de Gantt}
+
+A la figura \ref{fig:GanttText} es pot observar la part textual del diagrama de Gantt del nostre projecte. En aquest es mostren les diverses tasques amb la seva durada, que és en dies, amb les dependències, la probabilitat de risc i els principals recursos humans necessaris.
+
+A la figura \ref{fig:GanttElo} es pot contemplar la part gràfica del diagrama de Gantt. Cada color representa un conjunt de les tasques anomenades anteriorment, sent el taronja per les de gestió del projecte, el verd per les de documentació i comunicació i la resta per les de desenvolupament. Dintre d'aquest últim, el color vermell representa les tasques de la personalització de l’algorisme del sistema d’Elo, el blau les de la simulació de partides i el groc les de comparar els resultats entre les diferents variables i algorismes. Si un color és més fosc que la resta, vol dir que aquella tasca té un risc alt.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.15\textwidth]{images/GantEloEscrit.png}
+    \caption{Diagrama de Gantt part textual}
+    \label{fig:GanttText}
+\end{figure}
+ \newpage
+\begin{landscape}
+
+\fancypagestyle{lndscape}{
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    \rhead{\begin{rotate}{90}\thepage\end{rotate}}
+}
+\newpage
+\thispagestyle{lndscape}
+    \begin{center}
+        \begin{figure}[h!]
+            \includegraphics[width=0.8
+            \textwidth]{images/GantElo.png}%
+            \caption{Diagrama de Gantt del projecte part visual}
+            \label{fig:GanttElo}
+        \end{figure}
+    \end{center}
+\end{landscape}
 
 \newpage
 \section{Gestió econòmica}
 \subsection{Identificació i estimació de costos}
-Un aspecte molt important a tindre en compte a l'hora de desenvolupar un projecte és el pressupost. Per aquest motiu, s'han de valorar tots els costos possibles: recursos humans, recursos materials, recursos generals, contingència i imprevistos. A continuació es calcularà cada un d'ells i finalment es veurà el cost final del projecte.
+Un aspecte molt important a tindre en compte a l'hora de desenvolupar un projecte és el pressupost. Per aquest motiu, s'han de valorar tots els costos possibles: recursos humans, recursos materials, recursos generals, contingència i imprevistos. 
+Com s'ha explicat anteriorment, s'ha afegit una tasca des de la planificació inicial. Aquesta ha comportat el canvi d'hores destinades en les tasques afectades. Tot i això, el preu gairebé no ha canviat, ha variat en temes de pocs euros, per tant, ha estat un canvi insignificant. A continuació es calcularà cada un dels costos actualitzats i finalment es veurà el cost final del projecte.
 
 \subsubsection{Recursos humans}
-Com s'ha explicat prèviament, dintre dels recursos humans hi han diferents rols. Aquests tenen funcions diferents i treballaran més o menys depenent de les tasques descrites prèviament en el diagrama de Gantt. Per tant, per poder saber el cost total del projecte, cal saber primer el seu sou. Aquest s'ha calculat fent la  mitjana dels sous que es mostren en la pàgina de Tecnoempleo.com \cite{tecnoEmpleo} i que podem veure a la taula \ref{tab:TaulaSouRols}. Aquesta conté els diversos rols, els seus salari brut per hora i els mateixos tenint en compte la seguretat social (SS). 
+Com s'ha explicat prèviament, dintre dels recursos humans hi ha diferents rols. Aquests tenen funcions diferents i treballaran més o menys depenent de les tasques descrites prèviament en el diagrama de Gantt. Per tant, per poder saber el cost total del projecte, cal saber primer el seu sou. Aquest s'ha calculat fent la  mitjana dels sous que es mostren en la pàgina de Tecnoempleo.com \cite{tecnoEmpleo} i que podem veure a la taula \ref{tab:TaulaSouRols}. Aquesta conté els diversos rols, els seus salaris brut per hora i els mateixos tenint en compte la seguretat social (SS). 
 
 \begin{table}[H]
     \begin{center}
@@ -287,27 +470,28 @@ Un cop coneguts els preus, ja es pot calcular el de cada tasca. Per fer-ho, es c
             \rowcolor[HTML]{C0C0C0} 
             {\color[HTML]{000000} \textbf{D}}                                                      & {\color[HTML]{000000} \textbf{270}}                                                     & {\color[HTML]{000000} \textbf{}}          & {\color[HTML]{000000} \textbf{}}        & {\color[HTML]{000000} \textbf{}}     & {\color[HTML]{000000} \textbf{}}        & {\color[HTML]{000000} \textbf{}}          & {\color[HTML]{000000} \textbf{}}        & {\color[HTML]{000000} \textbf{}}           \\ \hline
             {\color[HTML]{000000} PA1}                                                             & {\color[HTML]{000000} 10}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 5}                & {\color[HTML]{000000} 3,5}           & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 1}                  & {\color[HTML]{000000} 0,5}              & {\color[HTML]{000000} 233.53€}             \\ \hline
-            {\color[HTML]{000000} PA2}                                                             & {\color[HTML]{000000} 10}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 1}                & {\color[HTML]{000000} 1}             & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 7}                  & {\color[HTML]{000000} 1}                & {\color[HTML]{000000} 209,98€}             \\ \hline
-            {\color[HTML]{000000} PA3}                                                             & {\color[HTML]{000000} 15}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 1}                & {\color[HTML]{000000} 1}             & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 10,5}               & {\color[HTML]{000000} 2,5}              & {\color[HTML]{000000} 310,61€}             \\ \hline
-            {\color[HTML]{000000} PA4}                                                             & {\color[HTML]{000000} 35}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 3}                & {\color[HTML]{000000} 3}             & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 24,5}               & {\color[HTML]{000000} 4,5}              & {\color[HTML]{000000} 735,57€}             \\ \hline
-            {\color[HTML]{000000} SP1}                                                             & {\color[HTML]{000000} 35}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 3,5}              & {\color[HTML]{000000} 3,5}           & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 26}                 & {\color[HTML]{000000} 2}                & {\color[HTML]{000000} 735,16€}             \\ \hline
-            {\color[HTML]{000000} SP2}                                                             & {\color[HTML]{000000} 30}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 2,5}              & {\color[HTML]{000000} 2,5}           & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 21}                 & {\color[HTML]{000000} 4}                & {\color[HTML]{000000} 625,58€}             \\ \hline
-            {\color[HTML]{000000} SP3}                                                             & {\color[HTML]{000000} 20}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 2}                & {\color[HTML]{000000} 2}             & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 14}                 & {\color[HTML]{000000} 2}                & {\color[HTML]{000000} 419,96€}             \\ \hline
-            {\color[HTML]{000000} SP4}                                                             & {\color[HTML]{000000} 20}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 2}                & {\color[HTML]{000000} 2}             & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 14}                 & {\color[HTML]{000000} 2}                & {\color[HTML]{000000} 419,96€}             \\ \hline
+            {\color[HTML]{000000} PA2}                                                             & {\color[HTML]{000000} 50}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 5}                & {\color[HTML]{000000} 5}             & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 35}                  & {\color[HTML]{000000} 5}                & {\color[HTML]{000000} 1049,90€}             \\ \hline
+             {\color[HTML]{000000} PA3}                                                             & {\color[HTML]{000000} 5}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 0,5}                & {\color[HTML]{000000} 0,5}             & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 3,5}                  & {\color[HTML]{000000} 0,5}                & {\color[HTML]{000000} 104,99€}             \\ \hline
+            {\color[HTML]{000000} PA4}                                                             & {\color[HTML]{000000} 15}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 1}                & {\color[HTML]{000000} 1}             & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 10,5}               & {\color[HTML]{000000} 2,5}              & {\color[HTML]{000000} 310,61€}             \\ \hline
+            {\color[HTML]{000000} PA5}                                                             & {\color[HTML]{000000} 35}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 3}                & {\color[HTML]{000000} 3}             & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 24,5}               & {\color[HTML]{000000} 4,5}              & {\color[HTML]{000000} 735,57€}             \\ \hline
+            {\color[HTML]{000000} SP1}                                                             & {\color[HTML]{000000} 30}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 3}              & {\color[HTML]{000000} 3}           & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 22,5}                 & {\color[HTML]{000000} 1,5}                & {\color[HTML]{000000} 630,17€}             \\ \hline
+            {\color[HTML]{000000} SP2}                                                             & {\color[HTML]{000000} 25}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 2}              & {\color[HTML]{000000} 2}           & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 18}                 & {\color[HTML]{000000} 3}                & {\color[HTML]{000000} 419,96}             \\ \hline
+            {\color[HTML]{000000} SP3}                                                             & {\color[HTML]{000000} 15}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 1,5}                & {\color[HTML]{000000} 1,5}             & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 10,5}                 & {\color[HTML]{000000} 1,5}                & {\color[HTML]{000000} 314,97€}             \\ \hline
+            {\color[HTML]{000000} SP4}                                                             & {\color[HTML]{000000} 15}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 1,5}                & {\color[HTML]{000000} 1,5}             & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 10,5}                 & {\color[HTML]{000000} 1,5}                & {\color[HTML]{000000} 314,97€}             \\ \hline
             {\color[HTML]{000000} SP5}                                                             & {\color[HTML]{000000} 5}                                                                & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 0,5}              & {\color[HTML]{000000} 0,5}           & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 3,5}                & {\color[HTML]{000000} 0,5}              & {\color[HTML]{000000} 104,99€}             \\ \hline
-            {\color[HTML]{000000} SP6}                                                             & {\color[HTML]{000000} 20}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 2}                & {\color[HTML]{000000} 1}             & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 14}                 & {\color[HTML]{000000} 3}                & {\color[HTML]{000000} 412,98€}             \\ \hline
-            {\color[HTML]{000000} CR1}                                                             & {\color[HTML]{000000} 20}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 1}                & {\color[HTML]{000000} 3}             & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 14}                 & {\color[HTML]{000000} 2}                & {\color[HTML]{000000} 425,19€}             \\ \hline
+            {\color[HTML]{000000} SP6}                                                             & {\color[HTML]{000000} 10}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 1}                & {\color[HTML]{000000} 0,5}             & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 7}                 & {\color[HTML]{000000} 1,5}                & {\color[HTML]{000000} 206,49€}             \\ \hline
+            {\color[HTML]{000000} CR1}                                                             & {\color[HTML]{000000} 10}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 0,5}                & {\color[HTML]{000000} 1,5}             & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 7}                 & {\color[HTML]{000000} 1}                & {\color[HTML]{000000} 212,60€}             \\ \hline
             {\color[HTML]{000000} CR2}                                                             & {\color[HTML]{000000} 40}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 2}                & {\color[HTML]{000000} 2}             & {\color[HTML]{000000} 18}               & {\color[HTML]{000000} 14}                 & {\color[HTML]{000000} 4}                & {\color[HTML]{000000} 824,32€}             \\ \hline
-            {\color[HTML]{000000} CR3}                                                             & {\color[HTML]{000000} 10}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 1}                & {\color[HTML]{000000} 1}             & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 7}                  & {\color[HTML]{000000} 1}                & {\color[HTML]{000000} 209,98€}             \\ \hline
+            {\color[HTML]{000000} CR3}                                                             & {\color[HTML]{000000} 5}                                                               & {\color[HTML]{000000} }                   & {\color[HTML]{000000} 0,5}                & {\color[HTML]{000000} 0,5}             & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 3,5}                  & {\color[HTML]{000000} 0,5}                & {\color[HTML]{000000} 104,99€}             \\ \hline
             \rowcolor[HTML]{C0C0C0} 
             {\color[HTML]{000000} \textbf{DS}}                                                     & {\color[HTML]{000000} \textbf{110}}                                                     & {\color[HTML]{000000} \textbf{}}          & {\color[HTML]{000000} \textbf{}}        & {\color[HTML]{000000} \textbf{}}     & {\color[HTML]{000000} \textbf{}}        & {\color[HTML]{000000} \textbf{}}          & {\color[HTML]{000000} \textbf{}}        & {\color[HTML]{000000} \textbf{}}           \\ \hline
             {\color[HTML]{000000} DS1}                                                             & {\color[HTML]{000000} 75}                                                               & {\color[HTML]{000000} 75}                 & {\color[HTML]{000000} }                 & {\color[HTML]{000000} }              & {\color[HTML]{000000} }                 & {\color[HTML]{000000} }                   & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 2295,75€}            \\ \hline
             {\color[HTML]{000000} DS2}                                                             & {\color[HTML]{000000} 25}                                                               & {\color[HTML]{000000} 25}                 & {\color[HTML]{000000} }                 & {\color[HTML]{000000} }              & {\color[HTML]{000000} }                 & {\color[HTML]{000000} }                   & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 765,25€}             \\ \hline
             {\color[HTML]{000000} DS3}                                                             & {\color[HTML]{000000} 10}                                                               & {\color[HTML]{000000} 10}                 & {\color[HTML]{000000} }                 & {\color[HTML]{000000} }              & {\color[HTML]{000000} }                 & {\color[HTML]{000000} }                   & {\color[HTML]{000000} }                 & {\color[HTML]{000000} 306,10€}             \\ \hline
             \rowcolor[HTML]{C0C0C0} 
-            {\color[HTML]{000000} \textbf{\begin{tabular}[c]{@{}l@{}}TOTAL \\ HORES\end{tabular}}} & {\color[HTML]{000000} \textbf{450}}                                                     & {\color[HTML]{000000} \textbf{180}}       & {\color[HTML]{000000} \textbf{26.5}}    & {\color[HTML]{000000} \textbf{26}}   & {\color[HTML]{000000} \textbf{18}}      & {\color[HTML]{000000} \textbf{170.5}}     & {\color[HTML]{000000} \textbf{29}}      & {\color[HTML]{000000} \textbf{}}           \\ \hline
+            {\color[HTML]{000000} \textbf{\begin{tabular}[c]{@{}l@{}}TOTAL \\ HORES\end{tabular}}} & {\color[HTML]{000000} \textbf{450}}                                                     & {\color[HTML]{000000} \textbf{180}}       & {\color[HTML]{000000} \textbf{27}}    & {\color[HTML]{000000} \textbf{26}}   & {\color[HTML]{000000} \textbf{18}}      & {\color[HTML]{000000} \textbf{171}}     & {\color[HTML]{000000} \textbf{28}}      & {\color[HTML]{000000} \textbf{}}           \\ \hline
             \rowcolor[HTML]{C0C0C0} 
-            {\color[HTML]{000000} \textbf{\begin{tabular}[c]{@{}l@{}}TOTAL \\ COST\end{tabular}}}  & {\color[HTML]{000000} \textbf{}}                                                        & {\color[HTML]{000000} \textbf{5.509,80€}} & {\color[HTML]{000000} \textbf{576,91€}} & {\color[HTML]{000000} \textbf{702€}} & {\color[HTML]{000000} \textbf{364,32€}} & {\color[HTML]{000000} \textbf{3.438,99€}} & {\color[HTML]{000000} \textbf{580,58€}} & {\color[HTML]{000000} \textbf{11.173,61€}} \\ \hline
+            {\color[HTML]{000000} \textbf{\begin{tabular}[c]{@{}l@{}}TOTAL \\ COST\end{tabular}}}  & {\color[HTML]{000000} \textbf{}}                                                        & {\color[HTML]{000000} \textbf{5.509,80€}} & {\color[HTML]{000000} \textbf{587,79€}} & {\color[HTML]{000000} \textbf{702€}} & {\color[HTML]{000000} \textbf{364,32€}} & {\color[HTML]{000000} \textbf{3.449,07€}} & {\color[HTML]{000000} \textbf{560,56€}} & {\color[HTML]{000000} \textbf{11.173,54€}} \\ \hline
         \end{tabular}
         \caption{Taula dels costos de les tasques del projecte}
         \label{tab:TaulaCostosTasques}
@@ -404,7 +588,7 @@ Un altre aspecte a tenir present és la contingència, és a dir, és un cost qu
             \hline
             \rowcolor[HTML]{9B9B9B} 
             {\color[HTML]{000000} \textbf{Tipus de recursos}} & {\color[HTML]{000000} \textbf{Cost}} & {\color[HTML]{000000} \textbf{\% de Contingència}} & {\color[HTML]{000000} \textbf{Cost contingència}} \\ \hline
-            {\color[HTML]{000000} Recursos humans}            & {\color[HTML]{000000} 11.173,61€}    & {\color[HTML]{000000} }                            & {\color[HTML]{000000} 1.676,04€}                  \\ \cline{1-2} \cline{4-4} 
+            {\color[HTML]{000000} Recursos humans}            & {\color[HTML]{000000} 11.173,54€}    & {\color[HTML]{000000} }                            & {\color[HTML]{000000} 1.676,04€}                  \\ \cline{1-2} \cline{4-4} 
             {\color[HTML]{000000} Recursos materials}         & {\color[HTML]{000000} 1544€}          & {\color[HTML]{000000} }                            & {\color[HTML]{000000} 231,60€}                    \\ \cline{1-2} \cline{4-4} 
             {\color[HTML]{000000} Recursos generals}          & {\color[HTML]{000000} 205,28€}       & \multirow{-3}{*}{{\color[HTML]{000000} 15\%}}      & {\color[HTML]{000000} 30,72€}                     \\ \hline
             \rowcolor[HTML]{C0C0C0} 
@@ -438,7 +622,7 @@ Finalment, cal calcular el cost de tots aquells imprevistos que s'han identifica
 
 \subsubsection{Pressupost final}
 
-Un cop ja s'han calculat tots els càlculs necessaris dels diferents costos, ja es pot determinar el pressupost final que costarà el projecte. Aquest el podem veure en la taula \ref{tab:TaulaFinal}, on si arrodonim el preu a l'alça, queda amb un total de 15.488€, gairebé 15.500€.
+Un cop ja s'han calculat tots els càlculs necessaris dels diferents costos, ja es pot determinar el pressupost final que costarà el projecte. Aquest el podem veure en la taula \ref{tab:TaulaFinal}, on si arrodonim el preu a l'alça, queda amb un total de 15.489€, gairebé 15.500€.
 
 \begin{table}[H]
     \begin{center}
@@ -446,13 +630,13 @@ Un cop ja s'han calculat tots els càlculs necessaris dels diferents costos, ja 
             \hline
             \rowcolor[HTML]{9B9B9B} 
             {\color[HTML]{000000} \textbf{}}          & {\color[HTML]{000000} \textbf{Cost}}       \\ \hline
-            {\color[HTML]{000000} Recursos humans}    & {\color[HTML]{000000} 11.173,61€}          \\ \hline
+            {\color[HTML]{000000} Recursos humans}    & {\color[HTML]{000000} 11.173,54€}          \\ \hline
             {\color[HTML]{000000} Recursos materials} & {\color[HTML]{000000} 1544€}                \\ \hline
             {\color[HTML]{000000} Recursos generals}  & {\color[HTML]{000000} 205,28€}             \\ \hline
             {\color[HTML]{000000} Contingència}       & {\color[HTML]{000000} 1.938,36€}           \\ \hline
             {\color[HTML]{000000} Imprevistos}        & {\color[HTML]{000000} 627,67€}             \\ \hline
             \rowcolor[HTML]{C0C0C0} 
-            {\color[HTML]{000000} \textbf{Total}}     & {\color[HTML]{000000} \textbf{15.488,92€}} \\ \hline
+            {\color[HTML]{000000} \textbf{Total}}     & {\color[HTML]{000000} \textbf{15.488,85€}} \\ \hline
         \end{tabular}
         \caption{Taula de pressupost final}
         \label{tab:TaulaFinal}
@@ -486,6 +670,11 @@ Planificar i gestionar el pressupost d'un projecte és molt important, però tam
     \item \textbf{Desviació total de pressupost final}
     \[Pressupost\,final\,estimat - Pressupost\,final\,real\]
 \end{itemize}
+
+\newpage
+\section{Conclusions}
+\subsection{Assoliment de les competències seleccionades}
+
 
 \newpage
 \nocite{*}
