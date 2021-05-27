@@ -21,6 +21,8 @@
 \setlength{\parskip}{1em}
 \usepackage[document]{ragged2e}
 
+\usepackage{verbatim}
+
 \pagestyle{fancy}
 \usepackage{pdflscape}
 \fancyhf{}
@@ -29,7 +31,7 @@
 \rfoot{\thepage}
 
 \usepackage{titlesec}
-
+\usepackage{todonotes}
 \titleclass{\subsubsubsection}{straight}[\subsection]
 
 \newcounter{subsubsubsection}[subsubsection]
@@ -76,8 +78,7 @@
 
 \begin{document}
 
-\maketitle
-\thispagestyle{empty}
+\input{titlepage}
 
 \newpage
 
@@ -194,11 +195,38 @@ A continuació, per tal d'aclarir les diferències entre els diferents programes
     \end{center}
 \end{table}
 
-\newpage
 \section{Abast}
+En aquest apartat es comentaran els objectius que ha de tindre el projecte, igual que els requisits que ha de complir. També es contemplaran els obstacles i riscos que poden aparèixer durant tot el desenvolupament.
 
-\subsection{Descripció del producte}
 \subsection{Objectius}
+L'objectiu principal d'aquest projecte és poder crear un programa software que permeti simular el càlcul de l'Elo en els videojocs i veure la seva evolució, per determinar si és un algorisme vàlid, per veure si l'Elo correspon al nivell del jugador i per veure si l'aparellament és el correcte. Però per aconseguir que el programa pugui complir amb aquestes funcionalitats, cal assolir un seguit de sub-objectius:
+\begin{itemize}
+    \item \textbf{Personalització de l'algorisme del sistema d'Elo:} El programa ha de permetre tant la modificació de variables com poder canviar la fórmula sencera, permetent així introduir qualsevol algorisme per veure el seu funcionament.
+    
+    \item \textbf{Simulació de partides:} El software ha de permetre simular partides per així poder aplicar la fórmula de l'Elo i poder comprovar que l'aparellament de jugadors és el correcte. S'ha de contemplar que poden haver-hi variables que poden afectar al resultat de la partida, per exemple un jugador pot tenir un arma millor que l'altre, una armadura més resistent, un millor cotxe, etc. També ha de tenir en compte la diferència d'habilitat entre els contrincants, el resultat esperat vs. el real i la quantitat de punts d'Elo guanyats o perduts per cada partida. 
+    
+    \item \textbf{Comparar resultats entre diferents variables i algorismes:} Per poder determinar si la fórmula de l'Elo és la correcta, cal poder comparar els resultats entre els diferents algorismes. És per aquest motiu que es guardaran les dades i es permetrà exportar-les a l'Excel, per poder analitzar-les i comparar-les.
+\end{itemize}
+
+A la figura \ref{fig:EsquemaObjectius} es pot observar un esquema dels diversos objectius i subojectius del programa.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/FuncionsEsquema.jpg}
+    \caption{Esquema dels objectius i subobjectius del sistema. Font: Elaboració pròpia}
+    \label{fig:EsquemaObjectius}
+\end{figure}
+
+\subsection{Obstacles i riscos}
+Durant tot el transcurs del projecte poden aparèixer diversos obstacles i riscos que poden alentir el desenvolupament del projecte. Per aquest motiu, cal identificar-los i saber-ne d'ells.
+
+\begin{itemize}
+    \item \textbf{Data d'entrega fixa:} El TFG té una data límit fixada i, per tant, que s'ha de complir. Però els possibles problemes que ens podem trobar durant el desenvolupament del projecte poden generar endarreriments i, per tant, empitjorar la qualitat del programa o eliminar alguna funció no essencial per falta de temps.
+    \item \textbf{Desconeixement en simulació:} Un aspecte fonamental del programa és la simulació de partides. Però a causa del meu desconeixement en l'àmbit de la simulació dins la informàtica, és probable que es generin endarreriments i possibles errors a l'hora de programar.
+    \item \textbf{Desconeixement en les tecnologies emprades:} A causa del meu desconeixement sobre el llenguatge Lua o sobre el poc ús fet de QT, és probable que s'alenteixi el desenvolupament del projecte, ja que hauré d'aprendre a utilitzar-los correctament.
+    \item \textbf{Bugs i errors:} Durant tot el transcurs de programar i testejar el programa, poden aparèixer diferents errors i bugs que em poden fer perdre molt temps, i per tant, endarrerir el desenvolupament.
+\end{itemize}
+
 
 \newpage
 \section{\textit{Stakeholders}}
@@ -217,8 +245,53 @@ Els \textit{Stakeholders} són una part fonamental pel desenvolupament del proje
 
 \newpage
 \section{Requisits del sistema}
+Per tal d'assolir el bon funcionament del sistema i complir tots els objectius mencionats prèviament, aquest projecte ha d'assolir un seguit de requisits funcionals i no funcionals que es mostraran a continuació.
+
 \subsection{Requisits funcionals}
+El simulador que es desenvolupa en aquest treball disposa d'un seguit de requisits funcionals que permeten a l'usuari fer-ne ús del sistema. Seguidament, s'enumeraran cada un d'ells:
+
+\begin{itemize}
+    \item \textbf{Entrada de fitxers Lua:} El programa ha de permetre poder carregar un fitxer de script en Lua que contingui diverses característiques i funcions per poder personalitzar la simulació, com l'algorisme del sistema d'Elo o les característiques dels jugadors.
+    
+    \item \textbf{Configuració de la fórmula del sistema d'Elo:} El sistema ha de poder entendre i executar perfectament la fórmula d'Elo que hagi introduït l'usuari mitjançant el script de Lua. 
+    
+    \item \textbf{Configuració de la fórmula per jugar la partida:} El sistema ha de poder llegir i executar la fórmula de joc de les partides per tindre en compte totes les propietats que vol l'usuari.
+    
+    \item \textbf{Creació dels jugadors per fer les simulacions:} El sistema ha de crear el nombre de jugadors necessaris per poder executar la simulació. Cada un d'ells ha de tenir les característiques introduïdes per l'usuari.
+    
+    \item \textbf{Configuració de les característiques dels jugador:} L'usuari ha de ser capaç de modificar les característiques o propietats que han de tenir els jugadors mitjançant el fitxer Lua.
+    
+    \item \textbf{Creació d'equips:} El sistema ha de permetre crear equips tenint en compte les dades introduïdes per l'usuari respecte la diferència d'Elo entre jugadors i el nombre de membres d'un equip. Tot equip tindrà una diferència màxima inferior o igual a l'especificada i tindrà un nombre de components idèntics a l'indicat.
+    
+    \item \textbf{Creació de les partides:} El sistema ha de permetre crear partides tenint en compte la diferència màxima d'Elo que pot haver-hi entre els dos equips. Aquesta dada haurà estat introduïda per l'usuari prèviament.
+    
+    \begin{comment}
+    \item \textbf{Matchmaking:} L'eina a desenvolupar ha de ser capaç d'aparellar els diversos jugadors segons la diferència d'Elo demanada, per poder simular posteriorment les partides.
+    \end{comment}
+    
+    \item \textbf{Simulació d'una partida:} El sistema ha de simular una partida entre els equips i determinar un resultat. Per fer-ho, tindrà en compte el sistema implementat per l'usuari en el fitxer Lua.
+    
+    \item \textbf{Càlcul de l'Elo:} El software ha de permetre poder executar l'algorisme de l'Elo i modificar la puntuació de cada un dels jugadors de la forma adequada.
+    
+    \item \textbf{Configuració de la simulació:} El sistema ha de permetre la configuració d'una sèrie de variables per fer la simulació, concretament: el nombre de jugadors, el nombre de components d'un equip, el nombre de partides a simular,  la diferència de puntuació entre els jugadors d'un equip i un enfrontament i la destinació de les estadístiques.
+    
+    \item \textbf{Emmagatzematge de dades:} El software ha de poder emmagatzemar les dades extretes de les simulacions per poder-les utilitzar i actualitzar més tard.
+    
+     \item \textbf{Sortida de fitxers Excel:} L'eina a desenvolupar ha de poder permetre exportar les dades obtingudes a un fitxer Excel per així poder-les analitzar i comparar.
+\end{itemize}
+
 \subsection{Requisits no funcionals}
+Pel que fa als requisits no funcionals, ens centrarem en el rendiment de l'aplicació i la usabilitat per l'usuari.
+
+\begin{itemize}
+    \item \textbf{Facilitat d'ús:} El programa ha de ser intuïtiu i simple per a que qualsevol persona el pugui utilitzar.
+    
+    \item \textbf{Aprenentatge:} El software ha de ser fàcil d'aprendre per a qualsevol usuari.
+    
+    \item \textbf{Eficiència:} El programa ha de ser eficient degut a la gran quantitat de simulacions que ha de fer, per tant, ha d'anar el més ràpid possible.
+    
+    \item \textbf{Aparença:} L'eina ha de ser atractiva visualment pels usuaris que l'utilitzin. 
+\end{itemize}
 
 \newpage
 \section{Metodologia i rigor}
@@ -275,15 +348,6 @@ Planificar bé un projecte és molt important, ja que et permet gestionar el tem
 Durant el curset de GEP, es fa una planificació completa del TFG per tal d'assolir tots els objectius. En el meu cas, aquesta va ser molt completa, però no perfecte. La gran majoria de tasques s'han seguit tal com estaven organitzades, però hi ha hagut uns petits canvis. Bàsicament, s'ha afegit una tasca que consisteix a implementar totes les funcionalitats del sistema, però de forma molt bàsica, és a dir, sense llegir fitxers d'entrada ni aplicar cap algorisme, sinó fent-ho tot aleatori. En altres paraules, consisteix a fer tota l'estructura del programa. Aquesta decisió s'ha pres perquè d'aquesta manera, si hi ha algun inconvenient durant el desenvolupament, es tingui un producte funcional el dia de l'entrega. Igualment, aquesta tasca no ha afectat de forma negativa a les altres, ja que el temps que s'ha trigat a desenvolupar-la és temps estalviat en les futures tasques, simplement perquè l'estructura ja està feta.
 
 Llavors, un cop comentat el canvi, ja es pot procedir en veure tota la planificació feta per aquest treball.
-\subsection{Obstacles i riscos}
-Primer de tot s'intentarà preveure els diferents obstacles i riscos que poden aparèixer. Aquests poden afectar de forma negativa al projecte, alentint el seu desenvolupament i, fins i tot, impedint l'acabament complet del sistema. Per aquest motiu, cal identificar-los i saber-ne d'ells.
-
-\begin{itemize}
-    \item \textbf{Data d'entrega fixa:} El TFG té una data límit fixada i, per tant, que s'ha de complir. Però els possibles problemes que ens podem trobar durant el desenvolupament del projecte poden generar endarreriments i, per tant, empitjorar la qualitat del programa o eliminar alguna funció no essencial per falta de temps.
-    \item \textbf{Desconeixement en simulació:} Un aspecte fonamental del programa és la simulació de partides. Però a causa del meu desconeixement en l'àmbit de la simulació dins la informàtica, és probable que es generin endarreriments i possibles errors a l'hora de programar.
-    \item \textbf{Desconeixement en les tecnologies emprades:} A causa del meu desconeixement sobre el llenguatge Lua o sobre el poc ús fet de QT, és probable que s'alenteixi el desenvolupament del projecte, ja que hauré d'aprendre a utilitzar-los correctament.
-    \item \textbf{Bugs i errors:} Durant tot el transcurs de programar i testejar el programa, poden aparèixer diferents errors i bugs que em poden fer perdre molt temps, i per tant, endarrerir el desenvolupament.
-\end{itemize}
 
 \subsection{Descripció de tasques}
 Aquest projecte es pot dividir en tres grans parts, on cada una d'elles constarà de diverses tasques: gestió del projecte, desenvolupament i documentació i seguiment.
@@ -663,6 +727,59 @@ Planificar i gestionar el pressupost d'un projecte és molt important, però tam
 \end{itemize}
 
 \newpage
+\section{Informe de sostenibilitat}
+\subsection{Autoavaluació}
+Després de realitzar l'enquesta sobre la sostenibilitat d'EDINSOST, m'he adonat que hi han aspectes que encara no conec i haig d'aprendre. Aquesta enquesta tracta  tres grans temes: el el mediambiental, el social i l'econòmic.
+
+Pel que fa al primer tema, prèviament en la carrera ens han mostrat i explicat l'impacte del hardware obsolet i els cementiris tecnològics en els països subdesenvolupats, i totes les conseqüències que tenen per a la societat d'allà. En canvi, en cap moment ens han explicat la manera de mesurar aquests impactes ambientals i com evitar-los o reduir-los el més mínim possible.
+
+Respecte el segon gran tema, el social, també ens han explicat diversos aspectes. Sé que un programa ha de ser ètic, equitatiu, ha de poder ser utilitzat per tothom i ha de ser transparent i, a més, també ha de ser beneficiós per a la societat. Un programa ha d'estar dissenyat per ajudar a la gent i facilitar-los la vida. És per aquest motiu que s'ha de pensar en totes les conseqüències directes i indirectes que tindrà en la societat, tot i que no sempre es fa. Finalment, torna a passar la mateixa situació que abans, en cap moment ens han explicat com mesurar com de gran és la contribució per a la societat.
+
+Per acabar, respecte l'últim tòpic, l'econòmic, només conec el que s'ha explicat en algunes assignatures prèvies i en GEP. Sé com planificar un projecte, calcular el seu pressupost, tindre en compte els imprevistos o analitzar la competència per veure les necessitats que falten. Malauradament, encara no he pogut posar en pràctica els meus coneixements en un projecte que no estigui dintre del mon acadèmic.
+
+En conclusió, tot i tindre consciència sobre diversos aspectes de sostenibilitat, encara em falta molt per aprendre i, el que és més important, aplicar-los al desenvolupament dels projectes. Combinar tots tres temes és una tasca complicada que s'ha d'intentar fer pel bé de tots.
+
+\subsection{Dimensió ambiental}
+
+\setlength{\parindent}{0cm}
+
+\textbf{Has estimat l'impacte ambiental que tindrà la realització del projecte? T'has plantejat minimitzar l'impacte, per exemple, reutilitzant recursos?}
+
+A l'hora de plantejar el projecte no es va pensar en l'impacte ambiental que tindria. Afortunadament, es tracte d'un software, i per tant, d'un material no físic. Els únics impactes ambientals que poden haver-hi són el de consum de llum, els recursos materials necessaris per desenvolupar el projecte i el desplaçament dels treballadors. Per sort, aquest és un treball realitzat per una sola persona des de casa, per la qual cosa no hi ha desplaçament. Els recursos materials son reutilitzats, ja que s'han utilitzat els que ja tenia prèviament, per tant, no n'ha fet falta comprar-ne cap de nou. Llavors, l'únic impacte que hi ha és el consum de llum.
+
+\newpage
+
+\textbf{Com es resolen actualment el problema que vols abordar(estat de l'art)? En què millorarà ambientalment la teva solució amb les existents?}
+
+Actualment, com s'ha explicat prèviament, el problema es resol plantejant una simulació que s'adeqüi a l'algorisme d'Elo que es vol testejar i executant diverses partides. Per això, cal desenvolupar una versió diferent cada vegada que es canvia la fórmula, i per tant, equival a més temps i més consum d'energia. En canvi, el meu projecte no necessita una versió diferent cada vegada que es canvia l'algorisme de l'Elo, i per tant, estalvia més energia.
+
+\subsection{Dimensió econòmica}
+
+\textbf{Has estimat el cost de la realització del projecte (recursos humans i materials)?}
+
+Durant la planificació de tot el projecte, s'ha fet un càlcul del pressupost necessari pel seu desenvolupament, on s'han tingut en compte els diversos recursos humans, materials i generals, a l'igual que les contingències i els imprevistos.
+
+\textbf{Com es resolen actualment el problema que vols abordar (estat de l'art)? En què millorarà econòmicament la teva solució de les existents?}
+
+Com s'ha explicat abans, el problema actualment es resol plantejant una simulació que s'adeqüi a l'algorisme d'Elo que es vol testejar i executant diverses partides. La millora econòmica que aporta el meu projecte és la de reducció de temps a l'hora de desenvolupar el videojoc, i per tant, menys personal que pagar. Per una altre part, gràcies a l'eina a desenvolupar, es podrà saber si el sistema d'Elo és el desitjat i per tant, el que es vol per millorar l'experiència del jugador. D'aquesta manera, si el joc té èxit, també es vendrà més i es generaran més beneficis. 
+
+\subsection{Dimensió social}
+
+\textbf{Què creus que t'aportarà a nivell personal la realització d'aquest projecte?}
+
+La realització d'aquest projecte m'aportarà un gran coneixement i experiència sobre els llenguatges i les eines que utilitzaré per desenvolupar-ho. També em servirà per veure com funcionen els projectes petits i com de similar o diferent pot ser la planificació de la realitat.
+
+\textbf{Com es resolen actualment el problema que vols abordar (estat de l'art)? En què millorarà socialment (qualitat de vida) la teva solució de les existents?}
+
+Com ja s'ha dit abans, actualment el problema es resol plantejant una simulació que s'adeqüi a l'algorisme d'Elo que es vol testejar i executant diverses partides. Gràcies al projecte, els treballadors hauran de pensar menys en com desenvolupar una simulació per cada fórmula i els jugadors podran gaudir més dels videojocs gràcies a que tenen el sistema d'Elo desitjat per l'empresa. 
+
+\newpage
+
+\textbf{Existeix una necessitat real del projecte?}
+
+Realment si existeix una necessitat real. Com es va dir prèviament, els videojocs cada vegada són més famosos i tenen un impacte més important en la societat. Per tant, desenvolupar un bon joc és molt important, i una de les claus en fer-ho, es fer un bon sistema d'Elo, per a que els jugadors ho gaudeixin. Per tant, aquest programa ajuda a que això passi, i a més, estalvia temps de desenvolupament.
+
+\newpage
 \section{Lleis i regulacions}
 A l'hora de fer un programa informàtic és molt important complir les lleis i satisfer les regulacions. L'incompliment d'una d'elles pot provocar greus conseqüències que poden ser penalitzades de forma molt severa. 
 
@@ -687,7 +804,12 @@ Durant el desenvolupament d'aquest projecte s'han aplicat un gran nombre de cone
     \item \textbf{VJ:} Aquesta assignatura ha ajudat a augmentar el meu coneixement sobre el C++ après al principi de la carrera.
 \end{itemize}
 
-\subsection{Assoliment de les competències seleccionades}
+\subsubsection{Assoliment de les competències seleccionades}
+\subsubsection*{CES1.1: Desenvolupar, mantenir i avaluar sistemes i serveis software complexos i/o crítics}
+\subsubsection*{CES1.2: Donar solució a problemes d'integració en funció de les estratègies, dels estàndards i de les tecnologies disponibles}
+\subsubsection*{CES1.3: Identificar, avaluar i gestionar els riscos potencials associats a la construcció de software que es poguessin presentar}
+\subsubsection*{CES1.7: Controlar la qualitat i dissenyar proves en la producció de software}
+\subsubsection*{CES2.1: Definir i gestionar els requisits d'un sistema software}
 
 \newpage
 \nocite{*}
