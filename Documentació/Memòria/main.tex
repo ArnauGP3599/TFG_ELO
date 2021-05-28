@@ -352,12 +352,33 @@ Per dur a terme aquest projecte s'han escollit un seguit d'eines i tecnologies q
 \end{itemize}
 
 \newpage
+\subsection{Anàlisi d'alternatives}
+Durant el desenvolupament del projecte i de les seves diverses tasques, han sorgit diverses situacions on la implementació es podria haver fet de diverses maneres.
+
+\begin{itemize}
+    \item \textbf{Creació de jugadors:} Els jugadors poden ser introduïts per l'usuari o poden ser creats per la pròpia simulació. En aquest segon cas, cada un d'ells requereix de les propietats que els caracteritza. Per afegir aquests valors s'ha optat per utilitzar una distribució gaussiana \cite{wikipediaGauss}. D'aquesta manera, els valors es generen a partir d'una Normal, al voltant d'una mitjana i que seran distribuïts al voltant de la mateixa variabilitat. És a dir, si ens fixem en la figura \ref{fig:campanaGaussImage}, la \textmu \, seria la mitjana, i els valors es dispersarien dintre dels diferents colors blaus, respectant la probabilitat. D'aquesta manera, els jugadors tenen valors més similars i realistes. Una altra manera d'implementar-ho seria amb un generador de nombres aleatoris, però això faria les simulacions ser menys realistes, ja que podria generar equips molt desigualats.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\textwidth]{images/gaussImage.jpg}
+        \caption{Campana de Gauss. Font: \cite{campanaGauss}}
+        \label{fig:campanaGaussImage}
+    \end{figure}
+    
+    \item \textbf{Creació d'equips i partides:} La creació d'equips funciona ajuntant els jugadors d'un Elo similar. Per fer-ho, cada jugador comprova si amb el seu Elo entra en un dels equips que estan en formació. En cas negatiu, en crea un de nou. En canvi, si hi entra, es mira si grup està ple, i si ho està, passa a ser un equip format. Per tant, pot passar que hi hagin jugadors que no formin part d'un equip complet, i per tant, no juguin. El mateix sistema s'aplica a la creació de partides. S'ha escollit aquest mètode per fer les simulacions de la forma més igualada possible, tenint tots els rivals un nivell d'Elo similar. Una solució alternativa seria agrupar els jugadors que no tenen un equip complet de forma aleatòria, creat així grups molt desbalancejats. Aquesta opció s'ha descartat perquè llavors les simulacions podrien ser molt desiguals i no es podria estudiar bé l'evolució de l'Elo.
+    
+    \item \textbf{Simulació de partides:} Les partides es simulen a partir de les propietats que tenen els jugadors. Per exemple, actualment cada jugador té un cert valor de força i d'armadura. A l'hora de jugar la partida, es mira quin dels dos equips fa més mal (es compara la força del propi equip amb l'armadura del rival) per determinar el guanyador. D'aquesta manera, la simulació és més realista i podria arribar a simular les mecàniques d'un videojoc de veritat. Una altra manera d'implementar-ho seria decidint el guanyador amb un valor aleatori, opció que s'ha descartat perquè fa les simulacions molt irregulars i impedeix veure correctament com evoluciona l'Elo d'un jugador.
+\end{itemize}
+
+\newpage
 \section{Planificació temporal}
 Planificar bé un projecte és molt important, ja que et permet gestionar el temps per desenvolupar tot el producte i preveure tots els errors que puguin sorgir. Concretament, aquest TFG té una duració aproximada de quatre mesos i mig, començant a mitjans de febrer, per ser exactes el dia 15, i finalitzant l'última setmana de juny. S'estima que la duració del treball sigui de 450 hores, que es distribuiran entre les 18 setmanes lectives (excloent Setmana Santa). Això equival a 25 hores per setmana, que fa una mitjana de 5 hores per cada dia lectiu. 
 
-Durant el curset de GEP, es fa una planificació completa del TFG per tal d'assolir tots els objectius. En el meu cas, aquesta va ser molt completa, però no perfecte. La gran majoria de tasques s'han seguit tal com estaven organitzades, però hi ha hagut uns petits canvis. Bàsicament, s'ha afegit una tasca que consisteix a implementar totes les funcionalitats del sistema, però de forma molt bàsica, és a dir, sense llegir fitxers d'entrada ni aplicar cap algorisme, sinó fent-ho tot aleatori. En altres paraules, consisteix a fer tota l'estructura del programa. Aquesta decisió s'ha pres perquè d'aquesta manera, si hi ha algun inconvenient durant el desenvolupament, es tingui un producte funcional el dia de l'entrega. Igualment, aquesta tasca no ha afectat de forma negativa a les altres, ja que el temps que s'ha trigat a desenvolupar-la és temps estalviat en les futures tasques, simplement perquè l'estructura ja està feta.
+\subsection{Canvis respecte la planificació inicial}
 
-Llavors, un cop comentat el canvi, ja es pot procedir en veure tota la planificació feta per aquest treball.
+Durant el curset de GEP es fa una planificació completa del TFG per tal d'assolir tots els objectius. Aquesta pot no ser la versió definitiva, ja que pot arribar a ser modificada degut diversos errors o inconvenients que no han estat previstos. En el cas d'aquest projecte, també s'han hagut de fer canvis, però pels motius mencionats. La gran majoria de tasques s'han seguit tal com es van organitzar al principi, però hi ha hagut uns petits canvis. Bàsicament, s'ha afegit una tasca que consisteix a implementar totes les funcionalitats del sistema, però de forma molt bàsica, és a dir, sense llegir fitxers d'entrada ni aplicar cap algorisme, sinó fent-ho tot aleatori. En altres paraules, consisteix a fer tota l'estructura del programa. Aquesta decisió s'ha pres perquè d'aquesta manera, si hi ha algun inconvenient durant el desenvolupament, es tingui un producte funcional el dia de l'entrega. Igualment, aquesta tasca no ha afectat de forma negativa a les altres. Tot i haver endarrerit la gran majoria de les tasques, també ha escurçat la durada de cada una, ja que l'estructura ja està feta. D'aquesta manera, el projecte segueix amb les mateixes dates de finalització que en la planificació inicial.
+
+A continuació es mostrarà tota la planificació feta pel treball, tenint en compte la modificació mencionada prèviament.
 
 \subsection{Descripció de tasques}
 Aquest projecte es pot dividir en tres grans parts, on cada una d'elles constarà de diverses tasques: gestió del projecte, desenvolupament i documentació i seguiment.
@@ -419,6 +440,10 @@ S'entén com a recursos humans a totes aquelles persones que han d'ocupar un cà
     
     \item \textbf{Tester (T):} El tester té el paper de dissenyar diferents jocs de prova per comprovar el funcionament correcte del programa i detectar els errors.
 \end{itemize}
+
+\newpage
+\subsection{Punt en el que es troba el projecte actualment}
+Després de veure tota la planificació del projecte, és hora de saber per quin punt es troba. En aquest cas, el treball va bé de temps i segueix la planificació. Per la part d'implementació, només queda fer la interfície gràfica i millorar la sortida de les dades a Excel, és a dir, les tasques CR2 i CR3. Per una altra part, la memòria ja s'ha començat a desenvolupar, i per tant, s'ha avançat feina respecte a la documentació. En conclusió, es pot dir que el projecte va per bon camí.
 
 \newpage
 \section{Estimacions i Gantt}
@@ -519,7 +544,11 @@ Ara que ja es coneixen els riscos i la seva probabilitat de que apareguin, s'exp
 \section{Gestió econòmica}
 \subsection{Identificació i estimació de costos}
 Un aspecte molt important a tindre en compte a l'hora de desenvolupar un projecte és el pressupost. Per aquest motiu, s'han de valorar tots els costos possibles: recursos humans, recursos materials, recursos generals, contingència i imprevistos. 
-Com s'ha explicat anteriorment, s'ha afegit una tasca des de la planificació inicial. Aquesta ha comportat el canvi d'hores destinades en les tasques afectades. Tot i això, el preu gairebé no ha canviat, ha variat en temes de pocs euros, per tant, ha estat un canvi insignificant. A continuació es calcularà cada un dels costos actualitzats i finalment es veurà el cost final del projecte.
+
+\subsection{Modificació del pressupost respecte a la planificació inicial}
+Com s'ha explicat anteriorment, a GEP es fa una planificació inicial del projecte, on també es té en compte el pressupost. També s'ha mencionat prèviament que s'ha afegit una nova tasca respecte a la idea original. Aquesta ha comportat un canvi en el pressupost del projecte molt lleu, ja que les noves hores destinades a aquesta feina han estat escurçades d'altres. D'aquesta manera, cada rol ha acabat fent gairebé les mateixes hores que tenia assignades en un inici.
+
+A continuació es calcularà cada un dels costos actualitzats i finalment es veurà el cost final del projecte.
 
 \subsubsection{Recursos humans}
 Com s'ha explicat prèviament, dintre dels recursos humans hi ha diferents rols. Aquests tenen funcions diferents i treballaran més o menys depenent de les tasques descrites prèviament en el diagrama de Gantt. Per tant, per poder saber el cost total del projecte, cal saber primer el seu sou. Aquest s'ha calculat fent la  mitjana dels sous que es mostren en la pàgina de Tecnoempleo.com \cite{tecnoEmpleo} i que podem veure a la taula \ref{tab:TaulaSouRols}. Aquesta conté els diversos rols, els seus salaris brut per hora i els mateixos tenint en compte la seguretat social (SS). 
