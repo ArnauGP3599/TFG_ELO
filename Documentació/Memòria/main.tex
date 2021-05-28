@@ -316,29 +316,39 @@ Llavors, un cop decidida la metodologia, s'ha d'explicar com funciona. Com bé e
     \label{fig:WaterfallImage}
 \end{figure}
 
-Per una altra part, per poder desenvolupar el projecte, caldrà utilitzar un seguit d'eines per poder validar que s'assoleixen els objectius. 
+\subsection{Control de versions}
 
-\begin{itemize}
-    \item \textbf{Github \cite{Github}:} El Github s'utilitzarà per pujar tot el codi del projecte i tota la documentació necessària. D'aquesta manera, el director podrà veure el progrés i podrà analitzar com s'està implementant la solució.
+Durant el desenvolupament del projecte s'utilitzarà Git\cite{git} per poder realitzar diferents versions d'aquest. També s'utilitzarà Github\cite{Github} per pujar tot el codi del projecte i tota la documentació necessària. D'aquesta manera, el director podrà veure el progrés i podrà analitzar com s'està implementant la solució. Addicionalment, és podrà consultar i accedir a qualsevol versió anterior.
+
+\subsection{Control de seguiment}
     
-    \item \textbf{Google Meet \cite{GoogleMeet}:} Google Meet serà utilitzat per mantenir al director informat i poder-li comentar qualsevol dubte o error. S'ha acordat fer, sempre que sigui possible i necessari, una reunió per setmana. D'aquesta manera es podrà discutir el progrés del projecte i observar si es va pel bon camí.
-\end{itemize}
+Durant el transcurs de tot el TFG, Google Meet \cite{GoogleMeet} serà utilitzat per mantenir al director informat i poder-li comentar qualsevol dubte o error. S'ha acordat fer, sempre que sigui possible i necessari, una reunió per setmana. D'aquesta manera es podrà discutir el progrés del projecte i observar si es va pel bon camí.
+
+\subsection{Control de tasques}
+
+El Trello\cite{Trello} s'utilitzarà tenir estructurades les diverses tasques a realitzar durant el projecte. Cada gran funcionalitat estarà descomposta per petites tasques per tal de facilitar la implementació. A més, es faran quatre columnes per organitzar bé l'estat del projecte: TO DO, DOING, READY, DONE.
 
 \newpage
 \section{Implementació}
 \subsection{Tecnologies utilitzades}
 Per dur a terme aquest projecte s'han escollit un seguit d'eines i tecnologies que facilitaran el seu desenvolupament. A continuació s'explicaran cada una d'elles i el motiu de la seva elecció.
 
+\subsubsection{Llenguatges de programació}
 \begin{itemize}
     \item \textbf{C++:} El projecte s'ha desenvolupat en C++ per dos motius. El primer de tots és que és el llenguatge que he utilitzat més freqüentment i per tant, el que tinc més fresc, ja que és el que vaig utilitzar per a l'assignatura de Videojocs el quadrimestre anterior. El segon motiu és la gran facilitat que hi ha a Internet per trobar informació sobre com funcionen certs aspectes o mètodes del llenguatge, o per consultar dubtes o erros que puguin sorgir durant el desenvolupament. 
     \item \textbf{Lua:} Lua és un llenguatge de programació de scrip potent, eficient i lleuger que pot ser integrat dins d'altres softwares o pot ser compilat en qualsevol d'ells sempre que estigui basat en aquest llenguatge C, ja que és com està fet l'intèrpret \cite{luaAbout}. S'ha escollit aquest llenguatge perquè és fàcil d'aprendre i d'utilitzar i perquè també hi ha la suficient documentació i resolució de problemes a Internet.
-    \item \textbf{QT:} QT és una eina que utilitzarem per desenvolupar la interfície gràfica del programa. Ha estat una eina utilitzada durant alguna assignatura de la carrera, per tant, ja es té cert coneixement sobre ella i és per això que s'ha escollit. 
     \item \textbf{\LaTeX:} \LaTeX és un software lliure i és un sistema de composició de textos, normalment utilitzat per escriure documents i articles científics \cite{wikipediaLatex}. S'ha escollit \LaTeX per fer la memòria perquè és un llenguatge còmode per escriure una documentació llarga i clara, ja que ajuda a estructurar el format de forma més senzilla.
+\end{itemize}
+
+\subsubsection{Eines}
+\begin{itemize}
+    \item \textbf{QT:} QT és una eina que utilitzarem per desenvolupar la interfície gràfica del programa. Ha estat una eina utilitzada durant alguna assignatura de la carrera, per tant, ja es té cert coneixement sobre ella i és per això que s'ha escollit. 
     \item \textbf{Visual Studio 2019:} Visual Studio és una IDE compatible amb diversos llenguatges de programació com C++ o C\#. S'ha escollit aquesta eina per desenvolupar el programa perquè ja l'havia utilitzat anteriorment, i per tant, ja sé com funciona.  
     \item \textbf{Overleaf:} Overleaf és l'editor de text que s'utilitzarà per escriure en \LaTeX.
-    \item \textbf{Github \cite{Github}:} Github és un servei de repositoris que serà emprat per guardar i compartir el codi i la documentació feta durant tot el projecte. Té l'avantatge de què es poden accedir a versions anteriors del codi i també gestionar els errors i bugs trobats. 
+    \item \textbf{Git:} Git és un software de control de versions per manejar des de petits fins a grans projectes \cite{git}. Aquesta eina ens serà útil per emmagatzemar tot el codi del nostre programa i poder anar fent versions del propi.
+    \item \textbf{Github \cite{Github}:} Github és un servei de repositoris que utilitza les versions Git. Serà emprat per guardar i compartir el codi i la documentació feta durant tot el projecte. Té l'avantatge de què es poden accedir a versions anteriors del codi i també gestionar els errors i bugs trobats. 
     \item \textbf{Google Meet \cite{GoogleMeet}:} Google Meet és un servei de Google que serveix per fer videotrucades. Aquesta eina serà utilitzada per mantenir al director informat i poder-li comentar qualsevol dubte o error. S'ha acordat fer, sempre que sigui possible i necessari, una reunió per setmana. D'aquesta manera es podrà discutir el progrés del projecte i observar si es va pel bon camí.
-    
+    \item \textbf{Trello \cite{Trello}:} Trello és una eina per gestionar els projectes i les seves tasques. Serà utilitzada per apuntar les diverses funcions que s'han de realitzar i així saber quines s'estan fent, quines s'han de fer i quines s'han realitzat del tot. D'entre totes les eines que hi ha per fer un control de tasques, s'ha escollit aquesta perquè ja s'ha utilitzat prèviament en la carrera i és senzilla d'utilitzar.
 \end{itemize}
 
 \newpage
@@ -480,6 +490,30 @@ A la figura \ref{fig:GanttElo} es pot contemplar la part gràfica del diagrama d
             \label{fig:GanttElo}
         \end{figure}
         
+\section{Gestió del risc}
+Durant el desenvolupament del projecte poden sortir un seguit de riscos que el poden afectar negativament, arribant a endarrerir les tasques programades o fins i tot haver-ne d'eliminar alguna per la falta de temps. És per aquest motiu que cal identificar-los bé i preparar plans alternatius per arribar a solucionar aquests problemes, per poder acabar el projecte a temps i amb totes les funcionalitats. A la taula \ref{tab:taulaRiscos} podem observar els diversos riscos considerats, junt amb la probabilitat de que passin i amb l'impacte que poden tenir sobr el treball.
+
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{ | c | c | c |}
+              \rowcolor{lightgray} \hline \textbf{Risc} & \textbf{Probabilitat} & \textbf{Impacte} \\ \hline
+              Data d'entrega fixa & Baixa & Alt \\ \hline
+              Desconeixement en simulació & Alt & Baix \\ \hline
+              Desconeixement en les tecnologies emprades & Alt & Baix \\ \hline
+              Bugs i errors & Alt & Mig \\ \hline
+        \end{tabular}
+        \caption{Taula dels possibles riscos amb les seves probabilitats de que passin}
+        \label{tab:taulaRiscos}
+        \end{center}
+\end{table}  
+
+Ara que ja es coneixen els riscos i la seva probabilitat de que apareguin, s'explicaran els plans alternatius per solucionar-los.
+\begin{itemize}
+    \item \textbf{Data d'entrega fixa:} Com s'ha mostrat anteriorment, la probabilitat de que passi aquest risc és baixa, ja que tota la planificació s'ha fet pensant en la data màxima. Tot i així, pot arribar a tindre conseqüències molt greus, perquè en els pitjors dels casos es pot arribar a eliminar una funcionalitat de les proposades per arribar a l'entrega. Per evitar-ho, el que es farà serà fer una bona planificació tenint en compte tots els problemes i donant un marge de temps per poder-los solucionar. No farà falta cap recurs addicional.
+    \item \textbf{Desconeixement en simulació:} Com es pot observar en la taula \ref{tab:taulaRiscos} prèviament vista, és molt probable que aparegui un problema degut al desconeixement que tinc sobre la simulació. Un pla alternatiu per solucionar-ho és afegir més hores de les necessàries a les respectives tasques per així no generar endarreriments. També es preguntarà al professor responsable de l'assignatura sobre algun dubte en concret. Aquest risc només tindrà un impacte baix, ja que només pot arribar a generar un endarreriment. No farà falta cap recurs addicional.
+    \item \textbf{Desconeixement en les tecnologies emprades:} Com es pot veure en la taula \ref{tab:taulaRiscos}, la probabilitat de que surti un risc relacionat amb el desconeixement de les tecnologies emprades és molt alta. Aquest risc té un impacte mitjà ja que hi ha vàries tecnologies de les quals no tinc gaire coneixement i, per tant, poden generar diversos retards.  Per aquest motiu, s'estudiarà prèviament el seu funcionament i s'afegiran més hores de les necessàries a les tasques on s'utilitzin. No serà necessari cap recurs addicional.
+    \item \textbf{Bugs i errors:} En el desenvolupament de tot programa informàtic, és molt habitual que apareguin bugs i errors a l'hora de desenvolupar i testejar. Per aquest motiu, la probabilitat de que passi en el projecte és molt alta i per solucionar-ho es faran tests unitaris. En cas de que alguna funcionalitat testejada doni un error més tard, se li dedicarà temps per trobar-lo i corregir-lo. L'impacte que pot arribar a tenir és el d'alentir el desenvolupament del projecte i no farà falta cap recurs addicional per corregir-lo.
+\end{itemize}
 
 \newpage
 \section{Gestió econòmica}
@@ -789,8 +823,9 @@ Per una altra banda, el meu projecte tampoc té connexió a Internet. Com a resu
 Pels motius que s'acaben d'explicar, es pot concloure que el meu TFG no vulnera cap llei ni regulació i tampoc està lligat a cap d'elles.
 
 \newpage
-\section{Conclusions}
-\subsection{Conneixements aplicats d'assignatures prèvies}
+%\section{Conclusions}
+%\subsection{Conneixements aplicats d'assignatures prèvies}
+\section{Conneixements aplicats d'assignatures prèvies}
 Durant el desenvolupament d'aquest projecte s'han aplicat un gran nombre de coneixements apresos en les diverses assignatures de la carrera. A continuació, es faran menció a les matèries que més impacte han tingut:
 \begin{itemize}
     \item \textbf{PRO1 i PRO2:} Aquestes dues assignatures han servit per conèixer els conceptes bàsics de la programació i per aprendre el llenguatge de C++, el qual ha estat utilitzat per desenvolupar el programa.
@@ -804,12 +839,16 @@ Durant el desenvolupament d'aquest projecte s'han aplicat un gran nombre de cone
     \item \textbf{VJ:} Aquesta assignatura ha ajudat a augmentar el meu coneixement sobre el C++ après al principi de la carrera.
 \end{itemize}
 
+\begin{comment}
+
 \subsubsection{Assoliment de les competències seleccionades}
 \subsubsection*{CES1.1: Desenvolupar, mantenir i avaluar sistemes i serveis software complexos i/o crítics}
 \subsubsection*{CES1.2: Donar solució a problemes d'integració en funció de les estratègies, dels estàndards i de les tecnologies disponibles}
 \subsubsection*{CES1.3: Identificar, avaluar i gestionar els riscos potencials associats a la construcció de software que es poguessin presentar}
 \subsubsection*{CES1.7: Controlar la qualitat i dissenyar proves en la producció de software}
 \subsubsection*{CES2.1: Definir i gestionar els requisits d'un sistema software}
+
+\end{comment}
 
 \newpage
 \nocite{*}
