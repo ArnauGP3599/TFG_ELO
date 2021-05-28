@@ -138,9 +138,9 @@ Com es pot observar, la fórmula de l'Elo pot ser molt variable i s'han de fer d
 L'Elo es pot calcular de diverses fórmules, des de la més simple que és la d'obtenir punts depenent de si es guanya o es perd, fins a la de contemplar el teu progrés en la partida, com per exemple si s'ha eliminat molts contrincants, si s'ha mort moltes vegades, etc. A continuació es mostraran alguns exemples de sistemes d'Elo utilitzars en videojocs molt coneguts:
 
 \begin{itemize}
-    \item \textbf{Escacs:} Els escacs consisteixen en partides d'u contra u on l'objectiu és eliminar el rei enemic. Aquest utilitza el mètode més senzill per calcular la puntuació d'Elo i és el següent: és mesura la probabilitat de guanyar al rival més la de fer taules (empatar). A partir d'aquí s'extreuen els punts d'Elo a guanyar o perdre depenent del resultat. La quantitat també depèn del rang on juguin la partida, com més rang tinguin, més punts guanyaran o perdran \cite{wikipediaElo}.
-    \item \textbf{Rocket League:} El Rocket League és un videojoc de futbol, amb la diferència que en canvi de jugar amb persones, es juga amb cotxes. En aquest cas, l'Elo s'anomena MMR (MatchMaking Rank) i funciona similar al dels Escacs. Si es guanya al rival, s'obté MMR i si es perd, es resta. La quantitat pot variar depenent del rang en el qual es trobi el jugador i depenent del nivell de l'equip rival. En aquest cas, marcar gols, fer parades o assistències no contribueix a obtenir més Elo \cite{rocketElo}.
-    \item \textbf{League of Legends:} El League of Legends o LOL és un joc per equips on l'objectiu és enderrocar una estructura anomenada Nexo que es troba en la base del rival. Aquest videojoc funciona per rangs i per pujar-ne d'un a un altre, has d'acumular una certa quantitat de LP (League Points). Aquests funcionen com els punts d'Elo explicats anteriorment: si el jugador guanya la partida, n'adquirirà més o menys depenent del nivell del rival. En canvi, si la perd, se li restaran. La diferència amb els videojocs anteriors és que un cop ha adquirit els LP suficients per pujar de rang, necessita jugar unes fases d'ascensió. Si les passa, pujarà de rang i tindrà els LP corresponents. En canvi, si les perd, els LP seran restablerts al del rang corresponent \cite{LolElo}.
+    \item \textbf{Escacs:} Els escacs consisteixen en partides d'u contra u on l'objectiu és eliminar el rei enemic. Aquest utilitza el mètode més senzill per calcular la puntuació d'Elo i és el següent: és mesura la probabilitat de guanyar al rival més la de fer taules (empatar). A partir d'aquí s'extreuen els punts d'Elo a guanyar o perdre depenent del resultat. La quantitat també depèn del rang on juguin la partida, com més alt, més punts guanyaran o perdran \cite{wikipediaElo}.
+    \item \textbf{Rocket League:} El Rocket League és un videojoc de futbol, amb la diferència que en canvi de jugar amb persones, es juga amb cotxes. En aquest cas, l'Elo s'anomena MMR (MatchMaking Rank) i funciona similar al dels Escacs. Si es guanya al rival, s'obté MMR i si es perd, es resta. La quantitat pot variar depenent del rang en el qual es trobi el participant i depenent del nivell de l'equip rival. El progrés en la partida, com ara marcar gols, fer parades o assistències, no contribueix a obtenir més punts d'Elo \cite{rocketElo}.
+    \item \textbf{League of Legends:} El League of Legends o LOL és un joc per equips on l'objectiu és enderrocar una estructura anomenada Nexo que es troba en la base del rival. Aquest videojoc funciona per rangs i per pujar-ne d'un a un altre, s'ha d'acumular una certa quantitat de LP (League Points). Aquests funcionen com els punts d'Elo explicats anteriorment: si el jugador guanya la partida, n'adquirirà més o menys depenent del nivell del rival. En canvi, si la perd, se li restaran. La diferència amb els videojocs anteriors és que un cop s'ha adquirit els LP suficients per pujar de rang, és necessari jugar unes fases d'ascensió. Si es passen, es pujarà de rang i s'obtindran els LP corresponents. En canvi, si es perd, els LP seran restablerts al del rang que pertoca \cite{LolElo}.
     \item \textbf{Counter Strike: Global Offensive:} El Counter Strike: Global Offensive o CSGO és un videojoc per equips de diverses rondes on l'objectiu és eliminar a tot l'equip rival, o evitar que es planti la bomba o desactivar-la, o plantar-la i fer-la explotar, depenent del rol que tingui l'equip.  En aquest joc el sistema d'Elo funciona de manera diferent: cada ronda que es juga és com si fos una partida d'escacs. Els punts d'Elo es veuen repartits al final de cada una d'elles. La diferència està en el fet que aquest joc si contempla el nombre de morts que ha tingut un jugador, el número de baixes, si ha complert l'objectiu, etc. per repartir els punts d'Elo. També té molt en compte qui ha estat el MVP de la ronda, enduent-se una gran part dels punts \cite{csgoELO1} \cite{csgoELO2}. 
 \end{itemize}
 
@@ -148,7 +148,7 @@ L'Elo es pot calcular de diverses fórmules, des de la més simple que és la d'
 \subsection{Motivació}
 Els videojocs és un aspecte que m'ha apassionat tota la vida. Des de ben petit fins al dia d'avui que els porto jugant i gaudint. De fet, el quadrimestre passat vaig cursar l'assignatura de videojocs per tal de veure i entendre com funcionaven.
 
-A l'hora d'escollir un tema per fer el TFG, vaig demanar ajuda a diversos professors que havia tingut durant la carrera per veure si em podien donar alguna idea. D'entre totes les propostes que havia rebut, les quals eren molt interessants, va haver-hi una que em va cridar molt l'atenció. Evidentment, aquesta és la del meu TFG i consisteix a fer un simulador d'Elo per estudiar aquest mateix i veure com evolucionava. Vaig escollir aquesta idea per dues raons: la primera és que era una temàtica sobre els videojocs, que com he mencionat anteriorment, m'agraden molt. La segona és que és un aspecte que mai m'havia plantejat com funcionava i que malauradament no s'havia estudiat en l'assignatura. Per tant, vaig escollir aquest TFG per augmentar el meu coneixement sobre els videojocs i com estan fets.
+A l'hora d'escollir un tema per fer el TFG, vaig demanar ajuda a diversos professors que havia tingut durant la carrera per veure si em podien donar alguna idea. D'entre totes les propostes que havia rebut, les quals eren molt interessants, va haver-hi una que em va cridar molt l'atenció. Evidentment, aquesta és la del meu TFG i consisteix a fer un simulador d'Elo per estudiar aquest mateix i veure com evolucionava. Vaig escollir aquesta idea per dues raons: la primera és que era una temàtica sobre els videojocs, que com he mencionat anteriorment, m'agraden molt. La segona és que és un aspecte que mai m'havia plantejat com funcionava i que malauradament no s'havia estudiat en l'assignatura. Per tant, vaig escollir aquest TFG per augmentar el meu coneixement sobre els videojocs i sobre com estan fets.
 
 
 \newpage
@@ -169,7 +169,7 @@ El sistema d'Elo d'un videojoc és molt important, ja que ha de representar, nor
 \subsection{Justificació de la meva proposta}
 Un cop vistes totes les solucions que hi ha actualment a Internet, podem concloure que totes elles tenen aspectes positius: permeten modificar la variable K,  mostren un gràfic de com va evolucionant l'Elo després de diverses partides,  permeten escollir el resultat de cada joc o ensenyen quants punts es guanyen o perden en cada un. Tot i això, totes elles estan lligades a la mateixa fórmula, i és aquesta la principal diferència amb el meu projecte.
 
-La meva solució també permet modificar el valor de diverses variables, simular diverses partides i exportar els resultats per fer una gràfica, però el més important és que permetrà canviar l'algorisme per calcular l'Elo completament. Es podrà utilitzar l'algorisme que es desitgi, ja sigui el predeterminat o un creat per l'empresa o persona que dissenyi el videojoc, permetent així veure la comparativa entre les diferents fórmules i escollint la més adequada pel videojoc. A més, per tal de simular millors les partides, també permetrà canviar l'algorisme de com es juguen i també permetrà crear jugadors amb les característiques desitjades. Tot això fa el simulador més dinàmic i més adaptable, ajustant-se a la voluntat de l'empresa.
+La meva solució també permet modificar el valor de diverses variables, simular diverses partides i exportar els resultats per fer una gràfica, però el més important és que permetrà canviar l'algorisme per calcular l'Elo completament. Es podrà utilitzar l'algorisme que es desitgi, ja sigui el predeterminat o un creat per l'empresa o persona que dissenyi el videojoc, permetent així veure la comparativa entre les diferents fórmules i escollint la més adequada pel videojoc. A més, per tal de simular millors les partides, també permetrà canviar l'algorisme de com es juguen i crear jugadors amb les característiques desitjades. Tot això fa el simulador més dinàmic i més adaptable, ajustant-se a la voluntat de l'empresa.
 
 A continuació, per tal d'aclarir les diferències entre els diferents programes, en la taula \ref{tab:TaulaFuncionalitat} es pot observar una graella comparativa entre les diferents funcionalitats dels diversos programes trobats i el meu.
 
@@ -223,7 +223,7 @@ Durant tot el transcurs del projecte poden aparèixer diversos obstacles i risco
 \begin{itemize}
     \item \textbf{Data d'entrega fixa:} El TFG té una data límit fixada i, per tant, que s'ha de complir. Però els possibles problemes que ens podem trobar durant el desenvolupament del projecte poden generar endarreriments i, per tant, empitjorar la qualitat del programa o eliminar alguna funció no essencial per falta de temps.
     \item \textbf{Desconeixement en simulació:} Un aspecte fonamental del programa és la simulació de partides. Però a causa del meu desconeixement en l'àmbit de la simulació dins la informàtica, és probable que es generin endarreriments i possibles errors a l'hora de programar.
-    \item \textbf{Desconeixement en les tecnologies emprades:} A causa del meu desconeixement sobre el llenguatge Lua o sobre el poc ús fet de QT, és probable que s'alenteixi el desenvolupament del projecte, ja que hauré d'aprendre a utilitzar-los correctament.
+    \item \textbf{Desconeixement en les tecnologies emprades:} A causa del meu desconeixement sobre el llenguatge de programació Lua o sobre el poc ús fet del software de QT, és probable que s'alenteixi el desenvolupament del projecte, ja que hauré d'aprendre a utilitzar-los correctament.
     \item \textbf{Bugs i errors:} Durant tot el transcurs de programar i testejar el programa, poden aparèixer diferents errors i bugs que em poden fer perdre molt temps, i per tant, endarrerir el desenvolupament.
 \end{itemize}
 
@@ -286,11 +286,11 @@ Pel que fa als requisits no funcionals, ens centrarem en el rendiment de l'aplic
 \begin{itemize}
     \item \textbf{Facilitat d'ús:} El programa ha de ser intuïtiu i simple per a que qualsevol persona el pugui utilitzar.
     
-    \item \textbf{Aprenentatge:} El software ha de ser fàcil d'aprendre per a qualsevol usuari.
+    \item \textbf{Aprenentatge:} El software ha de ser fàcil d'aprendre a utilitzar. Qualsevol usuari ha de ser capaç d'executar-lo i treure-li profit.
     
-    \item \textbf{Eficiència:} El programa ha de ser eficient degut a la gran quantitat de simulacions que ha de fer, per tant, ha d'anar el més ràpid possible.
+    \item \textbf{Eficiència:} El programa ha de ser eficient a causa de la gran quantitat de simulacions que ha de fer, per tant, ha d'anar el més ràpid possible.
     
-    \item \textbf{Aparença:} L'eina ha de ser atractiva visualment pels usuaris que l'utilitzin. 
+    \item \textbf{Aparença:} L'eina ha de ser atractiva visualment pels usuaris que l'utilitzin.  És essencial identificar els diversos elements de forma senzilla. També és una necessitat primordial escollir els colors i elements adequats per fer la interfície gràfica agradable.  
 \end{itemize}
 
 \newpage
@@ -318,15 +318,15 @@ Llavors, un cop decidida la metodologia, s'ha d'explicar com funciona. Com bé e
 
 \subsection{Control de versions}
 
-Durant el desenvolupament del projecte s'utilitzarà Git\cite{git} per poder realitzar diferents versions d'aquest. També s'utilitzarà Github\cite{Github} per pujar tot el codi del projecte i tota la documentació necessària. D'aquesta manera, el director podrà veure el progrés i podrà analitzar com s'està implementant la solució. Addicionalment, és podrà consultar i accedir a qualsevol versió anterior.
+Durant el desenvolupament del projecte s'utilitzarà Git per poder realitzar treballar amb diferents versions del programa. També s'utilitzarà Github per pujar tot el codi del treball i tota la documentació necessària. D'aquesta manera, el director podrà veure el progrés i podrà analitzar com s'està implementant la solució. Addicionalment, és podrà consultar i accedir a qualsevol versió anterior.
 
 \subsection{Control de seguiment}
     
-Durant el transcurs de tot el TFG, Google Meet \cite{GoogleMeet} serà utilitzat per mantenir al director informat i poder-li comentar qualsevol dubte o error. S'ha acordat fer, sempre que sigui possible i necessari, una reunió per setmana. D'aquesta manera es podrà discutir el progrés del projecte i observar si es va pel bon camí.
+Durant el transcurs de tot el TFG, Google Meet serà utilitzat per mantenir al director informat i poder-li comentar qualsevol dubte o error. S'ha acordat fer, sempre que sigui possible i necessari, una reunió per setmana. D'aquesta manera es podrà discutir el progrés del projecte i observar si es va pel bon camí.
 
 \subsection{Control de tasques}
 
-El Trello\cite{Trello} s'utilitzarà tenir estructurades les diverses tasques a realitzar durant el projecte. Cada gran funcionalitat estarà descomposta per petites tasques per tal de facilitar la implementació. A més, es faran quatre columnes per organitzar bé l'estat del projecte: TO DO, DOING, READY, DONE.
+El Trello s'utilitzarà per tenir estructurades les diverses tasques a realitzar durant tot el projecte. Cada gran funcionalitat estarà descomposta per petites tasques per tal de facilitar la implementació. A més, es faran quatre columnes per organitzar bé l'estat del projecte: TO DO, DOING, READY, DONE.
 
 \newpage
 \section{Implementació}
@@ -336,18 +336,17 @@ Per dur a terme aquest projecte s'han escollit un seguit d'eines i tecnologies q
 \subsubsection{Llenguatges de programació}
 \begin{itemize}
     \item \textbf{C++:} El projecte s'ha desenvolupat en C++ per dos motius. El primer de tots és que és el llenguatge que he utilitzat més freqüentment i per tant, el que tinc més fresc, ja que és el que vaig utilitzar per a l'assignatura de Videojocs el quadrimestre anterior. El segon motiu és la gran facilitat que hi ha a Internet per trobar informació sobre com funcionen certs aspectes o mètodes del llenguatge, o per consultar dubtes o erros que puguin sorgir durant el desenvolupament. 
-    \item \textbf{Lua:} Lua és un llenguatge de programació de scrip potent, eficient i lleuger que pot ser integrat dins d'altres softwares o pot ser compilat en qualsevol d'ells sempre que estigui basat en aquest llenguatge C, ja que és com està fet l'intèrpret \cite{luaAbout}. S'ha escollit aquest llenguatge perquè és fàcil d'aprendre i d'utilitzar i perquè també hi ha la suficient documentació i resolució de problemes a Internet.
-    \item \textbf{\LaTeX:} \LaTeX és un software lliure i és un sistema de composició de textos, normalment utilitzat per escriure documents i articles científics \cite{wikipediaLatex}. S'ha escollit \LaTeX per fer la memòria perquè és un llenguatge còmode per escriure una documentació llarga i clara, ja que ajuda a estructurar el format de forma més senzilla.
+    \item \textbf{Lua:} Lua és un llenguatge de programació de scrip potent, eficient i lleuger que pot ser integrat dins d'altres softwares o pot ser compilat en qualsevol d'ells sempre que estigui basat en aquest llenguatge C, ja que és com està fet l'intèrpret \cite{luaAbout}. S'ha escollit aquest llenguatge per diversos motius. El primer de tots és perquè és fàcil d'aprendre i d'utilitzar. El segon motiu és perquè hi ha la suficient documentació i resolució de problemes a Internet. Finalment, també s'ha escollit Lua perquè és fàcil d'integrar al Visual Studio.
+    \item \textbf{\LaTeX:} \LaTeX \, és un software lliure i és un sistema de composició de textos, normalment utilitzat per escriure documents i articles científics \cite{wikipediaLatex}. S'ha escollit per fer la memòria perquè és un llenguatge còmode per escriure una documentació llarga i clara, ja que permet estructurar el format de forma més senzilla.
 \end{itemize}
-
 \subsubsection{Eines}
 \begin{itemize}
-    \item \textbf{QT:} QT és una eina que utilitzarem per desenvolupar la interfície gràfica del programa. Ha estat una eina utilitzada durant alguna assignatura de la carrera, per tant, ja es té cert coneixement sobre ella i és per això que s'ha escollit. 
-    \item \textbf{Visual Studio 2019:} Visual Studio és una IDE compatible amb diversos llenguatges de programació com C++ o C\#. S'ha escollit aquesta eina per desenvolupar el programa perquè ja l'havia utilitzat anteriorment, i per tant, ja sé com funciona.  
-    \item \textbf{Overleaf:} Overleaf és l'editor de text que s'utilitzarà per escriure en \LaTeX.
-    \item \textbf{Git:} Git és un software de control de versions per manejar des de petits fins a grans projectes \cite{git}. Aquesta eina ens serà útil per emmagatzemar tot el codi del nostre programa i poder anar fent versions del propi.
-    \item \textbf{Github \cite{Github}:} Github és un servei de repositoris que utilitza les versions Git. Serà emprat per guardar i compartir el codi i la documentació feta durant tot el projecte. Té l'avantatge de què es poden accedir a versions anteriors del codi i també gestionar els errors i bugs trobats. 
-    \item \textbf{Google Meet \cite{GoogleMeet}:} Google Meet és un servei de Google que serveix per fer videotrucades. Aquesta eina serà utilitzada per mantenir al director informat i poder-li comentar qualsevol dubte o error. S'ha acordat fer, sempre que sigui possible i necessari, una reunió per setmana. D'aquesta manera es podrà discutir el progrés del projecte i observar si es va pel bon camí.
+    \item \textbf{QT:} QT és una eina que s'utilitzarà per desenvolupar la interfície gràfica del programa. Ha estat un software que s'ha empleat en alguna assignatura de la carrera i, per tant, ja es té cert coneixement de com funciona. És per aquest motiu que s'ha escollit. 
+    \item \textbf{Visual Studio 2019:} Visual Studio és una IDE compatible amb diversos llenguatges de programació com C++ o C\#. S'ha escollit aquesta eina perquè ja s'ha utilitzat prèviament en la carrera.  
+    \item \textbf{Overleaf:} Overleaf és l'editor de text que s'utilitzarà per escriure en \LaTeX. S'ha escollit pel mateix motiu que l'anterior, perquè ja s'ha treballat amb aquesta eina.
+    \item \textbf{Git:} Git és un software de control de versions per manejar des de petits fins a grans projectes \cite{git}. Aquesta eina ens serà útil per emmagatzemar tot el codi del nostre programa i poder anar fent diferents versions del propi treball.
+    \item \textbf{Github \cite{Github}:} Github és un servei de repositoris que utilitza les versions Git. Serà emprat per guardar i compartir el codi i la documentació feta durant tot el projecte. Té l'avantatge de què es poden accedir a versions anteriors del projecte i també gestionar els errors i bugs trobats. 
+    \item \textbf{Google Meet \cite{GoogleMeet}:} Google Meet és un servei de Google que serveix per fer videotrucades. Aquesta eina serà utilitzada per contactar amb el professor. D'entre totes les eines que hi ha per fer videotrucades, s'ha escollit aquesta perquè és la que s'ha utilitzat durant les classes online de la carrera.
     \item \textbf{Trello \cite{Trello}:} Trello és una eina per gestionar els projectes i les seves tasques. Serà utilitzada per apuntar les diverses funcions que s'han de realitzar i així saber quines s'estan fent, quines s'han de fer i quines s'han realitzat del tot. D'entre totes les eines que hi ha per fer un control de tasques, s'ha escollit aquesta perquè ja s'ha utilitzat prèviament en la carrera i és senzilla d'utilitzar.
 \end{itemize}
 
@@ -356,16 +355,18 @@ Per dur a terme aquest projecte s'han escollit un seguit d'eines i tecnologies q
 Durant el desenvolupament del projecte i de les seves diverses tasques, han sorgit diverses situacions on la implementació es podria haver fet de diverses maneres.
 
 \begin{itemize}
-    \item \textbf{Creació de jugadors:} Els jugadors poden ser introduïts per l'usuari o poden ser creats per la pròpia simulació. En aquest segon cas, cada un d'ells requereix de les propietats que els caracteritza. Per afegir aquests valors s'ha optat per utilitzar una distribució gaussiana \cite{wikipediaGauss}. D'aquesta manera, els valors es generen a partir d'una Normal, al voltant d'una mitjana i que seran distribuïts al voltant de la mateixa variabilitat. És a dir, si ens fixem en la figura \ref{fig:campanaGaussImage}, la \textmu \, seria la mitjana, i els valors es dispersarien dintre dels diferents colors blaus, respectant la probabilitat. D'aquesta manera, els jugadors tenen valors més similars i realistes. Una altra manera d'implementar-ho seria amb un generador de nombres aleatoris, però això faria les simulacions ser menys realistes, ja que podria generar equips molt desigualats.
+    \item \textbf{Creació de jugadors:} Els jugadors poden ser introduïts per l'usuari o poden ser creats per la pròpia simulació. En aquest segon cas, cada un d'ells requereix de les propietats que els caracteritza. Per afegir aquests valors s'ha optat per utilitzar una distribució gaussiana \cite{wikipediaGauss}. D'aquesta manera, els valors es generen a partir d'una distribució Normal, al voltant d'una mitjana i seran distribuïts amb la mateixa variabilitat. És a dir, si ens fixem en la figura \ref{fig:campanaGaussImage}, la \textmu \, seria la mitjana, i els valors es dispersarien dintre dels diferents colors blaus, respectant la probabilitat. D'aquesta manera, els jugadors tenen valors més similars i realistes. Una altra manera d'implementar-ho seria amb un generador de nombres aleatoris, però això faria que les simulacions fossin menys realistes, ja que podria generar equips molt desigualats.
+    
+    Per una altra banda, la puntuació de l'Elo de cada jugador és generada de forma aleatòria. D'aquesta manera, les simulacions i els equips són més variats i es pot contemplar una millor evolució de l'Elo. Una alternativa seria que cada jugador comencés amb 0 punts, però provocaria que sempre es generessin els mateixos equips i no es pogués contemplar bé el progrés de cada un.
     
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.7\textwidth]{images/gaussImage.jpg}
+        \includegraphics[width=0.8\textwidth]{images/gaussImage.jpg}
         \caption{Campana de Gauss. Font: \cite{campanaGauss}}
         \label{fig:campanaGaussImage}
     \end{figure}
     
-    \item \textbf{Creació d'equips i partides:} La creació d'equips funciona ajuntant els jugadors d'un Elo similar. Per fer-ho, cada jugador comprova si amb el seu Elo entra en un dels equips que estan en formació. En cas negatiu, en crea un de nou. En canvi, si hi entra, es mira si grup està ple, i si ho està, passa a ser un equip format. Per tant, pot passar que hi hagin jugadors que no formin part d'un equip complet, i per tant, no juguin. El mateix sistema s'aplica a la creació de partides. S'ha escollit aquest mètode per fer les simulacions de la forma més igualada possible, tenint tots els rivals un nivell d'Elo similar. Una solució alternativa seria agrupar els jugadors que no tenen un equip complet de forma aleatòria, creat així grups molt desbalancejats. Aquesta opció s'ha descartat perquè llavors les simulacions podrien ser molt desiguals i no es podria estudiar bé l'evolució de l'Elo.
+    \item \textbf{Creació d'equips i partides:} La creació d'equips funciona ajuntant els jugadors d'un Elo similar. Per fer-ho, cada jugador comprova si amb el seu Elo entra en un dels equips que estan en formació. En cas negatiu, en crea un de nou. En canvi, si hi entra, es mira si grup està ple, i si ho està, passa a ser un equip format. Per tant, pot passar que hi hagin jugadors que no formin part d'un equip complet, i per tant, no juguin. El mateix sistema s'aplica a la creació de partides. S'ha escollit aquest mètode per fer les simulacions de la forma més igualada possible, tenint tots els rivals un nivell d'Elo similar. Una solució alternativa seria agrupar els jugadors que no tenen un equip complet de forma aleatòria, creat així grups molt desbalancejats. Aquesta opció s'ha descartat perquè llavors les simulacions podrien ser molt desigualades i no es podria estudiar bé l'evolució de l'Elo.
     
     \item \textbf{Simulació de partides:} Les partides es simulen a partir de les propietats que tenen els jugadors. Per exemple, actualment cada jugador té un cert valor de força i d'armadura. A l'hora de jugar la partida, es mira quin dels dos equips fa més mal (es compara la força del propi equip amb l'armadura del rival) per determinar el guanyador. D'aquesta manera, la simulació és més realista i podria arribar a simular les mecàniques d'un videojoc de veritat. Una altra manera d'implementar-ho seria decidint el guanyador amb un valor aleatori, opció que s'ha descartat perquè fa les simulacions molt irregulars i impedeix veure correctament com evoluciona l'Elo d'un jugador.
 \end{itemize}
@@ -376,7 +377,7 @@ Planificar bé un projecte és molt important, ja que et permet gestionar el tem
 
 \subsection{Canvis respecte la planificació inicial}
 
-Durant el curset de GEP es fa una planificació completa del TFG per tal d'assolir tots els objectius. Aquesta pot no ser la versió definitiva, ja que pot arribar a ser modificada degut diversos errors o inconvenients que no han estat previstos. En el cas d'aquest projecte, també s'han hagut de fer canvis, però pels motius mencionats. La gran majoria de tasques s'han seguit tal com es van organitzar al principi, però hi ha hagut uns petits canvis. Bàsicament, s'ha afegit una tasca que consisteix a implementar totes les funcionalitats del sistema, però de forma molt bàsica, és a dir, sense llegir fitxers d'entrada ni aplicar cap algorisme, sinó fent-ho tot aleatori. En altres paraules, consisteix a fer tota l'estructura del programa. Aquesta decisió s'ha pres perquè d'aquesta manera, si hi ha algun inconvenient durant el desenvolupament, es tingui un producte funcional el dia de l'entrega. Igualment, aquesta tasca no ha afectat de forma negativa a les altres. Tot i haver endarrerit la gran majoria de les tasques, també ha escurçat la durada de cada una, ja que l'estructura ja està feta. D'aquesta manera, el projecte segueix amb les mateixes dates de finalització que en la planificació inicial.
+Durant el curset de GEP es fa una planificació completa del TFG per tal d'assolir tots els objectius. Aquesta pot no ser la versió definitiva, ja que pot arribar a ser modificada degut diversos errors o inconvenients que no han estat previstos. En el cas d'aquest projecte, també s'han hagut de fer canvis, però no pels motius mencionats. La gran majoria de tasques s'han seguit tal com es van organitzar al principi, però hi ha hagut unes petites variacions. Bàsicament, s'ha afegit una tasca que consisteix a implementar totes les funcionalitats del sistema, però de forma molt bàsica, és a dir, sense llegir fitxers d'entrada i aplicant nombres aleatoris quan es requereixi d'un algorisme. En altres paraules, consisteix a fer tota l'estructura del programa. Aquesta decisió s'ha pres perquè d'aquesta manera, si hi ha algun inconvenient durant el desenvolupament, es tingui un producte funcional el dia de l'entrega. Igualment, aquesta tasca no ha afectat de forma negativa a les altres. Tot i haver-ne endarrerit la gran majoria, també ha escurçat la durada de cada una, ja que l'estructura ja està feta. D'aquesta manera, el projecte segueix amb les mateixes dates de finalització que en la planificació inicial.
 
 A continuació es mostrarà tota la planificació feta pel treball, tenint en compte la modificació mencionada prèviament.
 
@@ -396,11 +397,12 @@ Dins del desenvolupament, podem dividir les tasques en uns altres tres grans gru
 \subsubsubsection{Personalització de l’algorisme del sistema d’Elo}
 \begin{itemize}
     \item \textbf{PA1 - Preparació pel desenvolupament:} S'instal·laran tots els programes i IDEs necessaris per a poder desenvolupar el projecte. També es crearà el repositori de Github i es dissenyarà l'estructura del programa. Es necessitarà un ordinador amb connexió a Internet, l'IDE anomenat Visual Studio (VS), Github i el Visual Paradigm. Durarà 10 hores.
-    \item \textbf{PA2 - Creació de l'estructura del programa:} Es crearà tota l'estructura del programa de la forma més senzilla, és a dir aplicant números aleatoris on sigui necessari i sense cap algorisme. També s'exportaran les dades de la forma més senzilla possible. Tindrà una durada 50 hores i serà necessari un ordinador amb connexió a Internet, Github i el Visual Studio. La tasca dependrà de PA3.
+    \item \textbf{PA2 - Creació de l'estructura del programa:} Es crearà tota l'estructura del programa de la forma més senzilla, és a dir aplicant números aleatoris on sigui necessari i sense cap algorisme. També s'exportaran les dades de la forma més senzilla possible. Tindrà una durada 50 hores i serà necessari un ordinador amb connexió a Internet, Github i el Visual Studio. La tasca dependrà de PA1.
     \item \textbf{PA3 - Disseny d'algorisme d'Elo clàssic:} Es dissenyarà un algorisme d'Elo clàssic en un script de Lua per poder realitzar posteriorment l'execució del programa. Tindrà una durada 5 hores i serà necessari un ordinador amb Internet, Github, el Visual Studio i Lua. La tasca dependrà de PA2.
     \item \textbf{PA4 - Introducció i lectura de Fitxers Lua:} Es permetrà carregar un fitxer de script en Lua que contingui l'algorisme de l'Elo i s'haurà de poder executar. Tindrà una durada 15 hores i es necessitarà un ordinador amb Internet, el Github, el Visual Studio i Lua. La tasca dependrà de PA3.
     \item \textbf{PA5 - Interpretació de l'algorisme d'Elo:} S'haurà d'interpretar l'algorisme d'Elo introduït mitjançant el script en Lua per així saber quines variables s'utilitzen i quines s'han de tenir en compte. Tindrà una durada 35 hores i serà necessari un ordinador amb connexió a Internet, Github i el Visual Studio. La tasca dependrà de PA4.
 \end{itemize}
+
 \subsubsubsection{Simulació de partides}
 \begin{itemize}
     \item \textbf{SP1 - Creació de jugadors:} S'hauran de crear els diversos jugadors que participaran en la simulació. Per cada un s'hauran d'afegir les diverses habilitats que poden afectar al resultat de la partida i al càlcul de l'Elo. Tindrà una durada de 30 hores i requerirà un ordinador amb Internet, Github i el Visual Studio. La tasca dependrà de PA5.
@@ -424,7 +426,6 @@ Dins del desenvolupament, podem dividir les tasques en uns altres tres grans gru
     \item \textbf{DS3 - Preparació de la presentació final:} Es prepararà l'exposició per a la presentació final del projecte que es farà davant un tribunal. Tindrà una durada de 10 hores i requerirà d'un ordinador amb connexió a Internet i d'un programa per fer diapositives. La tasca dependrà de DS1. 
 \end{itemize}
 
-\newpage
 \subsection{Recursos humans}
 S'entén com a recursos humans a totes aquelles persones que han d'ocupar un càrrec en el projecte per poder-lo dur a terme. Per fer-ho, cada una tindrà un rol i treballarà més o menys depenent de les tasques descrites prèviament en el diagrama de Gantt. A continuació es nomenaran cada un d'ells i s'explicarà la seva funció:
 \begin{itemize}
@@ -441,8 +442,8 @@ S'entén com a recursos humans a totes aquelles persones que han d'ocupar un cà
     \item \textbf{Tester (T):} El tester té el paper de dissenyar diferents jocs de prova per comprovar el funcionament correcte del programa i detectar els errors.
 \end{itemize}
 
-\newpage
-\subsection{Punt en el que es troba el projecte actualment}
+\newpage 
+\subsection{Punt en el que es troba actualment el projecte}
 Després de veure tota la planificació del projecte, és hora de saber per quin punt es troba. En aquest cas, el treball va bé de temps i segueix la planificació. Per la part d'implementació, només queda fer la interfície gràfica i millorar la sortida de les dades a Excel, és a dir, les tasques CR2 i CR3. Per una altra part, la memòria ja s'ha començat a desenvolupar, i per tant, s'ha avançat feina respecte a la documentació. En conclusió, es pot dir que el projecte va per bon camí.
 
 \newpage
@@ -846,22 +847,24 @@ Realment si existeix una necessitat real. Com es va dir prèviament, els videojo
 \section{Lleis i regulacions}
 A l'hora de fer un programa informàtic és molt important complir les lleis i satisfer les regulacions. L'incompliment d'una d'elles pot provocar greus conseqüències que poden ser penalitzades de forma molt severa. 
 
-Si revisem el funcionament del meu programa, es pot arribar a la conclusió de què no vulnera cap llei ni incompleix cap legislació. Totes les dades utilitzades són creades de forma aleatòria o introduïdes pel propi usuari, i únicament són utilitzades per fer les simulacions. En cap moment són emmagatzemades en cap base de dades ni s'utilitza cap nom real, degut a que els jugadors funcionen amb IDs, no amb noms. 
-Per una altra banda, el meu projecte tampoc té connexió a Internet. Com a resultat, no hi ha cap llei o regulació a vulnerar amb aquest aspecte. Finalment, l'ús del programa tampoc està restringit a cap edat. Si no és utilitzat amb l'objectiu d'estudiar una fórmula d'Elo particular, l'únic resultat que trobarà l'usuari serà un Excel amb la simulació executada, el qual no generarà cap risc ni inconvenient pel consumidor.
+Si revisem el funcionament del  programa, es pot arribar a la conclusió de què no vulnera cap llei ni incompleix cap legislació. Totes les dades utilitzades són creades de forma aleatòria o introduïdes pel propi usuari, i únicament són utilitzades per fer les simulacions. En cap moment són emmagatzemades en cap base de dades ni s'utilitza cap nom real, degut a que els jugadors funcionen amb IDs, no amb noms. 
+Per una altra banda, el projecte tampoc té connexió a Internet. Com a resultat, no hi ha cap llei o regulació a vulnerar amb aquest aspecte. Finalment, l'ús del programa tampoc està restringit a cap edat. Si no és utilitzat amb l'objectiu d'estudiar una fórmula d'Elo particular, l'únic resultat que trobarà l'usuari serà un Excel amb la simulació executada, el qual no generarà cap risc ni inconvenient pel consumidor.
 
-Pels motius que s'acaben d'explicar, es pot concloure que el meu TFG no vulnera cap llei ni regulació i tampoc està lligat a cap d'elles.
+Pels motius que s'acaben d'explicar, es pot concloure que el meu TFG no vulnera cap llei ni regulació ni tampoc està lligat a cap d'elles.
 
 \newpage
 %\section{Conclusions}
 %\subsection{Conneixements aplicats d'assignatures prèvies}
 \section{Conneixements aplicats d'assignatures prèvies}
-Durant el desenvolupament d'aquest projecte s'han aplicat un gran nombre de coneixements apresos en les diverses assignatures de la carrera. A continuació, es faran menció a les matèries que més impacte han tingut:
+Durant el transcurs de la carrera, s'han cursat moltes assignatures. En cada una d'elles s'han après conceptes nous molt útils i interessants. Com a resultat, es pot observar la realització d'aquest projecte. Tot i que cada una de les diverses matèries han estat útils per desenvolupar-lo, a continuació es farà un llistat de les assignatures que han tingut un impacte més important:
+
 \begin{itemize}
-    \item \textbf{PRO1 i PRO2:} Aquestes dues assignatures han servit per conèixer els conceptes bàsics de la programació i per aprendre el llenguatge de C++, el qual ha estat utilitzat per desenvolupar el programa.
-    \item \textbf{IDI:} Assignatura que m'ha servit per saber com s'ha de fer una interfície gràfica i quines característiques ha de tenir.
+    \item \textbf{PRO1 i PRO2:} Aquestes dues assignatures m'han servit per conèixer els conceptes bàsics de la programació i per aprendre el llenguatge de C++, el qual ha estat utilitzat per desenvolupar el programa.
+    \item \textbf{IDI:} Assignatura que m'ha servit per saber com implementar una interfície gràfica i quines característiques ha de tenir.
     \item \textbf{IES:} Matèria que m'ha ensenyat a fer i interpretar els diagrames de classe, a identificar les històries d'usuari i a tindre més coneixement sobre la jerarquia de classes.
+    \item \textbf{PE:} Aquesta assignatura m'ha servit per tindre coneixement sobre les diverses distribucions del món de l'estadística i, d'aquesta manera, poder aplicar la distribució de Gauss al projecte.
     \item \textbf{PROP:} Aquesta assignatura m'ha servit per veure com es desenvolupa un projecte de grans dimensions i per a saber utilitzar GitHub.
-    \item \textbf{ER:} Aquesta matèria m'ha servit per saber identificar els \textit{stakeholders} que té el sistema i els requisits que ha de complir. També m'ha ajudat a coneixer quins elements ha de tindre un document i com s'han de redactar.
+    \item \textbf{ER:} Aquesta matèria m'ha servit per saber identificar els \textit{stakeholders} que té el sistema i els requisits que ha de complir. També m'ha ajudat a conèixer quins elements ha de tenir un document i com s'han de redactar.
     \item \textbf{AS:} L'assignatura d'AS m'ha servit per profunditzar sobre els diagrames de classe, per conèixer els patrons de disseny i per aprendre a fer tests unitaris.
     \item\textbf{GPS:} Aquesta matèria ha estat molt útil per saber com planificar un projecte i per tenir coneixement sobre les diverses metodologies que hi ha en el món laboral. Ha estat especialment útil per fer el curset de GEP.
     \item \textbf{PES:} PES ha estat l'assignatura que més ha aportat, i per tant, la més important. En aquesta matèria es desenvolupa un projecte sencer, des de l'estudi i planificació d'aquest fins a la seva realització. Com es pot veure, té molta similitud amb el TFG, i per tant, et prepara per aquest.
