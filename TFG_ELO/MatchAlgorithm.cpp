@@ -63,7 +63,7 @@ vector<int> MatchAlgorithm::playMatch(shared_ptr<Match>& match) {
         }
         lua_pop(m_L, 1);
     }
-    return results;
+    return results; //retorna posició de l'equip en el vector teams
 }
 
 /*vector<int> MatchAlgorithm::getResults() {

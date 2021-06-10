@@ -9,6 +9,7 @@ function initLua()
 	math.randomseed(935)
 end
 
+k = 20
 
 function gaussian (mean, variance)
     return  math.sqrt(-2 * variance * math.log(math.random())) *
@@ -97,13 +98,86 @@ function getTableSize(t)
     return count
 end
 
-function calculateEloScore(teamA, teamB)
+function calculateChanceToWin(teamA, teamB)
 	local deltaTeam = teamB - teamA
 	local divElev = deltaTeam / 800
 	local elev = math.pow(10, divElev)
 	local res = (1/(1+elev))
 	return res
 end
+
+function calculateEloScore(matchClassification)
+	local k = 20
+	local teamA = {}
+	local teamB = {}
+	local eloTeamA
+	local eloTeamB
+	local pos;
+	local first = true
+	local draw = false
+	for key, value in pairs (matchClassification) do
+		if key == "positionTeam" then
+			pos = value
+		else
+			local size = getTableSize(value)
+			if size > 2 then
+				draw = true
+			end
+			for index, team in ipairs (value) do
+				for key2, value2 in pairs (team) do
+					if key2 == "eloTeam" then
+						if first == true then
+							eloTeamA = value2
+						else
+							eloTeamB = value2
+						end
+					else
+						for index3, player in ipairs (value2) do
+							for key3, value3 in pairs (player) do
+								if key3 == "idPlayer" then
+									if first == true then
+										table.insert(teamA, value3)
+									else
+										table.insert(teamB, value3)
+									end
+								end
+							end
+						end
+					end
+					if eloTeamA ~= nil then
+							first = false
+					end
+				end
+			end
+		end
+	end	
+	local deltaEloA
+	local deltaEloB
+	if draw then
+		local eloA = k/2 * (1-calculateChanceToWin(eloTeamA, eloTeamB))
+		local eloB = k/2 * (1-calculateChanceToWin(eloTeamB, eloTeamA))
+		deltaEloA = eloA - eloB
+		deltaEloB = eloB - eloA
+	else
+		deltaEloA = k * (1-calculateChanceToWin(eloTeamA, eloTeamB))
+		deltaEloB = -deltaEloA
+	end
+	local result = {}
+	for indexA, idA in ipairs (teamA) do
+		local changeEloPlayerA = {}
+		changeEloPlayerA["idPlayer"] = idA
+		changeEloPlayerA["deltaEloPlayer"] = deltaEloA
+		table.insert(result,changeEloPlayerA)
+	end
+	for indexB, idB in ipairs (teamB) do
+		local changeEloPlayerB = {}
+		changeEloPlayerB["idPlayer"] = idB
+		changeEloPlayerB["deltaEloPlayer"] = deltaEloB
+		table.insert(result,changeEloPlayerB)
+	end
+	return result
+end
+
 
 playerProperties = {}
 

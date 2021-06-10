@@ -9,3 +9,5 @@
 using namespace std;
 
 using EloScore = int;
+using IDPlayer = int;
+using PositionClassification = int;

@@ -7,7 +7,7 @@ EloCalculator::EloCalculator(lua_State* i_L) {
  }
 
 map <int, EloScore> EloCalculator::calculateElo(shared_ptr<Classification>& classification) {
-	map<int, vector<shared_ptr<Team>>> classif = classification->getClasification();
+	/*map<int, vector<shared_ptr<Team>>> classif = classification->getClasification();
 	bool first = true;
 	bool draw = false;
 	int eloTeamA, eloTeamB;
@@ -47,7 +47,8 @@ map <int, EloScore> EloCalculator::calculateElo(shared_ptr<Classification>& clas
 	//cout << "dA " << deltaEloA << " - dB " << deltaEloB << endl;
 	addPlayersMap(playersTeamA, deltaEloA);
 	addPlayersMap(playersTeamB, deltaEloB);
-	return m_deltaEloTeams;
+	return m_deltaEloTeams;*/
+	return m_eloAlgorithm->calculateEloScore(classification);
 }
 
 void EloCalculator::addPlayersMap(const vector<shared_ptr<Player>>& playersTeam, int deltaEloTeam) {
