@@ -489,6 +489,111 @@ Un cop s'han analitzat els requisits funcionals i no funcionals, cal identificar
     \end{center}
 \end{table}
 
+\subsection{Diagrama de classes}
+El diagrama de classes descriu l'estructura d'un sistema on es mostren les seves classes amb els seus atributs i funcions, i també com es relacionen els objectes entre ells \cite{wikipediaClassDiagram}. L'esquema d'aquest projecte és el que es pot observar a la figura \ref{fig:ClassDiagram},
+\begin{landscape}
+
+\fancypagestyle{lndscape}{
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    \rhead{\begin{rotate}{90}\thepage\end{rotate}}
+}
+\newpage
+\thispagestyle{lndscape}
+    \begin{center}
+        \begin{figure}[h!]
+            \includegraphics[width=1.5 \textwidth]{images/Diagrama_Classes2.jpg}%
+            \caption{Diagrama de classes del sistema. Font: Elaboració pròpia}
+            \label{fig:ClassDiagram}
+        \end{figure}
+    \end{center}
+\end{landscape}
+
+\newpage
+\subsubsection{Restriccions textuals}
+En aquest apartat s'explicaran les diverses restriccions textuals que s'han de complir perquè el diagrama de classes funcioni bé i tingui coherència.
+\begin{enumerate}
+    \item PK: Player(ID), Team(ID), Property(Name), Match(ID), Classification(ID).
+    \item En un equip no poden haver-hi dos jugadors iguals.
+    \item Una partida no pot tindre dos equips idèntics.
+    \item Un jugador no pot jugar més d'una partida a l'hora.
+    \item La diferència d'Elo entre els jugadors d'un equip no pot ser més gran que l'atribut DeltaEloSimulation  de la classe Simulation.
+    \item La diferència d'Elo entre els equips d'una partida no pot ser més gran que l'atribut DeltaEloSimulation  de la classe Simulation.
+    \item L'Elo d'un equip i d'un jugador no pot ser més petit que 0.
+    \item Els atributs de la classe Simulation no poden ser negatius.
+    \item Els atributs Elo\_Team i Elo\_Total\_Team es calculen a partir de l'Elo dels jugadors del mateix equip.
+\end{enumerate}
+
+\subsubsection{Descripció de les classes}
+
+\subsubsection*{Simulation}
+
+Una simulació és el conjunt de partides a simular amb els diversos jugadors. Consta del nombre de jugadors que hi haurà en total i de la diferència d'Elo màxima utilitzada en els diferents algorismes. També té el número de jugadors màxim per equip i en nombre total de partides a fer.
+
+\subsubsection*{Player}
+
+Un jugador representa cada un dels participants que forma un equip i que participa en les partides. Aquest es caracteritza per: una ID, un nivell d'Elo i el número de partides que ha jugat.
+
+\subsubsection*{Property}
+
+Una propietat és una característica que té cadascun dels jugadors de la simulació. Es caracteritza pel seu nom.
+
+\subsubsection*{Property\_Value}
+
+Valor de la propietat associada al jugador.
+
+\subsubsection*{Team}
+
+Un equip és un conjunt de jugadors. Està compost per la seva ID, per l'Elo mitjà de l'equip i per l'Elo total d'aquest. Les dos últimes característiques depenen dels jugadors que el formen.
+
+\subsubsection*{TeamBuilder}
+
+Algorisme per crear els diversos equips de la simulació. Té un màxim de jugadors per equip i la diferència d'Elo màxima entre els diferents participants d'aquest.
+
+\subsubsection*{Match}
+
+Una partida és un enfrontament entre dos o més equips per veure quin és millor.
+
+\subsubsection*{MatchMaker}
+
+Algorisme per emparellar els equips i crear una partida. Té un màxim d'equips per partida i la diferència d'Elo màxima entre els diferents participants d'aquest.
+
+\subsubsection*{Match\_Simulator}
+
+Simulació d'una partida, és a dir, de l'enfrontament entre dos o més equips.
+
+\subsubsection*{Match\_Algorithm}
+
+Algorisme que determina el resultat d'una partida.
+
+\subsubsection*{Classification}
+
+Una classificació és el resultat ordenat de la partida. Informa quin equip ha quedat en primer lloc, quin en segon, etc.
+
+\subsubsection*{Elo\_Calculator}
+
+Càlcul de l'Elo de cada jugador després de determinar la classificació de la partida.
+
+\subsubsection*{EloAlgorithm}
+
+Algorisme aplicat per calcular la quantitat d'Elo a modificar per a cada jugador.
+
+\subsubsection*{Result}
+
+Quantitat d'Elo a modificar del jugador.
+
+\subsubsection*{Statistics}
+
+Estadístiques de la simulació on es guarda el progrés de cada jugador.
+
+\subsubsection*{Exporter}
+
+Classe abstracta de les diverses exportacions. Conté el path del fitxer a exportar.
+
+\subsubsection*{ExcelExporter}
+
+Subclasse de la classe exporter. Exporta les estadístiques a un fitxer amb un format .csv.
+
 \newpage
 \section{Metodologia i rigor}
 La metodologia que es durà a terme per desenvolupar el projecte és un aspecte molt important a tenir en compte, ja que pot canvia per complet com evolucionarà. Hi han dues grans metodologies: la cascada o \textit{waterfall} i l'\textit{agile}.
