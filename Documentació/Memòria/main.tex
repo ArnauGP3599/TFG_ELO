@@ -20,6 +20,7 @@
 }
 \setlength{\parskip}{1em}
 \usepackage[document]{ragged2e}
+\usepackage{wrapfig}
 
 \usepackage{verbatim}
 
@@ -606,16 +607,25 @@ Per una altra part, la metodologia \textit{agile} consisteix en una contínua it
 
 Aquesta és utilitzada per projectes llargs on es vol el \textit{feedback} del client constantment, quan es vol treballar amb tecnologies en evolució continua, també quan els requeriments no estan clars i poden canviar freqüentment, igual que la definició del producte. Per regla general, se la considera la contrapart de la metodologia \textit{waterfall}. 
 
-Per tant, un cop explicades les dues metodologies, es pot observar que el meu projecte s'assimila a les condicions de la primera metodologia. El període de temps és curt, ja que el TFG dura entre tres i quatre mesos, i els requeriments ja estan definits, igual que el producte.
-
-Llavors, un cop decidida la metodologia, s'ha d'explicar com funciona. Com bé es pot observar en la figura \ref{fig:WaterfallImage}, aquesta metodologia consta de sis fases. La primera d'elles s'anomena "Requeriments", i és on s'especifiquen i redacten tots els requeriments. La segona s'anomena "Disseny", i és on s'especifica el disseny del sistema i la seva arquitectura. La següent és la fase de "Desenvolupament", on es divideix el programa en petites unitats on cada una farà una funcionalitat i la testejarà. Posteriorment ve la fase de "Testeig", on s'ajunta tot el codi fet per cada una de les unitats anteriors i es testeja el resultat. Seguidament es troben els errors i es solucionen. La següent fase és la de "Desplegament", on el producte es llença al mercat o és entregat al client. Finalment hi ha la fase de "Manteniment", on es manté i millora el programa \cite{waterfallImage}. 
+Dintre de la metodologia \textit{agile} es poden trobar diferents processos, com és el cas de Scrum o Kanban. La primera es caracteritza per dividir el temps de desenvolupament disponible en diferents iteracions, anomenades sprints. La seva duració sol ser fixa,  de dos o tres setmanes. Al principi de cada iteració es fa una planificació d'aquesta, on s'escull la feina a fer. Durant cada dia d'aquest període, es fa una reunió diària de 15 minuts on s'explica quina feina ha fet cada membre de l'equip, quins problemes ha trobat i que es planteja fer. Al final del sprint, es fa una revisió i presentació de la feina feta, i una retrospectiva de la iteració per veure que es pot millorar de cara a la següent \cite{wikipediaScrum}. A la figura \ref{fig:ScrummImage} es pot veure un esquema simplificat del procés Scrum.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/Waterfall-Metodology.png}
-    \caption{Fases de la metodologia \textit{Waterfall}. Font: \cite{waterfallImage}}
-    \label{fig:WaterfallImage}
+    \includegraphics[width=0.65\textwidth]{images/Scrumm.png}
+    \caption{Fases del procés Scrum. Font: \cite{wikipediaScrum}}
+    \label{fig:ScrummImage}
 \end{figure}
+
+Per una altra part, el procés Kanban consisteix a gestionar un projecte de manera general i de forma visual. Cada tasca es crea físicament, normalment en format de nota  on s'especifica informació sobre la feina a realitzar, i s'enganxa en un taulell. Aquest està dividit en diferents columnes on es pot veure la feina que està per fer, la que s'esta fent, la que s'esta testejant i la que s'ha acabat \cite{kanbanWeb}. A la figura \ref{fig:KanbanImage} es pot veure un esquema de com és un taulell del procés Kanban.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/Kanban.png}
+    \caption{Taula del procés Kanban. Font: \cite{kanbanImage}}
+    \label{fig:KanbanImage}
+\end{figure}
+
+Un cop explicades les dues metodologies, i els processos de l'\textit{agile}, cal explicar quina segueix aquest projecte. Per una banda, reuneix moltes característiques de la \textit{waterfall}: és un període curt, ja que el TFG dura entre tres i quatre mesos, els requeriments són clars i fixes i la idea del producte és estable. Per una altra banda, una metodologia \textit{agile} on es testegin les parts implementades de forma contínua i es segueixi el concepte del Scrum, pot ajudar a desenvolupar el projecte de forma exitosa. Addicionalment, mostrar les tasques en el format Kanban pot beneficiar la planificació del treball a realitzar. Per tant, aquest projecte segueix una metodologia Kanban \textit{agile} amb els conceptes del Scrum, però on també s'agafen moltes característiques de la \textit{waterfall}.
 
 \subsection{Control de versions}
 
@@ -627,10 +637,33 @@ Durant el transcurs de tot el TFG, Google Meet serà utilitzat per mantenir al d
 
 \subsection{Control de tasques}
 
-El Trello s'utilitzarà per tenir estructurades les diverses tasques a realitzar durant tot el projecte. Cada gran funcionalitat estarà descomposta per petites tasques per tal de facilitar la implementació. A més, es faran quatre columnes per organitzar bé l'estat del projecte: TO DO, DOING, READY, DONE.
+El Trello s'utilitzarà per tenir estructurades les diverses tasques a realitzar durant tot el projecte. Cada gran funcionalitat estarà descomposta per petites tasques per tal de facilitar la implementació. A més, es faran quatre columnes per organitzar bé l'estat del projecte: TO DO, DOING, READY, DONE. D'aquesta manera, es segueix la metodologia Kanban.
 
 \newpage
 \section{Disseny}
+
+En aquest apartat s'explicarà l'arquitectura que s'ha utilitzat per fer el software. També s'indicarà els patrons de disseny utilitzats. Finalment, es mostrarà la interfície gràfica.
+
+\subsection{Arquitectura del sistema}
+Aquest projecte segueix una arquitectura de tres capes, que són la de presentació, la de domini i la de dades. Cada una d'elles es desenvolupa de manera independent. D'aquesta manera, es pot canviar o afegir noves funcionalitats en qualsevol de les tres capes sense que les altres dos es vegin afectades. Per fer-se una idea de com és l'arquitectura de 3 capes, a la figura \ref{fig:ArchitectureCapes} es pot veure un esquema. A continuació s'explicarà cada una d'elles:
+
+\begin{itemize}
+    \item \textbf{Capa de presentació:} La capa de presentació, també coneguda com a interfície gràfica, s'encarrega d'interaccionar amb l'usuari. Ha de mostrar la informació i capturar les dades que introdueixi el client per passar-les a la capa de dades. En aquest projecte, és la part que està desenvolupada amb QT i on l'usuari introdueix els paràmetres per iniciar la simulació.
+    
+    \item \textbf{Capa de domini:} La capa de domini conté totes les funcionalitats per processar tota la informació. Rep les dades de la capa de presentació, les processa i retorna el resultat. També es comunica amb la capa de dades per obtenir o emmagatzemar dades. En aquest projecte, és la part que gestiona tota la simulació, és a dir, la creació d'equips i partides, les simulacions d'aquests i el càlcul de l'Elo resultant.
+    
+    \item \textbf{Capa de dades:} La capa de dades s'encarrega d'emmagatzemar la informació. És on es gestionaran les dades: es crearan, es modificaran o s'eliminaran. En aquest projecte, aquesta part és la que gestiona les dades sobre les estadístiques i els diferents jugadors de la simulació.
+\end{itemize}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.2\textwidth]{images/3-capes.png}
+    \caption{Arquitectura de 3 capes. Font: Elaboració pròpia}
+    \label{fig:ArchitectureCapes}
+\end{figure}
+
+
 
 \newpage
 \section{Implementació}
@@ -1195,36 +1228,71 @@ Pels motius que s'acaben d'explicar, es pot concloure que el meu TFG no vulnera 
 
 \newpage
 \section{Conclusions}
-\subsection{Conneixements aplicats d'assignatures prèvies}
-Durant el transcurs de la carrera, s'han cursat moltes assignatures. En cada una d'elles s'han après conceptes nous molt útils i interessants. Com a resultat, es pot observar la realització d'aquest projecte. Tot i que cada una de les diverses matèries han estat útils per desenvolupar-lo, a continuació es farà un llistat de les assignatures que han tingut un impacte més important:
+
+Un cop finalitzat el projecte, cal analitzar si s'han complert les funcionalitats principals i les competències transversals que es van escollir en un principi. També cal detectar quines millores se li poden fer al producte per incrementar el seu rendiment i millorar l'experiència de l'usuari.
+
+\subsection{Resultats}
+
+\subsubsection{Assoliment dels objectius}
+En el curset de GEP, es van plantejar una sèrie de tres grans d'objectius que havia de complir el projecte. Aquests eren:
 
 \begin{itemize}
-    \item \textbf{PRO1 i PRO2:} Aquestes dues assignatures m'han servit per conèixer els conceptes bàsics de la programació i per aprendre el llenguatge de C++, el qual ha estat utilitzat per desenvolupar el programa.
-    \item \textbf{IDI:} Assignatura que m'ha servit per saber com implementar una interfície gràfica i quines característiques ha de tenir.
-    \item \textbf{IES:} Matèria que m'ha ensenyat a fer i interpretar els diagrames de classe, a identificar les històries d'usuari i a tindre més coneixement sobre la jerarquia de classes.
-    \item \textbf{PE:} Aquesta assignatura m'ha servit per tindre coneixement sobre les diverses distribucions del món de l'estadística i, d'aquesta manera, poder aplicar la distribució de Gauss al projecte.
-    \item \textbf{PROP:} Aquesta assignatura m'ha servit per veure com es desenvolupa un projecte de grans dimensions i per a saber utilitzar GitHub.
-    \item \textbf{ER:} Aquesta matèria m'ha servit per saber identificar els \textit{stakeholders} que té el sistema i els requisits que ha de complir. També m'ha ajudat a conèixer quins elements ha de tenir un document i com s'han de redactar.
-    \item \textbf{AS:} L'assignatura d'AS m'ha servit per profunditzar sobre els diagrames de classe, per conèixer els patrons de disseny i per aprendre a fer tests unitaris.
-    \item\textbf{GPS:} Aquesta matèria ha estat molt útil per saber com planificar un projecte i per tenir coneixement sobre les diverses metodologies que hi ha en el món laboral. Ha estat especialment útil per fer el curset de GEP.
-    \item \textbf{PES:} PES ha estat l'assignatura que més ha aportat, i per tant, la més important. En aquesta matèria es desenvolupa un projecte sencer, des de l'estudi i planificació d'aquest fins a la seva realització. Com es pot veure, té molta similitud amb el TFG, i per tant, et prepara per aquest.
-    \item \textbf{VJ:} Aquesta assignatura ha ajudat a augmentar el meu coneixement sobre el C++ après al principi de la carrera.
-\end{itemize}
+    \item La personalització de l'algorisme del sistema d'Elo
+    \item La simulació de partides
+    \item Comparar els resultats entre diferents variables i algorismes
+\end{itemize}   
 
+Finalment, s'ha pogut implementar totes aquestes funcionalitats. Es pot personalitzar l'algorisme d'Elo i les selves variables, es pot configurar la simulació de les partides tenint en conte les propietats del jugadors, i es poden extreure les dades a un fitxer .csv. Per tant, s'han assolit tots els objectius.
 
-\subsection{Assoliment de les competències seleccionades}
-\subsubsection*{CES1.1: Desenvolupar, mantenir i avaluar sistemes i serveis software complexos i/o crítics}
-\subsubsection*{CES1.2: Donar solució a problemes d'integració en funció de les estratègies, dels estàndards i de les tecnologies disponibles}
-\subsubsection*{CES1.3: Identificar, avaluar i gestionar els riscos potencials associats a la construcció de software que es poguessin presentar}
-\subsubsection*{CES1.7: Controlar la qualitat i dissenyar proves en la producció de software}
-\subsubsection*{CES2.1: Definir i gestionar els requisits d'un sistema software}
+\subsubsection{Assoliment de les competències tècniques}
+
+A l'hora de fer la preinscripció del TFG, es van haver d'escollir una sèrie de competències tècniques que havia de complir el projecte. A continuació s'analitzaran una per una per veure si s'han assolit o no.
+
+\subsubsection*{CES1.1: Desenvolupar, mantenir i avaluar sistemes i serveis software complexos i/o crítics [En profunditat]}
+
+Les parts més complexes del sistema han estat la d'implementar el matchmaking i els algorismes al fitxer Lua. En el primer cas, aparellar els jugadors de la manera més adequada respectant el seu nivell d'Elo va ser un repte. Però afortunadament, s'ha pogut implementar de la manera més equilibrada possible.
+
+En el segon cas, la inexpertesa en el llenguatge Lua i la complexitat de passar i accedir als paràmetres de les funcions va generar grans problemes. Tot i això, s'ha aconseguit programar els algorismes després d'aprendre el llenguatge i consultar fòrums d'Internet.
+
+\subsubsection*{CES1.2: Donar solució a problemes d'integració en funció de les estratègies, dels estàndards i de les tecnologies disponibles [Bastant]}
+
+S'ha aconseguit integrar llenguatges i tecnologies externs al Visual Studio, com és el Lua i el QT. El programa interacciona de la manera adequada amb el fitxer Lua i la interfície gràfica. 
+
+\subsubsection*{CES1.3: Identificar, avaluar i gestionar els riscos potencials associats a la construcció de software que es poguessin presentar [En profunditat]}
+
+Aquest software ha de ser capaç d'interaccionar amb algorismes creats per l'usuari. Per tant, el programa s'ha desenvolupat contemplant els diferents riscos que podien aparèixer durant el seu desenvolupament i que poden passar en el seu futur amb la interacció del client.
+
+\subsubsection*{CES1.7: Controlar la qualitat i dissenyar proves en la producció de software [Una mica]}
+
+NOT YET
+
+\subsubsection*{CES2.1: Definir i gestionar els requisits d'un sistema software [En profunditat]}
+
+Al curset de GEP ja es van definir i gestionar els diferents requisits del projecte. Des de llavors, a mesura que el software s'ha anat desenvolupant, s'han anat revisant si es complien o no. A més, durant les diverses reunions fetes amb el director, s'han anat repassant els requisits, i en cas de que no fossin correctes, modificant-los.
 
 \subsection{Futur}
 
-\subsection{Aprenentatge}
+El projecte ha assolit tots els diferents objectius sobre el seu funcionament, però això no significa que no es pugui millorar. Deguda a la curta duració del TFG, hi han algunes idees que s'han hagut de descartar. Si s'hagués disposat de més temps, es podrien haver fet les següents millores:
+
+\begin{itemize}
+    \item \textbf{Multithreading:} Actualment el software només aprofita un thread o nucli de l'ordinador. Una manera de millorar el rendiment del programa seria paral·lelitzar el seu funcionament, aprofitant els diversos nuclis dels quals disposa el PC.
+    
+    \item \textbf{Implementar el matchmaking al Lua:} Actualment, el matchmaking és dels pocs algorismes implementats en C++. Com a conseqüència, l'usuari no el pot modificar. Si l'emparellament es definís al fitxer Lua, el client podria fer els canvis que necessités per adaptar la simulació a les seves necessitats.
+    
+    \item \textbf{Sortida de dades al fitxer .csv:} Un cop executada la simulació, el client obté un fitxer .csv amb les estadístiques d'aquesta. Les dades que es mostren són els diversos jugadors amb les seves puntuacions en cada ronda. Una manera de millorar-ho seria permetre al client decidir quina informació vol que aparegui en el fitxer resultant.
+\end{itemize}
 
 \subsection{Conclusions finals}
 
+El TFG és un treball molt important on l'alumne mostra les habilitats i capacitats apreses durant la carrera. Aquest objectiu no només ha estat assolit, sinó que també s'han après nous aspectes i s'han millorat d'altres.
+
+Per una banda, aquest projecte ha servit per aplicar molts coneixements apresos en les diverses assignatures de la carrera. Alguns d'ells han estat saber programar amb el llenguatge C++, gestionar projectes o identificar i especificar requisits.
+
+Per una altra banda, també ha servit per aprendre una gran varietat de nous aspectes. En primer lloc, ha permès millorar el coneixement i nivell de C++. En segon lloc, s'ha après un nou llenguatge de programació, el Lua. També ha permès veure com evoluciona un projecte i quines accions prendre per tal de dur-lo a terme de la millor manera possible. Finalment, ha permès millorar les habilitats de programar per fer un codi més eficient i estructurant.
+
+El treball de final de grau també ha servit per evolucionar com a persona: saber prendre decisions importants, ser més responsable i més organitzat, i estar més preparat pel món laboral. A més, s'ha pogut aprendre més sobre el món dels videojocs, un dels motius pel qual s'havia escollit aquest projecte.
+
+En conclusió, gràcies al TFG s'han pogut aplicar coneixements apresos durant a la carrera, aprendre nous aspectes, millorar-ne d'altres i evolucionar com a persona.
 
 \newpage
 \nocite{*}

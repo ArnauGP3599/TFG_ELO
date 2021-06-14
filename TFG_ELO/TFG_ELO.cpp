@@ -3,6 +3,19 @@
 #include <stdio.h>
 #include "Simulation.h"
 
+namespace domini
+{
+    void startProgram(int numPlayers, int numPlayersTeam, int deltaElo, int numTotalMatches, string path) {
+        Simulation sim = Simulation();
+        Simulation::InitResult correct = sim.init(numPlayers, numPlayersTeam, deltaElo, numTotalMatches);
+        if (correct == Simulation::InitResult::Success) {
+            list<vector<int>> statistics = sim.startSimulation();
+            ExcelExporter excelExporter = ExcelExporter(path);
+            excelExporter.export2(statistics);
+        }
+    }
+}
+
 int main()
 {
     int numPlayers, numPlayersTeam, deltaElo, numTotalMatches;
@@ -17,13 +30,9 @@ int main()
     cin >> numTotalMatches;
     cout << "introdueix destinació per a les estadistiques" << endl;
     cin >> path;
-    Simulation sim = Simulation();
-    Simulation::InitResult correct = sim.init(numPlayers, numPlayersTeam, deltaElo, numTotalMatches);
-    if (correct == Simulation::InitResult::Success){
-        list<vector<int>> statistics = sim.startSimulation();
-        ExcelExporter excelExporter = ExcelExporter(path);
-        excelExporter.export2(statistics);
-    }
+    domini::startProgram(numPlayers, numPlayersTeam, deltaElo, numTotalMatches, path);
 }
+
+
 
 
