@@ -6,7 +6,7 @@
 class MatchMaker
 {
 public:
-	MatchMaker(int i_deltaElo);
+	MatchMaker(int i_deltaElo, int i_numTeamsMatch);
 
 	void init();
 
@@ -15,6 +15,7 @@ public:
 private:
 	int m_deltaElo;
 	int	m_idMatch;
+	int m_numTeamsMatch;
 
 	bool teamFitsMatch(const int eloTeam, shared_ptr<Match>& match);
 	void modifyIntervalMatch(const int eloTeam, shared_ptr<Match>& match);

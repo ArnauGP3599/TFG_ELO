@@ -23,13 +23,14 @@ void Simulation::initLua() {
         cout << "error running function `LuaScript': %s" << endl;
 }
 
-Simulation::InitResult Simulation::init(int i_numPlayers, int i_numPlayersTeam, int i_deltaElo, int i_numTotalMatches) {
+Simulation::InitResult Simulation::init(int i_numPlayers, int i_numPlayersTeam, int i_numTeamsMatch, int i_deltaElo, int i_numTotalMatches) {
     if (!initLua_State()) {
         return InitResult::Failed;
     }
     initLua();
     m_numPlayers = i_numPlayers;
     m_numPlayersTeam = i_numPlayersTeam;
+    m_numTeamsMatch = i_numTeamsMatch;
     m_deltaElo = i_deltaElo;
     m_numTotalMatches = i_numTotalMatches;
 
@@ -37,7 +38,7 @@ Simulation::InitResult Simulation::init(int i_numPlayers, int i_numPlayersTeam, 
     m_propertiesDB->obtainProperties();
     
     m_teamBuilder = make_shared<TeamBuilder>(m_numPlayersTeam, m_deltaElo);
-    m_matchMaker = make_shared<MatchMaker>(m_deltaElo);
+    m_matchMaker = make_shared<MatchMaker>(m_deltaElo, m_numTeamsMatch);
     m_matchSimulator = make_shared<MatchSimulator>(m_L);
     m_eloCalculator = make_shared<EloCalculator>(m_L);
     return InitResult::Success;

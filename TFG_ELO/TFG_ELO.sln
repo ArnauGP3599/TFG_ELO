@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TFG_ELO", "TFG_ELO.vcxproj"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TFG_ELO_UI", "..\..\..\..\..\..\..\source\repos\TFG_ELO_UI\TFG_ELO_UI.vcxproj", "{9E314456-9741-4FD0-B856-4760D6CCD331}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ELO-TEST", "..\ELO-TEST\ELO-TEST.vcxproj", "{3EB9DF42-CEEB-4F7D-A7F3-3EFBFAB762B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -29,6 +31,14 @@ Global
 		{9E314456-9741-4FD0-B856-4760D6CCD331}.Release|x64.ActiveCfg = Release|x64
 		{9E314456-9741-4FD0-B856-4760D6CCD331}.Release|x64.Build.0 = Release|x64
 		{9E314456-9741-4FD0-B856-4760D6CCD331}.Release|x86.ActiveCfg = Release|x64
+		{3EB9DF42-CEEB-4F7D-A7F3-3EFBFAB762B1}.Debug|x64.ActiveCfg = Debug|x64
+		{3EB9DF42-CEEB-4F7D-A7F3-3EFBFAB762B1}.Debug|x64.Build.0 = Debug|x64
+		{3EB9DF42-CEEB-4F7D-A7F3-3EFBFAB762B1}.Debug|x86.ActiveCfg = Debug|Win32
+		{3EB9DF42-CEEB-4F7D-A7F3-3EFBFAB762B1}.Debug|x86.Build.0 = Debug|Win32
+		{3EB9DF42-CEEB-4F7D-A7F3-3EFBFAB762B1}.Release|x64.ActiveCfg = Release|x64
+		{3EB9DF42-CEEB-4F7D-A7F3-3EFBFAB762B1}.Release|x64.Build.0 = Release|x64
+		{3EB9DF42-CEEB-4F7D-A7F3-3EFBFAB762B1}.Release|x86.ActiveCfg = Release|Win32
+		{3EB9DF42-CEEB-4F7D-A7F3-3EFBFAB762B1}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

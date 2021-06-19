@@ -1,8 +1,9 @@
 #include "Precompiled.h"
 #include "MatchMaker.h"
 
-MatchMaker::MatchMaker(int i_deltaElo) {
+MatchMaker::MatchMaker(int i_deltaElo, int i_numTeamsMatch) {
 	m_deltaElo = i_deltaElo;
+	m_numTeamsMatch = i_numTeamsMatch;
 }
 
 void MatchMaker::init() {
@@ -47,7 +48,7 @@ vector<shared_ptr<Match>> MatchMaker::searchMatch(const vector < shared_ptr<Team
 				teamPlaced = true;
 				matchesCreation[j]->addTeamMatch(teams[i]);
 				modifyIntervalMatch(eloTeam, matchesCreation[j]);
-				if (2 == matchesCreation[j]->getNumTeamsMatch()) {
+				if (m_numTeamsMatch == matchesCreation[j]->getNumTeamsMatch()) {
 					matchesCreation[j]->setId(m_idMatch);
 					matchesPrepared.emplace_back(matchesCreation[j]);
 					matchesCreation.erase(matchesCreation.begin() + j);

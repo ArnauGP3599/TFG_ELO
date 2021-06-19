@@ -25,7 +25,7 @@ class Simulation
 {
 public:
     enum class InitResult { Success, Failed };
-    InitResult init(int i_numPlayers, int i_numPlayersTeam, int i_deltaElo, int i_numTotalMatches);
+    InitResult init(int i_numPlayers, int i_numPlayersTeam, int i_numTeamsMatch, int i_deltaElo, int i_numTotalMatches);
     bool initLua_State();
     list<vector<int>> startSimulation();
 
@@ -48,6 +48,7 @@ public:
 private:
     int m_numPlayers;
     int m_numPlayersTeam;
+    int m_numTeamsMatch;
     int m_deltaElo;
     int m_numTotalMatches;
     shared_ptr<PropertiesDB> m_propertiesDB;
