@@ -3,25 +3,25 @@
 
 void Statistics::init(shared_ptr<PlayersDB>& i_playersDB) {
 	m_playersDB = i_playersDB;
-	m_round = 0;
-	updateStatistics();
-	//writePlayersProperties();
+	vector<shared_ptr<Player>> players = m_playersDB->getPlayers();
+	for (int i = 0; i < players.size(); i++) {
+		vector<int> v;
+		int elo = players[i]->getElo();
+		v.emplace_back(elo);
+		m_statistics.emplace_back(v);
+	}
 }
 
-list<vector<int>> Statistics::getStatistics() {
+vector<vector<int>> Statistics::getStatistics() {
 	return m_statistics;
 }
 
 void Statistics::updateStatistics() {
 	vector<shared_ptr<Player>> players = m_playersDB->getPlayers();
 	for (int i = 0; i < players.size(); i++) {
-		vector<int> statsPlayer;
-		statsPlayer.emplace_back(players[i]->getId());
-		statsPlayer.emplace_back(m_round);
-		statsPlayer.emplace_back(players[i]->getElo());
-		m_statistics.emplace_back(statsPlayer);
+		int id = players[i]->getId();
+		m_statistics[id].emplace_back(players[i]->getElo());
 	}
-	m_round++;
 }
 
 void Statistics::writePlayersProperties() {

@@ -44,7 +44,7 @@ Simulation::InitResult Simulation::init(int i_numPlayers, int i_numPlayersTeam, 
     return InitResult::Success;
 }
 
-list<vector<int>> Simulation::startSimulation() {
+vector<vector<int>> Simulation::startSimulation() {
     shared_ptr<PlayersDB> m_playersDB = make_shared<PlayersDB>();
     m_playersDB->init();
     m_playersDB->addPlayers(m_numPlayers);

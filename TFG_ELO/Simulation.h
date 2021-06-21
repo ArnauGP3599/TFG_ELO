@@ -27,7 +27,7 @@ public:
     enum class InitResult { Success, Failed };
     InitResult init(int i_numPlayers, int i_numPlayersTeam, int i_numTeamsMatch, int i_deltaElo, int i_numTotalMatches);
     bool initLua_State();
-    list<vector<int>> startSimulation();
+    vector<vector<int>> startSimulation();
 
     inline int getNumPlayers() {
         return m_numPlayers;

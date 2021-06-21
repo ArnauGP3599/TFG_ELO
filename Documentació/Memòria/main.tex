@@ -27,7 +27,7 @@
 \pagestyle{fancy}
 \usepackage{pdflscape}
 \fancyhf{}
-\lhead{Estudi de l'ELO en els videojocs}
+\lhead{Desenvolupament d'una eina per estudiar i analitzar l'ELO en els videojocs}
 \rhead{TFG}
 \rfoot{\thepage}
 
@@ -82,29 +82,65 @@
 \input{titlepage}
 
 \newpage
+\justify
+\section*{Resum}
+
+Els videojocs cada vegada estan agafant més popularitat i importància. Per fer un bon joc s'han de contemplar molts aspectes, i un d'ells és el sistema d'Elo. Encara que pot tindre altres interessos, aquest s'encarrega de representar l'habilitat del jugador. D'aquesta manera, el videojoc final és més competitiu i entretingut.
+
+L'objectiu d'aquest projecte no és crear la millor fórmula d'Elo possible, sinó permetre trobar la que més d'adequa a les necessitats de cada empresa. EloSim és un simulador que permet a l'usuari introduir la seva fórmula d'Elo i comprovar si és la desitjada o no. Per poder fer les simulacions tan personalitzables com sigui possible, el client pot introduir ell mateix els jugadors i les mecàniques de joc. D'aquesta manera es pot simular de la forma més real possible i obtenir millors resultats.
+
+A partir de les dades extretes, cada empresa pot trobar la seva fórmula d'Elo i fer un millor videojoc. Com a resultat, aquest tindrà més exit i arribarà a més jugadors, generant així més ingressos. 
+
+\section*{Resumen}
+
+Los videojuegos cada vez están teniendo más popularidad e importancia. Para desarrollar un buen juego hay que contemplar muchos aspectos, y uno de ellos es el sistema de Elo. Aunque puede tener otros intereses, este se encarga de representar la habilidad del jugador. De esta manera, el videojuego final es más competitivo y entretenido.
+
+El objetivo de este proyecto no es crear la mejor fórmula de Elo posible, sino permitir encontrar la que más se adecua a las necesidades de cada empresa. EloSim es un simulador que permite al usuario introducir su fórmula de Elo y comprobar si es la deseada o no. Para poder hacer las simulaciones lo más personalizables posible, el cliente puede introducir él mismo los jugadores i las mecánicas de juego. De esta manera se logra simular de la forma más real posible y obtener mejores resultados.
+
+A partir de los datos extraídos, cada empresa puede encontrar su fórmula de Elo y hacer un mejor videojuego. Como resultado, este tendrá más éxito y llegará a más jugadores, generando así más ingresos.
+
+\newpage
+
+\section*{Abstract}
+
+Nowadays, video games are becoming more popular and important. To develop a good game, there are many aspects to be considered. One of them is the Elo system. Although it may have other interests, it is in charge of representing the player's skills. In this way, the final video game is more competitive and enjoyable.
+
+This project does not want to create the best Elo formula, but to find the one that suits better the needs of each company. EloSim is a simulator that allows the user to introduce his/her Elo formula and check if it is the one he/she wanted or not. In order to make the simulations as customizable as possible, the customer can insert  the players and the game mechanics himself/herself. So it is possible to simulate in a more realistic way and obtain better results.
+
+From the extracted data, each company can find its Elo formula and create a better video game. As a result, it will be more successful and more players will play it. Therefore, it will generate more income. 
+
+\newpage
 
 \setcounter{page}{1}
 
 \tableofcontents
 
 \newpage
+
+\listoffigures
+
+\newpage
+
+\listoftables
+
+\newpage
 \justify
 \section{Contextualització}
 \subsection{Introducció}
-Aquest projecte anomenat \textit{Estudi de l'Elo en el món dels videojocs} és un Treball de Fi de Grau (TFG) realitzat en la Facultat d'Informàtica de Barcelona (FIB) de la Universitat Politècnica de Catalunya (UPC). En aquest cas, és un treball realitzat per al Grau en Enginyeria Informàtica, concretament, per a l'especialitat d'Enginyeria del Software. L'objectiu del projecte és crear un simulador de partides per comprovar i analitzar les fórmules de l'Elo.
+Aquest projecte anomenat \textit{Desenvolupament d'una eina per estudiar i analitzar l'ELO en els videojocs} és un Treball de Fi de Grau (TFG) realitzat en la Facultat d'Informàtica de Barcelona (FIB) de la Universitat Politècnica de Catalunya (UPC). En aquest cas, és un treball realitzat per al Grau en Enginyeria Informàtica, concretament, per a l'especialitat d'Enginyeria del Software. L'objectiu del projecte és crear un simulador de partides per comprovar i analitzar les fórmules de l'Elo.
 
 \subsection{Situació actual}
-Avui en dia, gràcies a l'Internet i a l'evolució i disponibilitat de les noves tecnologies, tothom pot jugar a un videojoc des d'un dispositiu mòbil o des d'un ordinador o consola. No és estrany dedicar-hi temps en els moments lliures, ja sigui per entretenir-se amb els amics, per divertir-se o per competir contra altres jugadors; o en els temps morts del dia, com per exemple quan es fa cua en un supermercat. 
+Avui en dia, gràcies a l'Internet i a l'evolució i disponibilitat de les noves tecnologies, tothom pot jugar a un videojoc des d'un dispositiu mòbil, ordinador o consola. No és estrany dedicar-hi temps en els moments lliures, ja sigui per entretenir-se amb els amics, per divertir-se o per competir contra altres jugadors; o en els temps morts del dia, com per exemple quan es fa cua en un supermercat. 
 
-Des de l'aparició i gran èxit del Pong fins al dia d'avui, els videojocs han evolucionat molt i la indústria ha crescut notablement. Han aparegut diversos gèneres de jocs, entre els quals podem destacar els d'acció, d'aventura, de lluita o d'esports entre altres. També, gràcies a l'aparició d'Internet, s'ha afegit la component online als videojocs, la qual permet jugar amb gent d'arreu del món. D'altra banda, també s'han creat diverses competicions molt importants a escala mundial, com serien el cas de la Call of Duty World League (CWL), el campionat mundial del League of Legends \cite{importantCompetitions}  o el torneig de lluita de fama mundial EVO \cite{wikipediaEVO}.
+Des de l'aparició i gran èxit del Pong fins al dia d'avui, els videojocs han evolucionat molt i la indústria ha crescut notablement. Han aparegut diversos gèneres de jocs, entre els quals podem destacar els d'acció, d'aventura, de lluita o d'esports. També, gràcies a l'aparició d'Internet, s'ha afegit la component online als videojocs, la qual permet jugar amb gent d'arreu del món. D'altra banda, també s'han creat diverses competicions molt importants a escala mundial, com serien el cas de la Call of Duty World League (CWL), el campionat del League of Legends \cite{importantCompetitions}  o el torneig de lluita de fama mundial EVO \cite{wikipediaEVO}.
 
-Altrament, les plataformes que permeten pujar vídeos a la web també \mbox{s'han} vist beneficiades pels videojocs. Un bon exemple d'això és You Tube. Aquest ha arribat a tenir més de 100 mil milions d'hores en vídeos d'aquest aspecte i més de mil milions d'hores en transmissions en viu de la mateixa temàtica \cite{visitesYT}. Un altre exemple és la plataforma de Twitch, la qual s'especialitza a fer transmissions en viu. En aquest cas, ha aconseguit que jocs com el League of legends o el Fortnite hagin tingut més de 35 mil milions o 20 mil milions de visites en el darrer any respectivament. \cite{visitesTwitch}.
+Altrament, les plataformes que permeten pujar vídeos a la web també \mbox{s'han} vist beneficiades pels videojocs. Un bon exemple d'això és You Tube. Aquest ha arribat a tenir més de 100 mil milions d'hores en vídeos d'aquest aspecte i més de mil milions d'hores en transmissions en viu de la mateixa temàtica \cite{visitesYT}. Un altre exemple és la plataforma de Twitch, la qual s'especialitza a fer transmissions en viu. En aquest cas, ha aconseguit que jocs com el League of legends o el Fortnite hagin tingut més de 35 o 20 mil milions de visites en el darrer any respectivament. \cite{visitesTwitch}.
 
-Com a resultat, la indústria dels videojocs segueix augmentant cada cop més. Avui en dia, generen una gran quantitat d'ingressos, la qual s'espera que s'incrementi encara més en els anys vinents. Com es pot veure en la gràfica de la figura \ref{fig:VideogamesRevenuesImage}, s'observa que en 2019 es van generar més de 150 mil milions de dòlars i es preveu que en 2020, a causa de la Covid-19, se'n generin més de 179 mil milions \cite{VidogamesMoreMoney}. 
+Com a resultat, la indústria dels videojocs segueix augmentant cada cop més. Avui en dia, generen una gran quantitat d'ingressos, la qual s'espera que s'incrementi encara més en els anys vinents. Com es pot veure en la gràfica de la figura \ref{fig:VideogamesRevenuesImage}, s'observa que en 2019 es van generar més de 150 mil milions de dòlars i es preveu que en 2020, a causa de la Covid-19, se'n generin més de 179 mil milions \cite{VidogamesMoreMoney}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/videogamesMoney.jpeg}
+    \includegraphics[width=0.6\textwidth]{images/videogamesMoney.jpeg}
     \caption{Ingressos dels videojocs. Font: \cite{VidogamesMoreMoney}}
     \label{fig:VideogamesRevenuesImage}
 \end{figure}
@@ -117,11 +153,11 @@ En aquest apartat s'expliquen els termes i conceptes relacionats amb el projecte
 
 \item \textbf{Matchmaking:} S'anomena matchmaking a l'algorisme utilitzat en la majoria dels videojocs multijugador que tracta d'emparellar els jugadors o equips d'un nivell o habilitats similars per enfrontar-se entre ells. Això s'aconsegueix mitjançant l'anàlisi de les estadístiques dels diferents usuaris. \cite{matchmakingDef}.
 
-\item \textbf{Videojoc competitiu:} S'entén com a videojoc competitiu un videojoc on els jugadors competeixen entre ells, sigui en equip o en individual, per ser uns millors que els altres. Aquests poden ser online o offline, és a dir, que es poden jugar a través d'Internet o no. Un exemple d'aquests poden ser els escacs o els jocs de lluita, com el Street Fighters o Mortal Kombat.
+\item \textbf{Videojoc competitiu:} S'entén com a videojoc competitiu un videojoc on els jugadors competeixen entre ells, sigui en equip o en individual, per ser uns millors que els altres. Aquests poden ser online o offline, és a dir, que es poden jugar a través d'Internet o no. Uns bons exemples en són els escacs o els jocs de lluita, com el Street Fighter o Mortal Kombat.
 
 \item \textbf{Habilitat del jugador:} Es coneix com a habilitat del jugador a la capacitat que té aquest per demostrar la seva destresa en un joc, en altres paraules, que tan capaç és de derrotar als seus contrincants.
 
-\item \textbf{Emparellar:} Acció d'agrupar a dos o més persones per formar un equip. Si s'agrupen dos o més equips es forma una partida.
+\item \textbf{Emparellar:} Acció d'agrupar a una o més persones per formar un equip. Si s'agrupen dos o més equips es forma una partida.
 
 \item \textbf{Equip:} Un equip és un conjunt de jugadors aliats dintre del videojoc que tenen el mateix objectiu. Generalment han de col·laborar entre ells per assolir-lo.
 \end{itemize}
@@ -130,13 +166,13 @@ En aquest apartat s'expliquen els termes i conceptes relacionats amb el projecte
 \subsection{Identificació del problema}
 La popularització i gran creixement dels videojocs fan que la indústria segueixi agafant més importància: cada cop són més coneguts, hi ha més inversió i generen més ingressos. Per aquests motius, és molt important dissenyar-los bé i per fer-ho, s'han de considerar molts aspectes, com per exemple la temàtica, els escenaris, els personatges, etc. Però també és molt important la jugabilitat, fer que sigui divertit i entretingut. A més, dintre dels jocs competitius, es necessita un bon sistema d'Elo i d'aparellament, per fer encara el videojoc més entretingut i generar més rivalitat, tot i que també pot haver-hi interessos comercials.
 
-L'Elo pot ser molt diferent depenent de la situació en què es vulgui aplicar. Per exemple, si en un videojoc es fa un campionat setmanal, on es vol reduir el nombre de jugadors durant el transcurs d'aquest, es pot generar un algorisme que contempli un Elo molt variat entre els diferents participants al principi de la competició, però que sigui més similar cap al final. Per una altra banda, si es juga un campionat mensual on es vol que hi participin tots els jugadors i es desitja una classificació apropiada a l'Elo de cada un, es pot desenvolupar un algorisme que agrupi les partides mitjançant un Elo similar.
+L'Elo pot ser molt diferent depenent de la situació en què es vulgui aplicar. Per exemple, si en un videojoc es fa un campionat setmanal, on es vol reduir el nombre de jugadors durant el transcurs d'aquest, es pot generar un algorisme que contempli un Elo molt variat entre els diferents participants al principi de la competició, però que sigui més similar cap al final. Per una altra banda, si es juga un campionat mensual on es vol que hi participin tots els jugadors i es desitja una classificació apropiada a l'Elo de cada un, es pot crear un algorisme que agrupi les partides mitjançant un Elo similar.
 
-Per tant, desenvolupar una bona fórmula de l'Elo equival, normalment, a representar el nivell d'habilitat del jugador i al seu progrés a l'hora de millorar. Tot i que sembla una idea senzilla de realitzar, a la pràctica no ho és. L'Elo ha d'augmentar progressivament respecte a l'habilitat del jugador. Teòricament, quantes més partides es juguin, més millora l'usuari i més ha d'augmentar la seva puntuació. També ha de ser estable i consistent, no pot ser que d'un dia per l'altre hi hagi una gran diferència de puntuació. A més a més, també s'ha de considerar quina puntuació es necessita per arribar a un rang d'Elo bo, no pot ser que tothom es trobi entre els millors. Per tant, s'ha d'estudiar rigorosament com fer el seu algorisme i saber quines variables la modificaran (guanyar, perdre, morir més o menys, etc.).
+Per tant, desenvolupar una bona fórmula de l'Elo equival, normalment, a representar el nivell d'habilitat del jugador i al seu progrés a l'hora de millorar. Tot i que sembla una idea senzilla de realitzar, a la pràctica no ho és. L'Elo ha d'augmentar progressivament respecte a l'habilitat del jugador. Teòricament, quantes més partides es juguin, més millora l'usuari i més ha d'augmentar la seva puntuació. També ha de ser estable i consistent, no pot ser que d'un dia per l'altre hi hagi una gran diferència de punts. A més a més, també s'ha de considerar quina puntuació es necessita per arribar a un rang d'Elo bo, no pot ser que tothom es trobi entre els millors. Per tant, s'ha d'estudiar rigorosament com fer el seu algorisme i saber quines variables la modificaran (guanyar, perdre, morir més o menys, etc.).
 
 Com es pot observar, s'han de fer diverses proves per arribar a la fórmula adequada. El problema és que no hi ha cap programa que permeti simular les diferents versions per saber quina és vàlida i quina no. El que s'ha de fer actualment és plantejar una simulació que s'adeqüi a l'algorisme i fer moltes partides per veure l'evolució. Això pot tenir conseqüències, i és que testejar i comparar els resultats de les diferents fórmules pot portar molt temps, el qual es podria invertir en altres aspectes del desenvolupament del videojoc. 
 
-És per aquest motiu que és necessària una eina software per a les empreses desenvolupadores de jocs amb interès comercial, que els permeti simular partides amb l'algorisme d'Elo que se li introdueixi, sigui quin sigui, i permeti avaluar els resultats. D'aquesta manera, podran escollir quin s'adapta millor a la jugabilitat i progressió del joc.
+És per aquest motiu que és necessària una eina software per a les empreses desenvolupadores de jocs amb interès comercial, que els permeti simular partides amb l'algorisme d'Elo que se li introdueixi i avaluar els resultats. D'aquesta manera, podran escollir quin s'adapta millor a la jugabilitat i progressió del joc.
 
 \newpage
 \subsection{Exemples de sistemes d'Elo en els videojocs}
@@ -144,9 +180,9 @@ L'Elo es pot calcular de diverses fórmules, des de la més simple que és la d'
 
 \begin{itemize}
     \item \textbf{Escacs:} Els escacs és un joc d'estratègia que consisteix en partides d'u contra u on l'objectiu és capturar el rei enemic. Aquest utilitza el mètode més senzill per calcular la puntuació d'Elo i és el següent: és mesura la probabilitat de guanyar al rival més la de fer taules (empatar). Després, depenent del resultat i del rang on es jugui la partida, es guanyen o perden més punts d'Elo \cite{wikipediaElo}.
-    \item \textbf{Rocket League:} El Rocket League és un videojoc de futbol, amb la diferència que en canvi de jugar amb futbolistes, es juga amb cotxes. En aquest cas, l'Elo s'anomena MMR (MatchMaking Rank) i funciona similar al dels Escacs. Si es guanya al rival, s'obté MMR i si es perd, es resta. La quantitat pot variar depenent del rang en el qual es trobi el participant i depenent del nivell de l'equip rival. El progrés en la partida, com ara marcar gols, fer parades o assistències, no contribueix a obtenir més punts d'Elo \cite{rocketElo}.
-    \item \textbf{League of Legends:} El League of Legends o LOL és un joc d'estratègia per equips on l'objectiu és enderrocar una estructura anomenada Nexus que es troba en la base del rival. Aquest videojoc funciona per rangs i per pujar-ne d'un a un altre, s'ha d'acumular una certa quantitat de LP (League Points). Si el jugador guanya la partida, n'adquirirà més o menys depenent del nivell del rival. En canvi, si la perd, se li restaran. La diferència amb els videojocs anteriors és que un cop s'ha adquirit els LP suficients per pujar de rang, és necessari jugar unes fases d'ascensió. Si es passen, es pujarà de rang i s'obtindran els LP corresponents. En canvi, si es perd, els LP seran restablerts al del rang que pertoca \cite{LolElo}.
-    \item \textbf{Counter Strike: Global Offensive:} El Counter Strike: Global Offensive o CSGO és un videojoc en primera persona que es juga per equips. Les partides duren diverses rondes on hi han diferents objectius per complir per guanyar-les. El principal és eliminar a tot l'equip rival. Els altres depenen del rol de cada equip. Es poden diferenciar dos grups: terroristes i antiterroristes. Els primers tenen una bomba, la qual han de plantar i fer-la explotar per guanyar. Els segons han d'evitar que l'explosiu sigui activat, i en cas de que passi, l'han de desactivar.  En aquest joc el sistema d'Elo funciona de manera diferent: cada ronda que es juga és com si fos una partida d'escacs. Els punts d'Elo es veuen repartits al final de cada una d'elles. La diferència està en el fet que aquest joc si contempla el nombre de morts que ha tingut un jugador, el número de baixes, si ha complert l'objectiu, etc. per repartir els punts d'Elo. També té molt en compte qui ha estat el MVP de la ronda, enduent-se una gran part dels punts \cite{csgoELO1} \cite{csgoELO2}. 
+    \item \textbf{Rocket League:} El Rocket League és un videojoc de futbol, amb la diferència que en canvi de jugar amb futbolistes, es juga amb cotxes. En aquest cas, l'Elo s'anomena MMR (MatchMaking Rank) i funciona similar al dels Escacs. Si es guanya al rival, s'obté MMR i si es perd, es resta. La quantitat pot variar depenent del rang en el qual es trobi el participant i del nivell de l'equip rival. El progrés en la partida, com ara marcar gols, fer parades o assistències, no contribueix a obtenir més punts d'Elo \cite{rocketElo}.
+    \item \textbf{League of Legends:} El League of Legends o LOL és un joc d'estratègia per equips on l'objectiu és enderrocar una estructura anomenada Nexus que es troba en la base del rival. Aquest videojoc funciona per rangs i per pujar-ne d'un a un altre, s'ha d'acumular una certa quantitat de LP (League Points). Si el jugador guanya la partida, n'adquirirà més o menys depenent del nivell del rival. En canvi, si la perd, se li restaran. La diferència amb els videojocs anteriors és que un cop s'ha adquirit els LP suficients per pujar de rang, és necessari jugar unes fases d'ascensió. Si es passen, s'assolirà la categoria superior i s'obtindran els LP corresponents. En canvi, si es perd, els LP seran restablerts al del rang que pertoca \cite{LolElo}.
+    \item \textbf{Counter Strike: Global Offensive:} El Counter Strike: Global Offensive o CSGO és un videojoc en primera persona que es juga per equips. Les partides duren diverses rondes on hi han diferents objectius per complir per guanyar-les. El principal és eliminar a tots els rivals. Els altres depenen del rol de cada equip. Es poden diferenciar dos grups: terroristes i antiterroristes. Els primers tenen una bomba, la qual han de plantar i fer-la explotar per guanyar. Els segons han d'evitar que l'explosiu sigui activat, i en cas de que passi, l'han de desactivar.  En aquest joc el sistema d'Elo funciona de manera diferent: cada ronda que es juga és com si fos una partida d'escacs. Els punts d'Elo es veuen repartits al final de cada una d'elles. La diferència està en el fet que aquest joc si contempla el nombre de morts que ha tingut un jugador, el número de baixes, si ha complert l'objectiu, etc. per repartir els punts d'Elo. També té molt en compte qui ha estat el MVP de la ronda, enduent-se una gran part dels punts \cite{csgoELO1} \cite{csgoELO2}. 
 \end{itemize}
 
 \newpage
@@ -157,7 +193,7 @@ Durant les primeres setmanes del mes de desembre vaig estar pensant quina temàt
 
 Tots ells em van respondre amablement amb propostes molt interessants, però va haver-hi una que em va cridar molt l'atenció. Aquesta és la del meu TFG, i que consisteix a fer un simulador d'Elo per estudiar aquest mateix i veure com evolucionava.
 
-Van haver-hi dos motius pels quals vaig escollir aquesta idea: el primer és que era una temàtica sobre els videojocs, que m'agraden molt. El segon és que és un aspecte que mai m'havia plantejat com funcionava i que malauradament no s'havia estudiat en l'assignatura. Per tant, vaig escollir aquest TFG per augmentar el meu coneixement sobre els videojocs i sobre com estan fets.
+Van haver-hi dos motius pels quals vaig escollir aquesta idea: el primer és que era una temàtica sobre els videojocs, que m'agraden molt. El segon és que és un aspecte que mai m'havia plantejat com funcionava i que malauradament no s'havia estudiat en l'assignatura. Per tant, vaig escollir aquest TFG per augmentar el meu coneixement respecte als videojocs i sobre com estan fets.
 
 
 \newpage
@@ -170,7 +206,7 @@ Malauradament, no s'ha trobat cap programa o aplicació web que permeti introdui
 \begin{itemize}
     \item \textbf{Repositori de RemiFabre \cite{EloSystemRemi}:} En aquest repositori anomenat "Elo" \space es troba un programa fet en python que simula l'evolució de l'Elo en diversos jugadors amb puntuacions diferents.
     
-    Aquest programa té dues modalitats, en la primera és que els jugadors només s'enfronten entre si una vegada rere l'altre, mentre que en la segona modalitat s'enfronten a jugadors creats només per aquella partida i amb un "winrate" \space fixat. L'algorisme de l'Elo està predeterminat i com a molt es pot canviar el valor de certes variables.
+    Aquest programa té dues modalitats, en la primera és que els jugadors només s'enfronten entre si una vegada rere l'altre, mentre que en la segona modalitat juguen contra jugadors creats només per aquella partida i amb un "winrate" \space fixat. L'algorisme de l'Elo està predeterminat i com a molt es pot canviar el valor de certes variables.
     
     El resultat de les diverses partides es mostren en una gràfica en el mateix programa, on es pot veure com augmenta o decreix l'Elo de cada jugador. 
     
@@ -187,7 +223,7 @@ Malauradament, no s'ha trobat cap programa o aplicació web que permeti introdui
     
     \item \textbf{Repositori d'iain \cite{EloSystemiain}:} En aquest tercer repositori anomenat "Elo" \space es troba un altre programa que permet simular i modificar alguna variable del sistema d'Elo estandard. 
     
-    En aquest cas, es poden crear jugadors amb la puntuació desitjada i enfrontar-los entre si, decidint el resultat. També permet diferents configuracions, com la modificació de la variable K, on es pot definir depenent del nombre de partides fetes. Addicionalment, permet modificar a partir de quina quantitat de punts es deixa de ser un principiant, i amb quina puntuació comença un jugador.
+    En aquest cas, es poden crear jugadors amb la puntuació desitjada i enfrontar-los entre si, decidint el resultat. També permet diferents configuracions, com la modificació de la variable K, on es pot definir depenent del nombre de partides fetes. Addicionalment, permet modificar a partir de quants punts es deixa de ser un principiant, o amb quina puntuació es comença.
     
     El software et mostra el número de partides jugades de cada jugador, el seu nivell d'Elo i saber si és professional o principiant. 
     
@@ -199,9 +235,9 @@ Malauradament, no s'ha trobat cap programa o aplicació web que permeti introdui
 \end{itemize}
 
 \subsection{Justificació de la meva proposta}
-Un cop vistos tots els productes que es troben actualment a Internet, es pot concloure que totes elles tenen aspectes positius: permeten modificar la variable K,  mostren un gràfic de com va evolucionant l'Elo després de diverses partides,  permeten escollir el resultat de cada joc o ensenyen quants punts es guanyen o perden en cada un. Tot i això, totes elles estan lligades a la mateixa fórmula, i és aquesta la principal diferència amb aquest projecte.
+Un cop vistos tots els productes que es troben actualment a Internet, es pot concloure que tots ells tenen aspectes positius: permeten modificar la variable K,  mostren un gràfic de com va evolucionant l'Elo després de diverses partides,  permeten escollir el resultat de cada joc o ensenyen quants punts es guanyen o es perden. Tot i això, tots ells estan lligats a la mateixa fórmula, i és aquesta la principal diferència amb el projecte desenvolupat.
 
-La solució del sistema desenvolupat també permet modificar el valor de diverses variables, simular diverses partides i exportar els resultats per fer una gràfica. Però el més important és que permetrà canviar l'algorisme per calcular l'Elo en la seva totalitat. Es podrà utilitzar l'algorisme que es desitgi, ja sigui el predeterminat o un creat per l'usuari que dissenyi el sistema. D'aquesta forma es podrà comprar entre les diferents fórmules i escollir la més adequada pel videojoc. A més, per tal de simular millors les partides, també permetrà canviar l'algorisme de com es juguen i crear jugadors amb les característiques desitjades. Aquestes poden fer referència a dades reals d'usuaris, a models generats a través d'una mineria de dades, etc. Tot això fa el simulador més dinàmic i més adaptable, ajustant-se a la voluntat de l'empresa.
+La solució proposada, anomenada EloSim, també permet modificar el valor de diverses variables, simular partides i exportar els resultats per fer una gràfica. Però el més important és que permetrà canviar l'algorisme per calcular l'Elo en la seva totalitat. Es podrà utilitzar la fórmula que es desitgi, ja sigui la predeterminada o una creada per l'usuari que dissenyi el sistema. D'aquesta forma es podrà comprar entre els diferents algorismes i escollir el més adequat pel videojoc. A més, per tal de simular millors les partides, també permetrà canviar el sistema de joc i crear jugadors amb les característiques desitjades. Aquestes poden fer referència a dades reals d'usuaris, a models generats a través d'una mineria de dades, etc. Tot això fa el simulador més dinàmic i més adaptable, ajustant-se a la voluntat de l'empresa.
 
 A continuació, per tal d'aclarir les diferències entre els diferents programes, en la taula \ref{tab:TaulaFuncionalitat} es pot observar una graella comparativa entre les distintes funcionalitats dels diversos programes trobats i el meu.
 
@@ -213,14 +249,14 @@ A continuació, per tal d'aclarir les diferències entre els diferents programes
             {\color[HTML]{000000} \textbf{Funcionalitats}}                                  & {\color[HTML]{000000} \textbf{RemiFabre}}        & {\color[HTML]{000000} \textbf{cardsorg}}         & {\color[HTML]{000000} \textbf{iain}}             & {\color[HTML]{000000} \textbf{EloCalculator}}    & {\color[HTML]{000000} \textbf{El meu projecte}}  \\ \hline
             \begin{tabular}[c]{@{}l@{}}Fórmula d'ELO\\ determinada\end{tabular}             & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} \checkmark}                         \\ \hline
             \begin{tabular}[c]{@{}l@{}}Canviar variables\\ algorisme d'ELO\end{tabular}     & \cellcolor[HTML]{FFFFFF}{\color[HTML]{333333} \checkmark} & \cellcolor[HTML]{FFFFFF}{\color[HTML]{333333} \checkmark} & \cellcolor[HTML]{FFFFFF}{\color[HTML]{333333} \checkmark} & \cellcolor[HTML]{FFFFFF}{\color[HTML]{333333} \checkmark} & \cellcolor[HTML]{FFFFFF}{\color[HTML]{333333} \checkmark} \\ \hline
-            \begin{tabular}[c]{@{}l@{}}Simulació amb gran\\ nombre de partides\end{tabular} & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} \checkmark}                         \\ \hline
-            \begin{tabular}[c]{@{}l@{}}Personalitzar puntuació\\ de jugadors\end{tabular}   & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} X}                         \\ \hline
-            \begin{tabular}[c]{@{}l@{}}Decidir resultat\\ d'un enfrontament\end{tabular}    & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} X}                         \\ \hline
-            \begin{tabular}[c]{@{}l@{}}Mostrar resultat\\ en gràfiques\end{tabular}         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         \\ \hline
-            \begin{tabular}[c]{@{}l@{}}Personalitzar\\ algorisme d'ELO\end{tabular}         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} \checkmark}                         \\ \hline
-            \begin{tabular}[c]{@{}l@{}}Personalitzar\\ algorisme de partida\end{tabular}         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} \checkmark}                         \\ \hline
-            \begin{tabular}[c]{@{}l@{}}Personalitzar\\ creació de jugadors\end{tabular}         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} \checkmark}                         \\ \hline
-            \begin{tabular}[c]{@{}l@{}}Exportar dades\\ a Excel\end{tabular}                & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} X}                         & {\color[HTML]{333333} \checkmark}                         \\ \hline
+            \begin{tabular}[c]{@{}l@{}}Simulació amb gran\\ nombre de partides\end{tabular} & {\color[HTML]{333333} \checkmark}                         &                         &                         &                         & {\color[HTML]{333333} \checkmark}                         \\ \hline
+            \begin{tabular}[c]{@{}l@{}}Personalitzar puntuació\\ de jugadors\end{tabular}   &                         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} \checkmark}                         &                         \\ \hline
+            \begin{tabular}[c]{@{}l@{}}Decidir resultat\\ d'un enfrontament\end{tabular}    &                         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} \checkmark}                         & {\color[HTML]{333333} \checkmark}                         &                         \\ \hline
+            \begin{tabular}[c]{@{}l@{}}Mostrar resultat\\ en gràfiques\end{tabular}         & {\color[HTML]{333333} \checkmark}                         &                         &                         &                         &                         \\ \hline
+            \begin{tabular}[c]{@{}l@{}}Personalitzar\\ algorisme d'ELO\end{tabular}         &                         &                         &                         &                         & {\color[HTML]{333333} \checkmark}                         \\ \hline
+            \begin{tabular}[c]{@{}l@{}}Personalitzar\\ algorisme de partida\end{tabular}         &                         &                         &                         &                         & {\color[HTML]{333333} \checkmark}                         \\ \hline
+            \begin{tabular}[c]{@{}l@{}}Personalitzar\\ creació de jugadors\end{tabular}         &                         &                         &                         &                         & {\color[HTML]{333333} \checkmark}                         \\ \hline
+            \begin{tabular}[c]{@{}l@{}}Exportar dades\\ a Excel\end{tabular}                &                         &                         &                         &                         & {\color[HTML]{333333} \checkmark}                         \\ \hline
         \end{tabular}
         \caption{Taula comparativa de les diferents funcionalitats dels programes}
         \label{tab:TaulaFuncionalitat}
@@ -233,32 +269,32 @@ A continuació, per tal d'aclarir les diferències entre els diferents programes
 L'abast d'un projecte defineix els seus objectius, els obstacles i riscos que poden sorgir i quines són les parts interessades en el software. Per tant, tots aquests aspectes s'han  d'identificar i definir per assolir un bon producte.
 
 \subsection{Objectius}
-L'objectiu principal d'aquest projecte és poder crear un producte software que permeti simular el càlcul de l'Elo en els videojocs. Així, es poden obtenir dades per veure la seva evolució, per determinar si és un algorisme vàlid i per veure si l'aparellament és el correcte. Per aconseguir que el programa pugui complir amb aquestes funcionalitats, cal assolir un seguit de sub-objectius:
+L'objectiu principal d'aquest projecte és poder crear un producte software que permeti simular el càlcul de l'Elo en els videojocs. Així, es poden obtenir dades per veure la seva evolució, per determinar si és un algorisme vàlid i per comprovar si l'aparellament és el correcte. Per aconseguir que el programa pugui complir amb aquestes funcionalitats, cal assolir un seguit de sub-objectius:
 \begin{itemize}
-    \item \textbf{Personalització de l'algorisme del sistema d'Elo:} El programa ha de permetre modificar la fórmula sencera o poder canviar algunes variables d'aquesta. Així es podrà introduir qualsevol algorisme i es podrà veure el seu funcionament.
+    \item \textbf{Personalització de l'algorisme del sistema d'Elo:} El programa ha de permetre modificar la fórmula sencera o poder canviar algunes de les seves variables. Així es podrà introduir qualsevol algorisme i es podrà veure el seu funcionament.
     
-    \item \textbf{Simulació de partides:} El software ha de permetre simular partides per així poder aplicar la fórmula de l'Elo i poder comprovar que l'aparellament de jugadors és el correcte. S'ha de contemplar que poden haver-hi variables que poden afectar al resultat de la partida. Per exemple un jugador pot tenir una arma millor que l'altre, una armadura més resistent, un millor cotxe, etc. També ha de tenir en compte la diferència d'habilitat entre els contrincants, el resultat esperat vs. el real i la quantitat de punts d'Elo guanyats o perduts per cada partida. 
+    \item \textbf{Simulació de partides:} El software ha de permetre simular partides per així poder aplicar la fórmula de l'Elo i comprovar que l'aparellament de jugadors és el correcte. S'ha de contemplar que poden haver-hi variables que afectin el resultat de la partida. Per exemple un jugador pot tenir una arma millor que l'altre, una armadura més resistent, un cotxe més ràpid, etc. També ha de tenir en compte la diferència d'habilitat entre els contrincants, el resultat esperat vs. el real i la quantitat de punts d'Elo guanyats o perduts per cada partida. 
     
-    \item \textbf{Comparar resultats entre diferents variables i algorismes:} Per poder determinar si la fórmula de l'Elo és la correcta, cal poder comparar els resultats entre els diferents algorismes. És per aquest motiu que es guardaran les dades i es permetrà exportar-les a un fitxer amb format .csv, per poder analitzar-les i comparar-les.
+    \item \textbf{Comparar resultats entre diferents variables i algorismes:} Per poder determinar si la fórmula de l'Elo és la correcta, cal comparar els resultats entre els diferents algorismes. És per aquest motiu que es guardaran les dades i es permetrà exportar-les a un fitxer amb format .csv, per poder analitzar-les i comparar-les.
 \end{itemize}
 
 A la figura \ref{fig:EsquemaObjectius} es pot observar un esquema dels diversos objectius i subojectius del programa.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{images/FuncionsEsquema.jpg}
+    \includegraphics[width=1.15\textwidth]{images/FuncionsEsquema.jpg}
     \caption{Esquema dels objectius i subobjectius del sistema. Font: Elaboració pròpia}
     \label{fig:EsquemaObjectius}
 \end{figure}
 
 \subsection{Obstacles i riscos}
-Durant tot el transcurs del projecte poden aparèixer diversos obstacles i riscos que poden alentir el desenvolupament del projecte. Per aquest motiu, cal identificar-los i saber-ne d'ells.
+Durant tot el transcurs del projecte poden aparèixer diversos obstacles i riscos que alenteixin el desenvolupament del producte. Per aquest motiu, cal identificar-los i saber-ne d'ells.
 
 \begin{itemize}
-    \item \textbf{Data d'entrega fixa:} El TFG té una data límit fixada i, per tant, que s'ha de complir. Però els possibles problemes que ens podem trobar durant el desenvolupament del projecte poden generar endarreriments i, per tant, empitjorar la qualitat del programa o eliminar alguna funció no essencial per falta de temps.
-    \item \textbf{Desconeixement en simulació:} Un aspecte fonamental del programa és la simulació de partides. Però a causa del desconeixement en l'àmbit de la simulació dins la informàtica, és probable que es generin endarreriments i possibles errors a l'hora de programar.
+    \item \textbf{Data d'entrega fixa:} El TFG té una data límit fixada i, per tant, que s'ha de complir. Però els possibles problemes que es poden trobar durant el desenvolupament del projecte poden generar endarreriments i, per tant, empitjorar la qualitat del programa o eliminar alguna funció no essencial per falta de temps.
+    \item \textbf{Desconeixement en simulació:} Un aspecte fonamental del programa és la simulació de partides. Però a causa del seu desconeixement en l'àmbit de la informàtica, és probable que es generin endarreriments i possibles errors a l'hora de programar.
     \item \textbf{Desconeixement en les tecnologies emprades:} A causa del desconeixement sobre el llenguatge de programació Lua o sobre el poc ús fet del software de QT, és probable que s'alenteixi el desenvolupament del projecte, ja que s'haurà d'aprendre a utilitzar-los correctament.
-    \item \textbf{Bugs i errors:} Durant tot el transcurs de programar i testejar el programa, poden aparèixer diferents errors i bugs que em poden fer perdre molt temps, i per tant, endarrerir el desenvolupament.
+    \item \textbf{Bugs i errors:} Durant tot el transcurs de programar i testejar el programa, poden aparèixer diferents errors i bugs que facin fer perdre molt temps, i per tant, endarrereixin el desenvolupament.
 \end{itemize}
 
 \subsection{\textit{Stakeholders}}
@@ -267,9 +303,9 @@ Els \textit{Stakeholders} són una part fonamental pel desenvolupament del proje
 \begin{itemize}
     \item \textbf{Empreses de videojocs:} Les empreses desenvolupadores de videojocs es veuran principalment afectades pel projecte. El seu objectiu principal és generar ingressos econòmics. Però per fer-ho, necessita desenvolupar un bon joc. Un aspecte important per aconseguir-ho és un bon sistema d'Elo, que el poden arribar a obtenir gràcies al simulador. Per tant, quan més èxit tingui el joc, més conegut serà, més jugadors captarà i més beneficis obtindrà l'empresa.
     
-    \item \textbf{Jugadors:} Els jugadors de videojocs són les principals parts interessades i són les més importants. Aquests es veuran implicats de forma indirecta, ja que són els que jugaran i seran puntuats pel sistema d'Elo resultant. També són qui hauran de trobar el joc entretingut i divertit, atès que seran els encarregats de fer que aquest tingui èxit. 
-    
     \item \textbf{Desenvolupadors de videojocs:} Els desenvolupadors de videojocs són qui utilitzaran el software de forma directe. Seran els encarregats d'estudiar i plantejar les diferents fórmules del sistema d'Elo i simular-les en l'eina a desenvolupar. D'aquesta manera podran decidir quina d'elles s'adapta més al videojoc i farà que hi hagi una millor experiència.
+    
+    \item \textbf{Jugadors:} Els jugadors de videojocs són les principals parts interessades i són les més importants. Es veuran implicats de forma indirecta, ja que són els que jugaran i seran puntuats pel sistema d'Elo resultant. També són qui hauran de trobar el joc entretingut i divertit, atès que seran els encarregats de fer que aquest tingui èxit. 
     
     \item \textbf{Propietari del TFG:} Jo mateix soc un dels principals \textit{steakeholders} del projecte, ja que seré l'únic desenvolupador. El meu objectiu serà fer-lo de la millor forma possible i eficient, testejar-lo i documentar tot el procés.
     
@@ -279,20 +315,20 @@ Els \textit{Stakeholders} són una part fonamental pel desenvolupament del proje
 \section{Metodologia i rigor}
 La metodologia amb la qual es desenvolupa un projecte és un aspecte molt important a tenir en compte, ja que pot canvia per complet com evoluciona. Hi han dues grans metodologies: la cascada o \textit{waterfall} i l'\textit{agile}.
 
-La primera, l'anomenada \textit{waterfall} és la més tradicional. Aquesta té en compte els \textit{stakeholders} i clients al principi del projecte, i després es desenvolupa un pla seqüencial per satisfer els seus requisits. S'anomena d'aquesta manera perquè cada fase del pla proposat passa a la següent un cop s'ha acabat l'anterior \cite{waterfallModel}.
+La primera és la més tradicional. Aquesta té en compte els \textit{stakeholders} i clients al principi del projecte, i després es desenvolupa un pla seqüencial per satisfer els seus requisits. S'anomena \textit{waterfall} perquè cada fase del pla proposat passa a la següent un cop s'ha acabat l'anterior \cite{waterfallModel}.
 
-La metodologia cascada és utilitzada quan els requeriments estan molt clars i fixes, quan la definició del producte és estable, quan la tecnologia no evoluciona constantment i quan el projecte és curt \cite{waterfallTutorialsPoint}.
+La metodologia cascada és utilitzada quan els requeriments estan molt clars i fixes, la definició del producte és estable, la tecnologia no evoluciona constantment i el projecte és curt \cite{waterfallTutorialsPoint}.
 
-Per una altra part, la metodologia \textit{agile} consisteix en una contínua iteració de desenvolupament i testeig del software on s'interacciona de forma contínua amb els clients i \textit{stakeholders} per saber el seu \textit{feedback} \cite{agileVsWaterfall}.
+Per una altra part, l'\textit{agile} consisteix en una contínua iteració de desenvolupament i testeig del software on s'interacciona de forma freqüent amb els clients i \textit{stakeholders} per saber el seu \textit{feedback} \cite{agileVsWaterfall}.
 
 Aquesta és utilitzada per projectes llargs on es vol el \textit{feedback} del client constantment, quan es vol treballar amb tecnologies en evolució continua, també quan els requeriments no estan clars i poden canviar freqüentment, igual que la definició del producte. Per regla general, se la considera la contrapart de la metodologia \textit{waterfall}. 
 
-Dintre de la metodologia \textit{agile} es poden trobar diferents processos, com és el cas de Scrum o Kanban. La primera es caracteritza per dividir el temps de desenvolupament disponible en diferents iteracions, anomenades sprints. La seva duració sol ser fixa,  de dos o tres setmanes. Al principi de cada iteració es fa una planificació d'aquesta, on s'escull la feina a fer. Durant cada dia d'aquest període, es fa una reunió diària de 15 minuts on s'explica quina feina ha fet cada membre de l'equip, quins problemes ha trobat i que es planteja fer. Al final del sprint, es fa una revisió i presentació de la feina feta, i una retrospectiva de la iteració per veure que es pot millorar de cara a la següent \cite{wikipediaScrum}. A la figura \ref{fig:ScrummImage} es pot veure un esquema simplificat del procés Scrum.
+Dintre de la metodologia \textit{agile} es poden trobar diferents processos, com és el cas de Scrumm o Kanban. La primera es caracteritza per dividir el temps de desenvolupament disponible en diferents iteracions, anomenades sprints. La seva duració sol ser fixa,  de dos o tres setmanes. Al principi de cada iteració es fa una planificació d'aquesta, on s'escull la feina a fer. Durant cada dia d'aquest període, es fa una reunió diària de 15 minuts on s'explica quina feina ha fet cada membre de l'equip, quins problemes ha trobat i que es planteja fer. Al final del sprint, es fa una revisió i presentació de la feina feta, i una retrospectiva de la iteració per veure que es pot millorar de cara a la següent \cite{wikipediaScrum}. A la figura \ref{fig:ScrummImage} es pot veure un esquema simplificat del procés Scrumm.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.65\textwidth]{images/Scrumm.png}
-    \caption{Fases del procés Scrum. Font: \cite{wikipediaScrum}}
+    \caption{Fases del procés Scrumm. Font: \cite{wikipediaScrum}}
     \label{fig:ScrummImage}
 \end{figure}
 
@@ -305,19 +341,19 @@ Per una altra part, el procés Kanban consisteix a gestionar un projecte de mane
     \label{fig:KanbanImage}
 \end{figure}
 
-Un cop explicades les dues metodologies, i els processos de l'\textit{agile}, cal explicar quina segueix aquest projecte. Per una banda, reuneix moltes característiques de la \textit{waterfall}: és un període curt, ja que el TFG dura entre tres i quatre mesos, els requeriments són clars i fixes i la idea del producte és estable. Per una altra banda, una metodologia \textit{agile} on es testegin les parts implementades de forma contínua i es segueixi el concepte del Scrum, pot ajudar a desenvolupar el projecte de forma exitosa. Addicionalment, mostrar les tasques en el format Kanban pot beneficiar la planificació del treball a realitzar. Per tant, aquest projecte segueix una metodologia Kanban \textit{agile} amb els conceptes del Scrum, però on també s'agafen moltes característiques de la \textit{waterfall}.
+Un cop explicades les dues metodologies, i els processos de l'\textit{agile}, cal explicar quina segueix aquest projecte. Per una banda, reuneix moltes característiques de la \textit{waterfall}: és un període curt, ja que el TFG dura entre tres i quatre mesos, els requeriments són clars i fixes i la idea del producte és estable. Per una altra banda, una metodologia \textit{agile} on es testegin les parts implementades de forma contínua i es segueixi el concepte del Scrumm, pot ajudar a desenvolupar el projecte de forma exitosa. Addicionalment, mostrar les tasques en el format Kanban pot beneficiar la planificació del treball a realitzar. Per tant, aquest projecte segueix una metodologia Kanban \textit{agile}. Però per poder facilitar el seu desenvolupament, s'ha decidit agafar matisos del Scrumm i del \textit{waterfall}.
 
 \subsection{Control de versions}
 
-Durant el desenvolupament del projecte s'utilitzarà Git, un software de control de versions, per poder realitzar treballar amb diferents versions del programa. També s'utilitzarà Github, un sistema de control de versions, per pujar tot el codi del treball i tota la documentació necessària. D'aquesta manera, el director podrà veure el progrés i podrà analitzar com s'està implementant la solució. Addicionalment, és podrà consultar i accedir a qualsevol versió anterior.
+Durant el desenvolupament del projecte s'ha utilitzat Git, un software de control de versions, per poder treballar amb diferents variants del programa. També s'ha utilitzat Github, un sistema de control de versions, per pujar tot el codi del treball i tota la documentació necessària. D'aquesta manera, el director ha pogut veure el progrés i analitzar com s'ha anat implementant la solució. Addicionalment, s'ha pogut consultar i accedir a qualsevol versió anterior.
 
 \subsection{Control de seguiment}
     
-Durant el transcurs de tot el TFG, Google Meet, un servei per fer videotrucades, serà utilitzat per mantenir al director informat i poder-li comentar qualsevol dubte o error. S'ha acordat fer, sempre que sigui possible i necessari, una reunió per setmana. D'aquesta manera es podrà discutir el progrés del projecte i observar si es va pel bon camí.
+Durant el transcurs de tot el TFG, s'ha fet servir Google Meet, un servei per fer videotrucades, per mantenir al director informat i poder-li comentar qualsevol dubte o error. A principi de curs es va acordar de fer, sempre que fos possible i necessari, una reunió per setmana. D'aquesta manera es podria discutir el progrés del projecte i observar si s'anava pel bon camí.
 
 \subsection{Control de tasques}
 
-El Trello s'utilitzarà per tenir estructurades les diverses tasques a realitzar durant tot el projecte. Cada gran funcionalitat estarà descomposta per petites tasques per tal de facilitar la implementació. A més, es faran quatre columnes per organitzar bé l'estat del projecte: TO DO, DOING, READY, DONE. D'aquesta manera, es segueix la metodologia Kanban.
+El Trello s'ha utilitzat per tenir estructurades les diverses tasques a realitzar durant tot el projecte. Cada gran funcionalitat ha estat descomposta per petites tasques per tal de facilitar la implementació. A més, s'han fet quatre columnes per organitzar bé l'estat del projecte: TO DO, DOING, READY, DONE. D'aquesta manera, es segueix la metodologia Kanban.
 
 \newpage
 \section{Especificació de requisits}
@@ -327,17 +363,17 @@ Per tal d'assolir el bon funcionament del sistema i complir tots els objectius m
 El simulador que es desenvolupa en aquest treball disposa d'un seguit de requisits funcionals que permeten a l'usuari fer-ne ús del sistema. Seguidament, s'enumeraran cada un d'ells:
 
 \begin{itemize}
-    \item \textbf{Entrada de fitxers Lua:} El programa ha de permetre poder carregar un fitxer de script en Lua que contingui diverses característiques i funcions per poder personalitzar la simulació. En son un exemple l'algorisme del sistema d'Elo o les característiques dels jugadors.
+    \item \textbf{Entrada de fitxers Lua:} El programa ha de permetre carregar un fitxer de script en Lua que contingui diverses característiques i funcions per poder personalitzar la simulació. En són un exemple l'algorisme del sistema d'Elo o les característiques dels jugadors.
     
     \item \textbf{Configuració de la fórmula del sistema d'Elo:} El sistema ha de poder entendre i executar perfectament la fórmula d'Elo que hagi introduït l'usuari mitjançant el script de Lua. 
     
     \item \textbf{Configuració de la fórmula per jugar la partida:} El sistema ha de poder llegir i executar la fórmula de joc de les partides per tindre en compte totes les propietats que vol l'usuari.
     
-    \item \textbf{Creació dels jugadors per fer les simulacions:} El sistema ha de crear el nombre de jugadors necessaris per poder executar la simulació. Cada un d'ells ha de tenir les característiques introduïdes per l'usuari.
+    \item \textbf{Creació dels jugadors per fer les simulacions:} El sistema ha de crear el nombre de jugadors necessaris per poder executar la simulació. Cada un d'ells ha de tenir les propietats introduïdes per l'usuari.
     
-    \item \textbf{Configuració de les característiques dels jugador:} L'usuari ha de ser capaç de modificar les característiques o propietats que han de tenir els jugadors mitjançant el fitxer Lua.
+    \item \textbf{Configuració de les característiques dels jugador:} El client ha de ser capaç de modificar les característiques o propietats que han de tenir els jugadors mitjançant el fitxer Lua.
     
-    \item \textbf{Creació d'equips:} El sistema ha de permetre crear equips tenint en compte les dades introduïdes per l'usuari respecte la diferència d'Elo entre jugadors i el nombre de membres d'un equip. Tot equip tindrà una diferència màxima inferior o igual a l'especificada i tindrà un nombre de components idèntics a l'indicat.
+    \item \textbf{Creació d'equips:} El sistema ha de permetre crear equips tenint en compte les dades introduïdes per l'usuari. Aquestes són la diferència d'Elo entre jugadors i el nombre de membres per equip. Cada un tindrà una diferència màxima inferior o igual a l'especificada i un nombre de components idèntics a l'indicat.
     
     \item \textbf{Creació de les partides:} El sistema ha de permetre crear partides tenint en compte la diferència màxima d'Elo que pot haver-hi entre els dos equips. Aquesta dada haurà estat introduïda per l'usuari prèviament.
     
@@ -349,15 +385,15 @@ El simulador que es desenvolupa en aquest treball disposa d'un seguit de requisi
     
     \item \textbf{Càlcul de l'Elo:} El software ha de permetre poder executar l'algorisme de l'Elo i modificar la puntuació de cada un dels jugadors de la forma adequada.
     
-    \item \textbf{Configuració de la simulació:} El sistema ha de permetre la configuració d'una sèrie de variables per fer la simulació, concretament: el nombre de jugadors, el nombre de components d'un equip, el nombre de partides a simular,  la diferència de puntuació entre els jugadors d'un equip i un enfrontament i la destinació de les estadístiques.
+    \item \textbf{Configuració de la simulació:} El sistema ha de permetre la configuració d'una sèrie de variables per fer la simulació. Concretament ha de configurar: el nombre de jugadors, la quantitat de components d'un equip, el número d'equips per partida, el nombre de partides a simular,  la diferència de puntuació entre els jugadors d'un equip i un enfrontament i la destinació de les estadístiques.
     
-    \item \textbf{Emmagatzematge de dades:} El software ha de poder emmagatzemar les dades extretes de les simulacions per poder-les utilitzar i actualitzar més tard.
+    \item \textbf{Emmagatzematge de dades:} El software ha de poder emmagatzemar les dades extretes de les simulacions per utilitzar-les i actualitzar-les més tard.
     
-     \item \textbf{Sortida de fitxers Excel:} L'eina a desenvolupar ha de poder permetre exportar les dades obtingudes a un fitxer Excel per així poder-les analitzar i comparar.
+     \item \textbf{Sortida de fitxers Excel:} L'eina a desenvolupar ha de poder permetre exportar les dades obtingudes a un fitxer Excel per així analitzar-les i comparar-les.
 \end{itemize}
 
 \subsection{Requisits no funcionals}
-El software desenvolupat també ha de complir una sèrie de requisits no funcionals. Aquests s'han extret i consultat de la plantilla Volere \cite{reqVolere}.
+Els requisits no funcionals representen característiques o restriccions del software que es desenvolupa. Com tot projecte, EloSim també n'ha de complir diversos d'ells. Aquests s'han extret i consultat de la plantilla Volere \cite{reqVolere}.
 
 \begin{table}[H]
     \begin{center}
@@ -376,7 +412,7 @@ El software desenvolupat també ha de complir una sèrie de requisits no funcion
             \hline
             \textbf{Tipus de requisit} & \textbf{11a. Facilitat d'ús} \\ \hline
             \textbf{Descripció}        &  \begin{tabular}[c]{@{}p{10cm}@{}}El programa ha de ser intuïtiu i fàcil d'usar. Ha de poder ser utilitzat per a qualsevol tipus d'usuari.\end{tabular} \\ \hline
-            \textbf{Justificació}      & \begin{tabular}[c]{@{}p{10cm}@{}}Un sistema intuïtiu fa estalviar temps a l'usuari, pel simple fet que no ha d'aprendre com funciona. Addicionalment, qualsevol usuari ha de ser capaç de familiaritzar-se amb el sistema, ja que pot ser utilitzat per gent més jove o més gran. \end{tabular}\\ \hline
+            \textbf{Justificació}      & \begin{tabular}[c]{@{}p{10cm}@{}}Un sistema intuïtiu fa estalviar temps a l'usuari, pel simple fet que no ha d'aprendre com funciona. Addicionalment, qualsevol ha de ser capaç de familiaritzar-se amb el software, ja que pot ser utilitzat per gentde diverses edats. \end{tabular}\\ \hline
         \end{tabular}
     \end{center}
 \end{table}
@@ -405,7 +441,7 @@ El software desenvolupat també ha de complir una sèrie de requisits no funcion
 
 \newpage
 \subsection{Casos d'ús}
-Un cop s'han analitzat els requisits funcionals i no funcionals, cal identificar i explicar els diferents casos d'ús del programa. Com es pot observar en la figura \ref{fig:EsquemaCasosD'us}, s'han trobat un total de vuit casos d'ús. A continuació s'explicarà cada un d'ells.
+Un cop s'han analitzat els requisits funcionals i no funcionals, cal identificar i explicar els diferents casos d'ús del programa. Com es pot observar en la figura \ref{fig:EsquemaCasosD'us}, s'han trobat un total de vuit. A continuació s'explicarà cada un d'ells.
 
 \begin{figure}[H]
     \centering
@@ -565,8 +601,8 @@ Un cop s'han analitzat els requisits funcionals i no funcionals, cal identificar
     \end{center}
 \end{table}
 
-\subsection{Diagrama de classes}
-El diagrama de classes descriu l'estructura d'un sistema on es mostren les seves classes amb els seus atributs i funcions, i també com es relacionen els objectes entre ells \cite{wikipediaClassDiagram}. L'esquema d'aquest projecte és el que es pot observar a la figura \ref{fig:ClassDiagram},
+\subsection{Diagrama de classes d'especificació}
+El diagrama de classes d'especificació descriu l'estructura d'un sistema on es mostren les seves classes amb els seus atributs i funcions, i també com es relacionen els objectes entre ells \cite{wikipediaClassDiagram}. L'esquema d'aquest projecte és el que es pot observar a la figura \ref{fig:ClassDiagram}.
 \begin{landscape}
 
 \fancypagestyle{lndscape}{
@@ -579,7 +615,7 @@ El diagrama de classes descriu l'estructura d'un sistema on es mostren les seves
     \begin{center}
         \begin{figure}[h!]
             \includegraphics[width=1.5 \textwidth]{images/Diagrama_Classes2.jpg}%
-            \caption{Diagrama de classes del sistema. Font: Elaboració pròpia}
+            \caption{Diagrama de classes d'especificació del sistema. Font: Elaboració pròpia}
             \label{fig:ClassDiagram}
         \end{figure}
     \end{center}
@@ -592,7 +628,7 @@ En aquest apartat s'explicaran les diverses restriccions textuals que s'han de c
     \item PK: Player(ID), Team(ID), Property(Name), Match(ID), Classification(ID).
     \item En un equip no poden haver-hi dos jugadors iguals.
     \item Una partida no pot tindre dos equips idèntics.
-    \item Un jugador no pot jugar més d'una partida a l'hora.
+    \item Un jugador no pot jugar més d'una partida alhora.
     \item La diferència d'Elo entre els jugadors d'un equip no pot ser més gran que l'atribut DeltaEloSimulation  de la classe Simulation.
     \item La diferència d'Elo entre els equips d'una partida no pot ser més gran que l'atribut DeltaEloSimulation  de la classe Simulation.
     \item L'Elo d'un equip i d'un jugador no pot ser més petit que 0.
@@ -604,7 +640,7 @@ En aquest apartat s'explicaran les diverses restriccions textuals que s'han de c
 
 \subsubsection*{Simulation}
 
-Una simulació és el conjunt de partides a simular amb els diversos jugadors. Consta del nombre de jugadors que hi haurà en total i de la diferència d'Elo màxima utilitzada en els diferents algorismes. També té el número de jugadors màxim per equip i en nombre total de partides a fer.
+Una simulació és el conjunt de partides a simular amb els diversos jugadors. Consta del nombre de participants que hi haurà en total i de la diferència d'Elo màxima utilitzada en els diferents algorismes. També té el número de jugadors màxim per equip i en nombre total de partides a fer.
 
 \subsubsection*{Player}
 
@@ -612,7 +648,7 @@ Un jugador representa cada un dels participants que forma un equip i que partici
 
 \subsubsection*{Property}
 
-Una propietat és una característica que té cadascun dels jugadors de la simulació. Es caracteritza pel seu nom.
+Una propietat és una característica que té cadascun dels jugadors de la simulació. S'identifica pel seu nom.
 
 \subsubsection*{Property\_Value}
 
@@ -662,60 +698,75 @@ Quantitat d'Elo a modificar del jugador.
 
 Estadístiques de la simulació on es guarda el progrés de cada jugador.
 
-\subsubsection*{Exporter}
-
-Classe abstracta de les diverses exportacions. Conté el path del fitxer a exportar.
-
-\subsubsection*{ExcelExporter}
-
-Subclasse de la classe exporter. Exporta les estadístiques a un fitxer amb un format .csv.
-
-
-
 \newpage
 \section{Disseny}
 
 En aquest apartat s'explicarà l'arquitectura que s'ha utilitzat per fer el software. També s'indicarà els patrons de disseny utilitzats. Finalment, es mostrarà la interfície gràfica.
 
 \subsection{Arquitectura del sistema}
-Aquest projecte segueix una arquitectura de tres capes, que són la de presentació, la de domini i la de dades. Cada una d'elles es desenvolupa de manera independent. D'aquesta manera, es pot canviar o afegir noves funcionalitats en qualsevol de les tres capes sense que les altres dos es vegin afectades. Per fer-se una idea de com és l'arquitectura de 3 capes, a la figura \ref{fig:ArchitectureCapes} es pot veure un esquema. A continuació s'explicarà cada una d'elles:
+Aquest projecte segueix una arquitectura de tres capes, que són la de presentació, la de domini i la de dades. Cada una d'elles es desenvolupa de manera independent. Així, es pot canviar o afegir noves funcionalitats en qualsevol de les tres capes sense que les altres dos es vegin afectades. Per fer-se una idea de com és l'arquitectura de 3 capes, a la figura \ref{fig:ArchitectureCapes} es pot veure un esquema. A continuació s'explicarà cada una d'elles:
 
 \begin{itemize}
-    \item \textbf{Capa de presentació:} La capa de presentació, també coneguda com a interfície gràfica, s'encarrega d'interaccionar amb l'usuari. Ha de mostrar la informació i capturar les dades que introdueixi el client per passar-les a la capa de dades. En aquest projecte, és la part que està desenvolupada amb QT i on l'usuari introdueix els paràmetres per iniciar la simulació.
+    \item \textbf{Capa de presentació:} La capa de presentació, també coneguda com a interfície gràfica, s'encarrega d'interaccionar amb l'usuari. Ha de mostrar la informació i capturar les dades que introdueixi el client per passar-les a la capa de domini. En aquest projecte, és la part que està desenvolupada amb QT i on l'usuari introdueix els paràmetres per iniciar la simulació.
     
-    \item \textbf{Capa de domini:} La capa de domini conté totes les funcionalitats per processar tota la informació. Rep les dades de la capa de presentació, les processa i retorna el resultat. També es comunica amb la capa de dades per obtenir o emmagatzemar dades. En aquest projecte, és la part que gestiona tota la simulació, és a dir, la creació d'equips i partides, les simulacions d'aquests i el càlcul de l'Elo resultant.
+    \item \textbf{Capa de domini:} La capa de domini conté totes les funcionalitats per processar tota la informació. Rep les dades de la capa de presentació, les processa i retorna el resultat. També es comunica amb la capa de dades per obtenir o emmagatzemar informació. En aquest projecte, és la part que gestiona tota la simulació, és a dir, la creació d'equips i partides, les simulacions d'aquests i el càlcul de l'Elo resultant.
     
-    \item \textbf{Capa de dades:} La capa de dades s'encarrega d'emmagatzemar la informació. És on es gestionaran les dades: es crearan, es modificaran o s'eliminaran. En aquest projecte, aquesta part és la que gestiona les dades sobre les estadístiques i els diferents jugadors de la simulació.
+    \item \textbf{Capa de dades:} La capa de dades s'encarrega d'emmagatzemar la informació. És on es gestionaran les dades: es crearan, es modificaran o s'eliminaran. En aquest projecte, aquesta part és la que gestiona 
+    les estadístiques i els diferents jugadors de la simulació.
 \end{itemize}
 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.2\textwidth]{images/3-capes.png}
+    \includegraphics[width=0.3\textwidth]{images/3-capes.png}
     \caption{Arquitectura de 3 capes. Font: Elaboració pròpia}
     \label{fig:ArchitectureCapes}
 \end{figure}
+
+\subsection{Diagrama de classes de disseny}
+
+El diagrama de classes de disseny representa les diverses classes de codi del programa.  A la figura \ref{fig:DessignDiagram} es pot veure el d'EloSim. Si es compara amb el diagrama de classes d'especificació de la figura \ref{fig:ClassDiagram}, aquest té petites variacions.
+
+La primera és que la classe associativa Property\_Value ha desaparegut i s'ha afegit dintre del propi jugador. La segona gran diferència són els objectes \textit{Exporter} i ExcelExporter utilitzats per exportar les estadístiques del programa. La primera classe és abstracta i conté el path de la destinació final dels resultats. Tots els possibles mètodes d'exportació hereten d'ella. En canvi, ExcelExporter és una subclasse d'\textit{Exporter} i s'encarrega d'exportar la informació a un fitxer amb format .csv.
+
+\begin{landscape}
+
+\fancypagestyle{lndscape}{
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    \rhead{\begin{rotate}{90}\thepage\end{rotate}}
+}
+\newpage
+\thispagestyle{lndscape}
+    \begin{center}
+        \begin{figure}[h!]
+            \includegraphics[width=1.5 \textwidth]{images/DessignClasses2.jpg}%
+            \caption{Diagrama de classes de disseny del sistema. Font: Elaboració pròpia}
+            \label{fig:DessignDiagram}
+        \end{figure}
+    \end{center}
+\end{landscape}
 
 \subsection{Patrons de disseny}
 
 Els patrons de disseny són tècniques per resoldre problemes comuns que normalment es troben a l'hora de programar. Durant el desenvolupament del software se n'han utilitzat alguns d'ells. A continuació s'explicaran quins s'han fet servir i on.
 
 \subsubsection*{Patró adaptador}
-El patró adaptador serveix per adaptar la interfície d'una classe en un altre. S'utilitza quan es vol utilitzar una classe existent que és incompatible amb la resta de codi.
+El patró adaptador serveix per adaptar la interfície d'una classe en un altre. S'utilitza quan es vol fer servir una classe existent que és incompatible amb la resta de codi.
 
 Aquesta solució ha estat implementada en diverses ocasions per cridar les funcions del fitxer Lua. Per poder utilitzar els algorismes dels fitxers, se'ls ha de passar els diferents paràmetres necessaris. Però com no es pot utilitzar cap estructura del software implementat, les dades a passar s'han de convertir o adaptar en format de taules, una espècie d'arrays en Lua.
 
 \subsubsection*{Patró mediador}
 
-El patró mediador redueix les comunicacions entre els objectes del sistema. En canvi de comunicar-se de forma directa, ho fan a través d'una classe mediadora. D'aquesta manera, es redueix la dependència de codi. S'utilitza quan hi ha un programa amb moltes classes i moltes d'elles són dependents de les altres.
+El patró mediador redueix les comunicacions entre els objectes del sistema. En canvi de comunicar-se de forma directa, ho fan a través d'una classe mediadora. D'aquesta manera, es redueix la dependència de codi. S'utilitza quan hi ha un programa amb moltes classes i la majoria d'elles són dependents de les altres.
 
-Aquesta solució s'ha utilitzat per gestionar la simulació sencera. La mateixa classe "simulació" \. s'encarrega de comunicar les diferents dades rebudes a través dels altres objectes. És la que s'encarrega de gestionar les funcions i fer de mediador entre les diferents classes que componen la simulació.
+Aquesta solució s'ha utilitzat per gestionar la simulació sencera. La mateixa classe "Simulació" \. s'encarrega de comunicar les diferents dades rebudes a través dels altres objectes. És la que gestiona les funcions i fa de mediadora entre les diferents classes que componen la simulació.
 
 \subsection{Disseny de la interfície gràfica}
 
-La interfície gràfica és la part del programa que veu l'usuari i és amb la qual interacciona. En el cas d'aquest projecte, s'ha optat per dissenyar-ne una de la forma més senzilla i simple possible, però sempre sent intuïtiva i fàcil d'entendre. No obstant, s'ha decidit dedicar-li el mínim de temps possible perquè s'ha prioritzat desenvolupar de la millor manera possible els algorismes del sistema. 
+La interfície gràfica és la part del programa que veu l'usuari i és amb la qual interacciona. En el cas d'EloSim, s'ha optat per dissenyar-ne una de la forma més senzilla i simple possible, però sempre sent intuïtiva i fàcil d'entendre. No obstant, s'ha decidit dedicar-li el mínim de temps possible perquè s'ha prioritzat desenvolupar els algorismes del sistema de la millor manera possible. 
 
-A la figura \ref{fig:UiTFG} es pot observar com es veu el software. Hi han sis graelles per omplir, una per cada un dels paràmetres que s'han d'introduir per executar la simulació. Cada una d'elles té refernciat a sobre quina dada representa. El botó que hi ha al costat dret de l'última graella, la tercera a la dreta començant per dalt, permet escollir el directori on desaran les estadístiques.
+A la figura \ref{fig:UiTFG} es pot observar com es veu el software. Hi han sis graelles per omplir, una per cada un dels paràmetres que s'han d'introduir per executar la simulació. Cada una d'elles té referenciat a sobre quina dada representa. El botó que hi ha al costat dret de l'última graella, la tercera a la dreta començant per dalt, permet escollir el directori on desaran les estadístiques.
 
 \begin{figure} [H]
     \centering
@@ -727,23 +778,23 @@ A la figura \ref{fig:UiTFG} es pot observar com es veu el software. Hi han sis g
 \newpage
 \section{Implementació}
 \subsection{Tecnologies utilitzades}
-Per dur a terme aquest projecte s'han escollit un seguit d'eines i tecnologies que facilitaran el seu desenvolupament. A continuació s'explicaran cada una d'elles i el motiu de la seva elecció.
+Per dur a terme el projecte d'EloSim s'han escollit un seguit d'eines i tecnologies que facilitaran el seu desenvolupament. A continuació s'explicaran cada una d'elles i el motiu de la seva elecció.
 
 \subsubsection{Llenguatges de programació}
 \begin{itemize}
-    \item \textbf{C++:} El projecte s'ha desenvolupat en C++ per tres motius. El primer de tots és que és el llenguatge que s'ha utilitzat més freqüentment i per tant, és el que es té més fresc, ja que es va utilitzar per a l'assignatura de Videojocs el quadrimestre anterior. El segon motiu és la gran facilitat que hi ha a Internet per trobar informació sobre com funcionen certs aspectes o mètodes del llenguatge, o per consultar dubtes o erros que puguin sorgir durant el desenvolupament. L'últim motiu és degut al fet que és un llenguatge molt eficient. S'ha utilitzat la versió C++14.
-    \item \textbf{Lua:} Lua és un llenguatge de programació potent, eficient i lleuger que pot ser integrat dins d'altres softwares o pot ser compilat en qualsevol d'ells sempre que estigui basat en aquest llenguatge C, ja que és com està fet l'intèrpret \cite{luaAbout}. S'ha escollit aquest llenguatge per diversos motius. El primer de tots és perquè és fàcil d'aprendre i d'utilitzar. El segon motiu és perquè hi ha la suficient documentació i resolució de problemes a Internet. Finalment, també s'ha escollit Lua perquè és fàcil d'integrar al Visual Studio.
-    \item \textbf{\LaTeX:} \LaTeX \, és un software lliure i és un sistema de composició de textos, normalment utilitzat per escriure documents i articles científics \cite{wikipediaLatex}. S'ha escollit per fer la memòria perquè és un llenguatge còmode per escriure una documentació llarga i clara, ja que permet estructurar el format de forma més senzilla.
+    \item \textbf{C++:} El projecte s'ha desenvolupat en C++ per tres motius. El primer de tots és que és el llenguatge que s'ha utilitzat més freqüentment i per tant, és el que es té més fresc, ja que es va utilitzar per a l'assignatura de Videojocs el quadrimestre anterior. El segon motiu és la gran facilitat que hi ha a Internet per trobar informació sobre com funcionen certs aspectes o mètodes del llenguatge, o per consultar dubtes o erros que puguin sorgir durant el desenvolupament. L'últim motiu és degut al fet de que és molt eficient. S'ha utilitzat la versió C++14.
+    \item \textbf{Lua:} Lua és un llenguatge de programació potent, eficient i lleuger. El seu intèrpret està fet en llenguatge C. Per tant, pot ser integrat dins d'altres softwares o pot ser compilat en qualsevol d'ells, sempre que estiguin basats en C \cite{luaAbout}. S'ha escollit Lua per dos motius. El primer és perquè és fàcil d'aprendre i d'utilitzar. El segon motiu és perquè hi ha la suficient documentació i resolució de problemes a Internet. 
+    \item \textbf{Latex:} Latex \, és un software lliure i és un sistema de composició de textos, normalment utilitzat per escriure documents i articles científics \cite{wikipediaLatex}. S'ha escollit per fer la memòria perquè és un llenguatge còmode per escriure una documentació llarga i clara, ja que permet estructurar el format de forma més senzilla.
 \end{itemize}
 \subsubsection{Eines}
 \begin{itemize}
-    \item \textbf{QT:} QT és una eina que s'utilitzarà per desenvolupar la interfície gràfica del programa. Ha estat un software que s'ha empleat en alguna assignatura de la carrera i, per tant, ja es té cert coneixement de com funciona. És per aquest motiu que s'ha escollit. 
+    \item \textbf{QT:} QT és una eina que s'ha fet servir per desenvolupar la interfície gràfica del programa. Ha estat un software que s'ha empleat en alguna assignatura de la carrera i, per tant, ja es té cert coneixement de com funciona. És per aquest motiu que s'ha escollit. 
     \item \textbf{Visual Studio 2019:} Visual Studio és una IDE compatible amb diversos llenguatges de programació com C++ o C\#. S'ha escollit aquesta eina perquè ja s'ha utilitzat prèviament en la carrera.  
-    \item \textbf{Overleaf:} Overleaf és l'editor de text que s'utilitzarà per escriure en \LaTeX. S'ha escollit perquè ja s'ha treballat amb aquesta eina.
-    \item \textbf{Git:} Git és un software de control de versions per manejar des de petits fins a grans projectes \cite{git}. Aquesta eina serà útil per emmagatzemar tot el codi del nostre programa i poder anar fent diferents versions del propi treball.
-    \item \textbf{Github \cite{Github}:} Github és un servei de repositoris que utilitza les versions Git. Serà emprat per guardar i compartir el codi i la documentació feta durant tot el projecte. Té l'avantatge de què es poden accedir a versions anteriors del projecte i també gestionar els errors i bugs trobats. 
-    \item \textbf{Google Meet \cite{GoogleMeet}:} Google Meet és un servei de Google que serveix per fer videotrucades. Aquesta eina serà utilitzada per contactar amb el director i/o ponent. D'entre totes les eines que hi ha per fer videotrucades, s'ha escollit aquesta perquè és amb la que s'esta més familiaritzada. La UPC la proveeix i la recomana utilitzar, a més de ser la que s'ha fet servir durant les classes online de la carrera.
-    \item \textbf{Trello \cite{Trello}:} Trello és una eina per gestionar els projectes i les seves tasques en estil de tauler, com al Kanban. Serà utilitzada per apuntar les diverses funcions que s'han de realitzar i així saber quines s'estan fent, quines s'han de fer i quines s'han realitzat del tot. D'entre totes les eines que hi ha per fer un control de tasques, s'ha escollit aquesta perquè ja s'ha utilitzat prèviament en la carrera i és senzilla d'utilitzar.
+    \item \textbf{Overleaf:} Overleaf és l'editor de text que s'ha utilitzat per escriure en Latex. S'ha escollit perquè ja s'ha treballat amb aquesta eina.
+    \item \textbf{Git:} Git és un software de control de versions per manejar des de petits fins a grans projectes \cite{git}. Aquesta eina ha estat útil per emmagatzemar tot el codi d'EloSim i poder anar fent diferents versions del propi treball.
+    \item \textbf{Github \cite{Github}:} Github és un servei de repositoris que utilitza les versions Git. Ha estat emprat per guardar i compartir el codi i la documentació feta durant tot el treball. Té l'avantatge de què es poden accedir a versions anteriors del projecte i també gestionar els errors i bugs trobats. 
+    \item \textbf{Google Meet \cite{GoogleMeet}:} Google Meet és un servei desenvolupat per l'equip de Google que serveix per fer videotrucades. Aquesta eina ha estat utilitzada per contactar amb el director i/o ponent. D'entre totes les eines que hi ha per fer videotrucades, s'ha escollit aquesta perquè és amb la que s'esta més familiaritzada. La UPC la proveeix i la recomana utilitzar, a més de ser la que s'ha fet servir durant les classes online de la carrera.
+    \item \textbf{Trello \cite{Trello}:} Trello és una eina per gestionar els projectes i les seves tasques en estil de tauler, com al Kanban. Ha estat utilitzada per apuntar les diverses funcions que s'habien de realitzar i així saber quines s'estaven fent, quines s'havien de fer i quines s'havien realitzat del tot. D'entre totes les eines que hi ha per fer un control de tasques, s'ha escollit aquesta perquè ja s'ha utilitzat prèviament en la carrera i és senzilla d'utilitzar.
 \end{itemize}
 
 \newpage
@@ -751,13 +802,13 @@ Per dur a terme aquest projecte s'han escollit un seguit d'eines i tecnologies q
 Durant el desenvolupament del projecte i de les diverses tasques, s'han hagut de desenvolupar diversos algorismes per assolir totes les funcionalitats. En algunes situacions, les implementacions es podrien haver fet de diverses maneres. A continuació es detallarà cada un dels algorismes i s'explicarà per què s'ha escollit.
 
 \begin{itemize}
-    \item \textbf{Creació de jugadors:} Els jugadors són molt necessaris per poder dur a terme la simulació. Per poder-los generar hi han dues maneres: o són introduïts per l'usuari o són generats pel propi sistema. En el primer cas, han de ser afegits pel client mitjançant el fitxer de Lua. Això permet la possibilitat de crear els participants de la simulació amb dades extretes de diferents jugadors reals o de models extrets a partir d'una mineria de dades.
+    \item \textbf{Creació de jugadors:} Els jugadors són molt necessaris per dur a terme la simulació. Per poder-los generar hi han dues maneres: o són introduïts per l'usuari o són generats pel propi sistema. En el primer cas, han de ser afegits pel client mitjançant el fitxer de Lua. Això permet la possibilitat de crear els participants de la simulació amb dades extretes de diferents jugadors reals o de models extrets a partir d'una mineria de dades.
     
     En el segon cas, el sistema ha de generar, de forma automàtica, els diversos jugadors amb les propietats que els caracteritza. Per fer-ho, s'ha optat per utilitzar una distribució gaussiana \cite{wikipediaGauss}. D'aquesta manera, cada un d'ells tindrà valors més realistes i similars als demés. 
     
     Per si es desconeix com funciona una distribució de Gauss, aquesta serveix per generar nombres aleatoris a partir d'una Normal, al voltant d'una mitjana i distribuïts amb la mateixa variabilitat. A la figura \ref{fig:campanaGaussImage} es pot veure una campana de Gauss. La \textmu \, representa la mitjana i la $\sigma$ l'arrel quadrada de la variància.
     
-    Per exemple, si es vol crear un jugador que tingui una propietat anomenada "Armadura" \, i es vol donar-li un valor mitjançant la distribució gaussiana, es pot escollir una mitjana amb valor 10 i una variància amb valor 9. Llavors, hi ha un 68,2\% de probabilitats que el número resultant estigui entre el 7 i el 13. Hi ha un 27,2\% de que surti un valor entre el 4 i el 7 o el 13 i el 16. Hi ha un 4,2\% de que surti un nombre entre l'1 i el 4 o el 16 i el 19. Finalment, hi ha un 0,2\% de que surti un valor més petit que 1 o més gran que 19. 
+    Per exemple, si es vol crear un jugador que tingui una propietat anomenada "Armadura" \, i es vol donar-li un valor mitjançant la distribució gaussiana, es pot escollir una mitjana amb valor 10 i una variància amb valor 9. Llavors, hi ha un 68,2\% de probabilitats que el número resultant estigui entre el 7 i el 13. Hi ha un 27,2\% de que surti una xifra entre el 4 i el 7 o el 13 i el 16. Hi ha un 4,2\% de que resulti un nombre entre l'1 i el 4 o el 16 i el 19. Finalment, hi ha un 0,2\% de que surti un valor més petit que 1 o més gran que 19. 
     
         \begin{figure}[H]
         \centering
@@ -768,11 +819,11 @@ Durant el desenvolupament del projecte i de les diverses tasques, s'han hagut de
     
     Per una altra banda, el valor que se li assigna a l'Elo és aleatori. D'aquesta manera, entre els diferents jugadors hi ha una gran diversitat de valors d'Elo. Això permet que les simulacions i els equips siguin més variats i així és contempli una millor evolució de l'Elo.
     
-    Tanmateix, tota aquesta generació de valors es podria haver fet de manera diferent. Per exemple, es podria haver assignat nombres aleatoris a cada una de les propietats dels jugadors. Això hagués provocat que hi hagués molta diferència entre ells i hagués fet més irregulars les partides. D'altra manera, els diferents jugadors podrien haver començat amb 0 d'Elo. Aquesta opció es va provar, però es va descartar perquè sempre es generaven els mateixos equips i no es contemplava bé el progrés de cada jugador.
+    Tanmateix, tota aquesta generació de valors es podria haver fet de manera diferent. Per exemple, es podria haver assignat nombres aleatoris a cada una de les propietats dels jugadors. Això hagués provocat que hi hagués molta diferència entre ells i hagués fet més irregulars les partides. D'altra manera, els diferents participants podrien haver començat amb 0 d'Elo. Aquesta opció es va provar, però es va descartar perquè sempre es generaven els mateixos equips i no es contemplava bé el progrés de cada jugador.
     
-    \item \textbf{Creació d'equips i partides:} La creació d'equips funciona ajuntant els jugadors d'un Elo similar. Per fer-ho, cada jugador comprova si amb el seu Elo entra en un dels equips que estan en formació. En cas negatiu, en crea un de nou. En canvi, si hi entra, es mira si el grup està ple, i si ho està, passa a ser un equip format. Per tant, pot passar que hi hagin jugadors que no formin part d'un equip complet, i per tant, no juguin. El mateix sistema s'aplica a la creació de partides. S'ha escollit aquest mètode per fer les simulacions de la forma més igualada possible, tenint tots els rivals un nivell d'Elo similar. 
+    \item \textbf{Creació d'equips i partides:} La creació d'equips funciona ajuntant els jugadors d'un Elo similar. Per fer-ho, cada un comprova si amb el seu Elo entra en un dels equips que estan en formació. En cas negatiu, en crea un de nou. En canvi, si hi entra, es mira si el grup està ple, i si ho està, passa a ser un equip format. Per tant, pot passar que hi hagin jugadors que no formin part d'un de complet, provocant el fet de que no juguin. El mateix sistema s'aplica a la creació de partides. S'ha escollit aquest mètode per fer les simulacions de la forma més igualada possible, tenint tots els rivals un nivell d'Elo similar. 
     
-    Una solució alternativa seria agrupar els jugadors que no tenen un equip complet de forma aleatòria, creat així grups molt desequilibrats. Aquesta opció s'ha descartat perquè llavors les simulacions podrien ser molt desigualades i no es podria estudiar bé l'evolució de l'Elo. 
+    Una solució alternativa seria agrupar els jugadors que no tenen un equip complet de forma aleatòria, creant així grups molt desequilibrats. Aquesta opció s'ha descartat perquè llavors les simulacions podrien ser desigualades i no es podria estudiar bé l'evolució de l'Elo. 
     
     Una altra possible solució podria ser la que s'utilitza en els videojocs de veritat. Aquesta consisteix en esperar a que hi hagi una certa quantitat de jugadors i agrupar-los de la millor manera possible. A diferència del que succeeix en el projecte, en el cas real es desconeix la quantitat de participants que hi haurà. Per tant, s'ha de treballar sobre els usuaris que van arribant.   
     
@@ -780,42 +831,93 @@ Durant el desenvolupament del projecte i de les diverses tasques, s'han hagut de
     
     Actualment, l'algorisme introduït per determinar la victòria té en compte les propietats dels jugadors. Per decidir el resultat, es compara la força d'un equip amb l'armadura del rival, i es determina el dany fet. L'equip que n'hagi fet més, guanya. D'aquesta manera, la simulació és més realista i podria arribar a simular les mecàniques d'un videojoc de veritat.
 
-    \item \textbf{Càlcul de l'Elo:} Després del resultat de cada partida s'ha de calcular l'Elo que guanya o perd cada jugador. Aquest càlcul pot ser molt variat, ja que pot dependre de diversos factors. Per aquest motiu, se li ha donat l'opció a l'usuari de que introdueixi la fórmula en el fitxer de Lua. D'aquesta manera, l'Elo resultant seguirà la metodologia del client i no una imposada pel sistema. 
+    \item \textbf{Càlcul de l'Elo:} Després del resultat de cada partida s'ha de calcular l'Elo que guanya o perd cada jugador. El càlcul pot ser molt variat, ja que pot dependre de diversos factors. Per aquest motiu, se li ha donat l'opció a l'usuari de que introdueixi la fórmula en el fitxer de Lua. D'aquesta manera, l'Elo resultant seguirà la metodologia del client i no una imposada pel sistema. 
     
-    A dia d'avui, al fitxer de Lua hi ha un algorisme molt similar al dels escacs. Es calcula la possibilitat de guanyar de cada equip i es multiplica pel factor K, el màxim de punts que un jugador pot guanyar o perdre en una partida. Per saber calcular la possibilitat de guanyar d'un equip, s'ha optat per implementar la fórmula de l'Elo de l'Overwatch \cite{overwatchElo}, un videojoc competitiu.
+    A dia d'avui, al fitxer de Lua hi ha un algorisme molt similar al dels escacs. Es calcula la possibilitat de guanyar de cada equip i es multiplica pel factor K, el màxim de punts que un jugador pot obtenir o perdre en una partida. Per saber calcular la possibilitat de victòria d'un equip, s'ha optat per implementar la fórmula de l'Elo de l'Overwatch \cite{overwatchElo}, un videojoc competitiu.
 \end{itemize}
 
 \newpage
 
+\subsection{Estructura del sistema}
+
+EloSim consta de diversos algorismes distribuïts entre el propi programa i el fitxer Lua. Per poder dur a terme la simulació de forma correcta, s'ha de seguir un ordre determinat. A continuació es mostrarà un diagrama de l'estructura del programa i els passos que segueix internament.
+
+A la figura \ref{fig:EloSImEstructure} es pot veure com estan distribuïts els algorismes. En el fitxer Lua es troben la creació de jugadors, el càlcul de l'Elo i la simulació d'una partida. EloSim s'encarrega de llegir-lo i també de crear els equips i les partides. Finalment, exporta les estadístiques a un format .csv.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.9\textwidth]{images/TFG-Structure.png}
+    \caption{Estructura del sistema. Font: Elaboració pròpia}
+    \label{fig:EloSImEstructure}
+\end{figure}
+
+\newpage
+
+A la figura \ref{fig:SimulationCo} es pot veure una fracció del codi de la classe Simulation. Concretament, es veu els passos que segueix el programa per fer una simulació. Primer de tot crea els jugadors. Després, per cada una de les rondes que s'han de jugar, es creen els equips. Tot seguit es formen les diverses partides. A continuació, es simula cada una d'elles, i amb el resultat obtingut, es calcula l'Elo resultant de cada jugador. Després se'ls hi aplica. Per acabar, s'actualitzen les estadístiques. Un com acabada la simulació, aquestes són exportades.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/SimulationCode.png}
+    \caption{Codi de la classe Simulation. Font: Elaboració pròpia}
+    \label{fig:SimulationCo}
+\end{figure}
+
+
 \subsection{Hipòtesis simplificades}
-Per poder dur a terme aquest treball i poder desenvolupar els diferents algorismes, s'han hagut de simplificar situacions que són més complexes a la vida real.
+Per poder dur a terme aquest treball i desenvolupar els diferents algorismes, s'han hagut de simplificar situacions que són més complexes a la vida real.
 
 \begin{itemize}
-    \item \textbf{Creació de jugadors:} Tots els jugadors són creats al principi de la simulació i tots tenen les mateixes propietats. Això pot variar de la realitat, on una persona pot registrar-se i començar a jugar a un joc mesos més tard del seu llançament. 
+    \item \textbf{Creació de jugadors:} Tots els jugadors són creats al principi de la simulació i tenen les mateixes propietats. Això pot variar de la realitat, on una persona pot registrar-se i començar a jugar a un joc mesos més tard del seu llançament. 
     
-    \item \textbf{Marchmaking:} La creació d'equips també s'ha vist simplificada. Des d'un bon principi es té coneixement de tots els jugadors que hi ha a la simulació. Addicionalment, també pot donar-se el cas on hi hagi jugadors que no juguin la partida perquè el seu equip no està complet. En la vida real, la cosa és ben diferent. Mai se sap quina quantitat d'usuaris buscaran partida en el mateix moment. Per tant l'emparellament s'ha d'adaptar i procurar fer-lo de la manera més ajustada possible. A part, un jugador no pot quedar-se sense formar part d'un equip, ja que sinó pot quedar descontent i l'empresa es pot veure perjudicada. La mateixa situació s'aplica a les partides.
+    \item \textbf{Marchmaking:} La creació d'equips també s'ha vist simplificada. Des d'un bon principi es té coneixement de tots els jugadors que hi ha a la simulació. Addicionalment, també pot donar-se el cas on hi hagi participants que no juguin una partida perquè el seu equip no està complet. En la vida real, la cosa és ben diferent. Mai se sap quina quantitat d'usuaris buscaran partida en el mateix moment. Per tant l'emparellament s'ha d'adaptar i procurar fer-lo de la manera més ajustada possible. A més, un jugador no pot quedar-se sense formar part d'un equip, ja que sinó pot estar descontent i l'empresa es pot veure perjudicada. La mateixa situació s'aplica a les partides.
     
-    \item \textbf{Simulació de partides:} En el món real, els jugadors d'una partida poden marxar d'aquesta, ja sigui per problemes de connexió a Internet o perquè no poden seguir jugant. Aquesta acció normalment es veu sancionada, i a més afecta al resultat de la partida, ja que un equip té un membre menys. Per tal de simplificar-ho en la simulació, una partida sempre es jugarà amb el màxim de jugadors possibles, i cap d'ells podrà abandonar-la.
+    \item \textbf{Simulació de partides:} En el món real, els jugadors d'una partida poden marxar d'aquesta, ja sigui per problemes de connexió a Internet o perquè els hi és inviable seguir jugant. Aquesta acció normalment es veu sancionada. Addicionalment, afecta el resultat de l'enfrontament, ja que un equip té un membre menys. Per tal de simplificar-ho en la simulació, una partida sempre es jugarà amb el màxim de jugadors possibles, i cap d'ells podrà abandonar-la.
     
 \end{itemize}
 
 \newpage
 
 \section{Mètodes d'avauluació}
-
 Durant la implantació de les diverses funcionalitats que ha de tindre un sistema, sempre s'han d'avaluar i testejar cadascuna d'elles per veure si el seu funcionament és el correcte. Per fer-ho, normalment s'utilitzen tests unitaris, és a dir, fer proves per funcionalitats específiques per veure si el resultat és l'esperat o no.
 
-Per una altra banda, les funcionalitats d'aquest projecte són independents les unes de les altres, en altres paraules, el funcionament incorrecte d'un algorisme no implica que el dels altres funcioni malament. Per exemple, es pot donar el cas on l'algorisme de partida retorni malament la classificació. En comptes de posar en primer lloc a l'equip A, pot ficar a l'equip B. Tot seguit, un cop s'hagi de calcular el delta d'Elo resultant de la partida, l'algorisme que s'encarregui de fer-ho realitzarà els càlculs correctament amb les dades que li han passat, L'única diferència serà el resultat, que no serà l'esperat a causa de l'error de la classificació.
+Per una altra banda, les funcionalitats d'aquest projecte són independents les unes de les altres, és a dir, el funcionament incorrecte d'un algorisme no implica que el dels altres funcioni malament. Per exemple, es pot donar el cas on l'algorisme de partida retorni una classificació errònia. En comptes de posar en primer lloc a l'equip A, pot ficar a l'equip B. Tot seguit, un cop s'hagi de calcular el delta d'Elo resultant de la partida, l'algorisme que s'encarregui de fer-ho realitzarà els càlculs correctament amb les dades que li han passat. L'única diferència serà el resultat, que no serà l'esperat a causa de l'error de la classificació.
 
-Per validar el funcionament correcte de les diverses funcionalitats del projecte s'han realitzat dos mètodes. El primer es va utilitzar al principi de la fase de desenvolupament, i consistia a calcular els diversos resultats a mà. En canvi, el segon és el que s'ha utilitzat més de cara al final treball i consisteix en fer ús dels tests unitaris.
+Per validar el funcionament correcte de les diverses funcionalitats de l'EloSim s'han realitzat dos mètodes. El primer es va utilitzar al principi de la fase de desenvolupament, i consistia a calcular els diversos resultats a mà. En canvi, el segon és el que s'ha utilitzat més de cara al final treball i consisteix en fer ús dels tests unitaris.
 
-En el primer cas, normalment sempre s'executava el programa amb els mateixos paràmetres (mateix número de jugadors, mateix deltaElo, mateix número de partides, etc). A més, s'utilitzaven nombres petits per fer més senzills els càlculs. En cas de que coincidissin, es donava la implementació de la funcionalitat per passada.
+En el primer cas, normalment sempre s'executava el programa amb els mateixos paràmetres (mateix número de jugadors, de deltaElo, de número de partides, etc). A més, s'utilitzaven nombres petits per fer més senzills els càlculs. En cas de que coincidissin, es donava la implementació de la funcionalitat per passada.
 
 Seguint amb el mateix mètode i sabent que certes funcionalitats funcionaven correctament, es va agafar el resultat del fitxer .csv com a referència. Si la sortida de les dades era igual a la de les anteriors proves, significava que la implementació era la correcta.
 
-Òbviament, aquest és un mètode poc pràctic i fiable. Per aquest motiu, es va decidir d'utilitzar el segon. Aquest consisteix en utilitzar els tests unitaris per validar tant les funcionalitats antigues com les noves.
+Òbviament, aquest és un mètode poc pràctic i fiable. Arran de la seva poca eficiència, es va decidir d'utilitzar el segon. Aquest consisteix a fer ús dels tests unitaris per validar tant les funcionalitats antigues com les noves. Per fer-ho, s'ha decidit utilitzar la llibreria Google Test.
 
-PER EXPLICAR
+De totes les funcionalitats que té el programa, s'han testejat les quatre principals. En total s'han fet 27 tests, on es contemplen diversos casos. La primera ha estat la creació d'equips. S'han fet proves canviant el número de jugadors disponibles o el nombre màxim d'integrants. Per exemple, s'ha testejat que passa si hi han 0 jugadors per emparellar o si els equips són d'un nombre imparell de participants.
+
+La segona funcionalitat ha estat la creació de partides. S'han fet tests on es comprova el correcte funcionament si es varia el nombre d'equips per partida o la quantitat de grups disponibles. Per exemple, s'ha provat a fer partides de tres equips o amb un Elo molt variat.
+
+La tercera ha estat la simulació dels emparellaments. S'han provat diverses situacions on es canviaven la quantitat d'equips per partida, el seu número d'integrants i les seves propietats. Per exemple, s'han simulat partides de tres equips o amb jugadors amb propietats que tenen valors negatius.
+
+L'última funcionalitat ha estat el càlcul de l'Elo. S'han testejat diversos escenaris canviant la diferència d'Elo i el resultat. Per exemple, s'ha comprovat l'empat o el càlcul resultant de dos jugadors de rangs molt diferents.
+
+\subsection{Proves d'Elo}
+El sistema d'Elo és molt important en un videojoc competitiu. La diferència d'entre un de bo i un de dolent pot afectar molt als jugadors. Per demostrar-ho, s'ha fet la mateixa simulació amb una bona fórmula i amb una de dolenta.
+
+A la figura \ref{fig:EloBo} es pot veure l'evolució de l'Elo d'un jugador amb un bon sistema de puntuació. En aquest cas, és una línia creixent. D'aquí es pot deduir el jugador té bones habilitats, però ha començat en un Elo molt baix que no li correspon. A mesura que juga i guanya partides, el seu rang augmenta fins a arribar a una puntuació de 1200. Això indica que el sistema és bo, ja que el seu progrés augmenta conforme a les seves habilitats.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{images/PlayerEloBo.png}
+    \caption{Evolució del jugador 1 amb un bon sistema d'Elo. Elaboració pròpia}
+    \label{fig:EloBo}
+\end{figure}
+
+En canvi, a la figura \ref{fig:BadElo} es pot observar el resultat d'aplicar una mala fórmula d'Elo. La mateixa simulació s'ha fet sobre el mateix jugador, el qual tenia bones habilitats. Però com es pot observar, el seu rang és estable. Encara que guanyi moltes més partides de les que perd, la seva puntuació no augmenta. Per tant, en aquest cas, la fórmula de l'Elo no associa el progrés del jugador amb les seves habilitats.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{images/PlayerEloDolent.png}
+    \caption{Evolució del jugador 1 amb un dolent sistema d'Elo. Elaboració pròpia}
+    \label{fig:BadElo}
+\end{figure}
 
 \newpage
 \section{Planificació temporal}
@@ -1236,11 +1338,11 @@ Planificar i gestionar el pressupost d'un projecte és molt important, però tam
 \section{Informe de sostenibilitat}
 Un factor molt important a l'hora de desenvolupar un projecte és la seva sostenibilitat. Pensar en l'impacte ambiental, econòmic i social que pot tindre és un requisit indispensable. Tot i això, no sempre es tenen en compte, ja que els interessos econòmics solen tenir prioritat. 
 
-Pel que respecta a aquest projecte, durant el seu desenvolupament s'ha procurat tindre una bona sostenibilitat, intentant respectar els tres camps de la millor manera possible. Tot seguit, es detallarà cada un d'ells.
+Pel que respecta a EloSim, durant el seu desenvolupament s'ha procurat tindre una bona sostenibilitat, intentant respectar els tres camps de la millor manera possible. També cal considerar que el projecte està pensat per a que en un futur sigui multithreading. Això agilitzarà el càlcul i farà el software més eficient. Tot seguit, es detallarà cada un d'ells.
 
 \subsection{Dimensió ambiental}
 
-Sobre l'aspecte ambiental, el projecte utilitza el mínim de recursos possibles. El seu desenvolupament ha estat fet des de casa, per tant, només s'ha requerit d'electricitat per fer servir l'ordinador. Com a conseqüència, és molt complicat reduir el seu impacte ambiental.
+Sobre l'aspecte ambiental, el projecte utilitza el mínim de recursos possibles. El seu desenvolupament ha estat fet des de casa, per tant, només s'ha requerit d'electricitat per fer servir l'ordinador. Com a conseqüència, és molt complicat reduir el seu impacte ambiental. Tot i això, un cop s'hagi fet multithreading, l'electricitat requerida per utilitzar-lo disminuirà.
 
 Tanmateix, el software desenvolupat té un impacte positiu en la petjada ecològica. Les empreses que l'utilitzin estalviaran temps per disenyar el seu algorisme d'Elo ideal, i per tant, el podran dedicar a desenvolupar els altres aspectes del videojoc. Com a resultat,  aquest es finalitzarà abans i, per tant, hi haurà una reducció de recursos utilitzats.
 
@@ -1249,6 +1351,8 @@ Tanmateix, el software desenvolupat té un impacte positiu en la petjada ecològ
 Per fer el pressupost del projecte s'han contemplat els diferents recursos materials i humans necessaris per dur-lo a terme. També s'ha tingut en compte els diferents imprevistos que poden sorgir durant el seu desenvolupament.
 
 Per tal de reduir el seu cost, es pot contractar a treballadors especialitzats en els camps o llenguatges que s'utilitzen. Això reduiria el temps per realitzar les diverses tasques, i per consegüent, un estalvi econònim dels recursos humans i materials.
+
+Per una altra banda, un cop realitzat el multithreading, ell programa s'executarà més ràpidament i seran necessaris menys recursos. Com a resultat, hi haurà un estalvi econòmic.
 
 \subsection{Dimensió social}
 
@@ -1303,7 +1407,7 @@ Aquest software ha de ser capaç d'interaccionar amb algorismes creats per l'usu
 
 \subsubsection*{CES1.7: Controlar la qualitat i dissenyar proves en la producció de software [Una mica]}
 
-NOT YET
+El sistema ha de funcionar de forma correcta cada cop que s'afegeix una nova funcionalitat. Per assegurar-ho, s'han dissenyat un total de 27 unit tests. Aquests s'encarreguen de comprovar que la creació d'equips i de partides funcionen sense cap error. També ho comproven per a les diverses simulacions i el càlcul de l'Elo resultant.
 
 \subsubsection*{CES2.1: Definir i gestionar els requisits d'un sistema software [En profunditat]}
 

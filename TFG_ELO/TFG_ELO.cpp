@@ -9,7 +9,7 @@ namespace domini
         Simulation sim = Simulation();
         Simulation::InitResult correct = sim.init(numPlayers, numPlayersTeam, numTeamsMatch,deltaElo, numTotalMatches);
         if (correct == Simulation::InitResult::Success) {
-            list<vector<int>> statistics = sim.startSimulation();
+            vector<vector<int>> statistics = sim.startSimulation();
             ExcelExporter excelExporter = ExcelExporter(path);
             excelExporter.export2(statistics);
         }

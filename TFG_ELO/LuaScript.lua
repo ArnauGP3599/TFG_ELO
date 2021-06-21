@@ -161,6 +161,8 @@ function calculateEloScore(matchClassification)
 	else
 		deltaEloA = k * (1-calculateChanceToWin(eloTeamA, eloTeamB))
 		deltaEloB = -deltaEloA
+		--deltaEloA = k/4 * (1-calculateChanceToWin(eloTeamA, eloTeamB))
+		--deltaEloB = -8*deltaEloA
 	end
 	local result = {}
 	for indexA, idA in ipairs (teamA) do

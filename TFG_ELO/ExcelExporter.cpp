@@ -5,16 +5,25 @@ ExcelExporter::ExcelExporter(const string& i_path){
     Exporter::m_path = i_path;
 }
 
-void ExcelExporter::export2(const list<vector<int>>& i_statistics) {
+void ExcelExporter::export2(const vector<vector<int>>& i_statistics) {
     ofstream myFile;
     myFile.open(/*m_path +*/"Statistics.csv");
-    myFile << "ID player;Match;Elo;\n";
+    int size = 0;
+    if (i_statistics.size() > 0) {
+        size += i_statistics[0].size();
+    }
+    string headers = "ID player";
+    for (int i = 0; i < size; i++) {
+        headers += "; Round " + to_string(i);
+    }
+    headers += "\n";
+    myFile << headers;
     //list<vector<int>> statistics = Exporter::m_statistics->getStatistics();
-    for (auto it = i_statistics.begin(); it != i_statistics.end(); ++it) {
-        vector<int> dataPlayer = *it;
-        string s;
-        for (int i = 0; i < dataPlayer.size(); i++) {
-            s += to_string(dataPlayer[i]) + ";";
+
+    for (int i = 0; i < i_statistics.size(); i++) {
+        string s = to_string(i) + ";";
+        for (int j = 0; j < i_statistics[i].size(); j++) {
+            s += to_string(i_statistics[i][j]) + ";";
         }
         s += "\n";
         myFile << s;
