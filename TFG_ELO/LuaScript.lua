@@ -1,10 +1,3 @@
---[[
-function puntuationTeam ()
-	local res = math.random(1, 100)
-	return res
-end
---]]
-
 function initLua()
 	math.randomseed(935)
 end
@@ -49,18 +42,9 @@ function playMatch(matchParticipants)
 	table.sort(damageDealTeams, function (a, b)
 		return a[2] > b[2]
 	end)
-	--[[
-	for index3, team3 in ipairs(damageDealTeams) do
-		print("pos table ", index3)
-		for pos, dam in ipairs(team3) do
-			print("pos ", pos, dam)
-		end
-	end
-	--]]
 	local classification = {}
 	for index, teamResults in ipairs(damageDealTeams) do
 		classification[index] = {teamResults[1]}
-		--print(teamResults[1])
 	end
 	return classification
 end
@@ -69,24 +53,20 @@ function getPlayerProperties(numPlayers)
 	if next(playerProperties) == nil then
 		for i = 1, numPlayers do
 			local tablePlayer = {}
-			--local var = 0
 			for index, value in ipairs (properties) do
 				if value == "ID" then
 					local idValue = i - 1
 					tablePlayer["ID"] = idValue
 				elseif value == "Elo" then
 					local elo = math.random(0, 1500)
-					--local elo = 555
 					tablePlayer["Elo"] = elo
 				else
-					--local valueTable = i + var
 					local valueTable = gaussian(10, 9)
 					if valueTable < 0 then
 						valueTable = 0
 					end
 					tablePlayer[value] = valueTable
 				end
-				--var = var + 1
 			end
 			playerProperties[i] = tablePlayer
 		end
@@ -165,6 +145,7 @@ function calculateEloScore(matchClassification)
 	else
 		deltaEloA = k * (1-calculateChanceToWin(eloTeamA, eloTeamB))
 		deltaEloB = -deltaEloA
+
 		--deltaEloA = k/4 * (1-calculateChanceToWin(eloTeamA, eloTeamB))
 		--deltaEloB = -8*deltaEloA
 	end
@@ -188,32 +169,3 @@ end
 playerProperties = {}
 
 properties = {"ID", "Elo", "Strength", "Armor"}
-
---matchParticipants = {}
-
---classification = {}
-
---[[
-prova = {{ ID = 0, Strength = 0, Armor = 19 },
-	 { ID = 1, Strength = 1, Armor = 18 },
-	 { ID = 2, Strength = 2, Armor = 17 },
-	 { ID = 3, Strength = 3, Armor = 16 },
-	 { ID = 4, Strength = 4, Armor = 15 },
-	 { ID = 5, Strength = 5, Armor = 14 },
-	 { ID = 6, Strength = 6, Armor = 13 },
-	 { ID = 7, Strength = 7, Armor = 12 },
-	 { ID = 8, Strength = 8, Armor = 11 },
-	 { ID = 9, Strength = 9, Armor = 10 },
-	 { ID = 10, Strength = 10, Armor = 9 },
-	 { ID = 11, Strength = 11, Armor = 8 },
-	 { ID = 12, Strength = 12, Armor = 7 },
-	 { ID = 13, Strength = 13, Armor = 6 },
-	 { ID = 14, Strength = 14, Armor = 5 },
-	 { ID = 15, Strength = 15, Armor = 4 },
-	 { ID = 16, Strength = 16, Armor = 3 },
-	 { ID = 17, Strength = 17, Armor = 2 },
-	 { ID = 18, Strength = 18, Armor = 1 },
-	 { ID = 19, Strength = 19, Armor = 0 },
-}
---]]
-

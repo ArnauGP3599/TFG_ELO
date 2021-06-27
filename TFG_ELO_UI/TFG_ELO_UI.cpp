@@ -49,7 +49,7 @@ void TFG_ELO_UI::on_startButton_clicked() {
         domini::TFG_ELO tfg = domini::TFG_ELO();
         tfg.startProgram(numPlayers.toInt(), numPlayersTeam.toInt(), numTeamsMatch.toInt(), deltaElo.toInt(), numRounds.toInt(), path.toStdString());
         
-        QMessageBox::information(this, "Success", "The simulation has finish perfectly");
+        QMessageBox::information(this, "Success", "The simulation has finished perfectly");
     }
     else {
         QMessageBox::information(this, "Error", "Parameters entered incorrectly");

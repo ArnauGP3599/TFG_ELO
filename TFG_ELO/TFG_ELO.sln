@@ -8,6 +8,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ELO-TEST", "..\ELO-TEST\ELO-TEST.vcxproj", "{3EB9DF42-CEEB-4F7D-A7F3-3EFBFAB762B1}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TFG_ELO_UI", "..\TFG_ELO_UI\TFG_ELO_UI.vcxproj", "{9E314456-9741-4FD0-B856-4760D6CCD331}"
+	ProjectSection(ProjectDependencies) = postProject
+		{61AE37B4-38EE-4591-858F-7B4FB4171F18} = {61AE37B4-38EE-4591-858F-7B4FB4171F18}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
