@@ -185,6 +185,7 @@
     <ClInclude Include="Statistics.h" />
     <ClInclude Include="Team.h" />
     <ClInclude Include="TeamBuilder.h" />
+    <ClInclude Include="TFG_ELO.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TFG_ELO.rc" />

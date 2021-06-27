@@ -149,6 +149,9 @@
     <ClInclude Include="PropertiesDB.h">
       <Filter>Dades</Filter>
     </ClInclude>
+    <ClInclude Include="TFG_ELO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TFG_ELO.rc">

@@ -7,7 +7,7 @@ ExcelExporter::ExcelExporter(const string& i_path){
 
 void ExcelExporter::export2(const vector<vector<int>>& i_statistics) {
     ofstream myFile;
-    myFile.open(/*m_path +*/"Statistics.csv");
+    myFile.open(m_path + "/Statistics.csv");
     int size = 0;
     if (i_statistics.size() > 0) {
         size += i_statistics[0].size();

@@ -1,11 +1,10 @@
-#include <iostream>
+
 #include "Precompiled.h"
-#include <stdio.h>
-#include "Simulation.h"
+#include "TFG_ELO.h"
 
 namespace domini
 {
-    void startProgram(int numPlayers, int numPlayersTeam, int numTeamsMatch, int deltaElo, int numTotalMatches, string path) {
+    void TFG_ELO::startProgram(int numPlayers, int numPlayersTeam, int numTeamsMatch, int deltaElo, int numTotalMatches, string path) {
         Simulation sim = Simulation();
         Simulation::InitResult correct = sim.init(numPlayers, numPlayersTeam, numTeamsMatch,deltaElo, numTotalMatches);
         if (correct == Simulation::InitResult::Success) {
@@ -16,7 +15,7 @@ namespace domini
     }
 }
 
-int main()
+/*int main()
 {
     int numPlayers, numPlayersTeam, numTeamsMatch, deltaElo, numTotalMatches;
     string path;
@@ -32,8 +31,8 @@ int main()
     cin >> numTotalMatches;
     cout << "introdueix destinació per a les estadistiques" << endl;
     cin >> path;
-    domini::startProgram(numPlayers, numPlayersTeam, numTeamsMatch, deltaElo, numTotalMatches, path);
-}
+    //domini::startProgram(numPlayers, numPlayersTeam, numTeamsMatch, deltaElo, numTotalMatches, path);
+}*/
 
 
 

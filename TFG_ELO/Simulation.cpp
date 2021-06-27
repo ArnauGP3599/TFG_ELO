@@ -13,7 +13,7 @@ bool Simulation::checkLua(lua_State* L, int r) {
 bool Simulation::initLua_State() {
     m_L = luaL_newstate();
     luaL_openlibs(m_L);
-    return checkLua(m_L, luaL_dofile(m_L, "LuaScript.lua"));
+    return checkLua(m_L, luaL_dofile(m_L, "../TFG_ELO/LuaScript.lua"));
 }
 
 void Simulation::initLua() {
