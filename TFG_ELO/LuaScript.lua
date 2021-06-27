@@ -74,6 +74,10 @@ function getPlayerProperties(numPlayers)
 				if value == "ID" then
 					local idValue = i - 1
 					tablePlayer["ID"] = idValue
+				elseif value == "Elo" then
+					local elo = math.random(0, 1500)
+					--local elo = 555
+					tablePlayer["Elo"] = elo
 				else
 					--local valueTable = i + var
 					local valueTable = gaussian(10, 9)
@@ -183,7 +187,7 @@ end
 
 playerProperties = {}
 
-properties = {"ID", "Strength", "Armor"}
+properties = {"ID", "Elo", "Strength", "Armor"}
 
 --matchParticipants = {}
 

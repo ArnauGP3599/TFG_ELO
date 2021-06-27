@@ -40,7 +40,14 @@ void PropertiesDB::obtainPlayersProperties(shared_ptr<PlayersDB>& i_PlayersDB) {
                 int id = lua_tonumber(m_L, -1);
                 lua_pop(m_L, 1);
 
-                for (int i = 1; i < m_properties.size(); i++) {
+                string eloP = m_properties[1]->getName();
+                lua_pushstring(m_L, eloP.c_str());
+                lua_gettable(m_L, -2);
+                int eloPlayer = lua_tonumber(m_L, -1);
+                players[id]->setElo(eloPlayer);
+                lua_pop(m_L, 1);
+
+                for (int i = 2; i < m_properties.size(); i++) {
                     string propertyName = m_properties[i]->getName();
                     lua_pushstring(m_L, propertyName.c_str());
                     lua_gettable(m_L, -2);
